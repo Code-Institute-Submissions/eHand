@@ -51,6 +51,3 @@ They are able to view and create posts, and offer help to other members posts. T
 [Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.pdf)   
 
 
-## Data Visualizations
-[Schema](https://github.com/Mr-Smyth/eHand/blob/master/docs/schema/schema.pdf)   
-[Flow](https://github.com/Mr-Smyth/eHand/blob/master/docs/schema/flow.pdf)
