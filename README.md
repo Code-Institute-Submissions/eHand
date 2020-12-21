@@ -46,6 +46,11 @@ They are able to view and create posts, and offer help to other members posts. T
 
 ## Wireframes
 
-[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Home.pdf)
-[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Register.pdf)
-[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.pdf)
+[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Home.pdf)   
+[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Register.pdf)   
+[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.pdf)   
+
+
+## Data Visualizations
+[Schema](https://github.com/Mr-Smyth/eHand/blob/master/docs/schema/schema.pdf)   
+[Flow](https://github.com/Mr-Smyth/eHand/blob/master/docs/schema/flow.pdf)
