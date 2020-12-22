@@ -46,8 +46,13 @@ They are able to view and create posts, and offer help to other members posts. T
 
 ## Wireframes
 
-[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Home.pdf)   
-[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Register.pdf)   
-[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.pdf)   
+[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Home.png)   
+[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Register.png)   
+[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.png)   
+[Create a Hand: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create_hand.png)   
+[Hands: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/hands.png)   
+[Profile - My Details: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_details.png)   
+[Profile - My Hands: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_my_hands.png)   
+[Profile - Notifications: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_notifications.png)   
 
 
