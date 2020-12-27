@@ -1,5 +1,8 @@
 asgiref==3.3.1
+dj-stripe==2.4.1
 Django==3.1.4
+jsonfield==3.1.0
+python-decouple==3.3
 pytz==2020.4
 sqlparse==0.4.1
 stripe==2.55.1
