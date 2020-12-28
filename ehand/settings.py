@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 from decouple import config
 
@@ -127,3 +128,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Stripe
+if DEBUG:
+    STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+    STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
