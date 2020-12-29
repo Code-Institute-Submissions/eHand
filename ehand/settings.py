@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'decouple',
 
     'memberships',
+    'profiles',
 ]
 
 MIDDLEWARE = [
