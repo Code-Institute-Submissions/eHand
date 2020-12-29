@@ -26,7 +26,9 @@ class UserProfile(models.Model):
     time_balance = models.DecimalField(
         choices=TIME_OPTIONS,
         max_length=40,
-        default='Not Specified')
+        default='Not Specified',
+        decimal_places=2,
+        max_digits=4)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     street_address1 = models.CharField(max_length=80, null=True, blank=True)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
