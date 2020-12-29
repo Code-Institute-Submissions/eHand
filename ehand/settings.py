@@ -88,8 +88,7 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# To send confirmation emails we need to temporarily log those email of new users
-# to the console so we can get the confirmation links
+# Send emails to the console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Additional settings relating to Signing up
