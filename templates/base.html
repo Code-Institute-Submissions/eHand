@@ -40,10 +40,12 @@
 </head>
 <body>
     <!-- Header --> 
-    <div id="page-logo" class="container">
-        <a href="{% url 'home' %}">
-            <img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid">
-        </a>
+    <div id="page-logo-container" class="fixed-top">
+        <div id="page-logo" class="container">
+            <a href="{% url 'home' %}">
+                <img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid">
+            </a>
+        </div>
     </div>
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container">
@@ -53,19 +55,20 @@
                             class="img-fluid"></a>
                 </div>
                 <nav class="nav-menu d-none d-lg-block">
-                    <ul>
-                        <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="#">Hands</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="{% url 'account_login' %}">Log in</a></li>
-                        <li><a href="#">Log out</a></li>
-                        <li class="lets-begin"><a href="#">Lets Begin</a></li>
+                    <ul class="d-flex justify-content-center">
+                        <li><a class="btn btn-default " href="{% url 'home' %}">Home</a></li>
+                        <li><a class="btn btn-default " href="#">Hands</a></li>
+                        <li><a class="btn btn-default " href="#">Contact</a></li>
+                        <li><a class="btn btn-default " href="#">Profile</a></li>
+                        <li><a class="btn btn-default " href="{% url 'account_login' %}">Log in</a></li>
+                        <li><a class="btn btn-default " href="#">Log out</a></li>
+                        <li><a class="btn btn-default " href="#">Lets Begin</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
+
  
 
     {% block page_header %}
