@@ -38,15 +38,37 @@
 
 	<title>eHand {% block extra_title %}{% endblock %}</title>
 </head>
-  <body>
-      <header class="container-fluid fixed-top text-danger">Header in Base.html</header>
+<body>
+    <!-- Header --> 
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container">
+            <div class="header-container d-flex align-items-center">
+                <div class="logo mr-auto">
+                    <a href="{% url 'home' %}"><img src="{% static '/images/ehand_logo.png' %}" alt=""
+                            class="img-fluid"></a>
+                </div>
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="#">Hands</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="{% url 'account_login' %}">Log in</a></li>
+                        <li><a href="#">Log out</a></li>
+                        <li class="lets-begin"><a href="#">Lets Begin</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+ 
 
-      {% block page_header %}
-      {% endblock %}
-      
-      {% block content %}
-      {% endblock %}
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
 
 
-  </body>
+</body>
 </html> 
