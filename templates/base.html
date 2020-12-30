@@ -40,10 +40,15 @@
 </head>
 <body>
     <!-- Header --> 
+    <div id="page-logo" class="container">
+        <a href="{% url 'home' %}">
+            <img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid">
+        </a>
+    </div>
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container">
             <div class="header-container d-flex align-items-center">
-                <div class="logo mr-auto">
+                <div class="nav-logo mr-auto">
                     <a href="{% url 'home' %}"><img src="{% static '/images/ehand_logo.png' %}" alt=""
                             class="img-fluid"></a>
                 </div>

@@ -17,13 +17,27 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Nunito", sans-serif;
 }
 
+/* Page Logo ------------------------------------ */
+#page-logo {
+    position: relative;
+    top: 20px;
+    transition: 0.5s;
+    max-height: 200px;
+    overflow: hidden;
+    padding: 0px;
+}
+
+#page-logo img {
+    padding: 0px;
+    margin: 0px;
+    max-height: 150px;
+}
 
 /* Header ----------------------------------------*/
 #header {
   transition: all 0.5s;
-  z-index: 990;
-  transition: all 0.5s;
-  top: 100px;
+  z-index: 900;
+  top: 200px;
 }
 
 #header .header-container {
@@ -32,15 +46,17 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 10px;
 }
 
-#header .logo {
-  overflow: hidden;
-  padding: 16px 30px 12px 30px;
+#header .nav-logo {
+    opacity: 0;
+    transition: 0.5s;
+    overflow: hidden;
+    padding: 16px 20px 12px 20px;
 }
 
-#header .logo img {
-  padding: 0;
-  margin: 0;
-  max-height: 40px;
+#header .nav-logo img {
+    padding: 0px;
+    margin: 0px;
+    max-height: 50px;
 }
 
 @media (max-width: 992px) {
@@ -48,6 +64,14 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     top: 0;
     background: #c2fa00;
+  }
+
+  #header .nav-logo {
+    opacity: 1;
+  }
+
+  #page-logo {
+    display: none;
   }
 }
 
