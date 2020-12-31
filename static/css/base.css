@@ -23,95 +23,71 @@
  h1, h2, h3, h4, h5, h6 {
      font-family: "Nunito", sans-serif;
 }
+
 /* Page Logo ------------------------------------ */
  #page-logo-container {
-     top: 20px;
+     z-index: 1;
 }
  #page-logo {
-     position: relative;
-     transition: 0.5s;
      max-height: 200px;
-     overflow: hidden;
-     padding: 0px;
 }
  #page-logo img {
      padding: 0px;
      margin: 0px;
      max-height: 80px;
 }
-/* Header ----------------------------------------*/
- #header {
-     transition: all 0.5s;
-     z-index: 900;
-     top: 0px;
+
+/* Navbar -------------------------------------- */
+.navbar {
+    z-index: 999;
+    background-color: transparent;
 }
- #header .nav-logo {
-     display: none;
-     transition: 0.5s;
-     overflow: hidden;
-     padding: 16px 20px 12px 20px;
+.navbar-light .navbar-toggler {
+    border: none !important;
+    font-size: 2rem;
 }
- #header .nav-logo img {
-     padding: 0px;
-     margin: 0px;
-     max-height: 50px;
+
+.bg-light {
+    background-color: transparent !important;
 }
-/* Header & Logo - MEDIA QUERIES */
-/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
- @media (min-width:576px){
-     #page-logo img {
-         max-height: 120px;
-    }
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f8f8ff;
+    font-size: 1.6rem;  
 }
-/* tablet, landscape iPad, lo-res laptops ands desktops */
- @media (min-width:768px) {
-     #page-logo img {
-         max-height: 150px;
-    }
+
+#sideNav-heading {
+    width: 80%;
+    margin-top: 100px;
+    color: #f8f8ff;
+    border-bottom: 0.8px solid #f8f8ff;
 }
-/* big landscape tablets, laptops, and desktops */
- @media (min-width:992px) {
-     #header {
-         top: 200px;
-    }
-     #header .header-container {
-         background: #fff;
-         border: #c2fa00 solid 2px;
-         border-radius: 10px;
-         -webkit-box-shadow: 0 1px 6px 0 #323b10;
-         box-shadow: 0 1px 6px 0 #323b10;
-         top: 200px;
-    }
+
+.navbar-collapse.collapsing .navbar-nav {
+    display: block;
+    position: fixed;
+    transition: all 0.2s ease;
+    bottom: 0;
+    top: 0;
+    left: -70%;
 }
-/* ----------------------------------------------------------- */
-/* Navigation Menu -------------------------------------------*/
- .nav-menu, .nav-menu * {
-     margin: 0;
-     padding: 0;
-     list-style: none;
-     width: 100%;
+
+.navbar-collapse.show .navbar-nav {
+    position: fixed;
+    transition: left 0.50s ease;
+    background-color: #555555;
+    padding-left: 25px;
+    opacity: 0.9;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    width: 70%;
+    height: auto;
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
 }
- .nav-menu > ul > li {
-     border: 2px solid #c2fa00;
-}
- .nav-menu a {
-     display: block;
-     position: relative;
-     color: #555555;
-     text-transform: uppercase;
-     font-family: "Nunito", sans-serif;
-     padding: 10px 15px;
-     transition: 0.5ss;
-     font-size: 15px;
-     font-weight: 500;
-}
- .nav-menu a:hover {
-     transition: 0.5s;
-     background-color: #c2fa00;
-     text-decoration: none;
-     font-weight: 600;
-}
-/* Navigation - MEDIA QUERIES */
+
+/* Navbar - MEDIA QUERIES */
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
  @media (min-width:576px){
 
@@ -122,5 +98,14 @@
 }
 /* big landscape tablets, laptops, and desktops */
  @media (min-width:992px) {
-
+    #sideNav-heading {
+        display: none;
+    }
+    .navbar{
+        position: fixed;
+        margin-top: 200px;
+    }
+    .btn-nav {
+        
+    }
 }

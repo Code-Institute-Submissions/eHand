@@ -1,6 +1,13 @@
 # eHand
 
-eHand is a Data-Centric, community focused,  Responsive full-stack website.
+eHand is a Data-Centric, community focused,  Responsive full-stack website.   
+
+eHand will be submitted as my MS4 full stack project
+
+
+
+# UX
+## Purpose and Goals
 
 eHand allows members to create a post for some form of help that they need. It allows other members to respond by offering help
 to the member who posted. Now the member who creates the post will also include the time/duration of the task, and this is important as is
@@ -55,4 +62,21 @@ They are able to view and create posts, and offer help to other members posts. T
 [Profile - My Hands: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_my_hands.png)   
 [Profile - Notifications: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_notifications.png)   
 
+# UI
 
+eHand will use the Bootstrap framework to create a clean intuitive layout.   
+The colours will be a simple lime green(#c2fa00) lifting nicely off the grey background created from the site background image, 
+ to frame off white (#f8f8ff) information areas
+
+
+# Tech
+
+*   Django
+*   Python3
+*   Javascript
+*   CSS
+*   HTML5
+*   Bootstrap
+*   Google Fonts
+*   Favicons
+*   [AOS](https://michalsnik.github.io/aos/)
