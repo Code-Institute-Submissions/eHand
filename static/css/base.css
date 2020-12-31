@@ -36,56 +36,37 @@
      margin: 0px;
      max-height: 80px;
 }
+/* Page logo - MEDIA QUERIES */
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+ @media (min-width:576px){
+
+}
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+ @media (min-width:768px) {
+    #page-logo img {
+        max-height: 120px;
+    }
+}
+/* big landscape tablets, laptops, and desktops */
+ @media (min-width:992px) {
+    #page-logo img {
+        max-height: 160px;
+    }
+ }
 
 /* Navbar -------------------------------------- */
 .navbar {
     z-index: 999;
-    background-color: transparent;
 }
-.navbar-light .navbar-toggler {
-    border: none !important;
-    font-size: 2rem;
+.slimNav {
+    width: 200px;
+    float: right;
 }
-
-.bg-light {
-    background-color: transparent !important;
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #f8f8ff;
-    font-size: 1.6rem;  
+.nav-item {
+    border: 0.2px #f8f8ff solid;
+    background-color: #f8f8ff;
 }
 
-#sideNav-heading {
-    width: 80%;
-    margin-top: 100px;
-    color: #f8f8ff;
-    border-bottom: 0.8px solid #f8f8ff;
-}
-
-.navbar-collapse.collapsing .navbar-nav {
-    display: block;
-    position: fixed;
-    transition: all 0.2s ease;
-    bottom: 0;
-    top: 0;
-    left: -70%;
-}
-
-.navbar-collapse.show .navbar-nav {
-    position: fixed;
-    transition: left 0.50s ease;
-    background-color: #555555;
-    padding-left: 25px;
-    opacity: 0.9;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    flex-direction: column;
-    width: 70%;
-    height: auto;
-    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
-}
 
 /* Navbar - MEDIA QUERIES */
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
@@ -94,18 +75,24 @@
 }
 /* tablet, landscape iPad, lo-res laptops ands desktops */
  @media (min-width:768px) {
-
+     .slimNav {
+        width: 100%;
+        float: none;
+    }
+     .margin-top-200 {
+         margin-top: 200px;
+     }
+     .nav-item {
+        border: 0.2px #c2fa00 solid;
+        background-color: #f8f8ff;
+    }
+    .navbar-light .navbar-nav .nav-link:focus,
+    .navbar-light .navbar-nav .nav-link:hover {
+        background-color: #c2fa00;
+        color: black;
+    }
 }
 /* big landscape tablets, laptops, and desktops */
  @media (min-width:992px) {
-    #sideNav-heading {
-        display: none;
-    }
-    .navbar{
-        position: fixed;
-        margin-top: 200px;
-    }
-    .btn-nav {
-        
-    }
-}
+
+ }

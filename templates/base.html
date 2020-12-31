@@ -35,6 +35,7 @@
         </script>
         <script src="https://js.stripe.com/v3/"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="{% static 'js/base.js' %}"></script>
 
 
         
@@ -47,44 +48,34 @@
 	<title>eHand {% block extra_title %}{% endblock %}</title>
 </head>
 <body>
-    <!-- Header --> 
-    <header>
-        <div id="page-logo-container" class="fixed-top">
-            <div id="page-logo" class="container">
-                <a href="{% url 'home' %}">
-                    <img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid">
-                </a>
-            </div>
+    <!-- Logo -->
+    <div id="page-logo-container" class="fixed-top">
+        <div id="page-logo" class="container">
+            <a href="{% url 'home' %}">
+                <img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid">
+            </a>
         </div>
+    </div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-row-reverse">
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Header --> 
+    <nav class="navbar navbar-expand-md navbar-light bg-transparent flex-row-reverse slimNav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Menu items -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">  
-                <span id="sideNav-heading">
-                    <h5>Help to save Time</h5>
-                </span>
-                <li class="nav-item">
-                    <a class="nav-link btn-nav" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-nav" href="#">Hands</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-nav" href="#">Profile</a>
-                </li>
-            </ul>
+        <div class="collapse navbar-collapse bg-transparent margin-top-200 justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav text-center">
+                <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-item nav-link" href="#">Hands</a>
+                <a class="nav-item nav-link" href="#">Profile</a>
+                <a class="nav-item nav-link" href="#">Upgrade</a>
+                <a class="nav-item nav-link" href="#">Register</a>
+                <a class="nav-item nav-link" href="#">Log in</a>
+                <a class="nav-item nav-link" href="#">Log out</a>
+            </div>
         </div>
     </nav>
-
-    </header>
-    
+   
     
     {% block page_header %}
     {% endblock %}
