@@ -58,18 +58,16 @@
     </div>
 
     <!-- Header --> 
-    <nav class="navbar navbar-expand-md navbar-light bg-transparent flex-row-reverse slimNav">
-        
-        
+    <nav class="navbar navbar-expand-md navbar-light slimNav">
+        <div class="navLogo mr-5 d-md-block">
+                <a href="{% url 'home' %}"><img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid"></a>
+            </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse bg-transparent justify-content-center" id="navbarNavAltMarkup">
-            <div class="navLogo mr-5">
-                <a href="{% url 'home' %}"><img src="{% static '/images/ehand_logo.png' %}" alt="" class="img-fluid"></a>
-            </div>
-            
             <div class="navbar-nav text-center">
                 <a class="nav-item nav-link first-btn" href="{% url 'home' %}">Home</a>
                 <a class="nav-item nav-link" href="#">Hands</a>
