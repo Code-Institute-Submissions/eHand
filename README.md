@@ -79,4 +79,3 @@ The colours will be a simple lime green(#c2fa00) lifting nicely off the grey bac
 *   Bootstrap
 *   Google Fonts
 *   Favicons
-*   [AOS](https://michalsnik.github.io/aos/)

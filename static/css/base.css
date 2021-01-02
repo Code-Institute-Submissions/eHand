@@ -8,6 +8,7 @@
      background-size: cover;
      position: relative;
      height: 2000px;
+     scroll-behavior: smooth;
 }
  .box-shadow {
      -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
@@ -82,7 +83,7 @@
      border-bottom-left-radius: 10px;
 }
  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-     background-color: #c2fa00;
+     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
      color: black;
 }
  .navbar-light .navbar-toggler {
@@ -149,8 +150,17 @@
 /* Page Content ------------------------------- */
  #page-content {
      position: relative;
-     top: 300px;
+     top: 90vh;
      color: #555555;
-     background-color: #f8f8ff;
-     overflow: auto;
+     background-color: transparent;
+
+}
+
+/* fade element classes ---------------------- */
+.fade-in {
+    opacity: 0;
+    transition: .5s ease-in;
+}
+.fade-in.show{
+    opacity: 1;
 }

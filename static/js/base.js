@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */ 
 document.addEventListener("DOMContentLoaded", function() { 
-    let firstScrollTop = 20;
-    let nextScrollTop = 150;
+    let firstScrollTop = 300;
     let navbar = document.querySelector(".navbar");
     let pageLogo = document.querySelector('#page-logo img');
     let navLogo = document.querySelector('.navLogo img ');
@@ -54,12 +53,9 @@ document.addEventListener("DOMContentLoaded", function() {
         /* same action for wide or narrow screens */
         if (scrollTop >= firstScrollTop) {
             navbar.style.top = '0px';
-            /* check for nextScrollTop */
-            if (scrollTop > nextScrollTop) {
-                pageLogo.style.display = 'none';
-                navLogo.style.display = 'block';
-                navbar.classList.add('fixed-navbar');
-            }
+            pageLogo.style.display = 'none';
+            navLogo.style.display = 'block';
+            navbar.classList.add('fixed-navbar');
         /* else - page has not been scrolled and is at the top */
         } else {
             /* first check if we are on large screen size - we should have natural navbar*/
@@ -78,4 +74,30 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+    /* fade in out effects for elements */
+    const showOptions = {
+    threshold: 1,
+    rootMargin: "0px 0px -30px 0px"
+    };
+
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    showWhenScroll = new IntersectionObserver(function (entries, showWhenScroll){
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('show');
+                showWhenScroll.unobserve(entry.target);
+            }
+        });
+    }, showOptions);
+
+    fadeElements.forEach(fader => {
+        showWhenScroll.observe(fader);
+
+    });
+
 });
+
