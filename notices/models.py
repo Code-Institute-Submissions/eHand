@@ -1,26 +1,29 @@
 from django.db import models
-from django.utils import Timezone
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 
 # Create your models here.
 
-class notice(models.Model):
+class Notice(models.Model):
     title = models.CharField(max_length=100)
     short_description = models.CharField(max_length=100)
     long_description = models.TextField()
-    duration = models.DecimalField(max_digits=4, decimal_places=2)
+    duration = models.DecimalField(
+        max_digits=4, decimal_places=2,
+        verbose_name="Duration / Time Payment"
+    )
     event_date_time = models.DateTimeField(
         default=timezone.now,
-        verbose_name="Expecting Date and Time"
+        verbose_name="Event Date and Time"
     )
     event_location_postcode = models.CharField(max_length=10)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    # accepted =
-    # accepted_by =
-    date_posted = models.DateTimeField(default)
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='author')
+    accepted = models.BooleanField(default=False)
+    accepted_by = models.ForeignKey(User, on_delete=models.CASCADE,
+                                    related_name='accepted_by', null=True, blank=True)
+    date_posted = models.DateTimeField(default=timezone.now)
 
-
-
-
-
+    def __str__(self):
+        return self.title
