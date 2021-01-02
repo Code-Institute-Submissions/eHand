@@ -39,16 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Allauth
+    # Allauth ------------
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    # --------------------
     'decouple',
     'memberships',
     'profiles',
     'home',
+    'notices',
+
 ]
 
 MIDDLEWARE = [
