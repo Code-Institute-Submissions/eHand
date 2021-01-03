@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* fade in out effects for elements */
     const showOptions = {
-    threshold: 1,
+    threshold: 0.65,
     rootMargin: "0px 0px -30px 0px"
     };
 
