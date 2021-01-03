@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */ 
 document.addEventListener("DOMContentLoaded", function() { 
-    let firstScrollTop = 70;
+    let firstScrollTop = 50;
     let navbar = document.querySelector(".navbar");
     let pageLogo = document.querySelector('#page-logo img');
     let navLogo = document.querySelector('.navLogo img ');

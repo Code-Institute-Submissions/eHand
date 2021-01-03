@@ -30,6 +30,9 @@
  .margin-top-150 {
      margin-top: 150px;
 }
+.text-shadow {
+    text-shadow: 0px 0px 6px rgba(6, 7, 6, 0.76);
+}
 /* Page Logo ------------------------------------ */
  #page-logo-container {
      z-index: 1;
@@ -101,7 +104,7 @@
      max-height: 60px;
 }
  .fixed-navbar {
-     background-color: #f8f8ff;
+     background: inherit;
      width: 100%;
      -webkit-box-shadow: 0 4px 10px -2px #555555;
      box-shadow: 0 4px 10px -2px #555555;
@@ -148,9 +151,15 @@
  @media (min-width:992px) {
 }
 /* Page Content ------------------------------- */
+ #page-heading {
+     position: relative;
+     top: 50vh;
+     color: #c2fa00;
+     background: inherit;
+}
  #page-content {
      position: relative;
-     top: 90vh;
+     top: 85vh;
      color: #555555;
      background-color: transparent;
 }

@@ -71,24 +71,24 @@
                 <a class="nav-item nav-link first-btn" href="{% url 'home' %}">Home</a>
                 <a class="nav-item nav-link" href="{% url 'notices' %}">Notices</a>
                 <a class="nav-item nav-link" href="#">Profile</a>
-                <a class="nav-item nav-link" href="#">Upgrade</a>
-                <a class="nav-item nav-link" href="#">Register</a>
-                <a class="nav-item nav-link" href="#">Log in</a>
-                <a class="nav-item nav-link last-btn" href="#">Log out</a>
+                <a class="nav-item nav-link" href="{% url 'select' %}">Upgrade</a>
+                <a class="nav-item nav-link" href="{% url 'account_signup' %}">Register</a>
+                <a class="nav-item nav-link" href="{% url 'account_login' %}">Log in</a>
+                <a class="nav-item nav-link last-btn" href="{% url 'account_logout' %}">Log out</a>
             </div>
         </div>
     </nav>
    
     <!-- Main content -->
-    <section id="page-content">
+    <section id="page-heading">
             {% block page_header %}
             {% endblock %}
     </section>
     
-    
-
+    <section id="page-content">
     {% block content %}
     {% endblock %}
+    </section>
 
 
 </body>

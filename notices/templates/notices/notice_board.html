@@ -9,27 +9,34 @@
     - Notice Board
 {% endblock %}
 
-{% block page_header %}
-            <div class="container col-sm-12 col-md-10 offset-md-1 notice-container">
-                <div class="row">
-                    {% for notice in notices %}
-                    <div class="col-sm-12 col-md-6">
-                        <div class="card h-200">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ notice.title}}</h5>
-                                <p class="card-text">{{ notice.short_description }}</p>
-                                <h6 class="border rounded">Duration : {{ notice.duration }}hrs</h6>
-                                <h6 class="border rounded">When : {{ notice.event_date_time }}</h6>
-                                <a href="{% url 'notice_details' notice.id %}" class="btn btn-primary">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-    
+{% block page_header %}   
+<div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <h2 class="text-shadow">Notices</h2>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
+    <div class="container col-sm-12 col-md-10 offset-md-1 notice-container">
+        <div class="row">
+            {% for notice in notices %}
+            <div class="col-sm-12 col-md-6">
+                <div class="card h-200">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ notice.title}}</h5>
+                        <p class="card-text">{{ notice.short_description }}</p>
+                        <h6 class="border rounded">Duration : {{ notice.duration }}hrs</h6>
+                        <h6 class="border rounded">When : {{ notice.event_date_time }}</h6>
+                        <a href="{% url 'notice_details' notice.id %}" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
 
 {% endblock %}
