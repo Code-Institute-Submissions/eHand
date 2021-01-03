@@ -6,21 +6,21 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container bg-light rounded">
-        <h1 class="text-center">Notice Details</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 fade-in">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ notice.title}}</h5>
+                        <p class="card-text">{{ notice.long_description }}</p>
+                        <h6>Duration : {{ notice.duration }}hrs</h6>
+                        <h6>When : {{ notice.event_date_time }}</h6>
+                        <a href="{% url 'notices' %}" class="btn btn-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container bg-light rounded fade-in">
-        <h1 class="text-center">Welcome to eHand 2</h1>
-    </div>
-    <div class="container bg-light rounded fade-in">
-        <h1 class="text-center">Welcome to eHand 3</h1>
-    </div>
-    <div class="container bg-light rounded fade-in">
-        <h1 class="text-center">Welcome to eHand 4</h1>
-    </div>
-
-
-    
 {% endblock %}
 
 {% block content %}
