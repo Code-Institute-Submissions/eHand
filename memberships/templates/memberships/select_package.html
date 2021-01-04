@@ -20,6 +20,7 @@
 {% endblock %}
 
 {% block content %}
+<!-- Here handle setting out the membership package options -->
     <div class="container col-sm-12 col-md-10 offset-md-1 notice-container fade-in">
         <div class="row">
             {% for package in packages %}
@@ -28,6 +29,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ package.package_type}}</h5>
                         <p>Price: €{{ package.package_price }}<small>/month</small></p>
+                        <!-- What package includes - entered manually as didnt see need to add to model -->
                         <h4>Includes:</h4>
                         {% if package.package_type == 'Free' %}
                         <ul>
@@ -44,6 +46,21 @@
                             <li>Browse all notices</li>
                         </ul>
                         {% endif %}
+                        <!-- Check to see what current package is and set out select button -->
+                        {% if package.package_type != 'Free' %}
+                            <form method="POST" action=".">
+                                {% csrf_token %}
+                                {% if package.package_type != current_package %}
+                                    <button class="btn btn-warning">Select</button>
+                                {% else %}
+                                    <small>This is the package you are currently on</small>
+                                {% endif %}
+                                <!-- pass in the selection - keep hidden -->
+                                <input type="hidden" name="package_type" value="{{ package.package_type }}">
+                            </form>
+                        {% endif %}
+
+
                     </div>
                 </div>
             </div>
