@@ -53,7 +53,7 @@
                                 {% if package.package_type != current_package %}
                                     <button class="btn btn-warning">Select</button>
                                 {% else %}
-                                    <small>This is the package you are currently on</small>
+                                    <small class="text-warning">This is the package you are currently on</small>
                                 {% endif %}
                                 <!-- pass in the selection - keep hidden -->
                                 <input type="hidden" name="package_type" value="{{ package.package_type }}">
