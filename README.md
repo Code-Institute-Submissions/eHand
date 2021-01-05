@@ -7,16 +7,13 @@
 
 eHand is a Data-Centric, Responsive full-stack website.  
 
-I really cant think of a greater Gift - than the gift of TIME...
+**I really cant think of a greater gift - than the gift of TIME...**
 
 This is a site where users can visit to ask for help, or provide it. Free members are able to browse a selection of notices by premium members and can offer their help.
 Premium members can also offer their help and can also create notices - looking for any sort of a hand.   
 Premium members can also use the sites unique currency - TIME as payment for any help provided. In doing so, you can give back what they gave you.
- 
 
 eHand will be submitted as my MS4 full stack project
-
-
 
 # UX
 ## Purpose and Goals
@@ -32,7 +29,11 @@ Now weve all been there - Someone helps you out - you maybe offer them money as 
 mostly it is turned down, with a friendly - get me again!
 
 Wouldent it be nice if you could give back what they freely gave - which is their own TIME?
-Enabling them to use that TIME as a form of currency to purchase someone else's TIME - and get something done that they need. I really cant think of a greater Gift - than the gift of TIME
+Enabling them to use that TIME as a form of currency to purchase someone else's TIME - and get something done that they need?
+Perhaps their car needs brakes fitted or their daughter needs help with her Maths - with TIME
+they can get whatever it is they need.   
+
+I really cant think of a greater Gift - than the gift of TIME!   
 
 So therefore i came up with the idea of creating time on the site, as a token payment system.
 
@@ -70,18 +71,41 @@ They are able to view and create posts, and offer help to other members posts. T
 [Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Home.png)   
 [Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Register.png)   
 [Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.png)   
-[Create a Hand: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create_hand.png)   
-[Hands: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/hands.png)   
+[Create a Notice: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create_hand.png)   
+[Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/hands.png)   
 [Profile - My Details: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_details.png)   
-[Profile - My Hands: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_my_hands.png)   
+[Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_my_hands.png)   
 [Profile - Notifications: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_notifications.png)   
 
 # UI
 
-eHand will use the Bootstrap framework to create a clean intuitive layout.   
-The colours will be a simple lime green(#c2fa00) lifting nicely off the grey background created from the site background image, 
- to frame off white (#f8f8ff) information areas.   
- Each page will have a common tailored navbar which will become fixed to the top of the screen on user scroll. A common footer with social media links will also the bottom of the page.    
+eHand will use the Bootstrap framework to create a clean intuitive layout. The layout will be responsive having been built from a mobile first perspective.
+The Navbar is floated down the page 200px as a default position - and will retreat to a fixed position at the top of the page allowing
+content to dissappear underneath it when the user scrolls. The navbar will be almost focal, clean crisp and simple, with a lime green glow and gradient hover effect
+reverting to the simpler ghost white when not being interacted with.
+
+The logo and choice of colours was to achieve a nice contrast between a grey hand background image and the lime green colour.
+The logo was designed with pastel type colours to make it visable when needed - but not to take over the page.
+
+## Colours:
+*   [Ghost-white(#f8f8ff)](https://www.color-hex.com/color/f8f8ff) - will be used for windowed areas.
+*   [#555555](https://www.color-hex.com/color/555555) -  as the main font colour
+*   [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00) - used in all areas for text, borders, highlighting etc.  
+
+
+## Logo:
+Designed by myself, plays on the name using distorted lines from a lowercase letter 'e', to form the likeness of a hand. 
+The colours are a Kaki type [green](https://www.color-hex.com/color/6B7365)  and a pastel [indigo/grey](https://www.color-hex.com/color/656573)
+to form the text part of the logo. The logo was created using [Paint dot net](https://www.getpaint.net/features.html).
+
+## A Navbar:
+Common to every page, the same navbar styling will be applied
+
+## Information area:
+Common styling of ghost white and grey font will be applied. Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00)
+
+## footer:
+A common footer with social media links will also the bottom of the page.    
 
 
 
