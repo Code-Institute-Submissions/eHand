@@ -1,18 +1,17 @@
 # eHand
 
-
-# Circles
-
 ![eHand logo](https://github.com/Mr-Smyth/eHand/blob/master/static/images/ehand_logo.png "Site logo")
 
 
 [View the website Deployed using Heroku](#)
 
-eHand is a Data-Centric, Responsive full-stack website.   
+eHand is a Data-Centric, Responsive full-stack website.  
 
-It is a site where users can visit to ask for help, or provide it. There is also a payment provided - in the form of Time. each
-premium member will have a time account, and acts as an added incentive to the warm feeling everyone gets from helping someone in need. Each premium member will be given a time account when they sign up to a
-premium membership package. This allows them to receive time for work done, or send it
+I really cant think of a greater Gift - than the gift of TIME...
+
+This is a site where users can visit to ask for help, or provide it. Free members are able to browse a selection of notices by premium members and can offer their help.
+Premium members can also offer their help and can also create notices - looking for any sort of a hand.   
+Premium members can also use the sites unique currency - TIME as payment for any help provided. In doing so, you can give back what they gave you.
  
 
 eHand will be submitted as my MS4 full stack project
@@ -23,15 +22,17 @@ eHand will be submitted as my MS4 full stack project
 ## Purpose and Goals
 
 eHand allows members to create a post for some form of help that they need. It allows other members to respond by offering help
-to the member who posted. Now the member who creates the post will also include the time/duration of the task, and this is important as is
-also forms the means of payment.   
+to the member who posted. Now the member who creates the post will also include the time/duration of the task, and this is important as it 
+also offers a guide to the amount of the TIME payment available.   
 
 You see i believe the most precious thing we spend today is time - and to give that time to someone, freely - to help them out, is a 
-wonderful gift. Now weve all been there - Someone helps you out - you maybe offer them money as you want to show your gratittude - 
+wonderful gift.   
+
+Now weve all been there - Someone helps you out - you maybe offer them money as you want to show your gratittude - 
 mostly it is turned down, with a friendly - get me again!
 
-Wouldent it be nice if you could give back what they freely gave - their own time?
-Then they could go and use that time to get help they needed.
+Wouldent it be nice if you could give back what they freely gave - which is their own TIME?
+Enabling them to use that TIME as a form of currency to purchase someone else's TIME - and get something done that they need. I really cant think of a greater Gift - than the gift of TIME
 
 So therefore i came up with the idea of creating time on the site, as a token payment system.
 
