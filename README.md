@@ -1,6 +1,19 @@
 # eHand
 
-eHand is a Data-Centric, community focused,  Responsive full-stack website.   
+
+# Circles
+
+![eHand logo](https://github.com/Mr-Smyth/eHand/blob/master/static/images/ehand_logo.png "Site logo")
+
+
+[View the website Deployed using Heroku](#)
+
+eHand is a Data-Centric, Responsive full-stack website.   
+
+It is a site where users can visit to ask for help, or provide it. There is also a payment provided - in the form of Time. each
+premium member will have a time account, and acts as an added incentive to the warm feeling everyone gets from helping someone in need. Each premium member will be given a time account when they sign up to a
+premium membership package. This allows them to receive time for work done, or send it
+ 
 
 eHand will be submitted as my MS4 full stack project
 
@@ -66,7 +79,10 @@ They are able to view and create posts, and offer help to other members posts. T
 
 eHand will use the Bootstrap framework to create a clean intuitive layout.   
 The colours will be a simple lime green(#c2fa00) lifting nicely off the grey background created from the site background image, 
- to frame off white (#f8f8ff) information areas
+ to frame off white (#f8f8ff) information areas.   
+ Each page will have a common tailored navbar which will become fixed to the top of the screen on user scroll. A common footer with social media links will also the bottom of the page.    
+
+
 
 
 # Tech
