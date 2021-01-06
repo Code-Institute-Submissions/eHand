@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -81,7 +82,7 @@ def select_package(request):
         # because we want to pass it to the next view
         request.session[
             'selected_package_type'] = selected_package.package_type
-        return HttpResponseRedirect(reverse('packages/payment'))
+        return HttpResponseRedirect(reverse('payment'))
 
     context = {
         'packages': packages,
@@ -90,11 +91,17 @@ def select_package(request):
     return render(request, 'memberships/select_package.html', context)
 
 
-def payment(request):
+def package_payment(request):
     """ Get the stripe payment form for the user
         Also handle the payment
     """
     # get some required variables
     current_package = get_current_package(request)
     selected_package = get_selected_package(request)
-    publicKey = settings.STRIPE_PUBLIC_KEY
+    public_key = settings.STRIPE_PUBLIC_KEY
+
+    context = {
+        'selected_package': selected_package,
+        'public_key': public_key
+    }
+    return render(request, "memberships/package_payment.html", context)
