@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
-<!-- {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'notices/css/notices.css' %}">
-{% endblock %} -->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'memberships/css/checkout.css' %}">
+{% endblock %}
 
 {% block extra_title %}
-    - Select Package
+    - Package Payment
 {% endblock %}
 
 {% block page_header %}
@@ -14,13 +14,69 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text-shadow">Selected package: {{ selected_package }}</h2>
-                <p class="text-shadow">Price: <strong>${{ selected_package.price }}</strong><small>/month</small></p>
+                <p class="text-shadow text-success">Price: <strong>€{{ selected_package.package_price }}</strong><small> / Month</small></p>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
+<!-- THIS STRIPE CODE WAS TAKEN FROM JUSTDJANGO/SHOPPING_CART -->
+<div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+    <div class="row">
+        <div class="col">
+            <div class="card bg-transparent">
+                <div class="opaque"></div>
+                <div class="card-body">
+                    <p class="col-12 text-center text-white">Are you sure you want to subscribe to our {{ selected_package }} package?</p>
+                    <p class="col-12 text-center text-white"> This will cost you 
+                        <span class="mont_r">@ €</span>
+                        {{ selected_package.package_price }}<small> /Month</small></p>
+
+                    <!-- Following code Credit: https://github.com/justdjango/Shopping_cart/blob/master/shopping_cart -->
+
+                    <form action="." method="post" id="payment-form" class="pb-4">
+                        {% csrf_token %}
+                        <fieldset class="px-3">
+                            <legend class="fieldset-label text-center text-white px-2">Please enter your Credit Card Details below
+                            </legend>
+                            <i class="text-wht fab fa-stripe fa-2x"></i>
+                            <!-- A Stripe card element will go here -->
+                            <div class="mb-3 w-auto mx-auto" id="card-element"></div>
+                            <!-- Used to display form errors -->
+                            <div class="mb-3 text-danger mx-auto" id="card-errors" role="alert"></div>
+
+                            <input type="hidden" id="nonce" name="payment_method_nonce" />
+                            <div class="row justify-content-center">
+                                <button type="submit"
+                                    class="ripple-surface sub btn btn-success btn-outline-light hover-shadow"><img
+                                        class="ml-2" src="https://img.icons8.com/dusk/32/000000/password-check.png"
+                                        alt="Lock" />&nbsp;Submit
+                                    Payment
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div id="stripe-token-handler" class="is-hidden">Success! <span class="token"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- script for the stripe form -->
+<script src="{% static 'memberships/js/checkout.js' %}"></script>
+<!-- script for toggling display of the form -->
+<script type="text/javascript">
+    function toggleDisplay() {
+      var x = document.getElementById("collapseStripe");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+    };
+</script>
+
 
 {% endblock %}
 

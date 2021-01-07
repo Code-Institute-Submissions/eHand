@@ -1,4 +1,7 @@
 /* General ----------------------------------------*/
+* {
+    box-sizing: border-box;
+}
  body {
      font-family: "Nunito", sans-serif;
      color: #444444;
@@ -13,6 +16,9 @@
  .box-shadow {
      -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
      box-shadow: 0 1px 6px 0 #c2fa00;
+}
+.card {
+    background-color: #f8f8ff;
 }
  a {
      color: #009970;
@@ -45,6 +51,15 @@
      margin: 0px;
      max-height: 80px;
      transition: 1s;
+}
+.opaque {
+    height:100%;
+    width: 100%;
+    border-radius: 10px;
+    position:absolute;
+    background-color:#000;
+    opacity:.7;
+    z-index: -1;
 }
 /* Page logo - MEDIA QUERIES */
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
@@ -153,7 +168,7 @@
 /* Page Content ------------------------------- */
  #page-heading {
      position: relative;
-     top: 50vh;
+     top: 40vh;
      color: #c2fa00;
      background: inherit;
 }
