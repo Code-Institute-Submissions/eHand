@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -44,7 +44,6 @@ def get_selected_package(request):
     if selected_package_query:
         return selected_package_query
     return None
-
 
 
 def select_package(request):
@@ -94,14 +93,76 @@ def select_package(request):
 def package_payment(request):
     """ Get the stripe payment form for the user
         Also handle the payment
+
+    * Stripe subscription source:
+    https://stripe.com/docs/api/subscriptions/create?lang=python
     """
     # get some required variables
     current_package = get_current_package(request)
     selected_package = get_selected_package(request)
     public_key = settings.STRIPE_PUBLIC_KEY
 
+    if request.method == "POST":
+        try:
+            # add the token
+            token = request.POST['stripeToken']
+            print(f"################################################# {token}")
+
+            # We must add the source for the customer
+            customer = stripe.Customer.retrieve(current_package.stripe_user_id)
+            customer.source = token
+            customer.save()
+
+            # Now we can create the subscription using only the customer,
+            # we don't need to pass their credit card source(token)
+            # subscription = the intent
+            subscription = stripe.Subscription.create(
+                customer=current_package.stripe_user_id,
+                items=[
+                    {"price": selected_package.stripe_plan_id}
+                ]
+            )
+            print(f"SUBSCRIPTION  ################################################# {subscription.id}")
+            # pass the subscription id into the upgraded-transactions view
+            return redirect(reverse("upgradedtransactions",
+                                    kwargs={'subscription_id': subscription.id}))
+
+        except stripe.error.CardError as e:
+            messages.info(request, f"{e.code} - Your card has ben declined")
+
     context = {
         'selected_package': selected_package,
         'public_key': public_key
     }
     return render(request, "memberships/package_payment.html", context)
+
+
+def upgradedtransactions(request, subscription_id):
+    """ return a template for upgraded subscriptions """
+
+    # get some required variables
+    current_package = get_current_package(request)
+    selected_package = get_selected_package(request)
+
+    # so now we can set the current package as the chosen package, which is
+    # the one they just paid for
+    current_package.membership_type = selected_package
+    current_package.save()
+
+    # create or update subscription
+    subscription, created = Subscriptions.objects.get_or_create(
+        user_membership=current_package)
+    subscription.stripe_sub_id = subscription_id  # passed in
+    subscription.valid = True
+    subscription.save()
+
+    # remove session storage
+    try:
+        del request.session['selected_package_type']
+    except:
+        pass
+
+    messages.info(request, 'Successfully created {} membership'.format(
+        selected_package))
+
+    return redirect('home')

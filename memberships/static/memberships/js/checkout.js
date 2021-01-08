@@ -1,13 +1,12 @@
 // Create a Stripe client.
-// Credit https://github.com/justdjango/Shopping_cart/blob/master/static/js/checkout.js
-
-var stripe = Stripe("pk_test_51Gs8HWJVYSpLhqQunsGxscSZH6TGDwp0mUsFkMFzCczpJ0JyXdOau1ThdfetmOiqwtyd2orSGzxT4A7ptlXxk3Lz00hHsTjD5x");
+// Credit Stripe for this code - altered to suit my needs
+// Supply our public key here
+var stripe = Stripe("pk_test_51HvpttD51opv9Orqgpzt2a9kb4dfMFKGlGIKEQkF2BZilfiuDy01vBDX3IdUPladVSP8Qyow702BZk7xwynKO0wR009gEbO3iY");
 
   // Create an instance of Elements.
   var elements = stripe.elements();
 
-  // Custom styling can be passed to options when creating an Element.
-  // (Note that this demo uses a wider set of styles than the guide below.)
+  // create some style for the card element
   var style = {
     base: {
       color: '#32325d',
@@ -60,9 +59,6 @@ var stripe = Stripe("pk_test_51Gs8HWJVYSpLhqQunsGxscSZH6TGDwp0mUsFkMFzCczpJ0JyXd
   });
 
   var successElement = document.getElementById('stripe-token-handler');
-  document.querySelector('.wrapper').addEventListener('click', function() {
-    successElement.className = 'is-hidden';
-  });
 
   function stripeTokenHandler(token) {
     successElement.className = '';

@@ -108,7 +108,8 @@ Common styling of ghost white and grey font will be applied. Page headings when 
 A common footer with social media links will also the bottom of the page.    
 
 
-
+# Checkout
+Uses client-side tokenization
 
 # Tech
 
