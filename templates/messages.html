@@ -1,0 +1,30 @@
+{% if messages %}
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="MessageModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                {% for message in messages %}
+                {% with message.level as level %}
+                {% if level == 40 %}
+                <h1>message = 40</h1>
+                {% elif level == 30 %}
+                <h1>message = 30</h1>
+                {% elif level == 25 %}
+                <h1>message = 25</h1>
+                {% else %}
+                <h1 class="text-warning">we are in the else with messages</h1>
+                {% endif %}
+                {% endwith %}
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */ 
 document.addEventListener("DOMContentLoaded", function() { 
+    /** First Handle the navbar - scroll it out of the way on scroll or page resize */
     let firstScrollTop = 20;
     let navbar = document.querySelector(".navbar");
     let pageLogo = document.querySelector('#page-logo img');
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     rootMargin: "0px 0px -30px 0px"
     };
 
-
+    /** Handle fadin in elements */
     const fadeElements = document.querySelectorAll('.fade-in');
     showWhenScroll = new IntersectionObserver(function (entries, showWhenScroll){
         entries.forEach(entry => {
@@ -99,5 +100,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 
+    /** Handle automatic message modal after small delay*/
+    setTimeout(function() {
+        $("#messageModal").modal('show');
+    }, 2000);
 });
 

@@ -47,6 +47,9 @@
 	<title>eHand {% block extra_title %}{% endblock %}</title>
 </head>
 <body>
+
+    {% include 'messages.html' %}
+
     <!-- Logo -->
     <div id="page-logo-container" class="fixed-top">
         <div id="page-logo" class="container">
@@ -78,7 +81,7 @@
             </div>
         </div>
     </nav>
-   
+
     <!-- Main content -->
     <section id="page-heading">
             {% block page_header %}
