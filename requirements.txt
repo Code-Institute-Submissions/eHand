@@ -4,6 +4,7 @@ dj-stripe==2.4.1
 Django==3.1.4
 django-allauth==0.44.0
 django-countries==7.0
+django-crispy-forms==1.10.0
 django-tempus-dominus==5.1.2.13
 jsonfield==3.1.0
 oauthlib==3.1.0
