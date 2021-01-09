@@ -2,25 +2,49 @@
 
 ## Index
 
-**<details><summary>Apps Manual Continuous Testing</summary>**
+**<details><summary>Home</summary>**
 
-**<details><summary>Contents for Home Testing</summary>**
-
-* [Visual testing of Home page](#home-visual-testing)
-* [Operation testing of Home page](#home-operation-testing)
-* [Testing of Home Templates](#home-templates-testing)
-* [Testing of Home models](#home-models-testing)
-* [Testing of Home urls](#home-urls-testing)
-* [Testing of Home views](#home-views-testing)
++ [Home visual testing](#home-visual-testing)
++ [Home Operation testing](#home-operation-testing)
++ [Home Templates testing](#home-templates-testing)
++ [Home Models testing](#home-models-testing)
++ [Home Urls testing](#home-urls-testing)
++ [Home Views testing](#home-views-testing)
     
 </details>
 
-* [Memberships](#memberships)
-* [Notices](#notices)
-* [Profiles](#profiles)
+ **<details><summary>Memberships</summary>**
+
++ [Memberships visual testing](#memberships-visual-testing)
++ [Memberships Operation testing](#memberships-operation-testing)
++ [Memberships Templates testing](#memberships-templates-testing)
++ [Memberships Models testing](#memberships-models-testing)
++ [Memberships Urls testing](#memberships-urls-testing)
++ [Memberships Views testing](#memberships-views-testing)
+    
+</details>
+
+ **<details><summary>Notices</summary>**
+
++ [Notices visual testing](#notices-visual-testing)
++ [Notices Operation testing](#notices-operation-testing)
++ [Notices Templates testing](#notices-templates-testing)
++ [Notices Models testing](#notices-models-testing)
++ [Notices Urls testing](#notices-urls-testing)
++ [Notices Views testing](#notices-views-testing)
 
 </details>
 
+ **<details><summary>Profiles</summary>**
+
++ [Profiles visual testing](#profiles-visual-testing)
++ [Profiles Operation testing](#profiles-operation-testing)
++ [Profiles Templates testing](#profiles-templates-testing)
++ [Profiles Models testing](#profiles-models-testing)
++ [Profiles Urls testing](#profiles-urls-testing)
++ [Profiles Views testing](#profiles-views-testing)
+
+</details>
 
 # Apps Manual Continuous Testing
 
@@ -31,8 +55,16 @@
 ---
 
 ### Home visual testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST:  
+    * Expected tailored Javascript to force Page logo to disappear when scroll down the page, and the navbar to roll up to a fixed position at the top of the page.
+    * This should also insert a smaller logo into the new navbar.
+* :clipboard: RESULT: 
+    * Page displayed as expected
+    * No errors in console.
+
+* :hammer: TEST: (Responsiveness)   
+    * Expected tailored Javascript to force navbar to become fixed to the top when screen size was reduced below 768px in width.
+    * Also expected a smaller logo to appear in new navbar area
 * :clipboard: RESULT: 
     * 
 
