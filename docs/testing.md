@@ -309,9 +309,17 @@
 
 ### Profiles visual testing
 * :hammer: TEST:    
-    * 
+    * Does page load with correct common styling?
+    * Does console display any errors?
 * :clipboard: RESULT: 
-    * 
+    * Page loads as expected with site common styling.
+    * No errors in console.
+
+* :hammer: TEST: (user Subscriptions)
+    * Does correct User Membership Subscription data display?
+    * Do the correct dates for the subscription display as intended?
+* :clipboard: RESULT: 
+    * All User Subscription data displays as intended.
 
 * :hammer: TEST:    
     * 
