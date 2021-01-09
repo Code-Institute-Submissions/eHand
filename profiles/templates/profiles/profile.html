@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block extra_title %}
+    - Profile
+{% endblock %}
+
+{% block page_header %}   
+    <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h2 class="text-shadow">Profile</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container col-sm-12 col-md-10 offset-md-1 notice-container fade-in">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="card mh-100 mb-3 shadow">
+                    <div class="card-header">Profile Information</div>
+                    <div class="card-body">
+                        <p>users_current_package : {{ users_current_package }}</p>
+                        <p>users_current_subscription : {{ users_current_subscription }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="card mh-100 card text-white bg-dark mb-3 shadow">
+                    <div class="card-header">My Settings</div>
+                    <div class="card-body">
+                        <h4>Manage my subscription</h4>
+                        <p>users_current_package : {{ users_current_package }}</p>
+                        <p>users_current_subscription : {{ users_current_subscription }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

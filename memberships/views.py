@@ -162,7 +162,7 @@ def upgradedtransactions(request, subscription_id):
     except:
         pass
 
-    messages.info(request, 'Successfully created {} membership'.format(
-        selected_package))
+    messages.success(request, f"You have been successfully upgraded to our \
+         {selected_package} membership")
 
     return redirect('home')

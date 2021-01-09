@@ -79,13 +79,13 @@
 }
 /* Messages ------------------------------------ */
 .modal-content {
-    border: 2px solid #f8f8ff;
+    border: 2px solid #c4fa00;
 }
 .modal-body,
 .modal-footer {
     border: none;
     font-size: 1.6rem;
-    background-color: #c4fa00;
+    background-color: #f8f8f8;
 }
    
 /* Navbar -------------------------------------- */

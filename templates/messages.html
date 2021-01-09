@@ -8,17 +8,23 @@
         <div class="modal-content">
             <div class="modal-body">
                 {% for message in messages %}
-                {% with message.level as level %}
-                {% if level == 40 %}
-                <h1>message = 40</h1>
-                {% elif level == 30 %}
-                <h1>message = 30</h1>
-                {% elif level == 25 %}
-                <h1>message = 25</h1>
-                {% else %}
-                <h1 class="text-warning">we are in the else with messages</h1>
-                {% endif %}
-                {% endwith %}
+                    {% with message.level as level %}
+                    <!-- Error -->
+                    {% if level == 40 %}
+                        <i class="fas fa-times text-danger"></i><p class="text-danger">{{ message }}</p>
+                    <!-- Warning -->
+                    {% elif level == 30 %}
+                        <i class="fas fa-exclamation-triangle text-warning"></i><p class="text-warning">{{ message }}</p>
+                    <!-- Success -->
+                    {% elif level == 25 %}
+                        <i class="far fa-check-circle text-success"></i><p class="text-success">{{ message }}</p>
+                    <!-- Info -->
+                    {% elif level == 20 %}
+                        <i class="fas fa-info-circle text-info"><br></i><p class="text-info">{{ message }}</p>
+                    {% else %}
+                        <p>{{ message }}</p>
+                    {% endif %}
+                    {% endwith %}
                 {% endfor %}
             </div>
             <div class="modal-footer">
