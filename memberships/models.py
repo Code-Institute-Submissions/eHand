@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.db import models
+from datetime import datetime
 
 import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -76,3 +77,24 @@ class Subscriptions(models.Model):
 
     def __str__(self):
         return self.user_membership.user.username
+
+    @property
+    def get_created_date(self):
+        """ Get the subscription model from the stripe database
+            Then get the created date from there. """
+        # from stripe docs
+        subscription = stripe.Subscription.retrieve(
+            self.stripe_sub_id)
+        # return converted timestamp using datetime
+        return datetime.fromtimestamp(subscription.created)
+
+    @property
+    def get_next_payment_date(self):
+        """ Get the subscription model from the stripe database
+            Then get the next payment date. """
+
+        # from stripe docs
+        subscription = stripe.Subscription.retrieve(
+            self.stripe_sub_id)
+        # return the converted timestamp
+        return datetime.fromtimestamp(subscription.current_period_end)
