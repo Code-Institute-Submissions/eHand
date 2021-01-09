@@ -50,9 +50,6 @@
 
 ## Home
 
-  
-
----
 
 ### Home visual testing
 * :hammer: TEST:  
@@ -66,20 +63,21 @@
     * Expected tailored Javascript to force navbar to become fixed to the top when screen size was reduced below 768px in width.
     * Also expected a smaller logo to appear in new navbar area
 * :clipboard: RESULT: 
-    * 
+    * Page displayed as expected
+    * No errors in console.
 
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (Messages)  
+    * Expected to see a modal display a message after an upgrade attempt of a membership.
 * :clipboard: RESULT: 
-    * 
+    * Modal displayed as expected with ghost white body and lime green border.
 
 [Back to Index](#index)
 
 ### Home Operation testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (Navbar) 
+    * Check all navbar links
 * :clipboard: RESULT: 
-    * 
+    * =====================  CHECK WHEN FINISHED DEVELOPMENT ======================
 
 * :hammer: TEST:    
     * 
