@@ -166,3 +166,35 @@ def upgradedtransactions(request, subscription_id):
          {selected_package} membership")
 
     return redirect('home')
+
+
+def cancel_user_subscription(request):
+    """ View to handle the cancelling of a users subscription """
+    current_user_subscription = get_user_subscription(request)
+
+    # If the user does not have a subscription then return with a message
+    if current_user_subscription.valid is False:
+        messages.warning(request, "You dont have an active membership")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+    # get the subscription from stripe - then delete it.
+    subscription = stripe.Subscription.retrieve(
+        current_user_subscription.stripe_sub_id)
+    subscription.delete()
+
+    # set the subscrption database subscription info accordingly
+    current_user_subscription.valid = False
+    current_user_subscription.save()
+
+    # Get free membership and get current package user is on
+    # Then set curren package for user as free.
+    free = Packages.objects.get(package_type='Free')
+    user_package = get_current_package(request)
+    user_package.membership_type = free
+    user_package.save()
+
+    messages.success(
+        request, "You have successfully \
+            cancelled your subscription to Premium.")
+
+    return redirect(reverse('home'))

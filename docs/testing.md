@@ -321,6 +321,16 @@
 * :clipboard: RESULT: 
     * All User Subscription data displays as intended.
 
+* :hammer: TEST: (Cancel Subscriptions)   
+    * Expect the cancel membership button - only when currently subscribed to premium
+* :clipboard: RESULT: 
+    * The Cancel subscription button will only display when the user is subscribed to Premium
+
+* :hammer: TEST: (Subscriptions) 
+    * Expect the Discover Premium button to display when user is subscribed to free
+* :clipboard: RESULT: 
+    * The Discover premium button only displays when the user is subscribed to free.
+
 * :hammer: TEST:    
     * 
 * :clipboard: RESULT: 
@@ -329,15 +339,15 @@
 [Back to Index](#index)
 
 ### Profiles Operation testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (Manage Subscriptions) 
+    * Expect The Cancel subscription button to remove the premium subscription and apply the free subscription when clicked.
 * :clipboard: RESULT: 
-    * 
+    * The cancel subscription button behaves as expected and removes the premium and applies the free membership.
 
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (Subscriptions)   
+    * Expect the Discover Premium button to redirect user to the upgrade page.
 * :clipboard: RESULT: 
-    * 
+    * User gets redirected to the upgrade page when user clicks on the discover Premium button.
 
 [Back to Index](#index)
 

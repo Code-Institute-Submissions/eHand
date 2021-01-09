@@ -37,23 +37,20 @@
                     <div class="card-header">My Settings</div>
                     <div class="card-body">
                         <h4 class="border-bottom mb-4">Manage my subscription</h4>
+
+                        <!-- Check current user package -->
                         {% if users_current_package != None %}
                             <p>Your current membership is: <small class="text-success">{{ users_current_package.membership_type }}</small></p>
-                            <p>Created on: <small class="text-success">{{ users_current_subscription.get_created_date }}</small></p>
 
+                            <!-- If user has a current subscription -->
                             {% if users_current_subscription.valid != False %}
-                            <p>Your next payment is due on: <small class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
-                            <p><a href="#" class="btn btn-outline-danger">Cancel my subscription</a></p>
+                                <p>Created on: <small class="text-success">{{ users_current_subscription.get_created_date }}</small></p>
+                                <p>Your next payment is due on: <small class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
+                                <p><a href="{% url 'cancel_sub' %}" class="btn btn-outline-danger">Cancel my subscription</a></p>
                             {% else %}
-                            <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}">Discover Premium</a></p>
+                                <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}" class="btn btn-outline-success">Discover Premium</a></p>
                             {% endif %}
-                    
-                        {% if users_current_subscription.valid != False %}
-                            
                         {% endif %}
-                        {% endif %}
-                        <p>users_current_package : {{ users_current_package }}</p>
-                        <p>users_current_subscription : {{ users_current_subscription }}</p>
                     </div>
                 </div>
             </div>
