@@ -1,4 +1,28 @@
 /* Over-ride base.css */
+ #page-heading {
+     top: 15vh;
+}
  #page-content {
-     top: 40vh;
+     top: 16vh;
+}
+
+/* Page logo - MEDIA QUERIES */
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+ @media (min-width:576px){
+}
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+ @media (min-width:768px) {
+    /* Over-ride base.css */
+    #page-heading {
+        top: 40vh;
+    }
+    #page-content {
+        top: 40vh;
+    }
+}
+/* big landscape tablets, laptops, and desktops */
+ @media (min-width:992px) {
+     #page-logo img {
+         max-height: 160px;
+    }
 }
