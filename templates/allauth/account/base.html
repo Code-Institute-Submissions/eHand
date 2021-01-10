@@ -1,40 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{% block head_title %}{% endblock %}</title>
-    {% block extra_head %}
-    {% endblock %}
-  </head>
-  <body>
-    {% block body %}
+{% extends "base.html" %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+{% block extra_css %}
+{% endblock %}
 
-    <div>
-      <strong>Menu:</strong>
-      <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-        {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
+{% block extra_title %}
+{% endblock %}
+
+{% block page_header %} 
+    <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                {% block inner_header %}   
+                
+                {% endblock %}
+            </div>
+        </div>
     </div>
-    {% block content %}
-    {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
-  </body>
-</html>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-transparent">
+                    <div class="opaque"></div>
+                    <div class="card-body text-white">
+                        {% block inner_content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
