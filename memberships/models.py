@@ -52,11 +52,12 @@ def post_save_create_memberships(sender, instance, created, *args, **kwargs):
 
     # check if there is currently a stripe
     # customer id
-    if (membership.stripe_user_id is None or membership.stripe_user_id == ''):
+    if membership.stripe_user_id is None or membership.stripe_user_id == '':
         # create the customer object on stripe
         new_customer_id = stripe.Customer.create(email=instance.email)
-        # grab the id from that object
+        free = Packages.objects.get(package_type='Free')
         membership.stripe_user_id = new_customer_id['id']
+        membership.membership_type = free
         membership.save()
 
 
