@@ -1,11 +1,23 @@
 {% extends "account/base.html" %}
+{% load static %}
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
+{% endblock %}
 
-{% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
+{% block extra_title %}
+    - {% trans "Sign up closed" %}
+{% endblock %}
+
+
+{% block inner_header %}   
+    <h2 class="text-shadow">{% trans "Sign up closed" %}</h2>
+{% endblock %}
+
+
+{% block inner_content %}
 
 <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
 {% endblock %}

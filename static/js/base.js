@@ -103,6 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
     /** Handle automatic message modal after small delay*/
     setTimeout(function() {
         $("#messageModal").modal('show');
-    }, 2000);
+    });
 });
 

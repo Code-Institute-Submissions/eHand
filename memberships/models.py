@@ -73,7 +73,7 @@ class Subscriptions(models.Model):
         verbose_name_plural = 'Subscriptions'
 
     user_membership = models.ForeignKey(Memberships, on_delete=models.CASCADE)
-    valid = models.BooleanField(default=True)
+    valid = models.BooleanField(default=False)
     stripe_sub_id = models.CharField(max_length=50)
 
     def __str__(self):

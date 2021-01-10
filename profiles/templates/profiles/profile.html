@@ -43,7 +43,7 @@
                             <p>Your current membership is: <small class="text-success">{{ users_current_package.membership_type }}</small></p>
 
                             <!-- If user has a current subscription -->
-                            {% if users_current_subscription.valid != False %}
+                            {% if users_current_subscription.valid %}
                                 <p>Created on: <small class="text-success">{{ users_current_subscription.get_created_date }}</small></p>
                                 <p>Your next payment is due on: <small class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
                                 <p><a href="{% url 'cancel_sub' %}" class="btn btn-outline-danger">Cancel my subscription</a></p>
