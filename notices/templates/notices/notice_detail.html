@@ -13,7 +13,7 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">{{ notice.title }} Details</h2>
+                <h2 class="text-shadow">{{ object.title }} Details</h2>
             </div>
         </div>
     </div>
@@ -25,11 +25,11 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ notice.title }}</h5>
-                        <p class="card-text">{{ notice.long_description }}</p>
-                        <h6>Duration : {{ notice.duration }}hrs</h6>
-                        <h6>When : {{ notice.event_date_time }}</h6>
-                        <a href="{% url 'notices' %}" class="btn btn-primary">Back</a>
+                        <h5 class="card-title">{{ object.title }}</h5>
+                        <p class="card-text">{{ object.long_description }}</p>
+                        <h6>Duration : {{ object.duration }}hrs</h6>
+                        <h6>When : {{ object.event_date_time }}</h6>
+                        <a href="{% url 'notice-list' %}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
             </div>

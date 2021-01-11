@@ -1,8 +1,9 @@
 from django.urls import path
+from .views import NoticeListView, NoticeDetailView
 from . import views
 
 
 urlpatterns = [
-    path('', views.notices, name='notices'),
-    path('<int:notice_id>/', views.notice_details, name='notice_details'),
+    path('', NoticeListView.as_view(), name='notice-list'),
+    path('notice/<int:pk>/', NoticeDetailView.as_view(), name='notice-detail'),
 ]
