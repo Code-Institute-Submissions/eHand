@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block extra_title %}
-    - Notice Board
+    - Create Notice
 {% endblock %}
 
 {% block page_header %}   
@@ -26,14 +26,14 @@
                 <div class="card bg-transparent">
                     <div class="opaque"></div>
                     <div class="card-body text-white">
-                        <form>
+                        <form method="POST">
                             {% csrf_token %}
                             <fieldset>
                                 <legend>Notice Create</legend>
                                 {{ form|crispy }}
                             </fieldset>
                             <div class="form-group">
-                                <button>Submit</button>
+                                <button type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
