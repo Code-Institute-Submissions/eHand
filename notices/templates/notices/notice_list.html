@@ -9,7 +9,12 @@
     - Notice Board
 {% endblock %}
 
-{% block page_header %}   
+{% block page_header %}
+    <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a href="{% url 'notice-create' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
+        </div>
+    </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
