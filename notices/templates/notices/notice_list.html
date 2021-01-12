@@ -11,7 +11,7 @@
 
 {% block page_header %}
     <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar">
-        <div class="btn-group" role="group" aria-label="First group">
+        <div class="btn-group" role="group" aria-label="Notice tools">
             <a href="{% url 'notice-create' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
         </div>
     </div>
@@ -38,7 +38,6 @@
                         <h6 class="border rounded">Duration : {{ object.duration }}hrs</h6>
                         <h6 class="border rounded">When : {{ object.event_date_time }}</h6>
                         <a href="{% url 'notice-detail' object.id %}" class="btn btn-primary">Details</a>
-                        <a href="{% url 'notice-update' object.id %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-pencil-alt pr-3"></i>Update Notice</a>
                     </div>
                 </div>
             </div>

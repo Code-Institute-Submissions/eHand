@@ -3,7 +3,9 @@ from .views import (
     NoticeListView,
     NoticeDetailView,
     NoticeCreateView,
-    NoticeUpdateView)
+    NoticeUpdateView,
+    NoticeDeleteView
+)
 
 from . import views
 
@@ -21,4 +23,7 @@ urlpatterns = [
     path('notice/<int:pk>/update/',
          NoticeUpdateView.as_view(),
          name='notice-update'),
+    path('notice/<int:pk>/delete/',
+         NoticeDeleteView.as_view(),
+         name='notice-delete'),
 ]

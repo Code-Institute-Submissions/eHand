@@ -29,7 +29,15 @@
                         <p class="card-text">{{ object.long_description }}</p>
                         <h6>Duration : {{ object.duration }}hrs</h6>
                         <h6>When : {{ object.event_date_time }}</h6>
-                        <a href="{% url 'notice-list' %}" class="btn btn-primary">Back</a>
+                        <a href="{% url 'notice-list' %}" class="btn btn-info">Back</a>
+                        {% if user.is_authenticated and user == object.author %}
+                            <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar">
+                                <div class="btn-group justify-content-between" role="group" aria-label="Notice edit Options">
+                                    <a href="{% url 'notice-update' object.id %}" type="button" class="btn btn-outline-secondary mt-1 mb-1"><i class="fas fa-pencil-alt pr-3"></i>Update Notice</a>
+                                    <a href="{% url 'notice-delete' object.id %}" type="button" class="btn btn-outline-danger mt-1 mb-1"><i class="far fa-times-circle pr-3"></i>Delete Notice</a>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
