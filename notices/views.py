@@ -18,6 +18,7 @@ class NoticeListView(ListView):
     """ Returns as a view the notice template """
     model = Notice
     ordering = ['-date_posted']
+    paginate_by = 2
 
 
 class NoticeDetailView(DetailView):

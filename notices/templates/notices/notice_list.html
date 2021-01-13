@@ -43,6 +43,35 @@
             </div>
             {% endfor %}
         </div>
+        <!-- Thanks to https://samulinatri.com/blog/django-pagination-tutorial/ for help in getting this done -->
+        {% if is_paginated %}
+            <!-- Deal with previous pages -->
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="btn btn-outline-dark">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-dark">Previous</a>
+            {% endif %}
+
+            <!-- Deal with arranging some quick link buttons for nearby pages -->
+            {% for index in page_obj.paginator.page_range %}
+                <!-- check if we are on current page - display current page as a link highlighted -->
+                {% if page_obj.number == index %}
+                    <a href="?page={{ index }}" class="btn btn-dark">{{ index }}</a>
+
+                <!-- Now we want to display a couple of the nearby pages as direct links -->
+                <!-- So if the index in the loop is within 2 pages then include a link to that page -->
+                {% elif index < page_obj.number|add:'2' and index > page_obj.number|add:'-2' %}
+                    <a href="?page={{ index }}" class="btn btn-outline-dark">{{ index }}</a>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Deal with pnext pages -->
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-dark">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark">Last</a>
+            {% endif %}
+
+
+        {% endif %}
     </div>
     
 
