@@ -16,6 +16,7 @@ TIME_OPTIONS = {
     ('8 Hours', '8')
 }
 
+
 class UserProfile(models.Model):
     """
     A user profile model for maintaining default
