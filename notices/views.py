@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin
 )
+from .forms import CreateNoticeForm
 from .models import Notice
 
 
@@ -29,15 +30,15 @@ class NoticeDetailView(DetailView):
 class NoticeCreateView(LoginRequiredMixin, CreateView):
     """ Returns as a view the create a notice template """
     model = Notice
-    fields = ['title', 'short_description', 'long_description', 'duration',
-              'event_date_time', 'event_location_postcode',
-              'event_location_postcode']
+    form_class = CreateNoticeForm
+    # fields = ['title', 'short_description', 'long_description', 'duration',
+    #           'event_date_time', 'event_location_postcode',
+    #           'event_location_postcode']
 
-    # override form_valid
     def form_valid(self, form):
-        # set the author
+        """ overrides form_valid to set the author before validating form"""
+
         form.instance.author = self.request.user
-        # then validate form
         return super().form_valid(form)
 
 
@@ -64,7 +65,6 @@ class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user == notice.author:
             # then we can allow updating
             return True
-        messages.warning(self.request, "You are not allowed to edit another members Notice")
         return False
 
 class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

@@ -15,7 +15,6 @@ class Notice(models.Model):
         verbose_name="Duration / Time Payment"
     )
     event_date_time = models.DateTimeField(
-        default=timezone.now,
         verbose_name="Event Date and Time"
     )
     event_location_postcode = models.CharField(max_length=10)
