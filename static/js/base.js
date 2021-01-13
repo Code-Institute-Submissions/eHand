@@ -78,12 +78,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* fade in out effects for elements */
     const showOptions = {
-    threshold: 0.55,
+    threshold: 0,
     rootMargin: "0px 0px -30px 0px"
     };
 
     /** Handle fadin in elements */
     const fadeElements = document.querySelectorAll('.fade-in');
+    const slideElements = document.querySelectorAll('.slide-in');
     showWhenScroll = new IntersectionObserver(function (entries, showWhenScroll){
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
@@ -104,5 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         $("#messageModal").modal('show');
     });
+    
+    slideElements.forEach(slider => {
+        showWhenScroll.observe(slider);
+    });
 });
-
