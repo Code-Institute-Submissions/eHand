@@ -26,4 +26,7 @@ urlpatterns = [
     path('notice/<int:pk>/delete/',
          NoticeDeleteView.as_view(),
          name='notice-delete'),
+    path('accept/<int:pk>/',
+         views.accept_notice,
+         name='accept-notice'),
 ]

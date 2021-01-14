@@ -25,18 +25,31 @@
             <div class="col-sm-12">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title">{{ object.title }}</h5>
-                        <p class="card-text">{{ object.long_description }}</p>
-                        <h6>Duration : {{ object.duration }}</h6>
-                        <h6>When : {{ object.event_date_time }}</h6>
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}}</h5>
+                        <p class="card-text"><strong>{{ object.long_description }}</strong></p>
+                        <p class="card-text"><em>Requested by {{ object.author }}</em></p>
+                        <h6 class="border rounded bg-light p-2 shadow-sm">Duration : {{ object.duration }}</h6>
+                        <h6 class="border rounded bg-light p-2 shadow-sm mb-5">When : {{ object.event_date_time }}</h6>
                         <div class="container">
                             <div class="row justify-content-center justify-content-md-around">
                                 <a href="{% url 'notice-list' %}" type="button" class="col-10 col-md-3 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
+                                
                                 {% if user.is_authenticated and user == object.author %}
                                     <a href="{% url 'notice-update' object.id %}" type="button" class="col-10 col-md-3 btn btn-outline-secondary mt-1 mb-1"><i class="fas fa-pencil-alt pr-3"></i>Update Notice</a>
                                     <a href="{% url 'notice-delete' object.id %}" type="button" class="col-10 col-md-3 btn btn-outline-danger mt-1 mb-1"><i class="far fa-times-circle pr-3"></i>Delete Notice</a>
                                 {% endif %}
+                                <!-- the commit to work button -->
                             </div>
+                            {% if user.is_authenticated and user != object.author %}
+                                <form action="{% url 'accept-notice' object.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <button type="submit" class="col-11 btn btn-outline-success mt-5 mb-1" value="{{ object.id }}" name="notice_id">Commit to help this person</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

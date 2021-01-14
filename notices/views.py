@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.views.generic import (
     ListView,
     DetailView,
@@ -13,6 +14,19 @@ from django.contrib.auth.mixins import (
 )
 from .forms import CreateNoticeForm
 from .models import Notice
+
+
+def accept_notice(request, pk):
+    notice = get_object_or_404(
+        Notice, id=request.POST.get('notice_id'))
+    notice.commit = request.user
+    notice.save()
+    author = str(notice.author).capitalize()
+    acceptee = str(notice.commit).capitalize()
+    messages.success(request, f"Thank you {acceptee}. You have accepted to provide \
+        help to {author}. ")
+
+    return redirect('/profile')
 
 
 class NoticeListView(ListView):

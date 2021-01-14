@@ -2,23 +2,18 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'notices/css/notices.css' %}">
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block extra_title %}
-    - Notice Board
+    - Profile - My Commitments
 {% endblock %}
 
-{% block page_header %}
-    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
-        <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'notice-create' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
-        </div>
-    </div>
+{% block page_header %}   
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">Notices</h2>
+                <h2 class="text-shadow">Profile - My Commitments</h2>
             </div>
         </div>
     </div>

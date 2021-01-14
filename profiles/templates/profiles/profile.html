@@ -9,7 +9,17 @@
     - Profile
 {% endblock %}
 
-{% block page_header %}   
+{% block page_header %}  
+    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
+        <div class="btn-group" role="group" aria-label="Notice tools">
+            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>My Profile</a>
+        </div>
+    </div>
+    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
+        <div class="btn-group" role="group" aria-label="Notice tools">
+            <a href="{% url 'member-commitments' user.username %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>My Commitments</a>
+        </div>
+    </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
