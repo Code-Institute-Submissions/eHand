@@ -71,6 +71,12 @@
 * :clipboard: RESULT: 
     * Modal displayed as expected with ghost white body and lime green border.
 
+* :hammer: TEST: (Username)  
+    * Expected to see a logged in user message at top of screen
+    * Expected this to be a clickable link
+* :clipboard: RESULT: 
+    * Link displayed as expected.
+
 [Back to Index](#index)
 
 ### Home Operation testing
@@ -78,6 +84,16 @@
     * Check all navbar links
 * :clipboard: RESULT: 
     * =====================  CHECK WHEN FINISHED DEVELOPMENT ======================
+
+* :hammer: TEST: (Hero Text)
+    * Expected hero text to slide in from left and right on loading of home page
+* :clipboard: RESULT: 
+    * Hero Text slides in from both sides as expected
+
+* :hammer: TEST:    
+    * 
+* :clipboard: RESULT: 
+    * 
 
 * :hammer: TEST:    
     * 
@@ -114,9 +130,9 @@
 
 ### Home Urls testing
 * :hammer: TEST:    
-    * 
+    * Expect url for index.html to provide correct path for my home page
 * :clipboard: RESULT: 
-    * 
+    * Correct path was provided in urls.py
 
 * :hammer: TEST:    
     * 
@@ -126,10 +142,10 @@
 [Back to Index](#index)
 
 ### Home Views testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (views.index)
+    * Expected the index view to render the home page
 * :clipboard: RESULT: 
-    * 
+    * Page was rendered as expected
 
 * :hammer: TEST:    
     * 
@@ -145,9 +161,14 @@
 
 ### Memberships visual testing
 * :hammer: TEST:    
-    * 
+    * Expected package payment to be rendered with common site styling and dark transparent card
 * :clipboard: RESULT: 
-    * 
+    * Membership payments rendered as expected
+
+* :hammer: TEST:    
+    * Expected select_package.html to be rendered with common site styling with 2 cards displaying the membership options and benefits
+* :clipboard: RESULT: 
+    * Membership select_package.html rendered as expected.
 
 * :hammer: TEST:    
     * 
