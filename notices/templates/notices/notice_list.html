@@ -44,7 +44,7 @@
                                 {% if object.commit.id == 1 %}
                                     <a href="{% url 'notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
                                 {% endif %}
-                                {% if object.commit|lower == user.username|lower %}
+                                {% if object.commit|lower == user.username|lower and object.commit.id != 1 %}
                                     <a href="{% url 'notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
                                     <strong><small>- You have committed to this Notice</small></strong>
                                 {% endif %}
