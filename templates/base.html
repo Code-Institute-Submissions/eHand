@@ -64,7 +64,7 @@
                 {% if user.is_authenticated %}
                     <a class="text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small><a>
                 {% else %}
-                    <a class="text-secondary" href="{% url 'account_login' %}"><small>Not currently signed in</small></a>
+                    <a class="text-secondary" href="{% url 'account_login' %}"><small>Not currently logged in</small></a>
                 {% endif %}
             </div>
         </div>
@@ -85,7 +85,7 @@
                 {% if user.is_authenticated %}
                     <a class="d-block d-md-none text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small><a>
                 {% else %}
-                    <a class="d-block d-md-none text-secondary" href="{% url 'account_login' %}"><small>Not currently signed in</small></a>
+                    <a class="d-block d-md-none text-secondary" href="{% url 'account_login' %}"><small>Not currently logged in</small></a>
                 {% endif %}
                 <a class="nav-item nav-link first-btn" href="{% url 'home' %}">Home</a>
                 <a class="nav-item nav-link" href="{% url 'notice-list' %}">Notices</a>

@@ -22,7 +22,7 @@ def profile_view(request):
 
 
 class CommitmentsListView(ListView):
-    """ Returns as a view the notice template """
+    """ Returns as a view the notices commited to by logged in user """
     model = Notice
     template_name = 'profiles/member_commitments.html'
     paginate_by = 2
@@ -31,6 +31,13 @@ class CommitmentsListView(ListView):
         user = self.request.user
         return Notice.objects.filter(commit=user).order_by('-date_posted')
 
-        # user = get_object_or_404(User, username=self.kwargs.get('username'))
-        # return Notice.objects.filter(commit=user).order_by('-date_posted')
 
+class MemberNoticesListView(ListView):
+    """ Returns as a view the logged in users Notices """
+    model = Notice
+    template_name = 'profiles/member_notices.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        user = self.request.user
+        return Notice.objects.filter(author=user).order_by('-date_posted')

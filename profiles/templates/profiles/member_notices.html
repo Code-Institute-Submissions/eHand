@@ -6,20 +6,21 @@
 {% endblock %}
 
 {% block extra_title %}
-    - Profile - My Commitments
+    - Profile - My Notices
 {% endblock %}
 
 {% block page_header %}
     <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
         <div class="btn-group" role="group" aria-label="Notice tools">
             <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 "></i>My Profile</a>
-            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Commitments</a>
+            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3"></i>My Commitments</a>
+            <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Notices</a>
         </div>
     </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">{{ user.username|title }}'s Commitments ( {{ page_obj.paginator.count }} )</h2>
+                <h2 class="text-shadow">{{ user.username|title }}'s Notices ( {{ page_obj.paginator.count }} )</h2>
             </div>
         </div>
     </div>
@@ -29,11 +30,13 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 notice-container fade-in">
         <div class="row">
             {% for object in object_list %}
-            
             <div class="col-sm-12">
                 <div class="card h-200 shadow-sm mb-3">
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong> on: <small><em>  Requested by {{ object.author }}</em></small></h5>
+                        {% if object.commit.id != 1 %}
+                            <h4 class="card-title border rounded text-white bg-warning p-2 shadow text-center"><strong>{{ object.commit|title}} has committed to this Notice</strong></h4>
+                        {% endif %}
                         <p class="card-text"><strong>{{ object.long_description }}</strong></p>
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.event_date_time }}</p>
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}</p>
