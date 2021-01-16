@@ -42,13 +42,16 @@
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}</p>
                         <h6 class="border rounded bg-light p-2 shadow-sm">Duration/ Payment: {{ object.duration }}</h6>
                     </div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            {% if user.is_authenticated and user == object.commit %}
-                                <form action="{% url 'cancel-notice' object.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button type="submit" class="col-12 btn btn-outline-danger mt-2 mb-4" value="{{ object.id }}" name="notice_id">Remove my commitment to this notice</button>
-                                </form>
+                    <!-- action buttons for members own notices -->
+                    <div class="container mb-4">
+                        <div class="row justify-content-center justify-content-md-around">
+                            {% if user.is_authenticated and user.username|lower == object.author|lower %}
+                            <a href="{% url 'notice-update' object.id %}" type="button"
+                                class="col-10 col-md-3 btn btn-outline-secondary mt-1 mb-1"><i class="fas fa-pencil-alt pr-3"></i>Update
+                                Notice</a>
+                            <a href="{% url 'notice-delete' object.id %}" type="button"
+                                class="col-10 col-md-3 btn btn-outline-danger mt-1 mb-1"><i class="far fa-times-circle pr-3"></i>Delete
+                                Notice</a>
                             {% endif %}
                         </div>
                     </div>
