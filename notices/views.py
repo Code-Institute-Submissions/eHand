@@ -12,11 +12,15 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin
 )
+from django.contrib.auth.models import User
 from .forms import CreateNoticeForm
 from .models import Notice
 
 
 def accept_notice(request, pk):
+    """ view to handle a user clicking to commit to a Notice
+    Sets the commit field to logged in user -
+    We then use a search to pull the notice into the users profile  """
     notice = get_object_or_404(
         Notice, id=request.POST.get('notice_id'))
     notice.commit = request.user
@@ -26,7 +30,22 @@ def accept_notice(request, pk):
     messages.success(request, f"Thank you {acceptee}. You have accepted to provide \
         help to {author}. ")
 
-    return redirect('/profile')
+    return redirect('/profile/member_commitments/')
+
+
+def cancel_notice(request, pk):
+    """ View to handle cancelling of a commitment to a Notice """
+    notice = get_object_or_404(
+        Notice, id=request.POST.get('notice_id'))
+    acceptee = str(notice.commit).capitalize()
+    admin = User.objects.get(username='admin')
+    notice.commit = admin
+    notice.save()
+    author = str(notice.author).capitalize()
+    messages.success(request, f"{acceptee}, you have successfully cancelled your \
+        commitment to {author}'s {notice.title} Notice' ")
+
+    return redirect('/profile/member_commitments/')
 
 
 class NoticeListView(ListView):
@@ -45,9 +64,6 @@ class NoticeCreateView(LoginRequiredMixin, CreateView):
     """ Returns as a view the create a notice template """
     model = Notice
     form_class = CreateNoticeForm
-    # fields = ['title', 'short_description', 'long_description', 'duration',
-    #           'event_date_time', 'event_location_postcode',
-    #           'event_location_postcode']
 
     def form_valid(self, form):
         """ overrides form_valid to set the author before validating form"""

@@ -29,4 +29,7 @@ urlpatterns = [
     path('accept/<int:pk>/',
          views.accept_notice,
          name='accept-notice'),
+    path('cancel/<int:pk>/',
+         views.cancel_notice,
+         name='cancel-notice'),
 ]

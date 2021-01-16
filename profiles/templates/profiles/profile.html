@@ -12,39 +12,37 @@
 {% block page_header %}  
     <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
         <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>My Profile</a>
-        </div>
-    </div>
-    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
-        <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'member-commitments' user.username %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>My Commitments</a>
+            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 "></i>My Profile</a>
+            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Commitments</a>
         </div>
     </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">Profile</h2>
+                <h2 class="text-shadow">{{ user.username|title }}'s Profile</h2>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="container col-sm-12 col-md-10 offset-md-1 notice-container fade-in">
+    <div class="container col-sm-12 notice-container fade-in">
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-7 offset-md-1">
                 <div class="card mh-100 mb-3 shadow">
                     <div class="card-header">Profile Information</div>
                     <div class="card-body">
+                        <a href="" class="text-secondary small">
+                            <i class="fas fa-user-edit p-2"></i>Edit Profile
+                        </a>
                         
-                        <p>users_current_package : {{ users_current_package }}</p>
-                        <p>users_current_subscription : {{ users_current_subscription }}</p>
+                        <h1>***  User Details Here</h1>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-3">
                 <div class="card mh-100 card text-white bg-dark mb-3 shadow">
-                    <div class="card-header">My Settings</div>
+                    <div class="card-header">My Subscription</div>
                     <div class="card-body">
                         <h4 class="border-bottom mb-4">Manage my subscription</h4>
 
@@ -58,7 +56,7 @@
                                 <p>Your next payment is due on: <small class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
                                 <p><a href="{% url 'cancel_sub' %}" class="btn btn-outline-danger">Cancel my subscription</a></p>
                             {% else %}
-                                <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}" class="btn btn-outline-success">Discover Premium</a></p>
+                                <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}" class="btn btn-outline-success mt-4">Discover Premium</a></p>
                             {% endif %}
                         {% endif %}
                     </div>

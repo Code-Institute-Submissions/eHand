@@ -9,11 +9,17 @@
     - Profile - My Commitments
 {% endblock %}
 
-{% block page_header %}   
+{% block page_header %}
+    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
+        <div class="btn-group" role="group" aria-label="Notice tools">
+            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 "></i>My Profile</a>
+            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Commitments</a>
+        </div>
+    </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">Profile - My Commitments</h2>
+                <h2 class="text-shadow">{{ user.username|title }}'s Commitments ( {{ page_obj.paginator.count }} )</h2>
             </div>
         </div>
     </div>
@@ -24,15 +30,24 @@
         <div class="row">
             {% for object in object_list %}
             
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12">
                 <div class="card h-200 shadow-sm mb-3">
                     <div class="card-body">
-                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}}</h5>
-                        <p class="card-text"><strong>{{ object.short_description }}</strong></p>
-                        <p class="card-text"><em>Requested by {{ object.author }}</em></p>
-                        <h6 class="border rounded bg-light p-2 shadow-sm">Duration : {{ object.duration }}</h6>
-                        <h6 class="border rounded bg-light p-2 shadow-sm">When : {{ object.event_date_time }}</h6>
-                        <a href="{% url 'notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong> on: <small><em>  Requested by {{ object.author }}</em></small></h5>
+                        <p class="card-text"><strong>{{ object.long_description }}</strong></p>
+                        <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.event_date_time }}</p>
+                        <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}</p>
+                        <h6 class="border rounded bg-light p-2 shadow-sm">Duration/ Payment: {{ object.duration }}</h6>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            {% if user.is_authenticated and user == object.commit %}
+                                <form action="{% url 'cancel-notice' object.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="col-12 btn btn-outline-danger mt-2 mb-4" value="{{ object.id }}" name="notice_id">Remove my commitment to this notice</button>
+                                </form>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

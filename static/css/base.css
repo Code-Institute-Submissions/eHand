@@ -76,6 +76,7 @@
     }
     .username-container {
     display: block;
+    z-index: 9999;
 }
 }
 /* big landscape tablets, laptops, and desktops */

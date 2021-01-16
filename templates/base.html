@@ -62,9 +62,9 @@
         <div class="row justify-content-end">
             <div class="col-4 username-container">
                 {% if user.is_authenticated %}
-                    <h6>Welcome {{ user.username }}</h6>
+                    <a class="text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small><a>
                 {% else %}
-                    <h6>Not currently signed in</h6>
+                    <a class="text-secondary" href="{% url 'account_login' %}"><small>Not currently signed in</small></a>
                 {% endif %}
             </div>
         </div>
@@ -83,9 +83,9 @@
         <div class="collapse navbar-collapse bg-transparent justify-content-center" id="navbarNavAltMarkup">
             <div class="navbar-nav text-center">
                 {% if user.is_authenticated %}
-                    <h6 class="d-block d-md-none">Welcome {{ user.username }}</h6>
+                    <a class="d-block d-md-none text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small><a>
                 {% else %}
-                    <h6 class="d-block d-md-none">Not currently signed in</h6>
+                    <a class="d-block d-md-none text-secondary" href="{% url 'account_login' %}"><small>Not currently signed in</small></a>
                 {% endif %}
                 <a class="nav-item nav-link first-btn" href="{% url 'home' %}">Home</a>
                 <a class="nav-item nav-link" href="{% url 'notice-list' %}">Notices</a>
