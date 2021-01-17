@@ -13,10 +13,12 @@ def profile_view(request):
 
     current_package = get_current_package(request)
     user_subscription = get_user_subscription(request)
+    profile = get_object_or_404(UserProfile, user=request.user)
 
     context = {
         'users_current_package': current_package,
-        'users_current_subscription': user_subscription
+        'users_current_subscription': user_subscription,
+        'profile': profile
     }
     return render(request, 'profiles/profile.html', context)
 

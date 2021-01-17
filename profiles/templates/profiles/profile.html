@@ -36,7 +36,23 @@
                         <a href="" class="text-secondary small">
                             <i class="fas fa-user-edit p-2"></i>Edit Profile
                         </a>
-                        
+                        <h5>Time Balance A/c: {{ time_balance }}</h5>
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Time Acc#</th>
+                                    <th scope="col">Time Acc Name</th>
+                                    <th scope="col">Time Acc Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>100{{ profile.id }}</td>
+                                    <td>{{ profile.user|title }}</td>
+                                    <td>{{ profile.time_balance }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <h1>***  User Details Here</h1>
                     </div>
                 </div>
