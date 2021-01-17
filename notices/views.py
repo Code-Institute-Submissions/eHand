@@ -16,6 +16,7 @@ from django.contrib.auth.mixins import (
 from django.contrib.auth.models import User
 from .forms import CreateNoticeForm
 from .models import Notice
+from profiles.models import UserProfile
 
 
 def accept_notice(request, pk):
@@ -53,11 +54,52 @@ def time_transfer(request, pk):
     """ Helper Method to handle the transfer of
         Time from one acc to the other
     """
-    # notice = get_object_or_404(
-    #     Notice, id=request.POST.get('notice_id'))
-    print("=====  Logic to transfer time ===== ")
-    print("=====  ----------------------- ===== ")
-    print("=====  Then kick on to delete class/ notice complete? ===== ")
+    # Get the Time Amt of the notice as an integer
+    notice = get_object_or_404(
+        Notice, id=pk)
+    duration = notice.duration
+    time_amt_string = ''.join([i for i in duration if i.isdigit()])
+    notice_time_amt = int(time_amt_string)
+
+    # Get the Time Balance of the author
+    author = get_object_or_404(UserProfile, user=notice.author.id)
+    author_id = author.id
+    author_time_balance = author.time_balance
+    print(f"==========  Author: {author_id}")
+    print(f"==========  Author Time Balance: {author_time_balance}")
+
+    # Get the Time Balance of the acceptee
+    acceptee = get_object_or_404(UserProfile, user=notice.commit.id)
+    acceptee_id = acceptee.id
+    acceptee_time_balance = author_time_balance
+    print(f"========== Acceptee: {acceptee_id}")
+    print(f"========== Acceptee Time Balance: {acceptee_time_balance}")
+
+    # Transfer the Time amount
+    if author_time_balance <= 0:
+        messages.error(request, "You are unable to complete this transaction \
+            as you have 0 funds in your Time acc")
+        return redirect('profile')
+    elif author_time_balance > 0 and author_time_balance < notice_time_amt:
+        messages.error(request, "You are unable to complete this transaction \
+            as you insufficient funds in your Time acc")
+        return redirect('profile')
+    elif author_time_balance >= notice_time_amt:
+        author_time_balance -= notice_time_amt
+        author.time_balance = author_time_balance
+        author.save()
+        acceptee_time_balance += notice_time_amt
+        acceptee.time_balance = acceptee_time_balance
+        acceptee.save()
+    else:
+        # Some error has  occured
+        messages.error(request, "Apologies but we are unable to complete this \
+            transaction at present. Please check required amounts and your own\
+                 Time Acc blance and try again later.")
+        return redirect('profile')
+
+
+
     return HttpResponseRedirect(reverse(
         "notices:notice-delete", kwargs={'pk': pk}))
 
