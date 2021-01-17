@@ -4,11 +4,12 @@ from .views import (
     NoticeDetailView,
     NoticeCreateView,
     NoticeUpdateView,
-    NoticeDeleteView
+    NoticeDeleteView,
+    NoticeCompleteView
 )
-
 from . import views
 
+app_name = 'notices'
 
 urlpatterns = [
     path('',
@@ -32,4 +33,10 @@ urlpatterns = [
     path('cancel/<int:pk>/',
          views.cancel_notice,
          name='cancel-notice'),
+    path('notice/<int:pk>/complete/',
+         NoticeCompleteView.as_view(),
+         name='notice-complete'),
+    path('time/<int:pk>/transfer/',
+         views.time_transfer,
+         name='time-transfer'),
 ]

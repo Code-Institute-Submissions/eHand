@@ -41,11 +41,11 @@
                         <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}</h6>
                         <div class="container col-12 mt-5 mb-2">
                             <div class="row justify-content-center justify-content-md-around">
-                                <a href="{% url 'notice-list' %}" type="button" class="col-10 col-md-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
+                                <a href="{% url 'notices:notice-list' %}" type="button" class="col-10 col-md-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
                                 <!-- the commit to work button -->
                                 {% if user.is_authenticated and user != object.author %}
                                     {% if user.username|lower != object.commit|lower %}
-                                    <form action="{% url 'accept-notice' object.id %}" method="POST" class="col-10 col-md-4 p-0">
+                                    <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-4 p-0">
                                         {% csrf_token %}
                                         <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1" value="{{ object.id }}" name="notice_id">Commit to help</button>
                                     </form>

@@ -41,7 +41,7 @@ class Notice(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('notice-detail', kwargs={'pk': self.pk})
+        return reverse('notices:notice-detail', kwargs={'pk': self.pk})
 
 
 class Commitments(models.Model):

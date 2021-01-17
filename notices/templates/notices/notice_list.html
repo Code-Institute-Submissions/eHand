@@ -12,7 +12,7 @@
 {% block page_header %}
     <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
         <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'notice-create' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
+            <a href="{% url 'notices:notice-create' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
         </div>
     </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
@@ -46,13 +46,13 @@
                             <!-- check that the notice commitment is only set to admin - this means no logged in user has accepted to help yet
                                 Once a user has accepted to help - the notice is removed -->
                                 {% if object.commit.id == 1 %}
-                                    <a href="{% url 'notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
+                                    <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
                                 {% endif %}
                                 {% if object.commit|lower == user.username|lower and object.commit.id != 1 %}
-                                    <a href="{% url 'notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                                    <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
                                 {% endif %}
                                 {% if object.commit|lower != user.username|lower and object.commit.id != 1 %}
-                                    <a href="{% url 'notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
+                                    <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
                                     <strong><small>- Another member has already committed to this Notice</small></strong>
                                 {% endif %}
                             </div>

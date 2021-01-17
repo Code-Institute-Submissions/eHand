@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.views.generic import (
     ListView,
@@ -46,6 +47,43 @@ def cancel_notice(request, pk):
         commitment to {author}'s {notice.title} Notice' ")
 
     return redirect('/profile/member_commitments/')
+
+
+def time_transfer(request, pk):
+    """ Helper Method to handle the transfer of
+        Time from one acc to the other
+    """
+    # notice = get_object_or_404(
+    #     Notice, id=request.POST.get('notice_id'))
+    print("=====  Logic to transfer time ===== ")
+    print("=====  ----------------------- ===== ")
+    print("=====  Then kick on to delete class/ notice complete? ===== ")
+    return HttpResponseRedirect(reverse(
+        "notices:notice-delete", kwargs={'pk': pk}))
+
+
+class NoticeCompleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """ Handles completion of a Notice """
+    model = Notice
+    success_url = '/profiles'
+    print("=====  Notice from NoticeCompleteView function ===== ")
+    print("=====  Notice from NoticeCompleteView function ===== ")
+    print("=====  Notice from NoticeCompleteView function ===== ")
+
+
+    def test_func(self):
+        """ test function - ran by UserPassesTestMixin to check condition
+            condition check: Is user attempting to Delete a notice equal
+            to the author of the notice
+        """
+        notice = self.get_object()
+        if self.request.user == notice.author:
+            # then we can allow updating
+            return True
+        messages.warning(self.request, "You are not allowed to mark another members Notice as completed")
+        return False
+
+
 
 
 class NoticeListView(ListView):
@@ -100,7 +138,7 @@ class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ Handles deletion of a Notice """
     model = Notice
-    success_url = '/notices'
+    success_url = '/profile/member_notices'
 
     def test_func(self):
         """ test function - ran by UserPassesTestMixin to check condition
