@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from profiles.models import UserProfile
 from .models import Packages, Memberships, Subscriptions
 
 import stripe
@@ -65,8 +66,6 @@ def select_package(request):
         # Get the current users subscription
         user_subscription = get_user_subscription(request)
 
-        # Validate
-
         # check if current = selected - this should not be possible
         # but need to let them know they already have this package
         if current_package.membership_type == selected_package:
@@ -106,7 +105,6 @@ def package_payment(request):
         try:
             # add the token
             token = request.POST['stripeToken']
-            print(f"################################################# {token}")
 
             # We must add the source for the customer
             customer = stripe.Customer.retrieve(current_package.stripe_user_id)
@@ -122,7 +120,7 @@ def package_payment(request):
                     {"price": selected_package.stripe_plan_id}
                 ]
             )
-            print(f"SUBSCRIPTION  ################################################# {subscription.id}")
+
             # pass the subscription id into the upgraded-transactions view
             return redirect(reverse("upgradedtransactions",
                                     kwargs={'subscription_id': subscription.id}))
@@ -138,7 +136,8 @@ def package_payment(request):
 
 
 def upgradedtransactions(request, subscription_id):
-    """ return a template for upgraded subscriptions """
+    """ Handles upgrading of membership models and
+    returning success message """
 
     # get some required variables
     current_package = get_current_package(request)
@@ -155,6 +154,11 @@ def upgradedtransactions(request, subscription_id):
     subscription.stripe_sub_id = subscription_id  # passed in
     subscription.valid = True
     subscription.save()
+
+    # Set the users Time Balance back to 10 free hours - one off
+    profile = get_object_or_404(UserProfile, user=request.user)
+    profile.time_balance = 10
+    profile.save()
 
     # remove session storage
     try:
@@ -192,6 +196,12 @@ def cancel_user_subscription(request):
     user_package = get_current_package(request)
     user_package.membership_type = free
     user_package.save()
+
+    # Set the users Time Balance back to -1
+    profile = get_object_or_404(UserProfile, user=request.user)
+    profile.time_balance = -1
+    profile.save()
+    
 
     messages.success(
         request, "You have successfully \

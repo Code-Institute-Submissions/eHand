@@ -33,24 +33,28 @@
                 <div class="card mh-100 mb-3 shadow">
                     <div class="card-header">Profile Information</div>
                     <div class="card-body">
-                        <h5><strong>Time Acc</strong></h5>
-                        <table class="table table-bordered">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Time Acc#</th>
-                                    <th scope="col">Time Acc Name</th>
-                                    <th scope="col">Time Acc Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>100{{ profile.id }}</td>
-                                    <td>{{ profile.user|title }}</td>
-                                    <td>{{ profile.time_balance }}<small><strong> t</strong></small> </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <hr>
+                        <!-- if user.is_authenticated and -->
+                        <!-- Time Account Details -->
+                        {% if user.is_authenticated and users_current_package.membership_type|lower == 'premium' %}
+                            <h5><strong>Time Acc</strong></h5>
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Time Acc#</th>
+                                        <th scope="col">Time Acc Name</th>
+                                        <th scope="col">Time Acc Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>100{{ profile.id }}</td>
+                                        <td>{{ profile.user|title }}</td>
+                                        <td>{{ profile.time_balance }}<small><strong> t</strong></small> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                        {% endif %}
                         <h1>***  User Details Here</h1>
                         <a href="" class="text-secondary small">
                             <i class="fas fa-user-edit p-2"></i>Edit Profile
