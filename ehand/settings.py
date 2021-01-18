@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = env('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -187,5 +186,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Stripe
 if DEBUG:
-    STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
-    STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+    STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+    STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
