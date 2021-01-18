@@ -18,23 +18,18 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env(DEBUG=(bool, True))
+env_file = os.path.join(BASE_DIR, '.env')
+environ.Env.read_env(env_file)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-env = environ.Env(
-    # set debug, default value
-    DEBUG=(bool, False)
-)
-
-# reading .env file
-environ.Env.read_env()
+# read the .env file
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
 # If DEBUG not in env then default set above is False
-DEBUG = env('DEBUG', cast=bool)
+DEBUG = env('DEBUG')
+
 
 ALLOWED_HOSTS = ['mr-smyth-ehand.herokuapp.com', 'localhost']
 
