@@ -40,6 +40,18 @@
 .text-shadow {
     text-shadow: 0px 0px 6px rgba(6, 7, 6, 0.76);
 }
+.opaque {
+    height:100%;
+    width: 100%;
+    border-radius: 10px;
+    position:absolute;
+    background-color:#000;
+    opacity:.7;
+    z-index: -1;
+}
+.username-container {
+    display: none;
+}
 /* Page Logo ------------------------------------ */
  #page-logo-container {
      z-index: 1;
@@ -53,18 +65,7 @@
      max-height: 80px;
      transition: 1s;
 }
-.opaque {
-    height:100%;
-    width: 100%;
-    border-radius: 10px;
-    position:absolute;
-    background-color:#000;
-    opacity:.7;
-    z-index: -1;
-}
-.username-container {
-    display: none;
-}
+
 /* Page logo - MEDIA QUERIES */
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
  @media (min-width:576px){
