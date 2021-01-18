@@ -108,10 +108,6 @@ class NoticeCompleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ Handles completion of a Notice """
     model = Notice
     success_url = '/profiles'
-    print("=====  Notice from NoticeCompleteView function ===== ")
-    print("=====  Notice from NoticeCompleteView function ===== ")
-    print("=====  Notice from NoticeCompleteView function ===== ")
-
 
     def test_func(self):
         """ test function - ran by UserPassesTestMixin to check condition
