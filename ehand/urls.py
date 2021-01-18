@@ -5,10 +5,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Allauth
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('notices/', include('notices.urls')),
     path('packages/', include('memberships.urls')),
     path('profile/', include('profiles.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# During development serve media files from here
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
