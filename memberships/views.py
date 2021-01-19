@@ -2,6 +2,7 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from profiles.models import UserProfile
 from .models import Packages, Memberships, Subscriptions
@@ -47,6 +48,7 @@ def get_selected_package(request):
     return None
 
 
+@login_required
 def select_package(request):
     """ A view that returns the membership selection page """
 
@@ -172,6 +174,7 @@ def upgradedtransactions(request, subscription_id):
     return redirect('home')
 
 
+@login_required
 def cancel_user_subscription(request):
     """ View to handle the cancelling of a users subscription """
     current_user_subscription = get_user_subscription(request)

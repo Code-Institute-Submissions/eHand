@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from memberships.views import get_current_package, get_user_subscription
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import (
     ListView
@@ -7,7 +8,11 @@ from django.views.generic import (
 from notices.models import Notice
 from .models import UserProfile
 
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+)
 
+@login_required
 def profile_view(request):
     """ A view to handle displaying of profile """
 
@@ -23,7 +28,7 @@ def profile_view(request):
     return render(request, 'profiles/profile.html', context)
 
 
-class CommitmentsListView(ListView):
+class CommitmentsListView(LoginRequiredMixin, ListView):
     """ Returns as a view the notices commited to by logged in user """
     model = Notice
     template_name = 'profiles/member_commitments.html'
@@ -34,7 +39,7 @@ class CommitmentsListView(ListView):
         return Notice.objects.filter(commit=user).order_by('-date_posted')
 
 
-class MemberNoticesListView(ListView):
+class MemberNoticesListView(LoginRequiredMixin, ListView):
     """ Returns as a view the logged in users Notices """
     model = Notice
     template_name = 'profiles/member_notices.html'
