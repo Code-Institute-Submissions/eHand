@@ -38,8 +38,10 @@
                             {% if object.commit|lower == user.username|lower %}
                                 <h4 class="card-title border rounded text-white bg-warning p-2 shadow text-center"><strong><em>You have committed to this notice</em></strong></h4>
                             {% else %}
-                                <p class="card-text bg-info text-white"><em>Agreed to by: {{ object.commit|title }}</em></p>
+                                <p class="card-text bg-info border rounded text-white"><em>Agreed to by: {{ object.commit|title }}</em></p>
                             {% endif %}
+                        {% else %}
+                                <p class="card-text bg-success border rounded text-white"><em>Nobody has offered help yet - Be the first Click Details below!</em></p>
                         {% endif %}
                             <h6 class="border rounded bg-light p-2 shadow-sm">Duration : {{ object.duration }}</h6>
                             <h6 class="border rounded bg-light p-2 shadow-sm">When : {{ object.event_date_time }}</h6>

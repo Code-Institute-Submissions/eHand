@@ -65,15 +65,11 @@ def time_transfer(request, pk):
     author = get_object_or_404(UserProfile, user=notice.author.id)
     author_id = author.id
     author_time_balance = author.time_balance
-    print(f"==========  Author: {author_id}")
-    print(f"==========  Author Time Balance: {author_time_balance}")
 
     # Get the Time Balance of the acceptee
     acceptee = get_object_or_404(UserProfile, user=notice.commit.id)
     acceptee_id = acceptee.id
     acceptee_time_balance = author_time_balance
-    print(f"========== Acceptee: {acceptee_id}")
-    print(f"========== Acceptee Time Balance: {acceptee_time_balance}")
 
     # Transfer the Time amount
     if author_time_balance <= 0:
@@ -98,8 +94,6 @@ def time_transfer(request, pk):
                  Time Acc blance and try again later.")
         return redirect('profile')
 
-
-
     return HttpResponseRedirect(reverse(
         "notices:notice-delete", kwargs={'pk': pk}))
 
@@ -122,8 +116,6 @@ class NoticeCompleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-
-
 class NoticeListView(ListView):
     """ Returns as a view the notice template """
     model = Notice
@@ -131,7 +123,7 @@ class NoticeListView(ListView):
     paginate_by = 2
 
 
-class NoticeDetailView(DetailView):
+class NoticeDetailView(LoginRequiredMixin, DetailView):
     """ Returns as a view the notice details template """
     model = Notice
 
