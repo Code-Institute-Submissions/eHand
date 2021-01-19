@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     /** First Handle the navbar - scroll it out of the way on scroll or page resize */
     let firstScrollTop = 20;
     let navbar = document.querySelector(".navbar");
-    let pageLogo = document.querySelector('#page-logo img');
-    let navLogo = document.querySelector('.navLogo img ');
+    let pageLogo = document.querySelector('.page-logo-container');
 
     /* Handle screen width changes */
     window.addEventListener("resize", function (){
@@ -15,15 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
             /* first check if screen is at the top */
             if (scrollTop < firstScrollTop){
                 navbar.style.top = '0px';
-                pageLogo.style.display = 'block';
-                navLogo.style.display = 'none';
+                pageLogo.style.display = 'none';
                 navbar.classList.remove('fixed-navbar');
             }
             /* else its scrolled down */
             else {
                 navbar.style.top = '0px';
                 pageLogo.style.display = 'none';
-                navLogo.style.display = 'block';
                 navbar.classList.add('fixed-navbar');
             }
         }
@@ -33,14 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
             if (scrollTop < firstScrollTop){
                 navbar.style.top ='150px';
                 pageLogo.style.display = 'block';
-                navLogo.style.display = 'none';
                 navbar.classList.remove('fixed-navbar');
             }
             /* else the screen is scrolled down */
             else {
                 navbar.style.top = '0px';
                 pageLogo.style.display = 'none';
-                navLogo.style.display = 'block';
                 navbar.classList.add('fixed-navbar');
             }
         }
@@ -55,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (scrollTop >= firstScrollTop) {
             navbar.style.top = '0px';
             pageLogo.style.display = 'none';
-            navLogo.style.display = 'block';
             navbar.classList.add('fixed-navbar');
         /* else - page has not been scrolled and is at the top */
         } else {
@@ -63,14 +57,12 @@ document.addEventListener("DOMContentLoaded", function() {
             if (width >= 768) {
                 navbar.style.top ='150px';
                 pageLogo.style.display = 'block';
-                navLogo.style.display = 'none';
                 navbar.classList.remove('fixed-navbar');
             }
             /* else we are on small screen size - not scrolled */
             else {
                 navbar.style.top ='0px';
-                pageLogo.style.display = 'block';
-                navLogo.style.display = 'none';
+                pageLogo.style.display = 'none';
                 navbar.classList.remove('fixed-navbar');
             }
         }

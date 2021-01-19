@@ -51,29 +51,27 @@
     {% include 'messages.html' %}
 
     <!-- Logo -->
-    <div id="page-logo-container" class="fixed-top">
-        <div id="page-logo" class="container">
-            <a href="{% url 'home' %}">
-                <img src="{{ MEDIA_URL }}ehand_logo.png" class="img-fluid" alt="eHand Logo">
-            </a>
-        </div>
-    </div>
-    <div class="container mt-4">
-        <div class="row justify-content-end">
-            <div class="col-4 username-container">
+    <div class="container page-logo-container border border-danger fixed-top">
+        <div class="row justify-content-between">
+            <div class="col-3 col-lg-2">
+                <a href="{% url 'home' %}">
+                    <img src="{{ MEDIA_URL }}ehand_logo.png" class="img-fluid" alt="eHand Logo">
+                </a>
+            </div>
+            <div class="col-3">
                 {% if user.is_authenticated %}
-                    <a class="text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small><a>
+                    <a class="text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small></a>
                 {% else %}
                     <a class="text-secondary" href="{% url 'account_login' %}"><small>Not currently logged in</small></a>
                 {% endif %}
             </div>
         </div>
     </div>
-
+    
     <!-- Header --> 
-    <nav class="navbar navbar-expand-md navbar-light slimNav">
-        <div class="navLogo mr-5 d-md-block">
-            <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}ehand_logo.png" alt="" class="img-fluid"></a>
+    <nav class="navbar navbar-expand-md navbar-light w-100">
+        <div class="navLogo mr-5 d-block d-md-none">
+            <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}ehand_logo.png" alt="" class="d-block d-md-none img-fluid"></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
