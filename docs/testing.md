@@ -281,9 +281,9 @@ Deployment
     * 
 
 * :hammer: TEST:    
-    * 
+    * Can user manually enter a URL such as delete to access forbidden functionality
 * :clipboard: RESULT: 
-    * 
+    * The user is unable to gain access via manual url manipulation
 
 [Back to Index](#index)
 
