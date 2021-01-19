@@ -73,12 +73,12 @@
 }
    
 /* Navbar -------------------------------------- */
- .navbar {
-     position: fixed;
-     z-index: 999;
-     transition: 0.5s;
-     background-color: transparent;
-     top: 0px;
+.navbar {
+    position: fixed;
+    z-index: 999;
+    transition: 0.5s;
+    background-color: transparent;
+    top: 0px;
 }
 .navbar .navbar-light {
     width: 50px;
@@ -122,7 +122,7 @@
 /* Navbar - MEDIA QUERIES */
 /* tablet, landscape iPad, lo-res laptops ands desktops */
  @media (min-width:768px) {
-     .navbar {
+     nav .navbar .navbar-light{
         top: 150px;
     }
      .nav-item {

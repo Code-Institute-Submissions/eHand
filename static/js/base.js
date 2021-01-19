@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     let firstScrollTop = 20;
     let navbar = document.querySelector(".navbar");
     let pageLogo = document.querySelector('.page-logo-container');
+    
+    /** Initialize nav at 150 on larger screens as css was not picking up on media query */
+    if (window.innerWidth > 768){
+        navbar.style.top = '150px';
+    }
 
     /* Handle screen width changes */
     window.addEventListener("resize", function (){
