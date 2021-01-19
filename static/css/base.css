@@ -45,7 +45,7 @@
     width: 100%;
     border-radius: 10px;
     position:absolute;
-    background-color:#000;
+    background-color:rgb(0, 0, 0);
     opacity:.7;
     z-index: -1;
 }
@@ -53,30 +53,13 @@
  .page-logo-container {
      display: none;
 }
- /* #page-logo {
-     max-height: 200px;
-} */
- /* #page-logo img {
-     padding: 0px;
-     margin: 0px;
-     max-height: 80px;
-     transition: 1s;
-} */
-
 /* Page logo - MEDIA QUERIES */
-/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
- @media (min-width:576px){
-}
 /* tablet, landscape iPad, lo-res laptops ands desktops */
  @media (min-width:768px) {
     .page-logo-container {
         display: block;
         z-index: 1;
     }
-}
-}
-/* big landscape tablets, laptops, and desktops */
- @media (min-width:992px) {
 }
 /* Messages ------------------------------------ */
 .modal-content {
@@ -97,16 +80,17 @@
      background-color: transparent;
      top: 0px;
 }
- .slimNav {
-     width: 200px;
-     right: 0px;
+.navbar .navbar-light {
+    width: 50px;
+    
 }
  .nav-item {
      border: 0.2px #f8f8ff solid;
-     background-color: #f8f8ff;
+     background-color: #f8f8f8;
 }
  .first-btn {
      border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
 }
  .last-btn {
      border-bottom-right-radius: 10px;
@@ -136,14 +120,10 @@
      box-shadow: 0 4px 10px -2px #555555;
 }
 /* Navbar - MEDIA QUERIES */
-/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
- @media (min-width:576px){
-    }
 /* tablet, landscape iPad, lo-res laptops ands desktops */
  @media (min-width:768px) {
-     .slimNav {
-         width: 100%;
-         float: none;
+     .navbar {
+        top: 150px;
     }
      .nav-item {
          border: 0.2px #c2fa00 solid;
