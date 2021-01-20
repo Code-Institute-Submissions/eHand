@@ -113,9 +113,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# Send emails to the console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Additional settings relating to Signing up
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -219,3 +216,18 @@ if 'USE_AWS' in os.environ:
 if DEBUG:
     STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
     STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+
+if 'DEVELOPMENT' in env:
+    # Send emails to the console
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'ehand.help@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+

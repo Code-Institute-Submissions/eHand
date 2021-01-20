@@ -81,7 +81,7 @@
         <div class="collapse navbar-collapse bg-transparent justify-content-center" id="navbarHamburger">
             <div class="navbar-nav text-center">
                 {% if user.is_authenticated %}
-                    <a class="d-block d-md-none text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small><a>
+                    <a class="d-block d-md-none text-secondary" href="{% url 'account_logout' %}"><small>Welcome {{ user.username|title }}</small></a>
                 {% else %}
                     <a class="d-block d-md-none text-secondary" href="{% url 'account_login' %}"><small>Not currently logged in</small></a>
                 {% endif %}
