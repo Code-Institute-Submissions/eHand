@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'profiles',
     'home',
     'notices',
+    'comments',
     'tempus_dominus',
 
     # Other
