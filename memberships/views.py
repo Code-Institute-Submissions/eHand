@@ -125,7 +125,8 @@ def package_payment(request):
 
             # pass the subscription id into the upgraded-transactions view
             return redirect(reverse("upgradedtransactions",
-                                    kwargs={'subscription_id': subscription.id}))
+                                    kwargs={'subscription_id':
+                                            subscription.id}))
 
         except stripe.error.CardError as e:
             messages.info(request, f"{e.code} - Your card has ben declined")
@@ -165,7 +166,7 @@ def upgradedtransactions(request, subscription_id):
     # remove session storage
     try:
         del request.session['selected_package_type']
-    except:
+    except request.session['selected_package_type'].DoesNotExist:
         pass
 
     messages.success(request, f"You have been successfully upgraded to our \
@@ -204,7 +205,6 @@ def cancel_user_subscription(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     profile.time_balance = -1
     profile.save()
-    
 
     messages.success(
         request, "You have successfully \
