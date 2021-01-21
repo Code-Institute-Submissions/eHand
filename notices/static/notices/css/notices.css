@@ -21,3 +21,59 @@
     color: black;
 }
 
+/* Comments ------------------------------------------------- */
+.comment
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.comment li
+{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+.comment-container
+{
+    overflow-y: scroll;
+    height: 350px;
+}
+.comment-container .user-comment
+{
+    display: inline-block;
+    max-width: 80%;
+    background-color: #c4fa009a;
+    border-radius: 12.5px;
+    padding: 15px;
+}
+.comment-container .own-comment
+{
+    display: inline-block;
+    max-width: 80%;
+    color: #f8f8ff;
+    background-color: #0169DA;
+    border-radius: 12.5px;
+    padding: 15px;
+}
+/*Scroll bar -------------------------------------- */
+::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}

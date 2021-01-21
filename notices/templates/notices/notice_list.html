@@ -47,15 +47,23 @@
                             <h6 class="border rounded bg-light p-2 shadow-sm">When : {{ object.event_date_time }}</h6>
                             <!-- check that the notice commitment is only set to admin - this means no logged in user has accepted to help yet
                                 Once a user has accepted to help - the notice is removed -->
-                                {% if object.commit.id == 1 %}
+                                
+                                <!-- Case - where notice has been committed by a user  -->
+                                {% if object.commit.id != 1 %}
+                                    <!-- Case - where committer is current user - allow access -->
+                                    {% if object.commit|lower == user.username|lower  %}
+                                        <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                                    <!-- Case - where logged in user is the author - allow access -->
+                                    {% elif object.author|lower == user.username|lower %}
+                                        <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                                    <!-- Case - user is not the committer - no access -->
+                                    {% else %}
+                                        <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
+                                        <strong><small>- Another member has already committed to this Notice</small></strong>
+                                    {% endif %}
+                                <!-- Case - else of main if - case where committer id == 1 which means nobody has yet committed to this notice - allow access to all logged in users -->
+                                {% else %}
                                     <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
-                                {% endif %}
-                                {% if object.commit|lower == user.username|lower and object.commit.id != 1 %}
-                                    <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
-                                {% endif %}
-                                {% if object.commit|lower != user.username|lower and object.commit.id != 1 %}
-                                    <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
-                                    <strong><small>- Another member has already committed to this Notice</small></strong>
                                 {% endif %}
                             </div>
                         </div>

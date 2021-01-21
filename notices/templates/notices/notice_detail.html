@@ -20,9 +20,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+    <div class="container col-sm-12 fade-in">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-md-8 col-lg-6 offset-lg-1">
                 <div class="card shadow">
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}}</h5>
@@ -41,17 +41,76 @@
                         <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}</h6>
                         <div class="container col-12 mt-5 mb-2">
                             <div class="row justify-content-center justify-content-md-around">
-                                <a href="{% url 'notices:notice-list' %}" type="button" class="col-10 col-md-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
+                                <a href="{% url 'notices:notice-list' %}" type="button" class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
                                 <!-- the commit to work button -->
                                 {% if user.is_authenticated and user != object.author %}
                                     {% if user.username|lower != object.commit|lower %}
-                                    <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-4 p-0">
+                                    <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-5 col-lg-4 p-0">
                                         {% csrf_token %}
                                         <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1" value="{{ object.id }}" name="notice_id">Commit to help</button>
                                     </form>
                                     {% endif %}
                                 {% endif %}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Comments -->
+            <div class="container col-sm-12 col-md-4 fade-in">
+                <!-- Comments Header -->
+                <div class="card shadow">
+                    <div class="card-header text-center">
+                        <span>Comments ...</span>
+                    </div>
+                    <!-- Comments Body -->
+                    <div class="card-body comment-container">
+                        <ul class="comment">
+                            {% if not notice.comments.all %}
+                                <p>No comments yet</p>
+                                {% else %}
+                                {% for comment in notice.comments.all %}
+                                    {% if comment.user.username|lower == user|lower %}
+                                        <li class="d-flex justify-content-end">
+                                            <div class="own-comment">
+                                                <div class="header ">
+                                                    <strong class="primary-font">You said:</strong>
+                                                    <small>
+                                                        {{ comment.timestamp|timesince }} ago
+                                                    </small>
+                                                </div>
+                                                <p>
+                                                    {{ comment.body }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <div class="user-comment">
+                                                <div class="header">
+                                                    <strong class="primary-font">{{ comment.user.username|title }} said:</strong>
+                                                    <small>
+                                                        {{ comment.timestamp|timesince }} ago
+                                                    </small>
+                                                </div>
+                                                <p>
+                                                    {{ comment.body }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="btn-chat">
+                                    Send</button>
+                            </span>
                         </div>
                     </div>
                 </div>
