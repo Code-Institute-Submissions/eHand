@@ -11,5 +11,8 @@ class Comment(models.Model):
     body = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['timestamp']
+
     def __str__(self):
-        return str(self.user.username)
+        return 'Comment {} by {}'.format(self.body, self.user.username)

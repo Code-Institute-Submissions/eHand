@@ -1,7 +1,9 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from .models import Notice
 from comments.models import Comment
+from profiles.models import UserProfile
 from django.views.generic import (
     ListView,
     DetailView,
@@ -9,15 +11,14 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from django.contrib import messages
+from django.views.generic.detail import SingleObjectMixin
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin
 )
 from django.contrib.auth.models import User
 from .forms import CreateNoticeForm
-from .models import Notice
-from profiles.models import UserProfile
+from comments.forms import CommentForm
 
 
 def accept_notice(request, pk):
@@ -113,7 +114,8 @@ class NoticeCompleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == notice.author:
             # then we can allow updating
             return True
-        messages.warning(self.request, "You are not allowed to mark another members Notice as completed")
+        messages.warning(self.request, "You are not allowed to mark another \
+            members Notice as completed")
         return False
 
 
@@ -127,6 +129,32 @@ class NoticeListView(ListView):
 class NoticeDetailView(LoginRequiredMixin, DetailView):
     """ Returns as a view the notice details template """
     model = Notice
+
+    def get_context_data(self, **kwargs):
+        """ Getting the context of detailView and add the form to it """
+        context = super(NoticeDetailView, self).get_context_data(**kwargs)
+        form = CommentForm()
+        context['form'] = form
+        return context
+
+
+class CreateComment(CreateView):
+    """ Handles actually creating a comment """
+    model = Comment
+    form_class = CommentForm
+
+    def get_success_url(self):
+        return reverse(
+            'notice:notice-detail', kwargs={'pk': self.object.notice.pk})
+
+    def form_valid(self, form):
+        """ overrides form_valid to set the user
+         making the comment.
+         Also sets the notice id before validating form"""
+
+        form.instance.user = self.request.user
+        form.instance.notice = self.object.notice.title
+        return super().form_valid(form)
 
 
 class NoticeCreateView(LoginRequiredMixin, CreateView):
