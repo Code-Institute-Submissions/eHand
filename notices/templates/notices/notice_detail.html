@@ -105,10 +105,12 @@
                     </div>
 
                     <div class="card-footer">
-                        <form method="POST" action="{% url 'notice:notice-comment' %}">
+                        <form method="POST" action="{% url 'notices:notice-comment' %}">
                             {% csrf_token %}
                             <div class="input-group">
-                                {{ form }}
+                                {{ form|crispy }}
+                                <!-- pass in the pk of the current notice to the comment form handler -->
+                                <input type="hidden" name="notice" value="{{ object.pk }}">
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary">
                                         Send</button>

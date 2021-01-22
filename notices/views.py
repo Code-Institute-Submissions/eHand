@@ -145,7 +145,7 @@ class CreateComment(CreateView):
 
     def get_success_url(self):
         return reverse(
-            'notice:notice-detail', kwargs={'pk': self.object.notice.pk})
+            'notices:notice-detail', kwargs={'pk': self.object.notice.pk})
 
     def form_valid(self, form):
         """ overrides form_valid to set the user
@@ -153,7 +153,6 @@ class CreateComment(CreateView):
          Also sets the notice id before validating form"""
 
         form.instance.user = self.request.user
-        form.instance.notice = self.object.notice.title
         return super().form_valid(form)
 
 
