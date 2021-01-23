@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block extra_title %}
+    - Edit Profile
+{% endblock %}
+
+{% block page_header %}  
+    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
+        <div class="btn-group" role="group" aria-label="Notice tools">
+            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 "></i>My Profile</a>
+            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3"></i>My Commitments</a>
+            <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Notices</a>
+        </div>
+    </div>
+    <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h2 class="text-shadow">Edit Your Profile</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container col-sm-12 notice-container fade-in">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 offset-md-1">
+                <div class="card mh-100 mb-3 shadow">
+                    <div class="card-header">Profile Information</div>
+                    <div class="card-body">
+                        <h2>edit here...</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
