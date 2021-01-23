@@ -25,7 +25,7 @@
             <div class="col-sm-12 col-md-8 col-lg-6 offset-lg-1">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}}</h5>
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}} Details</h5>
                         <p class="card-text"><strong>{{ object.long_description }}</strong></p>
                         <p class="card-text"><em>Requested by {{ object.author }}</em></p>
                         {% if object.commit.id != 1 %}
@@ -57,12 +57,13 @@
                 </div>
             </div>
             <!-- Comments -->
-            <div class="container col-sm-12 col-md-4 fade-in">
+            <div class="container col-sm-12 col-md-4 fade-in mt-xs-4 mt-md-0">
                 <!-- Comments Header -->
                 <div class="card shadow">
-                    <div class="card-header text-center">
-                        <span>Comments ...</span>
-                    </div>
+                    <!-- <div class="card-header text-center bg-gradient-success text-white">
+                        <span>{{ object.title }} Comments ...</span>
+                    </div> -->
+                    <h5 class="card-title border rounded text-white bg-info p-2 shadow m-3">{{ object.title }} Comments ...</h5>
                     <!-- Comments Body -->
                     <div class="card-body comment-container">
                         <ul class="comment">
@@ -70,11 +71,27 @@
                                 <p>No comments yet</p>
                                 {% else %}
                                 {% for comment in notice.comments.all %}
+                                    <!-- what current user said -->
                                     {% if comment.user.username|lower == user|lower %}
                                         <li class="d-flex justify-content-end">
                                             <div class="own-comment">
                                                 <div class="header ">
                                                     <strong class="primary-font">You said:</strong>
+                                                    <small>
+                                                        {{ comment.timestamp|timesince }} ago
+                                                    </small>
+                                                </div>
+                                                <p>
+                                                    {{ comment.body }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <!-- What the Author said -->
+                                    {% elif comment.user.username|lower == object.author|lower %}
+                                        <li>
+                                            <div class="author-comment">
+                                                <div class="header ">
+                                                    <strong class="primary-font">{{ comment.user.username|title }} - (AUTHOR) said:</strong>
                                                     <small>
                                                         {{ comment.timestamp|timesince }} ago
                                                     </small>
@@ -112,7 +129,7 @@
                                 <!-- pass in the pk of the current notice to the comment form handler -->
                                 <input type="hidden" name="notice" value="{{ object.pk }}">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary">
+                                    <button class="btn btn-success ml-3">
                                         Send</button>
                                 </span>
                             </div>

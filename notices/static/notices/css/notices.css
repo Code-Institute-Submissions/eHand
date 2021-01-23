@@ -3,7 +3,7 @@
      top: 35vh;
 }
 #page-content {
-     top: 35vh;
+    top: 35vh;
 }
 .toolbar-item {
     border: 0.2px #c2fa00 solid;
@@ -42,7 +42,9 @@
     overflow-y: scroll;
     height: 350px;
 }
-.comment-container .user-comment
+.comment-container .user-comment,
+.comment-container .own-comment,
+.comment-container .author-comment
 {
     display: inline-block;
     max-width: 80%;
@@ -52,12 +54,13 @@
 }
 .comment-container .own-comment
 {
-    display: inline-block;
-    max-width: 80%;
     color: #f8f8ff;
     background-color: #0169DA;
-    border-radius: 12.5px;
-    padding: 15px;
+}
+.comment-container .author-comment
+{
+    color: #c2fa00;
+    background-color: #000A;
 }
 /*Scroll bar -------------------------------------- */
 ::-webkit-scrollbar-track
