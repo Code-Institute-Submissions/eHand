@@ -37,6 +37,8 @@
 }
 .comment-container
 {
+    display: flex;
+    flex-direction: column-reverse;
     overflow-y: scroll;
     height: 350px;
 }
