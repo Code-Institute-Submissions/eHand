@@ -36,29 +36,60 @@
                         <!-- if user.is_authenticated and -->
                         <!-- Time Account Details -->
                         {% if user.is_authenticated and users_current_package.membership_type|lower == 'premium' %}
-                            <h5><strong>Time Acc</strong></h5>
-                            <table class="table table-bordered">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Time Acc#</th>
-                                        <th scope="col">Time Acc Name</th>
-                                        <th scope="col">Time Acc Balance</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>100{{ profile.id }}</td>
-                                        <td>{{ profile.user|title }}</td>
-                                        <td>{{ profile.time_balance }}<small><strong> t</strong></small> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <hr>
+                        <h5><strong>Time Acc</strong></h5>
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Time Acc#</th>
+                                    <th scope="col">Time Acc Name</th>
+                                    <th scope="col">Time Acc Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>100{{ profile.id }}</td>
+                                    <td>{{ profile.user|title }}</td>
+                                    <td>{{ profile.time_balance }}<small><strong> t</strong></small> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
                         {% endif %}
-                        <h1>***  User Details Here</h1>
+
+                        <!-- Layout the current profile information -->
                         <a href="{% url 'profile-update' user.id %}" class="text-secondary small">
-                            <i class="fas fa-user-edit p-2"></i>Edit Profile
+                            <i class="fas fa-user-edit p-2 mb-4"></i>Edit Profile
                         </a>
+                        <div class="col">
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">Full Name:</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.full_name|title }}</h5></div>
+                            </div>
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">Ph. Number:</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.phone_number }}</h5></div>
+                            </div>
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">Address</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.street_address1|title }} {{ profile.street_address2|title }}</h5></div>
+                            </div>
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">Town/City:</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.town_or_city|title }}</h5></div>
+                            </div>
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">County:</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.county|title }}</h5></div>
+                            </div>
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">Country:</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.default_country.name|title }}</h5></div>
+                            </div>
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-12 col-sm-4"><h5 class="text-info">Post Code:</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.postcode|title }}</h5></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
