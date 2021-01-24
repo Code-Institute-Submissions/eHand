@@ -17,9 +17,9 @@
             <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Notices</a>
         </div>
     </div>
-    <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+    <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12">
                 <h2 class="text-shadow">Edit Your Profile</h2>
             </div>
         </div>
@@ -29,11 +29,21 @@
 {% block content %}
     <div class="container col-sm-12 notice-container fade-in">
         <div class="row">
-            <div class="col-sm-12 col-md-7 offset-md-1">
-                <div class="card mh-100 mb-3 shadow">
-                    <div class="card-header">Profile Information</div>
-                    <div class="card-body">
-                        <h2>edit here...</h2>
+            <div class="col-sm-12 col-md-6 offset-md-3">
+                <div class="card bg-transparent mh-100 mb-3 shadow">
+                    <div class="opaque"></div>
+                    <div class="card-header text-white">Edit Profile Information</div>
+                    <div class="card-body text-white">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend>Update your Profile</legend>
+                                {{ form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

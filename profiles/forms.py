@@ -10,7 +10,7 @@ class UserProfileForm(forms.ModelForm):
     """
     class Meta:
         model = UserProfile
-        exclude = ('user',)
+        exclude = ('user', 'time_balance')
 
     def __init__(self, *args, **kwargs):
         """
@@ -24,12 +24,13 @@ class UserProfileForm(forms.ModelForm):
         # model
         placeholders = {
 
-            'default_phone_number': 'Phone Number',
-            'default_postcode': 'Postal Code',
-            'default_town_or_city': 'Town or City',
-            'default_street_address1': 'Street Address 1',
-            'default_street_address2': 'Street Address 2',
-            'default_county': 'County, State or Locality',
+            'full_name': 'Full Name',
+            'phone_number': 'Phone Number',
+            'postcode': 'Postal Code',
+            'town_or_city': 'Town or City',
+            'street_address1': 'Street Address 1',
+            'street_address2': 'Street Address 2',
+            'county': 'County, State or Locality',
         }
         for field in self.fields:
             if field != 'default_country':
@@ -38,10 +39,11 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+
             self.fields[field].widget.attrs['class'] = ('border-black '
                                                         'rounded-0 '
                                                         'profile-form-input')
             self.fields[field].label = False
 
         # autofocus on default phone number
-        self.fields['default_phone_number'].widget.attrs['autofocus'] = True
+        self.fields['full_name'].widget.attrs['autofocus'] = True

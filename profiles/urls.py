@@ -2,7 +2,8 @@ from django.urls import path
 from profiles import views
 from .views import (
     CommitmentsListView,
-    MemberNoticesListView
+    MemberNoticesListView,
+    ProfileUpdateView
 )
 
 
@@ -14,4 +15,7 @@ urlpatterns = [
     path('member_notices/',
          MemberNoticesListView.as_view(),
          name='member-notices'),
+    path('profile/<int:pk>/update/',
+         ProfileUpdateView.as_view(),
+         name='profile-update'),
 ]

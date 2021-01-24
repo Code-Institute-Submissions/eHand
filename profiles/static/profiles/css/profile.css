@@ -1,7 +1,17 @@
 /* Over-ride base.css */
- #page-content {
-     top: 40vh;
+ #page-heading {
+    top: 100px;
 }
+
+ #page-content {
+     top: 110px;
+}
+
+.btn-toolbar .btn-group
+{
+    margin-bottom: 40px;
+}
+
 .toolbar-item {
     border: 0.2px #c2fa00 solid;
     background-color: #f8f8ff;
@@ -16,4 +26,19 @@
     box-shadow: 0 1px 6px 0 #c2fa00;
     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     color: black;
+}
+
+/* Page logo - MEDIA QUERIES */
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+ @media (min-width:768px) {
+    .btn-toolbar .btn-group
+    {
+        top: 0px;
+    }
+    #page-heading {
+        top: 260px;
+    }
+    #page-content {
+        top: 250px;
+    }
 }

@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block page_header %}  
-    <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
+    <div class="btn-toolbar justify-content-center container-fluid" role="toolbar" aria-label="Toolbar">
         <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 "></i>My Profile</a>
-            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3"></i>My Commitments</a>
-            <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3"></i>My Notices</a>
+            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 d-none d-sm-inline"></i>My Profile</a>
+            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Commitments</a>
+            <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Notices</a>
         </div>
     </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
@@ -56,7 +56,7 @@
                             <hr>
                         {% endif %}
                         <h1>***  User Details Here</h1>
-                        <a href="" class="text-secondary small">
+                        <a href="{% url 'profile-update' user.id %}" class="text-secondary small">
                             <i class="fas fa-user-edit p-2"></i>Edit Profile
                         </a>
                     </div>

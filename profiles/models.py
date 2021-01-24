@@ -16,6 +16,7 @@ class UserProfile(models.Model):
     # Setting a default of -1 as we want to check for this initial state when
     # creating memberships. -1 will be an inactive state
     time_balance = models.IntegerField(null=True, blank=True, default=-1)
+    full_name = models.CharField(max_length=50, null=True, blank=True)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     street_address1 = models.CharField(max_length=80, null=True, blank=True)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)

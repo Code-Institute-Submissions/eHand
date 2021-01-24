@@ -1,16 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 from memberships.views import get_current_package, get_user_subscription
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.views.generic import (
-    ListView
+    ListView,
+    UpdateView
 )
 from notices.models import Notice
 from .models import UserProfile
+from .forms import UserProfileForm
 
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
+    UserPassesTestMixin
 )
+
 
 @login_required
 def profile_view(request):
@@ -48,3 +51,29 @@ class MemberNoticesListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         user = self.request.user
         return Notice.objects.filter(author=user).order_by('-date_posted')
+
+
+class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ Returns as a view the profile_form template
+        To edit a users profile
+    """
+    model = UserProfile
+    # form_class = UserProfileForm
+    form_class = UserProfileForm
+    success_url = '/profile/'
+
+    def form_valid(self, form):
+        """ To set correct instance of the form """
+        form.instance.profile = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        """ test function - ran by UserPassesTestMixin to check condition
+            condition check: Is user attempting to update profile equal
+            to the current user
+        """
+        notice = self.get_object()
+        if self.request.user == notice.user:
+            # then we can allow updating
+            return True
+        return False
