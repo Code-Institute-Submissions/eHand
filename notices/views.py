@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Notice
+from memberships.models import Memberships
 from comments.models import Comment
 from profiles.models import UserProfile
 from django.views.generic import (
@@ -55,46 +56,71 @@ def cancel_notice(request, pk):
 def time_transfer(request, pk):
     """ Helper Method to handle the transfer of
         Time from one acc to the other
+
+    Actions:
+        \n* Check if acceptee is a premium member
+        \n* Get the amount of the notice
+        \n* Check sufficient balance for the transfer
+        \n* Complete transfer
     """
-    # Get the Time Amt of the notice as an integer
+    # First check if acceptee has a premium account
     notice = get_object_or_404(
         Notice, id=pk)
-    duration = notice.duration
-    time_amt_string = ''.join([i for i in duration if i.isdigit()])
-    notice_time_amt = int(time_amt_string)
+    acceptee_membership = get_object_or_404(
+        Memberships, user=notice.commit.id)
+    acceptee_membership_type = str(acceptee_membership.membership_type).lower()
 
-    # Get the Time Balance of the author
-    author = get_object_or_404(UserProfile, user=notice.author.id)
-    author_id = author.id
-    author_time_balance = author.time_balance
+    if acceptee_membership_type != 'free':
+        # Get the Time Amt of the notice as an integer
+        duration = notice.duration
+        time_amt_string = ''.join([i for i in duration if i.isdigit()])
+        notice_time_amt = int(time_amt_string)
 
-    # Get the Time Balance of the acceptee
-    acceptee = get_object_or_404(UserProfile, user=notice.commit.id)
-    acceptee_id = acceptee.id
-    acceptee_time_balance = author_time_balance
+        # Get the Time Balance of the author
+        author = get_object_or_404(UserProfile, user=notice.author.id)
+        author_time_balance = author.time_balance
 
-    # Transfer the Time amount
-    if author_time_balance <= 0:
-        messages.error(request, "You are unable to complete this transaction \
-            as you have 0 funds in your Time acc")
-        return redirect('profile')
-    elif author_time_balance > 0 and author_time_balance < notice_time_amt:
-        messages.error(request, "You are unable to complete this transaction \
-            as you insufficient funds in your Time acc")
-        return redirect('profile')
-    elif author_time_balance >= notice_time_amt:
-        author_time_balance -= notice_time_amt
-        author.time_balance = author_time_balance
-        author.save()
-        acceptee_time_balance += notice_time_amt
-        acceptee.time_balance = acceptee_time_balance
-        acceptee.save()
+        # Get the Time Balance of the acceptee
+        acceptee_profile = get_object_or_404(
+            UserProfile, user=notice.commit.id)
+        acceptee_time_balance = author_time_balance
+
+        # Transfer the Time amount - check current credit
+        if author_time_balance <= 0:
+            messages.error(request, "You are unable to complete this transaction \
+                as you have 0 funds in your Time acc")
+            return redirect('profile')
+        elif author_time_balance > 0 and author_time_balance < notice_time_amt:
+            messages.error(request, "You are unable to complete this transaction \
+                as you insufficient funds in your Time acc")
+            return redirect('profile')
+        elif author_time_balance >= notice_time_amt:
+            author_time_balance -= notice_time_amt
+            author.time_balance = author_time_balance
+            author.save()
+            acceptee_time_balance += notice_time_amt
+            acceptee_profile.time_balance = acceptee_time_balance
+            acceptee_profile.save()
+        else:
+            # Some error has  occured
+            messages.error(request, "Apologies but we are unable to complete this \
+                transaction at present. Please check required amounts and your own\
+                    Time Acc blance and try again later.")
+            return redirect('profile')
+
     else:
-        # Some error has  occured
+        # Then the user has a free membership - so we cannot proceed with time
+        # transfer
         messages.error(request, "Apologies but we are unable to complete this \
-            transaction at present. Please check required amounts and your own\
-                 Time Acc blance and try again later.")
+                transaction at present. The Member you are attempting to send\
+                     Time to, has not got an active Premium membership. Only \
+                         users with an active Premium membership can send or \
+                             receive Time")
         return redirect('profile')
+
+
+
+    
 
     return HttpResponseRedirect(reverse(
         "notices:notice-delete", kwargs={'pk': pk}))

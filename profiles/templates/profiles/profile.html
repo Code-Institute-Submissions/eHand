@@ -57,38 +57,52 @@
                         {% endif %}
 
                         <!-- Layout the current profile information -->
-                        <a href="{% url 'profile-update' user.id %}" class="text-secondary small">
+                        <a href="{% url 'profile-update' profile.id %}" class="text-secondary small">
                             <i class="fas fa-user-edit p-2 mb-4"></i>Edit Profile
                         </a>
                         <div class="col">
+                            {% if profile.full_name %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">Full Name:</h5></div>
                                 <div class="col-12 col-sm-8"><h5>{{ profile.full_name|title }}</h5></div>
                             </div>
+                            {% endif %}
+                            {% if profile.phone_number %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">Ph. Number:</h5></div>
                                 <div class="col-12 col-sm-8"><h5>{{ profile.phone_number }}</h5></div>
                             </div>
+                            {% endif %}
+                            {% if profile.street_address1 %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">Address</h5></div>
-                                <div class="col-12 col-sm-8"><h5>{{ profile.street_address1|title }} {{ profile.street_address2|title }}</h5></div>
+                                <div class="col-12 col-sm-8"><h5>{{ profile.street_address1|title }} {% if profile.street_address2 %}{{ profile.street_address2|title }}{% endif %}</h5></div>
                             </div>
+                            {% endif %}
+                            {% if profile.town_or_city %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">Town/City:</h5></div>
                                 <div class="col-12 col-sm-8"><h5>{{ profile.town_or_city|title }}</h5></div>
                             </div>
+                            {% endif %}
+                            {% if profile.county %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">County:</h5></div>
                                 <div class="col-12 col-sm-8"><h5>{{ profile.county|title }}</h5></div>
                             </div>
+                            {% endif %}
+                            {% if profile.default_country.name|lower != country %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">Country:</h5></div>
                                 <div class="col-12 col-sm-8"><h5>{{ profile.default_country.name|title }}</h5></div>
                             </div>
+                            {% endif %}
+                            {% if profile.postcode %}
                             <div class="row d-flex justify-content-start">
                                 <div class="col-12 col-sm-4"><h5 class="text-info">Post Code:</h5></div>
                                 <div class="col-12 col-sm-8"><h5>{{ profile.postcode|title }}</h5></div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

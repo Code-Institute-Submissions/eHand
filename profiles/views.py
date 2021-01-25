@@ -58,7 +58,6 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         To edit a users profile
     """
     model = UserProfile
-    # form_class = UserProfileForm
     form_class = UserProfileForm
     success_url = '/profile/'
 
@@ -72,8 +71,8 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             condition check: Is user attempting to update profile equal
             to the current user
         """
-        notice = self.get_object()
-        if self.request.user == notice.user:
+        profile_id = self.get_object().id
+        if self.request.user.id == profile_id:
             # then we can allow updating
             return True
         return False
