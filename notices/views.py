@@ -103,9 +103,9 @@ def time_transfer(request, pk):
             acceptee_profile.save()
         else:
             # Some error has  occured
-            messages.error(request, "Apologies but we are unable to complete this \
-                transaction at present. Please check required amounts and your own\
-                    Time Acc blance and try again later.")
+            messages.error(request, "Apologies but we are unable to complete \
+                this transaction at present. Please check required amounts \
+                    and your own Time Acc blance and try again later.")
             return redirect('profile')
 
     else:
@@ -117,10 +117,6 @@ def time_transfer(request, pk):
                          users with an active Premium membership can send or \
                              receive Time")
         return redirect('profile')
-
-
-
-    
 
     return HttpResponseRedirect(reverse(
         "notices:notice-delete", kwargs={'pk': pk}))
@@ -218,6 +214,7 @@ class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             # then we can allow updating
             return True
         return False
+
 
 class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ Handles deletion of a Notice """
