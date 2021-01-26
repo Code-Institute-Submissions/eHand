@@ -150,6 +150,13 @@ class NoticeListView(ListView):
     ordering = ['-date_posted']
     paginate_by = 2
 
+    def get_context_data(self, **kwargs):
+        """ Include the current Membership of the user in the context """
+        context = super(NoticeListView, self).get_context_data(**kwargs)
+        req_context = get_object_or_404(Memberships, user=self.request.user)
+        context['membership'] = str(req_context.membership_type).lower()
+        return context
+
 
 class NoticeDetailView(LoginRequiredMixin, DetailView):
     """ Returns as a view the notice details template """
