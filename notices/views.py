@@ -123,7 +123,10 @@ def time_transfer(request, pk):
 
 
 class NoticeCompleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """ Handles completion of a Notice """
+    """ Handles completion of a Notice:
+    \n Type: CeleteView Django ClassView
+    """
+
     model = Notice
     success_url = '/profiles'
 
@@ -178,7 +181,7 @@ class CreateComment(CreateView):
         return super().form_valid(form)
 
 
-class NoticeCreateView(LoginRequiredMixin, CreateView):
+class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     """ Returns as a view the create a notice template """
     model = Notice
     form_class = CreateNoticeForm
@@ -188,6 +191,21 @@ class NoticeCreateView(LoginRequiredMixin, CreateView):
 
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        """ test function - ran by UserPassesTestMixin to check condition
+            condition check:
+            \n Does the user have a Premium membership
+        """
+        users_membership = get_object_or_404(
+            Memberships, user=self.request.user)
+        users_membership_type = str(
+            users_membership.membership_type).lower()
+
+        if users_membership_type == 'premium':
+            # then we can allow updating creation of notice
+            return True
+        return False
 
 
 class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
