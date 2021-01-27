@@ -9,8 +9,8 @@
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
-     position: relative;
-     height: auto;
+    position: relative;
+     min-height: 100%;
      scroll-behavior: smooth;
      overflow-x: hidden;
 }
@@ -154,17 +154,20 @@
 }
 /* Page Content ------------------------------- */
  #page-heading {
-     position: relative;
-     top: 40vh;
+     /* position: relative;
+     top: 40vh; */
+     margin-top: 280px;
      color: #c2fa00;
      background: transparent;
 }
 
  #page-content {
-     position: relative;
-     top: 85vh;
+     /* position: relative;
+     top: 85vh; */
+     margin-top: 170px;
      color: #555555;
      background-color: transparent;
+     padding-bottom: 2.5rem
 }
 /* fade element classes ---------------------- */
 .fade-in {
@@ -189,4 +192,9 @@
 .from-right.show {
     transform: translateX(0);
     opacity: 1;
+}
+
+/* Footer  */
+#footer-container{
+    margin-top: 50px;
 }
