@@ -1,22 +1,15 @@
 /* Over-ride base.css */
- #page-heading {
-     top: 100px;
+#page-heading {
+     margin-top: 100px;
 }
- #page-content {
-     top: 150px;
+#page-content {
+    margin-top: 10px;
 }
 
 /* Page logo - MEDIA QUERIES */
-/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
- @media (min-width:576px){
-}
 /* tablet, landscape iPad, lo-res laptops ands desktops */
  @media (min-width:768px) {
-    /* Over-ride base.css */
     #page-heading {
-        top: 240px;
-    }
-    #page-content {
-        top: 250px;
+     margin-top: 250px;
     }
 }

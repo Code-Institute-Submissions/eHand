@@ -75,7 +75,7 @@
                             {% endif %}
                             {% if profile.street_address1 %}
                             <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Address:</h5></strong></div>
+                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Address:</strong></h5></div>
                                 <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.street_address1|title }} {% if profile.street_address2 %}{{ profile.street_address2|title }}{% endif %}</h5></div>
                             </div>
                             {% endif %}
@@ -87,13 +87,13 @@
                             {% endif %}
                             {% if profile.county %}
                             <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>County:</h5></strong></div>
+                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>County:</strong></h5></div>
                                 <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.county|title }}</h5></div>
                             </div>
                             {% endif %}
-                            {% if profile.default_country.name|lower != country %}
+                            {% if profile.default_country.name %}
                             <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Country:</h5></strong></div>
+                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Country:</strong></h5></div>
                                 <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.default_country.name|title }}</h5></div>
                             </div>
                             {% endif %}
