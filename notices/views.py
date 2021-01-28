@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.shortcuts import reverse, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Notice
@@ -12,7 +12,6 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from django.views.generic.detail import SingleObjectMixin
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin
@@ -151,15 +150,24 @@ class NoticeListView(ListView):
     paginate_by = 2
 
     def get_context_data(self, **kwargs):
-        """ Include the current Membership of the user in the context """
+        """
+        Include the current Membership of the user in the context
+
+        * Must account for users who are not logged in
+
+        """
         context = super(NoticeListView, self).get_context_data(**kwargs)
-        req_context = get_object_or_404(Memberships, user=self.request.user)
-        context['membership'] = str(req_context.membership_type).lower()
+        context['membership'] = False
+        if self.request.user.is_authenticated:
+            req_context = get_object_or_404(
+                Memberships, user=self.request.user)
+            context['membership'] = str(req_context.membership_type).lower()
         return context
 
 
 class NoticeDetailView(LoginRequiredMixin, DetailView):
     """ Returns as a view the notice details template """
+
     model = Notice
 
     def get_context_data(self, **kwargs):
@@ -255,7 +263,8 @@ class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == notice.author:
             # then we can allow updating
             return True
-        messages.warning(self.request, "You are not allowed to Delete another members Notice")
+        messages.warning(self.request, "You are not allowed to Delete another \
+            members Notice")
         return False
 
 
