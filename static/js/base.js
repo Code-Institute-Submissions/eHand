@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* fade in out effects for elements */
     const showOptions = {
-    threshold: 0,
+    threshold: 0.3,
     rootMargin: "0px 0px -30px 0px"
     };
 
@@ -108,13 +108,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     /** Smooth scroll */
-    
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+            let address = this.getAttribute('href');
+            let target = document.querySelector(address);
+            let offset = 200; 
+            //* get distance to target element in px
+            let elementPosition = target.offsetTop;
+            let targetPosition = elementPosition + offset;
+
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
             });
         });
     });
+    
 });

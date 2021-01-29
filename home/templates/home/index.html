@@ -23,10 +23,10 @@
         <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
             <!-- Container Heading row for logo and text-->
             <div class="row justify-content-center no-gutters mb-5">
-                <div class="col-12 text-center">
-                    <h2 class=" fade-in">What is</h2>
+                <div class="col-12 text-center fade-in">
+                    <h2>What is</h2>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto fade-in">
                     <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
                 </div>
             </div>
@@ -38,7 +38,7 @@
 
             </div>
             <div class="col-12 text-center readmore-container fade-in">
-                <a href="#information-container" class="btn btn-readmore">Read More</a>
+                <a href="#readmore-what-is-eHand" class="btn btn-readmore">Read More</a>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                 <p>Allows you to help others and in turn be rewarded with <em>Time</em></p>
             </div>
             <div class="col-12 text-center readmore-container fade-in">
-                <a href="" class="btn btn-readmore">Read More</a>
+                <a href="#readmore-why-use-eHand" class="btn btn-readmore">Read More</a>
             </div>
         </div>
 
@@ -84,50 +84,99 @@
                 </p>
             </div>
             <div class="col-12 text-center readmore-container fade-in">
-                <a href="" class="btn btn-readmore">Read More</a>
+                <a href="#readmore-how-use-eHand" class="btn btn-readmore">Read More</a>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Information -->
-<div id="information-container" class="container-fluid fade-in">
-    <div class="row justify-content-center align-items-center">
+<div class="container-fluid">
+    <div id="information-header" class="row justify-content-center align-items-center fade-in">
         <div class="col-12 text-center m-2">
-            <h3>Make Time, by Giving Time..</h3>
+            <h2>Make Time, by Giving Time..</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <!-- What is eHand section -->
+    <div id="readmore-what-is-eHand" class="row information-container">
+        <div class="col-12 col-md-9 col-lg-7 offset-md-1 information-section slide-in from-left">
             <p>
-                <em>eHand</em> was born out of the experience of being helped in the past. Perhaps you asked a neighbour to put out
-                your bin while you were away,
-                or perhaps you got a friend to give you a hand with a bit of fencing. Whatever it was, quite often any attempt to
-                reward this help is shunned, because
-                they just want to help out and thats great. And often in my experience, throwing money around often leads to an
-                awkwardness that complicates the issue.
+                <strong>eHand</strong> was born out of the experiences of helping and getting help from family and friends.
+                <br>Be it:
+            <ul>
+                <li><em>Asking someone to keep an eye on things while your away</em></li>
+                <li><em>Looking after a family pet</em></li>
+                <li><em>Getting a local handyman to help with some fencing</em></li>
+                <li><em>Getting Maths lessons from a local teacher</em></li>
+                <li><em>etc...</em></li>
+            </ul>
+            Now quite often these sorts of favours go unpaid - as no payment is generally required, or sought, for an act of kindness.
             </p>
+            <p>
+                But what if you could give something back to them, something that they gave freely to you? An hour, 2 hours perhaps?
+            </p>
+            <p>
+                Well this is what eHand does - <strong>it gives back the gift of time.</strong>
+            </p>
+            <div class="col-12 text-center fade-in">
+                <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why use eHand section -->
+    <div id="readmore-why-use-eHand" class="row information-container">
+        <div class="col-12 col-md-9 col-lg-7 offset-md-2 offset-lg-4 information-section slide-in from-right">
+            <p>
+                As an <strong>eHand</strong> Premium member you can browse Notices from our community of members and also post your own.
+                These notices will be visable to all members giving you a much wider net to seek the help you require.
+            </p>
+            <p>
+                When you sign up for a premium membership, you will receive <strong>10 hours</strong> in your Time Account. These can be used 
+                to pay other members for help they give to you.
+            </p>
+            <p>
+                Earn more hours by helping other members, and also attending community
+                clean up days, or other organized charity events - where members will receive a Time Bonus.
+            </p>
+            <div class="col-12 text-center fade-in">
+                <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to use eHand section -->
+    <div id="readmore-how-use-eHand" class="row information-container">
+        <div class="col-12 col-md-9 col-lg-7 offset-md-1 information-section slide-in from-left">
+            <p>
+                It is so easy to get up and going with <strong>eHand:</strong>
+                <ul>
+                    <li>Click on Get Started to either Sign in or Register for an account if you are a new user</li>
+                    <li>Choose to upgrade to Premium in the upgrade section - or continue as a free member</li>
+                    <li>View notices in the Notice section.</li>
+                    <li>If you think you can help, click Details and commit to help - or ask a question in the comments section</li>
+                    <li>Once committed to a Notice you are expected to fulfil your obligation - your commitments are displayed 
+                        in your profile, under "My Commitments"</li>
+                    <li><em><strong>Please note that any member may commit to help anyone on eHand - 
+                        but only Premium members hold a Time Account, enabling Time Transfers.</strong></em></li>
+                    <li>Once you have finished helping, the member may transfer the Time to you and choose to delete the Notice, from his noices section within his profile.</li>
+                    <li>To create a Notice, simply click the add notice in the Notices section, <strong><em>Please Note - only Premium members can create a Notice.</em></strong></li>
+                </ul>
+            </p>
+            <p>
+                Memberships may be cancelled at any time by the member.
+                A Member who cancells their Premium membership will also cancel their Time account.
+
+            </p>
+            <p>Please note, the proceeds of Monthly subscriptions are donated to Local charities and community schemes to further spread
+                the helping <strong>eHand!!</strong>
+            </p>
+            <div class="col-12 text-center fade-in">
+                <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+            </div>
         </div>
     </div>
 
 </div>
 
-
-
-<p class="fade-in intro highlight">
-                    
-                </p>
-        
-    
-</div>
-<div class="container bg-light rounded mt-5">
-    <h1 class="text-center fade-in">How to use eHand</h1>
-        <p class="fade-in intro">
-        As an <em>eHand</em> member you can browse Notices from our community of members, If you see a notice that you believe you may be able to help with, 
-        click the details button to see more details and / or send a question directly to the author of the notice, to get some more details.<br>
-        Once you are happy to offer assistance, simply click on the Details button of the chosen notice, then select the Commit to help button.<br>
-        This notice will then be loaded into My Commitments inside your Profile area, from here you can view and manage your commitments by choosing to remove your commitment to any notice
-        should you choose to.
-    </p>
-</div>
 {% endblock %}

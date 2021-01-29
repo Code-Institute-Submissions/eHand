@@ -168,7 +168,9 @@
      color: #555555;
      background-color: transparent;
 }
-.intro-container{
+.intro-container,
+.information-container,
+.information-section{
     background-color: #f8f8f8;
     border-radius: 10px;
     border: 1px solid #c4fa00;
@@ -177,12 +179,21 @@
     padding-bottom: 60px;
     box-shadow: 0 9px 7px -6px #555555;
 }
-#information-container{
+#information-header{
     margin-top: 170px;
-    background-color: silver;
-    opacity: 0.8;
+    background: rgb(192,192,192);
+    background: linear-gradient(180deg, rgba(192,192,192,0) 0%, rgba(192,192,192,0.01) 1%, rgba(192,192,192,0.03) 3%, rgba(192,192,192,0.05) 5%, rgba(192,192,192,0.1) 10%, rgba(192,192,192,0.5) 30%, rgba(192,192,192,0.8) 60%, rgba(192,192,192,0.95) 80%, rgba(192,192,192,1) 100%);
     color: #c2fa00;
     text-shadow: 2px 0px 6px rgba(6, 7, 6, 0.76);
+}
+.information-container{
+    background-color: #c0c0c0;
+    border-radius: 0px;
+    border: none;
+}
+.information-section {
+    padding: 20px;
+    background-color: #f8f8f8;
 }
 .intro-container img{
     max-height: 50px;
@@ -211,8 +222,8 @@
     left: 0;
     right: 0;
 }
-.btn-readmore{
-    bottom: 10px;
+.btn-readmore,
+.btn-getstarted{
     border: 1px solid #c4fa00;
     width: 70%;
     color: #888888;
@@ -220,11 +231,20 @@
     font-weight: bold;
     transition: .5s;
 }
-.btn-readmore:hover{
+.btn-getstarted{
+    border: 1px solid #FF9900;
+}
+.btn-readmore:hover,
+.btn-getstarted:hover{
     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     color: black;
     -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
     box-shadow: 0 1px 6px 0 #c2fa00;
+}
+.btn-getstarted:hover{
+    color: #f8f8f8;
+    background: rgb(255,153,0);
+    background: linear-gradient(90deg, rgba(255,153,0,1) 17%, rgba(255,153,0,0.6976002070750176) 72%);
 }
 /* fade element classes ---------------------- */
 .fade-in {
