@@ -167,36 +167,65 @@
      margin-top: 170px;
      color: #555555;
      background-color: transparent;
-     
+}
+.intro-container{
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    border: 1px solid #c4fa00;
+    padding: 10px;
+    max-height: 700px;
+    padding-bottom: 60px;
+    box-shadow: 0 9px 7px -6px #555555;
+}
+#information-container{
+    margin-top: 170px;
+    background-color: silver;
+    opacity: 0.8;
+    color: #c2fa00;
+    text-shadow: 2px 0px 6px rgba(6, 7, 6, 0.76);
+}
+.intro-container img{
+    max-height: 50px;
+}
+.intro-container h1{
+    color: #6B7365;
 }
 .intro {
-    padding: 10px;
-    line-height: 1.9rem;
-    font-size: 1.2rem;
+    line-height: 1.4rem;
+    font-size: 1rem;
     text-align: justify;
+}
+.highlight{
+    font-size: 1.1em;
+    line-height: 1.6rem;
+    font-weight: 500;
 }
 .intro em{
     font-weight: 900;
     font-size: 1.1em;
     font-style: normal;
 }
-.highlight{
-    font-size: 1.4em;
-    line-height: 1.7rem;
-    font-weight: 500;
+.readmore-container{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
 }
-.callout{
-    color: #444444;
-    padding: 20px;
-    margin: 0 20px 20px 20px;
+.btn-readmore{
+    bottom: 10px;
+    border: 1px solid #c4fa00;
+    width: 70%;
+    color: #888888;
     border-radius: 20px;
-    -webkit-box-shadow: 0 1px 6px 1px #555555;
-     box-shadow: 0 1px 2px 1px #555555;
-     text-align: center;
-     background: #c2fa00;
-
+    font-weight: bold;
+    transition: .5s;
 }
-
+.btn-readmore:hover{
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    color: black;
+    -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
+    box-shadow: 0 1px 6px 0 #c2fa00;
+}
 /* fade element classes ---------------------- */
 .fade-in {
     opacity: 0;
