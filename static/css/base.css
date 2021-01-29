@@ -169,6 +169,34 @@
      background-color: transparent;
      
 }
+.intro {
+    padding: 10px;
+    line-height: 1.9rem;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+.intro em{
+    font-weight: 900;
+    font-size: 1.1em;
+    font-style: normal;
+}
+.highlight{
+    font-size: 1.4em;
+    line-height: 1.7rem;
+    font-weight: 500;
+}
+.callout{
+    color: #444444;
+    padding: 20px;
+    margin: 0 20px 20px 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 1px 6px 1px #555555;
+     box-shadow: 0 1px 2px 1px #555555;
+     text-align: center;
+     background: #c2fa00;
+
+}
+
 /* fade element classes ---------------------- */
 .fade-in {
     opacity: 0;
