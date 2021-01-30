@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /** Handle fadin in elements */
     const fadeElements = document.querySelectorAll('.fade-in');
-    const slideElements = document.querySelectorAll('.slide-in');
     showWhenScroll = new IntersectionObserver(function (entries, showWhenScroll){
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
@@ -95,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     fadeElements.forEach(fader => {
         showWhenScroll.observe(fader);
-
     });
 
     /** Handle automatic message modal after small delay*/
@@ -103,9 +101,6 @@ document.addEventListener("DOMContentLoaded", function() {
         $("#messageModal").modal('show');
     });
     
-    slideElements.forEach(slider => {
-        showWhenScroll.observe(slider);
-    });
 
     /** Smooth scroll */
 
