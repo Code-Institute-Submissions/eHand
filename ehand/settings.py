@@ -18,17 +18,21 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(DEBUG=(bool, True))
+DEBUG = False
+env = environ.Env()
 env_file = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file)
-
-# read the .env file
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
 # If DEBUG not in env then default set above is False
-DEBUG = env('DEBUG')
+if 'DEVELOPMENT_LOCAL' in env:
+    DEBUG = True
+else:
+    DEBUG = False
+
+
 
 
 ALLOWED_HOSTS = ['mr-smyth-ehand.herokuapp.com', 'localhost']
@@ -213,11 +217,14 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # Stripe
-if DEBUG:
+if 'DEVELOPMENT_LOCAL' in env:
     STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
     STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+else:
+    STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+    STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-if 'DEVELOPMENT' in env:
+if 'DEVELOPMENT_LOCAL' in env:
     # Send emails to the console
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'ehand.help@example.com'
