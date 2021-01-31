@@ -52,95 +52,99 @@ def cancel_notice(request, pk):
     return redirect('/profile/member_commitments/')
 
 
-def time_transfer(request, pk):
-    """ Helper Method to handle the transfer of
+def time_transfer(request, notice):
+    """ Method to handle the transfer of
         Time from one acc to the other
-
-    Actions:
-        \n* Check if acceptee is a premium member
-        \n* Get the amount of the notice
-        \n* Check sufficient balance for the transfer
-        \n* Complete transfer
     """
+    admin = User.objects.get(username='admin')
+
     # First check if acceptee has a premium account
-    notice = get_object_or_404(
-        Notice, id=pk)
-    acceptee_membership = get_object_or_404(
-        Memberships, user=notice.commit.id)
-    acceptee_membership_type = str(acceptee_membership.membership_type).lower()
+    duration = notice.duration
+    time_amt_string = ''.join([i for i in duration if i.isdigit()])
+    notice_time_amt = int(time_amt_string)
 
-    if acceptee_membership_type != 'free':
-        # Get the Time Amt of the notice as an integer
-        duration = notice.duration
-        time_amt_string = ''.join([i for i in duration if i.isdigit()])
-        notice_time_amt = int(time_amt_string)
+    # Get the Time Balance of the author
+    author = get_object_or_404(UserProfile, user=notice.author.id)
+    author_time_balance = author.time_balance
 
-        # Get the Time Balance of the author
-        author = get_object_or_404(UserProfile, user=notice.author.id)
-        author_time_balance = author.time_balance
+    # Get the Time Balance of the acceptee
+    acceptee_profile = get_object_or_404(
+        UserProfile, user=notice.commit.id)
+    acceptee_time_balance = author_time_balance
 
-        # Get the Time Balance of the acceptee
-        acceptee_profile = get_object_or_404(
-            UserProfile, user=notice.commit.id)
-        acceptee_time_balance = author_time_balance
-
-        # Transfer the Time amount - check current credit
-        if author_time_balance <= 0:
-            messages.error(request, "You are unable to complete this transaction \
-                as you have 0 funds in your Time acc")
-            return redirect('profile')
-        elif author_time_balance > 0 and author_time_balance < notice_time_amt:
-            messages.error(request, "You are unable to complete this transaction \
-                as you insufficient funds in your Time acc")
-            return redirect('profile')
-        elif author_time_balance >= notice_time_amt:
-            author_time_balance -= notice_time_amt
-            author.time_balance = author_time_balance
-            author.save()
-            acceptee_time_balance += notice_time_amt
-            acceptee_profile.time_balance = acceptee_time_balance
-            acceptee_profile.save()
-        else:
-            # Some error has  occured
-            messages.error(request, "Apologies but we are unable to complete \
-                this transaction at present. Please check required amounts \
-                    and your own Time Acc blance and try again later.")
-            return redirect('profile')
-
+    # Transfer the Time amount - check current credit
+    if author_time_balance <= 0:
+        messages.error(request, "You are unable to complete this transaction \
+            as you have 0 funds in your Time acc")
+        return redirect('profile')
+    elif author_time_balance > 0 and author_time_balance < notice_time_amt:
+        messages.error(request, "You are unable to complete this transaction \
+            as you insufficient funds in your Time acc")
+        return redirect('profile')
+    elif author_time_balance >= notice_time_amt:
+        author_time_balance -= notice_time_amt
+        author.time_balance = author_time_balance
+        author.save()
+        acceptee_time_balance += notice_time_amt
+        acceptee_profile.time_balance = acceptee_time_balance
+        acceptee_profile.save()
+        notice.commit = admin
+        notice.save()
     else:
-        # Then the user has a free membership - so we cannot proceed with time
-        # transfer
-        messages.error(request, "Apologies but we are unable to complete this \
-                transaction at present. The Member you are attempting to send\
-                     Time to, has not got an active Premium membership. Only \
-                         users with an active Premium membership can send or \
-                             receive Time")
+        # Some error has  occured
+        messages.error(request, "Apologies but we are unable to complete \
+            this transaction at present. Please check required amounts \
+                and your own Time Acc blance and try again later.")
         return redirect('profile')
 
-    return HttpResponseRedirect(reverse(
-        "notices:notice-delete", kwargs={'pk': pk}))
 
-
-class NoticeCompleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """ Handles completion of a Notice:
-    \n Type: CeleteView Django ClassView
+def complete_notice(request, pk):
+    """
+    \n* Checks if user is notice author
+    \n* Calls time_transfer to handle payment
+    \n* Remove Acceptee the acceptee in notice.commit
+    \n* Give option to delete Notice
     """
 
-    model = Notice
-    success_url = '/profiles'
+    # check if user is author
+    notice = get_object_or_404(
+        Notice, id=pk)
+    if request.user == notice.author:
 
-    def test_func(self):
-        """ test function - ran by UserPassesTestMixin to check condition
-            condition check: Is user attempting to Delete a notice equal
-            to the author of the notice
-        """
-        notice = self.get_object()
-        if self.request.user == notice.author:
-            # then we can allow updating
-            return True
-        messages.warning(self.request, "You are not allowed to mark another \
-            members Notice as completed")
-        return False
+        # Check acceptee's membership type
+        acceptee_membership = get_object_or_404(
+            Memberships, user=notice.commit.id)
+        acceptee_membership_type = str(
+            acceptee_membership.membership_type).lower()
+
+        # Handle free - remove from notice ONLY
+        if acceptee_membership_type == 'free':
+            acceptee = notice.commit
+            admin = User.objects.get(username='admin')
+            notice.commit = admin
+            notice.save()
+
+            # Then pass them onto option to delete notice
+            messages.success(request, "The Notice has been completed - No \
+                transfer of Time was required as {acceptee} is not a \
+                    Premium Membership")
+            return HttpResponseRedirect(reverse(
+                "notices:notice-delete", kwargs={'pk': pk}))
+
+        elif acceptee_membership_type == 'premium':
+            duration = notice.duration
+            time_amt_string = ''.join([i for i in duration if i.isdigit()])
+            notice_time_amt = int(time_amt_string)
+            acceptee = notice.commit
+            time_transfer(request, notice)
+            messages.success(request, f"The Notice has been completed - You \
+                have sent {notice_time_amt}hrs of TIME to {acceptee}")
+            return HttpResponseRedirect(reverse(
+                "notices:notice-delete", kwargs={'pk': pk}))
+    else:
+        messages.warning(request, "You are not allowed to finalise another\
+            members notice")
+        return redirect('profile')
 
 
 class NoticeListView(ListView):

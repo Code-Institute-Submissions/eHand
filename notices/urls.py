@@ -5,7 +5,6 @@ from .views import (
     NoticeCreateView,
     NoticeUpdateView,
     NoticeDeleteView,
-    NoticeCompleteView,
     CreateComment
 )
 from . import views
@@ -34,12 +33,9 @@ urlpatterns = [
     path('cancel/<int:pk>/',
          views.cancel_notice,
          name='cancel-notice'),
-    path('notice/<int:pk>/complete/',
-         NoticeCompleteView.as_view(),
-         name='notice-complete'),
-    path('time/<int:pk>/transfer/',
-         views.time_transfer,
-         name='time-transfer'),
+    path('complete/<int:pk>/notice/',
+         views.complete_notice,
+         name='complete-notice'),
     path('notice-comment',
          CreateComment.as_view(),
          name="notice-comment")

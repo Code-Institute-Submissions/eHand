@@ -22,12 +22,13 @@ class Notice(models.Model):
     title = models.CharField(max_length=100)
     short_description = models.CharField(max_length=100)
     long_description = models.TextField()
-    duration = models.CharField(max_length=10,
-        choices=sorted(TIME_OPTIONS, key=itemgetter(0)),
+    duration = models.CharField(
+        max_length=10, choices=sorted(
+            TIME_OPTIONS, key=itemgetter(0)),
         verbose_name="Duration / Time Payment"
     )
     event_date_time = models.DateTimeField(
-        verbose_name="Event Date and Time"
+        verbose_name="Event Date"
     )
     event_location_postcode = models.CharField(max_length=10)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
