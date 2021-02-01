@@ -12,7 +12,11 @@
     <h2 class="text-shadow d-none d-md-block fade-in">Lend a Hand</h2>
     <h2 class="text-shadow d-none d-md-block offset-md-3 offset-lg-2 fade-in"> & save Time..</h2>
 </div>
-<h3 class="text-shadow text-center text-danger">{{ debug_flag }}</h3>
+<!-- Alert In Case of Debug True -->
+{% if debug_flag %}
+    <h3 class="text-shadow text-center text-danger">Debugging is switched on</h3>
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
