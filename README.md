@@ -126,7 +126,8 @@ Common to every page, the same navbar styling will be applied it will only show 
 An additional navbar is included in the Profile section, to allow simple navigation to important information such as the users commitments and the users own notices.
 
 ## Information area:
-Common styling of ghost white and grey font will be applied. Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00)
+Common styling of ghost white and grey font will be applied, with a faint lime green border, matching the rest of the site. 
+Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00), providing clarity to the user.
 
 ## footer:
 A common footer with social media links will also the bottom of the page.    
@@ -138,14 +139,15 @@ Uses client-side tokenization
 
 ## Wireframes
 
-[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Home.png)   
-[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Register.png)   
-[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/Sign_in.png)   
-[Create a Notice: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create_hand.png)   
-[Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/hands.png)   
-[Profile - My Details: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_details.png)   
-[Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_my_hands.png)   
-[Profile - Notifications: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile_notifications.png)   
+[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/home-wireframe.png)   
+[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/register-wireframe.png)   
+[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/sign-in-wireframe.png)   
+[Upgrade Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/upgrade-wireframe.png)   
+[Create a Notice: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create-notice-wireframe.png)   
+[Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/notices-wireframe.png)   
+[Profile Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile-wireframe.png)   
+[Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/my-notices-wireframe.png)   
+[Profile - Commitments: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/commitments-wireframe.png)   
 
 # Tech
 
