@@ -100,7 +100,8 @@ The Goals as a business are:
 
 # UI
 
-eHand will use the Bootstrap framework to create a clean uncluttered intuitive layout. The layout will be responsive having been built from a mobile first perspective.   
+eHand will use the Bootstrap framework to create a clean uncluttered intuitive layout. 
+The layout will be responsive having been built from a mobile first perspective.   
 The Navbar is positioned down the page 200px as a default position - and will retreat to a fixed position, by way of some custom JavaScript, to
  the top of the page allowing content to dissappear underneath it when the user scrolls.   
  The navbar will be almost focal, clean crisp and simple, with a very simple lime green glow and gradient hover effect
@@ -109,32 +110,27 @@ reverting to the simpler ghost white when not being interacted with.
 The logo and choice of colours was to achieve a nice contrast between a grey hand background image and the lime green colour.
 The logo was designed with pastel type colours, so its visable when needed - but not to take over the page.
 
-## Colours:
+### Colours:
+
+I choose a green and grey mix, as i find them an unusual, yet comfortable mix of colours. The grey, can obviously be dull, but i find that the slightest touches
+of a ***Wow*** colour such as the lime green, give a wonderful contrast that lifts the page.
+Other bootstrap standard colours are used in places where the lime green would have been too overpowering.
 
 *   [Ghost-white(#f8f8ff)](https://www.color-hex.com/color/f8f8ff) - will be used for windowed areas.
 *   [#555555](https://www.color-hex.com/color/555555) -  as the main font colour
 *   [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00) - used in all areas for text, borders, highlighting etc.  
 
 
-## Logo:
-Designed by myself, plays on the name using distorted lines from a lowercase letter 'e', to form the likeness of a hand. 
-The colours are a Kaki type [green](https://www.color-hex.com/color/6B7365)  and a pastel [indigo/grey](https://www.color-hex.com/color/656573)
-to form the text part of the logo. The logo was created using [Paint dot net](https://www.getpaint.net/features.html).
+### Fonts
 
-## A Navbar:
-Common to every page, the same navbar styling will be applied it will only show links relevant to the users login status.  
-An additional navbar is included in the Profile section, to allow simple navigation to important information such as the users commitments and the users own notices.
+The font chosen for this site is Nunito. I liked the clear simple rounded style, which fitted with the simple clean feel of the planned site.
 
-## Information area:
-Common styling of ghost white and grey font will be applied, with a faint lime green border, matching the rest of the site. 
-Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00), providing clarity to the user.
+### Styling
 
-## footer:
-A common footer with social media links will also the bottom of the page.    
-
-
-# Checkout
-Uses client-side tokenization
+Rounded corners and gentle hover effect shading along with fade-in elements were deliberate to give a smooth relaxed feel
+to the visitor as each page gently fades into view.   
+A current username or logged in status, deliberatly styled to be subtle, is positioned oposite the logo, just to indicate current logged in status.   
+The site logo retreats from view when page is scrolled, returning with the lowered navbar when page is scrolled to the top.
 
 
 ## Wireframes
@@ -149,6 +145,34 @@ Uses client-side tokenization
 [Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/my-notices-wireframe.png)   
 [Profile - Commitments: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/commitments-wireframe.png)   
 
+
+
+# Features 
+
+## Existing Features
+
+### Common site elements:
+
+## Logo:
+Designed by myself, plays on the name using distorted lines from a lowercase letter 'e', to form the likeness of a hand. 
+The colours are a Kaki type [green](https://www.color-hex.com/color/6B7365)  and a pastel [indigo/grey](https://www.color-hex.com/color/656573)
+to form the text part of the logo. The logo was created using [Paint dot net](https://www.getpaint.net/features.html).
+
+## A Navbar:
+
+![NavBar](https://ibb.co/S0YQmGq "NavBar")
+
+
+Common to every page, the same navbar styling will be applied it will only show links relevant to the users login status.  
+An additional navbar is included in the Profile section, to allow simple navigation to important information such as the users commitments and the users own notices.
+
+## Information area:
+Common styling of ghost white and grey font will be applied, with a faint lime green border, matching the rest of the site. 
+Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00), providing clarity to the user.
+
+## footer:
+A common footer with social media links will also the bottom of the page.   
+
 # Tech
 
 *   Django
@@ -159,6 +183,12 @@ Uses client-side tokenization
 *   Bootstrap
 *   Google Fonts
 *   Favicons
+
+
+ and the home page information section has a background with a varied degree of opacity to 
+remove the dullness that i felt a solid grey background was giving. This keeps the users attention on the information,
+while also providing a nice clouded experience of the background as they scroll.
+
 
 
 ### Free Members:
