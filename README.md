@@ -160,7 +160,7 @@ to form the text part of the logo. The logo was created using [Paint dot net](ht
 
 ## A Navbar:
 
-![NavBar](https://ibb.co/S0YQmGq "NavBar")
+![NavBar](https://i.ibb.co/VDnHC5X/image.png "NavBar")
 
 
 Common to every page, the same navbar styling will be applied it will only show links relevant to the users login status.  
