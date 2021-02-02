@@ -153,25 +153,28 @@ The site logo retreats from view when page is scrolled, returning with the lower
 
 ### Common site elements:
 
-## Logo:
+### Logo:
 Designed by myself, plays on the name using distorted lines from a lowercase letter 'e', to form the likeness of a hand. 
 The colours are a Kaki type [green](https://www.color-hex.com/color/6B7365)  and a pastel [indigo/grey](https://www.color-hex.com/color/656573)
 to form the text part of the logo. The logo was created using [Paint dot net](https://www.getpaint.net/features.html).
 
-## A Navbar:
-
-![NavBar](https://i.ibb.co/2Nz3Qtc/image.png "NavBar")
-
+### A Navbar:
 
 Common to every page, the same navbar styling will be applied it will only show links relevant to the users login status.  
 An additional navbar is included in the Profile section, to allow simple navigation to important information such as the users commitments and the users own notices.
 
-## Information area:
+![NavBar](https://i.ibb.co/nwgn9wB/image.png "NavBar")
+
+### Information area:
+
 Common styling of ghost white and grey font will be applied, with a faint lime green border, matching the rest of the site. 
 Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00), providing clarity to the user.
 
-## footer:
-A common footer with social media links will also the bottom of the page.   
+
+### Footer:
+A common footer with social media links will also the bottom of the page. Hovering reveals individual colours relevant to each link.   
+
+![Footer](https://i.ibb.co/m6m9hVM/image.png "Footer section")
 
 # Tech
 
