@@ -150,34 +150,38 @@ The site logo retreats from view when page is scrolled, returning with the lower
 
 # Features 
 
-## Existing Features:
+![Home](https://i.ibb.co/VppdCnw/image.png "Home Page example")  
 
-### Common site elements:
+## Existing Features
 
-#### Logo:
+### Common site elements
+
+#### Logo
 Designed by myself, plays on the name using distorted lines from a lowercase letter 'e', to form the likeness of a hand. 
 The colours are a Kaki type [green](https://www.color-hex.com/color/6B7365)  and a pastel [indigo/grey](https://www.color-hex.com/color/656573)
 to form the text part of the logo. The logo was created using [Paint dot net](https://www.getpaint.net/features.html).
 
-#### A Navbar:
+#### A Navbar
 
 Common to every page, the same navbar styling will be applied it will only show links relevant to the users login status.  
 An additional navbar is included in the Profile section, to allow simple navigation to important information such as the users commitments and the users own notices.
 
 ![NavBar](https://i.ibb.co/nwgn9wB/image.png "NavBar")
 
-#### Information area:
+#### Information area
 
 Common styling of ghost white and grey font will be applied, with a faint lime green border, matching the rest of the site. 
 Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00), providing clarity to the user.
 
-#### Footer:
+#### Footer
 A common footer with social media links will also the bottom of the page. Hovering reveals individual colours relevant to each link.   
 
 ![Footer](https://i.ibb.co/m6m9hVM/image.png "Footer section")
 
 
-### Home Page:
+### Home Page
+
+ 
 
 Site common styled containers gently fade into view on scrolling. The top 3 containers provide the user with a brief, what, why and how about eHand. 
 These containers also provide links to read more on that particular subject. Clicking on this will take the user down to a further reading, information section
@@ -185,19 +189,69 @@ with an action button to get started.
 Clicking on get started brings the user to the membership uggrade page, if the user is not signed in, the user will be taken to the sign in page, with option
 to register if a new user.
 
-### Notices page:
+
+
+### Notices page
 
 The notices page is the only page, other than the home page, which a non authenticated user can access. 
 It displays the complete listing of notices in a paginated view.   
 
-![Notice](https://i.ibb.co/2jw7r1C/image.png "Notice example")    
+![Notice](https://i.ibb.co/mcVvf7J/image.png "Notice example")    
 
 The Notice displays the bare bones of the requested task, clicking on the details button will take the user to a more detailed page to display
 the complete details of the notice, with a comments section for further questions.   
 A Premium or Free member may click details and interact in any way possible with the notice, including committing to help the author of the notice.   
 
-A non logged in member is unable to access the details and can only view the notice summary - seen in the image above.
+A non logged in member is unable to access the details and can only view the notice summary - seen in the image above. The Details button does remain though for the un-logged in visitor to see and possibly click on
+and if they do click on Details they will be routed to the Sign In Page.
 
+
+### Create Notice page
+
+Reachable from the the notices page via a link at the top of the page.
+
+This link is only available for Premium members and will not be visable to Free or non members. Attempting to gain entry via the url, will result in a 403 - Forbidden.
+
+The create Notice page features a form with which the member can fill in the details of the help they require, and then submit the form to post it as a notice in the Notices section of the site. 
+The member will also be able to view and edit this notice from their own commitments page within their Profile section.   
+By default all notices are linked to the correct author.
+
+
+### Notice Details page
+
+This page is reachable by clicking on the Details button on a notice. There are a few situations where the Details button is not able to be clicked on:
+
++ If the visitor is not a authorized member of eHand.
++ If the Notice has already been committed to by another member.
+
+Once in the Details of a Notice, you will see 2 containers. The first container holds all the details entered for the notice, along with some 
+relevant action buttons.
+The 2nd container contains a comments section enabling communication of querys between author and members interested in helping.
+
+![Details](https://i.ibb.co/J38rTSs/image.png "Notice Details example")  
+
+
+### Profile
+
+The profile main page holds the details of the member signed in. If entered it will display all the users information, if they have chosen to enter it.
+A user can click on the Edit Profile button in the profile information section to edit their profile.   
+
+If the member viewing the page is a Premium Member, then their TIME Account balance is displayed.   
+
+To the right of the profile information is the members current Membership status, and an action button to act on this.
+
+![Profile](https://i.ibb.co/2jyp7kS/image.png "Example profile page")
+
+
+### My Commitments
+
+Reachable from the profile page. The My Commitments page holds a copy of all the notices the current member has committed to. Each notice is displayed with full details.
+An option to remove commitment to a notice is at the bottom of each notice.
+
+### My Notices
+
+Reachable from the profile page. The My Notices page displays all the current notices that the current member has created. An option to update the notice or 
+delete it is available in this view at the bottom of each notice
 
 # Tech
 
