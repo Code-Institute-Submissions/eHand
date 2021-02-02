@@ -1,6 +1,6 @@
 # eHand
 
-![eHand logo](https://github.com/Mr-Smyth/eHand/blob/master/media/ehand_logo.png "Site logo")
+![eHand logo](https://i.ibb.co/nL9459P/image.png "Site logo")
 
 
 [Click here to view eHand](https://mr-smyth-ehand.herokuapp.com/)
@@ -96,6 +96,7 @@ The Goals as a business are:
 12. As a member i would like to see commitments i have made in my profile
 13. As a member i would like to see my notices in my profile.
 
+---   
 
 
 # UI
@@ -110,7 +111,7 @@ reverting to the simpler ghost white when not being interacted with.
 The logo and choice of colours was to achieve a nice contrast between a grey hand background image and the lime green colour.
 The logo was designed with pastel type colours, so its visable when needed - but not to take over the page.
 
-### Colours:
+## Colours:
 
 I choose a green and grey mix, as i find them an unusual, yet comfortable mix of colours. The grey, can obviously be dull, but i find that the slightest touches
 of a ***Wow*** colour such as the lime green, give a wonderful contrast that lifts the page.
@@ -121,11 +122,11 @@ Other bootstrap standard colours are used in places where the lime green would h
 *   [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00) - used in all areas for text, borders, highlighting etc.  
 
 
-### Fonts
+## Fonts
 
 The font chosen for this site is Nunito. I liked the clear simple rounded style, which fitted with the simple clean feel of the planned site.
 
-### Styling
+## Styling
 
 Rounded corners and gentle hover effect shading along with fade-in elements were deliberate to give a smooth relaxed feel
 to the visitor as each page gently fades into view.   
@@ -135,46 +136,68 @@ The site logo retreats from view when page is scrolled, returning with the lower
 
 ## Wireframes
 
-[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/home-wireframe.png)   
-[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/register-wireframe.png)   
-[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/sign-in-wireframe.png)   
-[Upgrade Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/upgrade-wireframe.png)   
-[Create a Notice: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create-notice-wireframe.png)   
-[Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/notices-wireframe.png)   
-[Profile Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile-wireframe.png)   
-[Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/my-notices-wireframe.png)   
-[Profile - Commitments: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/commitments-wireframe.png)   
+[Home Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/home-wireframe.pdf)   
+[Register Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/register-wireframe.pdf)   
+[Sign In Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/sign-in-wireframe.pdf)   
+[Upgrade Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/upgrade-wireframe.pdf)   
+[Create a Notice: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/create-notice-wireframe.pdf)   
+[Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/notices-wireframe.pdf)   
+[Profile Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile-wireframe.pdf)   
+[Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/my-notices-wireframe.pdf)   
+[Profile - Commitments: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/commitments-wireframe.pdf)   
 
 
 
 # Features 
 
-## Existing Features
+## Existing Features:
 
 ### Common site elements:
 
-### Logo:
+#### Logo:
 Designed by myself, plays on the name using distorted lines from a lowercase letter 'e', to form the likeness of a hand. 
 The colours are a Kaki type [green](https://www.color-hex.com/color/6B7365)  and a pastel [indigo/grey](https://www.color-hex.com/color/656573)
 to form the text part of the logo. The logo was created using [Paint dot net](https://www.getpaint.net/features.html).
 
-### A Navbar:
+#### A Navbar:
 
 Common to every page, the same navbar styling will be applied it will only show links relevant to the users login status.  
 An additional navbar is included in the Profile section, to allow simple navigation to important information such as the users commitments and the users own notices.
 
 ![NavBar](https://i.ibb.co/nwgn9wB/image.png "NavBar")
 
-### Information area:
+#### Information area:
 
 Common styling of ghost white and grey font will be applied, with a faint lime green border, matching the rest of the site. 
 Page headings when required will be in [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00), providing clarity to the user.
 
-
-### Footer:
+#### Footer:
 A common footer with social media links will also the bottom of the page. Hovering reveals individual colours relevant to each link.   
 
 ![Footer](https://i.ibb.co/m6m9hVM/image.png "Footer section")
+
+
+### Home Page:
+
+Site common styled containers gently fade into view on scrolling. The top 3 containers provide the user with a brief, what, why and how about eHand. 
+These containers also provide links to read more on that particular subject. Clicking on this will take the user down to a further reading, information section
+with an action button to get started.   
+Clicking on get started brings the user to the membership uggrade page, if the user is not signed in, the user will be taken to the sign in page, with option
+to register if a new user.
+
+### Notices page:
+
+The notices page is the only page, other than the home page, which a non authenticated user can access. 
+It displays the complete listing of notices in a paginated view.   
+
+![Notice](https://i.ibb.co/2jw7r1C/image.png "Notice example")    
+
+The Notice displays the bare bones of the requested task, clicking on the details button will take the user to a more detailed page to display
+the complete details of the notice, with a comments section for further questions.   
+A Premium or Free member may click details and interact in any way possible with the notice, including committing to help the author of the notice.   
+
+A non logged in member is unable to access the details and can only view the notice summary - seen in the image above.
+
 
 # Tech
 
