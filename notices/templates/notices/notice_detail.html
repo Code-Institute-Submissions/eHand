@@ -27,10 +27,21 @@
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}} Details</h5>
                         <p class="card-text"><strong>{{ object.long_description }}</strong></p>
-                        <p class="card-text"><em>Requested by {{ object.author }}</em></p>
+                        <p class="card-text"><em>Requested by {{ object.author|title }}</em></p>
                         {% if object.commit.id != 1 %}
                             {% if object.commit|lower == user.username|lower %}
-                                <h4 class="card-title border rounded text-white bg-warning p-2 shadow text-center"><strong><em>You have committed to this notice</em></strong></h4>
+                                <div class="card-title border rounded text-white bg-warning p-2 shado5">
+                                    <h5 class="text-center"><strong><em>You have committed to this notice</em></strong></h5>
+                                    <h5>Please remember:</h5>
+                                    <ul>
+                                        <li>You can view this notice in your profile under <em>"My Commitments".</em></li>
+                                        <li>Once committed to a Notice you are obliged to carry out the help you have committed
+                                         to on the date and time agreed with the author</li>
+                                        <li>If you wish to no longer commit to this message you can remove your commitment by going to
+                                            <em>"My Commitments"</em> in your profile section
+                                        </li>
+                                    </ul>
+                                </div>
                             <!-- In the unlikly case that a user who has not committed to theis notice views this -->
                             {% else %}
                                 <p class="card-text bg-warning"><em>Agreed to by: {{ object.commit|title }}</em></p>
