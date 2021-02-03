@@ -17,7 +17,6 @@ class Packages(models.Model):
     class Meta:
         verbose_name_plural = 'Packages'
 
-    slug = models.SlugField()
     package_type = models.CharField(
         choices=PACKAGE_OPTIONS,
         max_length=40,

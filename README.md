@@ -196,7 +196,7 @@ to register if a new user.
 The notices page is the only page, other than the home page, which a non authenticated user can access. 
 It displays the complete listing of notices in a paginated view.   
 
-![Notice](https://i.ibb.co/mcVvf7J/image.png "Notice example")    
+![Notice](https://i.ibb.co/jyqn0T8/image.png "Notice example")    
 
 The Notice displays the bare bones of the requested task, clicking on the details button will take the user to a more detailed page to display
 the complete details of the notice, with a comments section for further questions.   
@@ -225,10 +225,10 @@ This page is reachable by clicking on the Details button on a notice. There are 
 + If the Notice has already been committed to by another member.
 
 Once in the Details of a Notice, you will see 2 containers. The first container holds all the details entered for the notice, along with some 
-relevant action buttons.
+relevant action buttons.   
 The 2nd container contains a comments section enabling communication of querys between author and members interested in helping.
 
-![Details](https://i.ibb.co/J38rTSs/image.png "Notice Details example")  
+![Details](https://i.ibb.co/nBS0gww/image.png "Notice Details example")  
 
 
 ### Profile
@@ -240,7 +240,7 @@ If the member viewing the page is a Premium Member, then their TIME Account bala
 
 To the right of the profile information is the members current Membership status, and an action button to act on this.
 
-![Profile](https://i.ibb.co/2jyp7kS/image.png "Example profile page")
+![Profile](https://i.ibb.co/Pgr5qrP/image.png "Example profile page")
 
 
 ### My Commitments
@@ -250,8 +250,216 @@ An option to remove commitment to a notice is at the bottom of each notice.
 
 ### My Notices
 
-Reachable from the profile page. The My Notices page displays all the current notices that the current member has created. An option to update the notice or 
-delete it is available in this view at the bottom of each notice
+Reachable from the profile page. The My Notices page displays all the current notices that the current member has created.   
+An option to update the notice or delete it is available in this view at the bottom of each notice, these buttons will only display if the notice has not been committed to yet.
+Once the message has another member committed to it, then it obviously should not be possible to change the notice, or delete it.   
+
+The complete notice button appears once the notice has been committed to by another member. Once clicked eHand will check if the member who helped, is a valid premium member.
+If the member is a valid premium member, then a transfer of a Time payment - ***amount outlined in the notice*** - will take place.  
+If the member is ***Not*** a valid Premium member, then ***No*** payment will take place, as Time accounts are a Premium feature.
+The memeber who committed to the notice will then be removed from the notice.   
+The user will then receive an option allowing them to delete the message, or not. The reason for the option is simply if the author would like 
+to keep and edit the message as a new notice.
+
+![MyNotices](https://i.ibb.co/CMyLmcC/image.png "Example My Notices page")
+
+
+### Upgrade 
+
+The upgrade page is reachable from the main nav bar, or from the discover premium button inside the profile page.   
+As the name suggests this page allows the user to view the benefits of upgrading to Premium, and gives them an option to select Premium.
+
+#### Selecting Premium
+
+Selecting Premium from the Upgrade page brings the user to the payment screen where they can enter their card details to 
+subscribe to the monthly payment and become a premium member. After payment the user will be returned to the profile screen showing their new time account and balance.
+
+
+![Upgrade](https://i.ibb.co/DbNQm09/image.png "Example of an upgraded membership success")
+
+
+# Deployment
+
+## Steps to deploy eHand to Heroku using Postgres
+
+### In Heroku:
+1. Setup and account and loginto Heroku
+2. On the apps page select `NEW`.
+3. Give the app a name and select closest region – then click `Create App`.
+4. Click on Resources tab to provision a new postgres database for it.
+5. Search in the Addons search bar for `Heroku Postgres`.
+6. Select your Development plan (in my case - Hobby Dev Plan).
+
+### In GitPod or IDE:
+7. To use postgres open project in GitPod and install:
+```
+*	Pip3 install dj_database_url
+*	Pip3 install psycopg2-binary
+* 	Update requirements: Pip3 freeze > requirements.txt
+```
+
+### In Django - setup new database:
+In `Settings.py`:   
+
+8. Make sure import os is there.
+9. Add: `import dj_database_url`.
+10. Goto Database settings and comment out existing database setting and add below example to point the database at the new postgres database.
+```
+example:
+    DATABASES = {
+        'default': dj_database_url.parse( # ***paste in the database URL from Heroku***)
+    }
+```
+11. Run Migrations. `Migrations have now been made to the postGres Database.`
+12. After a Successful Migration goto the memberships.models app.
+
+---
+***Important:***
+
+13. Comment out the `post_save_create_memberships` signal - ***this is because creating a user will trigger this signal to create a free membership. 
+But as there will be no packages setup within our new database - we must stop this signal before we create our super user.***   
+---
+14. Now we can create a super user -: `python3 manage.py createsuperuser`.
+15. Runserver and login as superuser to the admin page.
+16. Goto Packages in the memberships section.
+17. Click add package to add each of the following 2 packages
+*	package type: free.
+*   package price: 0.
+*   stripe plan id: (price_id) get this from your stripe - Products - Free Plan - Pricing - API id.   
+
+***and***  
+*   package type: premium.
+*   package price: 5.
+*   stripe plan id: (price_id) get this from your stripe - Products - Premium Plan - Pricing - API id.
+18. Save and logout of admin.
+19. Stop server.
+20. Uncomment the signal from step 13.
+21. Restart server and check admin - the superuser will now be linked to a free package type and have a stripe customer id.
+22. Goto Settings -  Database settings - remove the postgres database url.
+23.  Create an if/else code block to check if the os.environ variable is defined. 
+if it is defined that will mean we are on Heroku so we will use the postgres database.
+Else we will be in our local enviroment and so use the default database.
+```
+    Example: 
+    if 'DATABASE_URL' in os.environ:
+        DATABASES = {
+            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
+```
+
+24. In the Terminal install gunicorn as our webserver: `pip3 install gunicorn`
+25. Freeze requirements. `Pip3 freeze > requirements.txt`
+26. Create a Procfile at the same level as the project. 
+27. Enter the following code into the Procfile to tell Heroku to create a web dyno that will run gunicorn and serve eHand:
+```
+    web: gunicorn ehand.wsgi:application
+```
+28. Temporarily disable collect static – to do this:
+*	login via the terminal: heroku login –i.
+*	Enter heroku email and password.
+*   Enter the following in the terminal:
+```
+    heroku config:set DISABLE_COLLECTSTATIC=1 --app mr-smyth-ehand
+```
+In `Settings.py`:   
+
+29. Add the hostname of the Heroku app – to ALLOWED_HOSTS (also include localhost):
+```
+    ALLOWED_HOSTS = ['mr-smyth-ehand.herokuapp.com', 'localhost'].
+```
+30. Ensure all .env variables such as the django and stripe sectret keys remain private. Also make sure thay are setup inside Heroku's config vars.
+
+In `The Terminal`:
+
+31. Deploy to Heroku:
+*	Add and push to github
+*	git add .
+*	git commit –m “**your-message**”
+*	git push
+*	Now initialize heroku git remote (because we created our app on the website rather than with the CLI): 
+*		heroku git:remote -a mr-smyth-ehand
+*	Then push to heroku : git push heroku master
+
+In `The Heroku`:
+
+32. Setup automatic deployment in Heroku:
+*	Goto the deploy tab
+*	Set deployment method to github
+*	Search for ehand
+*	Click connect
+*	Scroll down and click Enable Automatic Deploys
+
+ehand is now deployed to Heroku
+
+## Local Deployment
+
+**Before starting, some prerequisites:**
+
+*   Before starting you should have an IDE set up - [Visual Studio Code](https://code.visualstudio.com/). - for example.
+*   Its advisable to have a virtual enviroment setup. Pythons own can be used : 
+
+```
+    python3 -m .venv venv
+    .venv\Scripts\activate
+```
+
+*   Have **at least** the following installed:   
+    *   Python3 - to run the application.
+    *   Pip - to install any requirements.
+    *   GIT - required for version control.
+
+### Steps to Deploy
+
+1.  Open a Git Bash Command line, in your preferred destination.
+2.  Enter git clone and paste in this link `https://github.com/Mr-Smyth/eHand.git`.
+3.  Open the cloned repo in your IDE.
+4.  Create a .env file containing private credentials.
+```
+Example of env file
+
+DEVELOPMENT_LOCAL=True
+SECRET_KEY=*C*O*D*E**H*E*R*E*
+STRIPE_PUBLIC_KEY=*C*O*D*E**H*E*R*E*
+STRIPE_SECRET_KEY=*C*O*D*E**H*E*R*E*
+```
+
+The above example displays an env for local purpose only.
+
+5.  Install all requirements for the application by using this command:
+```
+    sudo -H pip3 -r requirements.txt
+```
+6.  In the IDE terminal, use the following command to start eHand:
+```
+    python manage.py runserver
+```
+
+eHand should now be running locally on localhost port 8000. (http://127.0.0.1:8000)
+
+7.  After running Django initially, it will create the local database **db.SQLite3**.
+8.  Make all migrations:
+```
+python3 manage.py makemigrations --dry-run
+python3 manage.py makemigrations
+python3 manage.py migrate --plan
+python3 manage.py migrate
+```
+
+9.  Create a superuser:
+```
+python3 manage.py createsuperuser
+***Enter username, email and password***
+```
+
+You should now have a local copy of eHand.
+
 
 # Tech
 

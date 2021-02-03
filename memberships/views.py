@@ -172,7 +172,7 @@ def upgradedtransactions(request, subscription_id):
     messages.success(request, f"You have been successfully upgraded to our \
          {selected_package} membership")
 
-    return redirect('home')
+    return redirect('profile')
 
 
 @login_required
@@ -210,4 +210,4 @@ def cancel_user_subscription(request):
         request, "You have successfully \
             cancelled your subscription to Premium.")
 
-    return redirect(reverse('home'))
+    return redirect(reverse('profile'))

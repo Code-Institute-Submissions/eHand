@@ -33,8 +33,6 @@ else:
     DEBUG = False
 
 
-
-
 ALLOWED_HOSTS = ['mr-smyth-ehand.herokuapp.com', 'localhost']
 
 

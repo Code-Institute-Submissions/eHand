@@ -49,6 +49,9 @@
     opacity:.7;
     z-index: -1;
 }
+.is-hidden{
+    opacity: 0;
+}
 /* Page Logo ------------------------------------ */
  .page-logo-container {
      display: none;
