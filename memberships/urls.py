@@ -9,6 +9,4 @@ urlpatterns = [
          views.upgradedtransactions,
          name='upgradedtransactions'),
     path('cancel_sub/', views.cancel_user_subscription, name='cancel_sub'),
-
-
 ]

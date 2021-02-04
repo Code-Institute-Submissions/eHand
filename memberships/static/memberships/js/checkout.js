@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 // Create a Stripe client.
 // Credit Stripe for this code - altered to suit my needs
 // Supply our public key here
@@ -55,7 +56,6 @@ var stripe = Stripe("pk_test_51HvpttD51opv9Orqgpzt2a9kb4dfMFKGlGIKEQkF2BZilfiuDy
         stripeTokenHandler(result.token);
       }
     });
-
   });
 
   var successElement = document.getElementById('stripe-token-handler');

@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'memberships/css/checkout.css' %}">
 {% endblock %}
-
 {% block extra_title %}
     - Package Payment
 {% endblock %}
-
 {% block page_header %}
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
@@ -19,64 +16,49 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
-<!-- THIS STRIPE CODE WAS TAKEN FROM JUSTDJANGO/SHOPPING_CART -->
-<div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
-    <div class="row">
-        <div class="col">
-            <div class="card bg-transparent">
-                <div class="opaque"></div>
-                <div class="card-body">
-                    <p class="col-12 text-center text-white">Are you sure you want to subscribe to our
-                        {{ selected_package }} package?</p>
-                    <p class="col-12 text-center text-white"> This will cost you
-                        <span class="mont_r">@ €</span>
-                        {{ selected_package.package_price }}<small> /Month</small></p>
-
-                    <form action="." method="post" id="payment-form" class="pb-4">
-                        {% csrf_token %}
-                        <fieldset class="px-3">
-                            <legend class="fieldset-label text-center text-white px-2">Please enter your Credit Card
-                                Details below
-                            </legend>
-                            <i class="fab fa-cc-stripe fa-3x text-primary"></i>
-                            <!-- A Stripe card element will go here -->
-                            <div class="mb-3 w-auto mx-auto" id="card-element"></div>
-                            <!-- Used to display form errors -->
-                            <div class="mb-3 text-danger mx-auto" id="card-errors" role="alert"></div>
-
-                            <input type="hidden" id="nonce" name="payment_method_nonce" />
-                            <div class="row justify-content-center">
-                                <button type="submit"
-                                 class="btn btn-success btn-outline-light hover-shadow">
+    <!--Payment Container -->
+    <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-transparent">
+                    <!-- Opaque element -->
+                    <div class="opaque"></div>
+                    <div class="card-body">
+                        <p class="col-12 text-center text-white">Are you sure you want to subscribe to our
+                            {{ selected_package }} package?
+                        </p>
+                        <p class="col-12 text-center text-white"> This will cost you
+                            <span class="mont_r">@ €</span>
+                            {{ selected_package.package_price }}<small> /Month</small>
+                        </p>
+                        <form action="." method="post" id="payment-form" class="pb-4">
+                            {% csrf_token %}
+                            <fieldset class="px-3">
+                                <legend class="fieldset-label text-center text-white px-2">Please enter your Credit Card
+                                    Details below
+                                </legend>
+                                <i class="fab fa-cc-stripe fa-3x text-primary"></i>
+                                <!-- A Stripe card element will go here -->
+                                <div class="mb-3 w-auto mx-auto" id="card-element"></div>
+                                <!-- Used to display form errors -->
+                                <div class="mb-3 text-danger mx-auto" id="card-errors" role="alert"></div>
+                                <input type="hidden" id="nonce" name="payment_method_nonce" />
+                                <div class="row justify-content-center">
+                                    <button type="submit"
+                                        class="btn btn-success btn-outline-light hover-shadow">
                                     Pay by Card 
                                     <span class="icon"><i class="fas fa-lock"></i></span>
-                                </button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <div id="stripe-token-handler" class="is-hidden">Success <span class="token"></span></div>
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <div id="stripe-token-handler" class="is-hidden">Success <span class="token"></span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- script for the stripe form -->
-<script src="{% static 'memberships/js/checkout.js' %}"></script>
-<!-- script for toggling display of the form -->
-<script type="text/javascript">
-    function toggleDisplay() {
-      var x = document.getElementById("collapseStripe");
-      if (x.style.display === "none") {
-          x.style.display = "block";
-      } else {
-          x.style.display = "none";
-      }
-    };
-</script>
-
-
+    <!-- script for the stripe form -->
+    <script src="{% static 'memberships/js/checkout.js' %}"></script>
 {% endblock %}
-
-

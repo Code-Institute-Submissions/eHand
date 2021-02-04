@@ -151,7 +151,7 @@ def upgradedtransactions(request, subscription_id):
     current_package.membership_type = selected_package
     current_package.save()
 
-    # create or update subscription
+    # create or update subscription - check if created
     subscription, created = Subscriptions.objects.get_or_create(
         user_membership=current_package)
     subscription.stripe_sub_id = subscription_id  # passed in

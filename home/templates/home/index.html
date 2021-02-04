@@ -1,189 +1,179 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_title %}
-- Home
+    - Home
 {% endblock %}
-
 {% block page_header %}
-<div class="container bg-transparent rounded fade-in">
-    <h3 class="text-shadow d-block d-md-none fade-in">Lend a Hand</h3>
-    <h3 class="text-shadow d-block d-md-none offset-4 fade-in"> & save Time..</h3>
-    <h2 class="text-shadow d-none d-md-block fade-in">Lend a Hand</h2>
-    <h2 class="text-shadow d-none d-md-block offset-md-3 offset-lg-2 fade-in"> & save Time..</h2>
-</div>
-<!-- Alert In Case of Debug True -->
-{% if debug_flag %}
-    <h3 class="text-shadow text-center text-danger">Debugging is switched on</h3>
-{% endif %}
-
+    <!-- Hero Text -->
+    <div class="container bg-transparent rounded fade-in">
+        <h3 class="text-shadow d-block d-md-none fade-in">Lend a Hand</h3>
+        <h3 class="text-shadow d-block d-md-none offset-4 fade-in"> & save Time..</h3>
+        <h2 class="text-shadow d-none d-md-block fade-in">Lend a Hand</h2>
+        <h2 class="text-shadow d-none d-md-block offset-md-3 offset-lg-2 fade-in"> & save Time..</h2>
+    </div>
+    <!-- Alert In Case of Debug True -->
+    {% if debug_flag %}
+        <h3 class="text-shadow text-center text-danger">Debugging is switched on</h3>
+    {% endif %}
 {% endblock %}
-
 {% block content %}
-
-<div class="container-fluid">
-    <div class="row justify-content-around">
-
-        <!-- What is eHand Container column -->
-        <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
-            <!-- Container Heading row for logo and text-->
-            <div class="row justify-content-center no-gutters mb-5">
-                <div class="col-12 text-center fade-in">
-                    <h2>What is</h2>
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <!-- What is eHand Container column -->
+            <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
+                <!-- Container Heading row for logo and text-->
+                <div class="row justify-content-center no-gutters mb-5">
+                    <div class="col-12 text-center fade-in">
+                        <h2>What is</h2>
+                    </div>
+                    <div class="col-auto fade-in">
+                        <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
+                    </div>
                 </div>
-                <div class="col-auto fade-in">
-                    <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
+                <!-- What is eHand Content -->
+                <div class="col-12 fade-in intro highlight">
+                    <p><em>eHand</em> is a Charity platform to encourage real people to help eachother. Either in their local community or worldwide - depending upon the task</p>
+                    <p>eHand uses a unique reward system - which gives the member back the time they gave. Which they can then use to get help from others</p>
+                    <p>Help Others... and save <em>TIME!</em></p>
+                </div>
+                <div class="col-12 text-center readmore-container fade-in">
+                    <a href="#readmore-what-is-eHand" class="btn btn-readmore">Read More</a>
                 </div>
             </div>
-            <!-- What is eHand Content -->
-            <div class="col-12 fade-in intro highlight">
-                <p><em>eHand</em> is a Charity platform to encourage real people to help eachother. Either in their local community or worldwide - depending upon the task</p>
-                <p>eHand uses a unique reward system - which gives the member back the time they gave. Which they can then use to get help from others</p>
-                <p>Help Others... and save <em>TIME!</em></p>
-
+            <!-- Why eHand Container column -->
+            <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
+                <!-- Container Heading row for logo and text-->
+                <div class="row justify-content-center no-gutters mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class=" fade-in">Why use</h2>
+                    </div>
+                    <div class="col-auto">
+                        <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
+                    </div>
+                </div>
+                <!-- What is eHand Content -->
+                <div class="col-12 fade-in intro highlight">
+                    <p><em>All eHand Profits</em> made go directly to community based projects and local charities</p>
+                    <p>Using <em>eHand</em> gives you the oppertunity to give back something far more valuable than money.</p>
+                    <p>Allows you to help others and in turn be rewarded with <em>Time</em></p>
+                </div>
+                <div class="col-12 text-center readmore-container fade-in">
+                    <a href="#readmore-why-use-eHand" class="btn btn-readmore">Read More</a>
+                </div>
             </div>
-            <div class="col-12 text-center readmore-container fade-in">
-                <a href="#readmore-what-is-eHand" class="btn btn-readmore">Read More</a>
+            <!-- How eHand Container column -->
+            <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
+                <!-- Container Heading row for logo and text-->
+                <div class="row justify-content-center no-gutters mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class=" fade-in">How to use</h2>
+                    </div>
+                    <div class="col-auto">
+                        <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
+                    </div>
+                </div>
+                <!-- What is eHand Content -->
+                <div class="col">
+                    <p class="fade-in intro highlight">
+                        <em>eHand</em> is a platform that allows you to help real people in your community, or Worldwide, and allow them to
+                        help you!
+                        <br> And what you get in return is the very thing you gave in the first place - <em>TIME!</em>
+                    </p>
+                </div>
+                <div class="col-12 text-center readmore-container fade-in">
+                    <a href="#readmore-how-use-eHand" class="btn btn-readmore">Read More</a>
+                </div>
             </div>
         </div>
-
-        <!-- Why eHand Container column -->
-        <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
-            <!-- Container Heading row for logo and text-->
-            <div class="row justify-content-center no-gutters mb-5">
-                <div class="col-12 text-center">
-                    <h2 class=" fade-in">Why use</h2>
-                </div>
-                <div class="col-auto">
-                    <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
-                </div>
-            </div>
-            <!-- What is eHand Content -->
-            <div class="col-12 fade-in intro highlight">
-                <p><em>All eHand Profits</em> made go directly to community based projects and local charities</p>
-                <p>Using <em>eHand</em> gives you the oppertunity to give back something far more valuable than money.</p>
-                <p>Allows you to help others and in turn be rewarded with <em>Time</em></p>
-            </div>
-            <div class="col-12 text-center readmore-container fade-in">
-                <a href="#readmore-why-use-eHand" class="btn btn-readmore">Read More</a>
+    </div>
+    <!-- Information -->
+    <div class="container-fluid">
+        <div id="information-header" class="row justify-content-center align-items-center fade-in">
+            <div class="col-12 text-center m-2">
+                <h2>Make Time, by Giving Time..</h2>
             </div>
         </div>
-
-        <!-- How eHand Container column -->
-        <div class="intro-container col-12 col-md-5 col-lg-3 mb-4 mb-lg-0">
-            <!-- Container Heading row for logo and text-->
-            <div class="row justify-content-center no-gutters mb-5">
-                <div class="col-12 text-center">
-                    <h2 class=" fade-in">How to use</h2>
-                </div>
-                <div class="col-auto">
-                    <img src="{{ MEDIA_URL }}ehand_logo.png" alt="eHand Logo">
-                </div>
-            </div>
-            <!-- What is eHand Content -->
-            <div class="col">
-                <p class="fade-in intro highlight">
-                    <em>eHand</em> is a platform that allows you to help real people in your community, or Worldwide, and allow them to
-                    help you!
-                    <br> And what you get in return is the very thing you gave in the first place - <em>TIME!</em>
+    </div>
+    <div class="container-fluid information-container">
+        <!-- What is eHand section -->
+        <div id="readmore-what-is-eHand" class="row">
+            <div class="col-12 col-md-9 col-lg-7 offset-md-1 information-section fade-in">
+                <p>
+                    <strong>eHand</strong> was born out of the experiences of helping and getting help from family and friends.
+                    <br>Be it:
+                <ul>
+                    <li><em>Asking someone to keep an eye on things while your away</em></li>
+                    <li><em>Looking after a family pet</em></li>
+                    <li><em>Getting a local handyman to help with some fencing</em></li>
+                    <li><em>Getting Maths lessons from a local teacher</em></li>
+                    <li><em>etc...</em></li>
+                </ul>
+                <p>
+                Now quite often these sorts of favours go unpaid - as no payment is generally required, or sought, for an act of kindness.
                 </p>
-            </div>
-            <div class="col-12 text-center readmore-container fade-in">
-                <a href="#readmore-how-use-eHand" class="btn btn-readmore">Read More</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Information -->
-<div class="container-fluid">
-    <div id="information-header" class="row justify-content-center align-items-center fade-in">
-        <div class="col-12 text-center m-2">
-            <h2>Make Time, by Giving Time..</h2>
-        </div>
-    </div>
-</div>
-<div class="container-fluid information-container">
-    <!-- What is eHand section -->
-    <div id="readmore-what-is-eHand" class="row">
-        <div class="col-12 col-md-9 col-lg-7 offset-md-1 information-section fade-in">
-            <p>
-                <strong>eHand</strong> was born out of the experiences of helping and getting help from family and friends.
-                <br>Be it:
-            <ul>
-                <li><em>Asking someone to keep an eye on things while your away</em></li>
-                <li><em>Looking after a family pet</em></li>
-                <li><em>Getting a local handyman to help with some fencing</em></li>
-                <li><em>Getting Maths lessons from a local teacher</em></li>
-                <li><em>etc...</em></li>
-            </ul>
-            Now quite often these sorts of favours go unpaid - as no payment is generally required, or sought, for an act of kindness.
-            </p>
-            <p>
-                But what if you could give something back to them, something that they gave freely to you? An hour, 2 hours perhaps?
-            </p>
-            <p>
-                Well this is what eHand does - <strong>it gives back the gift of time.</strong>
-            </p>
-            <div class="col-12 text-center fade-in">
-                <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+                <p>
+                    But what if you could give something back to them, something that they gave freely to you? An hour, 2 hours perhaps?
+                </p>
+                <p>
+                    Well this is what eHand does - <strong>it gives back the gift of time.</strong>
+                </p>
+                <div class="col-12 text-center fade-in">
+                    <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Why use eHand section -->
-    <div id="readmore-why-use-eHand" class="row">
-        <div class="col-12 col-md-9 col-lg-7 offset-md-2 offset-lg-4 information-section fade-in">
-            <p>
-                As an <strong>eHand</strong> Premium member you can browse Notices from our community of members and also post your own.
-                These notices will be visable to all members giving you a much wider net to seek the help you require.
-            </p>
-            <p>
-                When you sign up for a premium membership, you will receive <strong>10 hours</strong> in your Time Account. These can be used 
-                to pay other members for help they give to you.
-            </p>
-            <p>
-                Earn more hours by helping other members, and also attending community
-                clean up days, or other organized charity events - where members will receive a Time Bonus.
-            </p>
-            <div class="col-12 text-center fade-in">
-                <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+        <!-- Why use eHand section -->
+        <div id="readmore-why-use-eHand" class="row">
+            <div class="col-12 col-md-9 col-lg-7 offset-md-2 offset-lg-4 information-section fade-in">
+                <p>
+                    As an <strong>eHand</strong> Premium member you can browse Notices from our community of members and also post your own.
+                    These notices will be visible to all members giving you a much wider net to seek the help you require.
+                </p>
+                <p>
+                    When you sign up for a premium membership, you will receive <strong>10 hours</strong> in your Time Account.
+                    These can be used to pay other members for help they give to you.
+                </p>
+                <p>
+                    Earn more hours by helping other members, and also attending community
+                    clean up days, or other organized charity events - where members will receive a Time Bonus.
+                </p>
+                <div class="col-12 text-center fade-in">
+                    <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- How to use eHand section -->
-    <div id="readmore-how-use-eHand" class="row">
-        <div class="col-12 col-md-9 col-lg-7 offset-md-1 information-section fade-in">
-            <p>
-                It is so easy to get up and going with <strong>eHand:</strong>
+        <!-- How to use eHand section -->
+        <div id="readmore-how-use-eHand" class="row">
+            <div class="col-12 col-md-9 col-lg-7 offset-md-1 information-section fade-in">
+                <p>
+                    It is so easy to get up and going with <strong>eHand:</strong>
+                </p>
                 <ul>
                     <li>Click on Get Started to either Sign in or Register for an account if you are a new user</li>
                     <li>Choose to upgrade to Premium in the upgrade section - or continue as a free member</li>
                     <li>View notices in the Notice section.</li>
                     <li>If you think you can help, click Details and commit to help - or ask a question in the comments section</li>
                     <li>Once committed to a Notice you are expected to fulfil your obligation - your commitments are displayed 
-                        in your profile, under "My Commitments"</li>
+                        in your profile, under "My Commitments"
+                    </li>
                     <li><em><strong>Please note that any member may commit to help anyone on eHand - 
-                        but only Premium members hold a Time Account, enabling Time Transfers.</strong></em></li>
+                        but only Premium members hold a Time Account, enabling Time Transfers.</strong></em>
+                    </li>
                     <li>Once you have finished helping, the member may transfer the Time to you and choose to delete the Notice, from his noices section within his profile.</li>
                     <li>To create a Notice, simply click the add notice in the Notices section, <strong><em>Please Note - only Premium members can create a Notice.</em></strong></li>
                 </ul>
-            </p>
-            <p>
-                Memberships may be cancelled at any time by the member.
-                A Member who cancells their Premium membership will also cancel their Time account.
 
-            </p>
-            <p>Please note, the proceeds of Monthly subscriptions are donated to Local charities and community schemes to further spread
-                the helping <strong>eHand!!</strong>
-            </p>
-            <div class="col-12 text-center fade-in">
-                <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+                <p>
+                    Memberships may be cancelled at any time by the member.
+                    A Member who cancels their Premium membership will also cancel their Time account.
+                </p>
+                <p>Please note, the proceeds of Monthly subscriptions are donated to Local charities and community schemes to further spread
+                    the helping <strong>eHand!!</strong>
+                </p>
+                <div class="col-12 text-center fade-in">
+                    <a href="{% url 'packages' %}" class="btn btn-getstarted">Get Started</a>
+                </div>
             </div>
         </div>
     </div>
-
-</div>
-
 {% endblock %}

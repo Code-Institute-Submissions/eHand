@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-
-<!-- {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'notices/css/notices.css' %}">
-{% endblock %} -->
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'memberships/css/checkout.css' %}">
+{% endblock %}
 {% block extra_title %}
     - Select Package
 {% endblock %}
-
 {% block page_header %}
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
@@ -18,9 +15,8 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
-<!-- Here handle setting out the membership package options -->
+    <!-- Here handle setting out the membership package options -->
     <div class="container col-sm-12 col-md-10 offset-md-1 notice-container fade-in">
         <div class="row">
             {% for package in packages %}
@@ -40,24 +36,25 @@
                         <ul>
                             <li>Create notices</li>
                             <li>Receive A Time account Balance</li>
-                            <li>Receive complementary 5 hours of Time after first signing up to premium</li>
+                            <li>Receive complementary 10 hours of Time after first signing up to premium</li>
                             <li>Spend and receive Time when when providing or receiving help from other members</li>
                             <li>Create user profile</li>
                             <li>Browse all notices</li>
+                            <li class="text-success"><strong>Remember... all profits go to Charity</strong></li>
                         </ul>
                         {% endif %}
                         <!-- Check to see what current package is and set out select button -->
                         {% if package.package_type != 'Free' %}
-                            <form method="POST" action="{% url 'packages' %}">
-                                {% csrf_token %}
-                                {% if package.package_type != current_package %}
-                                    <button class="btn btn-warning">Select</button>
-                                {% else %}
-                                    <small class="text-warning">You are currently a {{ current_package }} Member</small>
-                                {% endif %}
-                                <!-- pass in the selection - keep hidden -->
-                                <input type="hidden" name="package_type" value="{{ package.package_type }}">
-                            </form>
+                        <form method="POST" action="{% url 'packages' %}">
+                            {% csrf_token %}
+                            {% if package.package_type != current_package %}
+                            <button class="btn btn-warning">Select</button>
+                            {% else %}
+                            <small class="text-warning">You are currently a {{ current_package }} Member</small>
+                            {% endif %}
+                            <!-- pass in the selection - keep hidden -->
+                            <input type="hidden" name="package_type" value="{{ package.package_type }}">
+                        </form>
                         {% endif %}
                     </div>
                 </div>

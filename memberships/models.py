@@ -44,6 +44,7 @@ class Memberships(models.Model):
 
 
 def post_save_create_memberships(sender, instance, created, *args, **kwargs):
+    """ Create a new membership which is free for any new user """
     if created:
         Memberships.objects.get_or_create(user=instance)
 
