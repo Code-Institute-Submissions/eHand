@@ -21,6 +21,56 @@ and provide a means to those without.
 
 eHand will be submitted as my MS4 and final project in my Full Stack Software Development diploma.
 
+# Table of contents
+
+
+- [UX](#ux)
+  * [Purpose](#purpose)
+  * [Goals](#goals)
+    + [Visitor Goals](#visitor-goals)
+    + [Member Goals](#member-goals)
+    + [Business Goals](#business-goals)
+  * [User Stories](#user-stories)
+- [UI](#ui)
+  * [Colours](#colours)
+  * [Fonts](#fonts)
+  * [Styling](#styling)
+  * [Wireframes](#wireframes)
+- [Features](#features)
+  * [Existing Features](#existing-features)
+    + [Common site elements](#common-site-elements)
+      - [Logo](#logo)
+      - [A Navbar](#a-navbar)
+      - [Information area](#information-area)
+      - [Footer](#footer)
+    + [Home Page](#home-page)
+    + [Notices page](#notices-page)
+    + [Create Notice page](#create-notice-page)
+    + [Notice Details page](#notice-details-page)
+    + [Profile](#profile)
+    + [My Commitments](#my-commitments)
+    + [My Notices](#my-notices)
+    + [Upgrade](#upgrade)
+      - [Selecting Premium](#selecting-premium)
+  * [Features for future consideration](#features-for-future-consideration)
+- [Deployment](#deployment)
+  * [Steps to deploy eHand to Heroku using Postgres](#steps-to-deploy-ehand-to-heroku-using-postgres)
+    + [In Heroku:](#in-heroku-)
+    + [In GitPod or IDE:](#in-gitpod-or-ide-)
+    + [In Django - setup new database:](#in-django---setup-new-database-)
+  * [Local Deployment](#local-deployment)
+    + [Steps to Deploy](#steps-to-deploy)
+- [Tech](#tech)
+- [Credits](#credits)
+  * [Content and code](#content-and-code)
+  * [Media](#media)
+- [Acknowledgments](#acknowledgments)
+- [Disclaimer](#disclaimer)
+
+
+
+---
+
 # UX
 
 ## Purpose
@@ -50,7 +100,7 @@ This provides the user with a Time Account - with a balance of 10t ***(t = the t
 The helping doesnt stop there. All profits created from membership subscriptions will be donated to a different charity each month.
 Future planned incentives to be included are rewarding Time payments to members giving help with organised charity events.   
 
-
+[<< ***Back to contents***](#table-of-contents)
 
 
 
@@ -64,13 +114,17 @@ The target audience are:
 + Groups and organisations looking for an interesting way to encourage/incentivise people to help out and get involved in events.
 + To create a public platform that promotes helping others - and yet still gives something back.   
 
+[<< ***Back to contents***](#table-of-contents)
+
 ### Member Goals
 
 The Goals for members are:
 + Get help with with a task or event by posting a notice.
 + Provides a way for people to help out, by reading the notices and responding.
 + A method of accumulating TIME, by helping another member.
-+ A method of getting "***stuff***" done - by a method almost similar to bartering, where you trade Time for Time.   
++ A method of getting "***stuff***" done - by a method almost similar to bartering, where you trade Time for Time.  
+
+[<< ***Back to contents***](#table-of-contents)
 
 ### Business Goals
 
@@ -79,6 +133,7 @@ The Goals as a business are:
 + To create a large community of members to provide a diverse mix of talents.
 + To create a large community of members to build a substantial subscription income - which will be passed onto charity.
 
+[<< ***Back to contents***](#table-of-contents)
 
 ## User Stories
 
@@ -96,6 +151,8 @@ The Goals as a business are:
 12. As a member i would like to see commitments i have made in my profile
 13. As a member i would like to see my notices in my profile.
 
+[<< ***Back to contents***](#table-of-contents)
+
 ---   
 
 
@@ -111,7 +168,9 @@ reverting to the simpler ghost white when not being interacted with.
 The logo and choice of colours was to achieve a nice contrast between a grey hand background image and the lime green colour.
 The logo was designed with pastel type colours, so its visable when needed - but not to take over the page.
 
-## Colours:
+[<< ***Back to contents***](#table-of-contents)
+
+## Colours
 
 I choose a green and grey mix, as i find them an unusual, yet comfortable mix of colours. The grey, can obviously be dull, but i find that the slightest touches
 of a ***Wow*** colour such as the lime green, give a wonderful contrast that lifts the page.
@@ -121,10 +180,13 @@ Other bootstrap standard colours are used in places where the lime green would h
 *   [#555555](https://www.color-hex.com/color/555555) -  as the main font colour
 *   [lime green(#c2fa00)](https://www.color-hex.com/color/c2fa00) - used in all areas for text, borders, highlighting etc.  
 
+[<< ***Back to contents***](#table-of-contents)
 
-## Fonts
+## fonts
 
 The font chosen for this site is Nunito. I liked the clear simple rounded style, which fitted with the simple clean feel of the planned site.
+
+[<< ***Back to contents***](#table-of-contents)
 
 ## Styling
 
@@ -133,6 +195,7 @@ to the visitor as each page gently fades into view.
 A current username or logged in status, deliberatly styled to be subtle, is positioned oposite the logo, just to indicate current logged in status.   
 The site logo retreats from view when page is scrolled, returning with the lowered navbar when page is scrolled to the top.
 
+[<< ***Back to contents***](#table-of-contents)
 
 ## Wireframes
 
@@ -144,7 +207,7 @@ The site logo retreats from view when page is scrolled, returning with the lower
 [Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/notices-wireframe.pdf)   
 [Profile Page: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/profile-wireframe.pdf)   
 [Profile - My Notices: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/my-notices-wireframe.pdf)   
-[Profile - Commitments: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/commitments-wireframe.pdf)   
+[Profile - Commitments: ](https://github.com/Mr-Smyth/eHand/blob/master/docs/wireframes/commitments-wireframe.pdf)
 
 
 
@@ -181,15 +244,17 @@ A common footer with social media links will also the bottom of the page. Hoveri
 
 ### Home Page
 
- 
-
 Site common styled containers gently fade into view on scrolling. The top 3 containers provide the user with a brief, what, why and how about eHand. 
 These containers also provide links to read more on that particular subject. Clicking on this will take the user down to a further reading, information section
 with an action button to get started.   
 Clicking on get started brings the user to the membership uggrade page, if the user is not signed in, the user will be taken to the sign in page, with option
-to register if a new user.
+to register if a new user.   
 
+The home page information section has a background with a varied degree of opacity to 
+remove the dullness that i felt a solid grey background was giving. This keeps the users attention on the information,
+while also providing a nice clouded experience of the background as they scroll.
 
+[<< ***Back to contents***](#table-of-contents)
 
 ### Notices page
 
@@ -205,6 +270,7 @@ A Premium or Free member may click details and interact in any way possible with
 A non logged in member is unable to access the details and can only view the notice summary - seen in the image above. The Details button does remain though for the un-logged in visitor to see and possibly click on
 and if they do click on Details they will be routed to the Sign In Page.
 
+[<< ***Back to contents***](#table-of-contents)
 
 ### Create Notice page
 
@@ -216,6 +282,7 @@ The create Notice page features a form with which the member can fill in the det
 The member will also be able to view and edit this notice from their own commitments page within their Profile section.   
 By default all notices are linked to the correct author.
 
+[<< ***Back to contents***](#table-of-contents)
 
 ### Notice Details page
 
@@ -230,6 +297,7 @@ The 2nd container contains a comments section enabling communication of querys b
 
 ![Details](https://i.ibb.co/nBS0gww/image.png "Notice Details example")  
 
+[<< ***Back to contents***](#table-of-contents)
 
 ### Profile
 
@@ -242,11 +310,14 @@ To the right of the profile information is the members current Membership status
 
 ![Profile](https://i.ibb.co/Pgr5qrP/image.png "Example profile page")
 
+[<< ***Back to contents***](#table-of-contents)
 
 ### My Commitments
 
 Reachable from the profile page. The My Commitments page holds a copy of all the notices the current member has committed to. Each notice is displayed with full details.
 An option to remove commitment to a notice is at the bottom of each notice.
+
+[<< ***Back to contents***](#table-of-contents)
 
 ### My Notices
 
@@ -263,20 +334,33 @@ to keep and edit the message as a new notice.
 
 ![MyNotices](https://i.ibb.co/CMyLmcC/image.png "Example My Notices page")
 
+[<< ***Back to contents***](#table-of-contents)
 
 ### Upgrade 
 
 The upgrade page is reachable from the main nav bar, or from the discover premium button inside the profile page.   
 As the name suggests this page allows the user to view the benefits of upgrading to Premium, and gives them an option to select Premium.
 
+[<< ***Back to contents***](#table-of-contents)
+
 #### Selecting Premium
 
 Selecting Premium from the Upgrade page brings the user to the payment screen where they can enter their card details to 
 subscribe to the monthly payment and become a premium member. After payment the user will be returned to the profile screen showing their new time account and balance.
 
-
 ![Upgrade](https://i.ibb.co/DbNQm09/image.png "Example of an upgraded membership success")
 
+[<< ***Back to contents***](#table-of-contents)
+
+## Features for future consideration
+
+*   Social media involvement - signing in using social media links. 
+*   Implement ajax in the notice chat - this will make it a nice experience.
+*   Introduce a more global chat option where all members can chat.
+*   Implement more incentives to gain Time - Introduce a notice board for charity events. Organisers of these events get a Time bodus.
+*   Make the time payments into half and quarter hour denominations.
+
+[<< ***Back to contents***](#table-of-contents)
 
 # Deployment
 
@@ -398,6 +482,8 @@ In `The Heroku`:
 
 ehand is now deployed to Heroku
 
+[<< ***Back to contents***](#table-of-contents)
+
 ## Local Deployment
 
 **Before starting, some prerequisites:**
@@ -460,7 +546,9 @@ python3 manage.py createsuperuser
 
 You should now have a local copy of eHand.
 
+[<< ***Back to contents***](#table-of-contents)
 
+---    
 # Tech
 
 *   Django
@@ -472,17 +560,35 @@ You should now have a local copy of eHand.
 *   Google Fonts
 *   Favicons
 
+[<< ***Back to contents***](#table-of-contents)
 
- and the home page information section has a background with a varied degree of opacity to 
-remove the dullness that i felt a solid grey background was giving. This keeps the users attention on the information,
-while also providing a nice clouded experience of the background as they scroll.
+---
+# Credits
+
+## Content and code
+[Django Documentation](https://docs.djangoproject.com/en/3.1/) - for clear easy to understand content.
+[Stripe payments documentation](https://stripe.com/docs/payments?payments=popular) - Great content, took a few times, but we got there.
+[Chris Z](https://github.com/ckz8780) - My guide into the world of Django. Fantastic lessons, and he is also a perpetual source of guidance and help on Slck.
+[Kevin Powell](https://www.youtube.com/channel/UCJZv4d5rbIKd4QHMPkcABCw) - for his lesson on Fade in elements.
+
+[<< ***Back to contents***](#table-of-contents)
+
+## Media
+
+*   [Paint dot net](https://www.getpaint.net/features.html) - Used for creating eHand Logo.
+*   [Font Awesome](https://fontawesome.com/) - Used quite a lot in this project, very happy with the outcome.
+*   [Favicons](https://favicon.io/) - Solid site icon.
+
+[<< ***Back to contents***](#table-of-contents)
+
+# Acknowledgments
 
 
+[<< ***Back to contents***](#table-of-contents)
 
-### Free Members:
-Can login to eHand and view posts and offer their help and give it. But they do not have a Time account where they can accept 
-Time as payment. They also cannot create posts.
 
-### Premium Members:
-Must sign up to the membership deal, which is €5 per month. This money goes to a charity organization and the user is then given 2 Hours of Time in their Time account.
-They are able to view and create posts, and offer help to other members posts. They are also able to make and receive Time payments for work done.
+# Disclaimer
+
+The content of this Website is for educational purposes only. Users enter data at their own risk.
+
+[<< ***Back to contents***](#table-of-contents)
