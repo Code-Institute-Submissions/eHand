@@ -22,13 +22,17 @@ from comments.forms import CommentForm
 
 
 def accept_notice(request, pk):
-    """ view to handle a user clicking to commit to a Notice
-    Sets the commit field to logged in user -
-    We then use a search to pull the notice into the users profile  """
+    """
+    View to handle a user clicking to commit to a Notice:
+    \n * Sets the commit field to be equal to logged in user.
+    \n * We then return to the users commitments in their profile.
+    """
+
     notice = get_object_or_404(
         Notice, id=request.POST.get('notice_id'))
     notice.commit = request.user
     notice.save()
+    # variables for benefit of message
     author = str(notice.author).capitalize()
     acceptee = str(notice.commit).capitalize()
     messages.success(request, f"Thank you {acceptee}. You have accepted to provide \
@@ -38,13 +42,18 @@ def accept_notice(request, pk):
 
 
 def cancel_notice(request, pk):
-    """ View to handle cancelling of a commitment to a Notice """
+    """
+    * Handles cancelling of a commitment to a Notice.
+    \n * Returns user commitments template
+    """
+
     notice = get_object_or_404(
         Notice, id=request.POST.get('notice_id'))
     acceptee = str(notice.commit).capitalize()
     admin = User.objects.get(username='admin')
     notice.commit = admin
     notice.save()
+
     author = str(notice.author).capitalize()
     messages.success(request, f"{acceptee}, you have successfully cancelled your \
         commitment to {author}'s {notice.title} Notice' ")
@@ -53,8 +62,10 @@ def cancel_notice(request, pk):
 
 
 def time_transfer(request, notice):
-    """ Method to handle the transfer of
-        Time from one acc to the other
+    """
+    Handles the transfer of
+    Time from one acc to the other.
+    \n * Returns user to profile(with message) in case of an error
     """
     admin = User.objects.get(username='admin')
 
@@ -91,7 +102,7 @@ def time_transfer(request, notice):
         notice.commit = admin
         notice.save()
     else:
-        # Some error has  occured
+        # Some error has occured
         messages.error(request, "Apologies but we are unable to complete \
             this transaction at present. Please check required amounts \
                 and your own Time Acc blance and try again later.")
@@ -100,6 +111,7 @@ def time_transfer(request, notice):
 
 def complete_notice(request, pk):
     """
+    Handles the completion of a Notice:
     \n* Checks if user is notice author
     \n* Calls time_transfer to handle payment
     \n* Remove Acceptee the acceptee in notice.commit
@@ -148,7 +160,9 @@ def complete_notice(request, pk):
 
 
 class NoticeListView(ListView):
-    """ Returns as a view the notice template """
+    """
+    Returns as a view the notice template
+    """
     model = Notice
     ordering = ['-date_posted']
     paginate_by = 2
@@ -170,7 +184,9 @@ class NoticeListView(ListView):
 
 
 class NoticeDetailView(LoginRequiredMixin, DetailView):
-    """ Returns as a view the notice details template """
+    """
+    Returns as a view the notice details template
+    """
 
     model = Notice
 
@@ -183,7 +199,9 @@ class NoticeDetailView(LoginRequiredMixin, DetailView):
 
 
 class CreateComment(CreateView):
-    """ Handles actually creating a comment """
+    """
+    Handles creating a comment
+    """
     model = Comment
     form_class = CommentForm
 
@@ -201,12 +219,16 @@ class CreateComment(CreateView):
 
 
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-    """ Returns as a view the create a notice template """
+    """
+    Returns as a view the create a notice template
+    """
     model = Notice
     form_class = CreateNoticeForm
 
     def form_valid(self, form):
-        """ overrides form_valid to set the author before validating form"""
+        """
+        overrides form_valid to set the author before validating form
+        """
 
         form.instance.author = self.request.user
         return super().form_valid(form)
@@ -228,7 +250,10 @@ class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 
 class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    """ Returns as a view the create a notice template """
+    """
+    Returns as a view the create a notice template
+    """
+
     model = Notice
     fields = ['title', 'short_description', 'long_description', 'duration',
               'event_date_time', 'event_location_postcode',
@@ -254,14 +279,17 @@ class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """ Handles deletion of a Notice """
+    """
+    Handles deletion of a Notice
+    """
     model = Notice
     success_url = '/profile/member_notices'
 
     def test_func(self):
-        """ test function - ran by UserPassesTestMixin to check condition
-            condition check: Is user attempting to Delete a notice equal
-            to the author of the notice
+        """ 
+        test function - ran by UserPassesTestMixin to check condition
+        condition check: Is user attempting to Delete a notice equal
+        to the author of the notice
         """
         notice = self.get_object()
         if self.request.user == notice.author:

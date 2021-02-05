@@ -437,41 +437,45 @@ Deployment
 [Back to Index](#index)
 
 ### Notices Models testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST:   (Notice Model)
+    * Does the model store and provide the expected information
 * :clipboard: RESULT: 
-    * 
+    * Notice models displayed all correct information when viewed in the admin or shell and 
+    also outputted the correct information in the views
 
 * :hammer: TEST:    
-    * 
+    * Check IDE for any linting errors
 * :clipboard: RESULT: 
-    * 
+    * No errors found
 
 [Back to Index](#index)
 
 ### Notices Urls testing
 * :hammer: TEST:    
-    * 
+    * Did urls.py provide correct paths for all urls.
 * :clipboard: RESULT: 
-    * 
+    * All notice urls arrived at correct views
 
 * :hammer: TEST:    
-    * 
+    * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
 * :clipboard: RESULT: 
-    * 
+    * No code errors or linting issues found
 
 [Back to Index](#index)
 
 ### Notices Views testing
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
 
-* :hammer: TEST:    
-    * 
+Used several Django Generic class views for this app, with some mixins associated with tests and login checks
+
+* :hammer: TEST:   (notice.views) 
+    * Did Views return correct templates and data when requested
 * :clipboard: RESULT: 
-    * 
+    * All views worked as expected
+
+* :hammer: TEST:    (notice.views)
+    * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
+* :clipboard: RESULT: 
+    * ENo Errors or warnings returned or highlighted
 
 [Back to Index](#index)
 

@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from operator import itemgetter
 
-
+# Time options - used when selecting a time duration
+# for the notice and also is the amount of payment
 TIME_OPTIONS = {
     ('0hrs', 'Not Specified'),
     ('1hrs', '1 Hour'),
@@ -43,12 +44,3 @@ class Notice(models.Model):
 
     def get_absolute_url(self):
         return reverse('notices:notice-detail', kwargs={'pk': self.pk})
-
-
-class Commitments(models.Model):
-    title = models.CharField(max_length=100)
-    short_description = models.CharField(max_length=100)
-    long_description = models.TextField()
-
-    def __str__(self):
-        return self.title
