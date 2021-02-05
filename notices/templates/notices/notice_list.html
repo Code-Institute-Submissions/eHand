@@ -1,34 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'notices/css/notices.css' %}">
 {% endblock %}
-
 {% block extra_title %}
     - Notice Board
 {% endblock %}
-
 {% block page_header %}
     <!-- Non premium members not allowed to create a Notice -->
     {% if user.is_authenticated %}
         {% if membership == 'premium' %}
             <div class="btn-toolbar justify-content-center mb-5" role="toolbar" aria-label="Toolbar">
                 <div class="btn-group" role="group" aria-label="Notice tools">
-                    <a href="{% url 'notices:notice-create' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
+                    <a href="{% url 'notices:notice-create' %}" class="btn btn-light toolbar-item"><i class="fas fa-plus pr-3"></i>Create Notice</a>
                 </div>
             </div>
         {% endif %}
-    {% endif %}
+    {% endif %}                     
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h2 class="text-shadow">Notices</h2>
             </div>
         </div>
-    </div>
+    </div>                                                                                                                                              
 {% endblock %}
-
 {% block content %}
     <div class="container col-sm-12 col-md-10 offset-md-1 notice-container fade-in">
         <div class="row">
@@ -49,31 +45,30 @@
                                 <p class="card-text bg-info border rounded p-2 shadow text-white"><em>Already agreed to by: {{ object.commit|title }}</em></p>
                             {% endif %}
                         {% else %}
-                                <p class="card-text bg-success border rounded p-2 shadow text-white"><em>Nobody has offered help yet - Be the first Click Details below!</em></p>
+                            <p class="card-text bg-success border rounded p-2 shadow text-white"><em>Nobody has offered help yet - Be the first Click Details below!</em></p>
                         {% endif %}
-                            <h6 class="border rounded bg-light p-2 shadow-sm">Duration : {{ object.duration }}</h6>
-                            <h6 class="border rounded bg-light p-2 shadow-sm">When : {{ object.event_date_time }}</h6>
-
-                            <!-- What Details button should i Display? -->
-                                <!-- Case - where notice has been committed by a user  -->
-                                {% if object.commit.id != 1 %}
-                                    <!-- Case - where committer is current user - allow access -->
-                                    {% if object.commit|lower == user.username|lower  %}
-                                        <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
-                                    <!-- Case - where logged in user is the author - allow access -->
-                                    {% elif object.author|lower == user.username|lower %}
-                                        <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
-                                    <!-- Case - user is not the committer - no access -->
-                                    {% else %}
-                                        <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
-                                    {% endif %}
-                                <!-- Case - else of main if - case where committer id == 1 which means nobody has yet committed to this notice - allow access to all logged in users -->
-                                {% else %}
-                                    <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
-                                {% endif %}
-                            </div>
-                        </div>
+                        <h6 class="border rounded bg-light p-2 shadow-sm">Duration : {{ object.duration }}</h6>
+                        <h6 class="border rounded bg-light p-2 shadow-sm">When : {{ object.event_date_time }}</h6>
+                        <!-- What Details button should be Displayed? -->
+                        <!-- Case - where notice has been committed by a user  -->
+                        {% if object.commit.id != 1 %}
+                            <!-- Case - where committer is current user - allow access -->
+                            {% if object.commit|lower == user.username|lower  %}
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                            <!-- Case - where logged in user is the author - allow access -->
+                            {% elif object.author|lower == user.username|lower %}
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                            <!-- Case - user is not the committer - no access -->
+                            {% else %}
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
+                            {% endif %}
+                        <!-- Case - else of main if - case where committer id == 1 which means nobody has yet committed to this notice - allow access to all logged in users -->
+                        {% else %}
+                            <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
+                        {% endif %}
                     </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
         <!-- Thanks to https://samulinatri.com/blog/django-pagination-tutorial/ for help in getting this done -->
@@ -83,29 +78,22 @@
                 <a href="?page=1" class="btn btn-outline-dark">First</a>
                 <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-dark">Previous</a>
             {% endif %}
-
             <!-- Deal with arranging some quick link buttons for nearby pages -->
             {% for index in page_obj.paginator.page_range %}
                 <!-- check if we are on current page - display current page as a link highlighted -->
                 {% if page_obj.number == index %}
                     <a href="?page={{ index }}" class="btn btn-dark">{{ index }}</a>
-
                 <!-- Now we want to display a couple of the nearby pages as direct links -->
                 <!-- So if the index in the loop is within 2 pages then include a link to that page -->
                 {% elif index < page_obj.number|add:'2' and index > page_obj.number|add:'-2' %}
                     <a href="?page={{ index }}" class="btn btn-outline-dark">{{ index }}</a>
                 {% endif %}
             {% endfor %}
-
             <!-- Deal with pnext pages -->
             {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-dark">Next</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-dark">Next</a>
                 <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark">Last</a>
             {% endif %}
-
-
         {% endif %}
     </div>
-    
-
 {% endblock %}

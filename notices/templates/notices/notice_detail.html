@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'notices/css/notices.css' %}">
 {% endblock %}
-
 {% block extra_title %}
     - Notice Details
 {% endblock %}
-
 {% block page_header %}
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
@@ -18,7 +15,6 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
     <div class="container col-sm-12 fade-in">
         <div class="row">
@@ -36,7 +32,8 @@
                                     <ul>
                                         <li>You can view this notice in your profile under <em>"My Commitments".</em></li>
                                         <li>Once committed to a Notice you are obliged to carry out the help you have committed
-                                         to on the date and time agreed with the author</li>
+                                            to on the date and time agreed with the author
+                                        </li>
                                         <li>If you wish to no longer commit to this message you can remove your commitment by going to
                                             <em>"My Commitments"</em> in your profile section
                                         </li>
@@ -52,14 +49,14 @@
                         <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}</h6>
                         <div class="container col-12 mt-5 mb-2">
                             <div class="row justify-content-center justify-content-md-around">
-                                <a href="{% url 'notices:notice-list' %}" type="button" class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
+                                <a href="{% url 'notices:notice-list' %}" class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
                                 <!-- the commit to work button -->
                                 {% if user.is_authenticated and user != object.author %}
                                     {% if user.username|lower != object.commit|lower %}
-                                    <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-5 col-lg-4 p-0">
-                                        {% csrf_token %}
-                                        <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1" value="{{ object.id }}" name="notice_id">Commit to help</button>
-                                    </form>
+                                        <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-5 col-lg-4 p-0">
+                                            {% csrf_token %}
+                                            <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1" value="{{ object.id }}" name="notice_id">Commit to help</button>
+                                        </form>
                                     {% endif %}
                                 {% endif %}
                             </div>
@@ -73,14 +70,14 @@
                 <div class="card shadow">
                     <!-- <div class="card-header text-center bg-gradient-success text-white">
                         <span>{{ object.title }} Comments ...</span>
-                    </div> -->
+                        </div> -->
                     <h5 class="card-title border rounded text-white bg-info p-2 shadow m-3">{{ object.title }} Comments ...</h5>
                     <!-- Comments Body -->
                     <div class="card-body comment-container">
                         <ul class="comment">
                             {% if not notice.comments.all %}
-                                <p>No comments yet</p>
-                                {% else %}
+                                <li>No comments yet</li>
+                            {% else %}
                                 {% for comment in notice.comments.all %}
                                     <!-- what current user said -->
                                     {% if comment.user.username|lower == user|lower %}
@@ -89,7 +86,7 @@
                                                 <div class="header ">
                                                     <strong class="primary-font">You said:</strong>
                                                     <small>
-                                                        {{ comment.timestamp|timesince }} ago
+                                                    {{ comment.timestamp|timesince }} ago
                                                     </small>
                                                 </div>
                                                 <p>
@@ -97,14 +94,14 @@
                                                 </p>
                                             </div>
                                         </li>
-                                        <!-- What the Author said -->
+                                    <!-- What the Author said -->
                                     {% elif comment.user.username|lower == object.author|lower %}
                                         <li>
                                             <div class="author-comment">
                                                 <div class="header ">
                                                     <strong class="primary-font">{{ comment.user.username|title }} - (AUTHOR) said:</strong>
                                                     <small>
-                                                        {{ comment.timestamp|timesince }} ago
+                                                    {{ comment.timestamp|timesince }} ago
                                                     </small>
                                                 </div>
                                                 <p>
@@ -118,7 +115,7 @@
                                                 <div class="header">
                                                     <strong class="primary-font">{{ comment.user.username|title }} said:</strong>
                                                     <small>
-                                                        {{ comment.timestamp|timesince }} ago
+                                                    {{ comment.timestamp|timesince }} ago
                                                     </small>
                                                 </div>
                                                 <p>
@@ -131,7 +128,6 @@
                             {% endif %}
                         </ul>
                     </div>
-
                     <div class="card-footer">
                         <form method="POST" action="{% url 'notices:notice-comment' %}">
                             {% csrf_token %}
@@ -140,8 +136,8 @@
                                 <!-- pass in the pk of the current notice to the comment form handler -->
                                 <input type="hidden" name="notice" value="{{ object.pk }}">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-success ml-3">
-                                        Send</button>
+                                <button class="btn btn-success ml-3">
+                                Send</button>
                                 </span>
                             </div>
                         </form>

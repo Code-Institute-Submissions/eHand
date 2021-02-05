@@ -335,36 +335,99 @@ Deployment
 ## Notices
 
 ### Notices visual testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST:    (Notices)
+    * Expected notices page to display each notice in a paginated view, stacked on mobile device and side by side on descktop
 * :clipboard: RESULT: 
-    * 
+    * Notice page rendered as expected on all screen sizes.
 
-* :hammer: TEST:    
-    * 
+* :hammer: TEST:  (Notices)  
+    * Expected each notice to display the details entered and to display the status of the notice - ie: if anybody had committed to the 
+    notice yet
 * :clipboard: RESULT: 
-    * 
+    * The notice displayed all the correct details and the current status
+
+* :hammer: TEST:  (Notice Details)  
+    * Expected the Notice Details to display full information for the post
+    * Expected the Notice Details to display additional directions and information for the post, when relevant
+* :clipboard: RESULT: 
+    * The correct details were displayed for each notice details, depending on the circumstances.
+
+* :hammer: TEST:    (Notice Details - comments)  
+    * Expect comments to display "no comments yet" on a new notice.
+    * Expect Comments to display current users comments in blue.
+    * Expect Comments to display authors comments in black.
+    * Expect Comments to display other members comments in yellow.
+    * Expected comments to appear stacked on either side of the comment window.
+* :clipboard: RESULT: 
+    * Comments all displayed as expected.   
+    * ***Possible upgrade for next version - include ajax to improve UX and stop page reload.***
 
 [Back to Index](#index)
 
 ### Notices Operation testing
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
 
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (Notices)    
+    * Expected notice Details button to take me to the details of the correct notice
 * :clipboard: RESULT: 
-    * 
+    * Clicking details always took me to the correct notice details
+
+* :hammer: TEST: (Notices)  
+    * Expected each notice to not allow un-authenticated users to click on the details
+* :clipboard: RESULT: 
+    * Un-authenticated users are unable to click details of a notice, instead they are diverted to the sign in page.
+
+* :hammer: TEST:   (Notice Details)   
+    * Expected notice details to allow me to commit to a notice if i am not the author
+* :clipboard: RESULT: 
+    * The commit button allowed me to commit to any notice that i was not the author of.
+    * If the notice has been already committed to, and current user is neither the member who committed of the author,
+    Then it is not possible to view the details.
+    * If i am the member who committed, the option to commit is no longer there, and some extra information regarding how to manage the commitment is displayed
+
+* :hammer: TEST:   (Notice Details)   
+    * Expected notice details to allow me to enter a comment to be read by anyone viewing the details
+* :clipboard: RESULT: 
+    * Comment worked as expected and displayed for the correct notice only.
+
+* :hammer: TEST: (Notices - create/update notice)   
+    * Expected to click create notice and be taken to the create notice form
+* :clipboard: RESULT: 
+    * Create notice will take any premium member to the create notice form, 
+    * A check is made for users membership and the button is removed and the view restricted if current user is on a free membership
+
+* :hammer: TEST:  (Notices - create/update notice)     
+    * Expected to be able to enter all relevent details of my notice into the form and click submit.
+    * Expect to be redirected to the notice details after clicking submit
+* :clipboard: RESULT: 
+    * Notice create/update worked as expected - redirecting to the same notice deta after clicking submit.
 
 [Back to Index](#index)
 
 ### Notices Templates testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (notice_list.html)
+    * Tested the Html Markup for notice_list.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
 * :clipboard: RESULT: 
-    * 
+    * 0 errors found.   
+![notice_list.html](https://i.ibb.co/vZhv3CL/image.png "notice_list.html validation result")
+
+* :hammer: TEST: (notice_detail.html)
+    * Tested the Html Markup for notice_detail.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found.   
+![notice_detail.html](https://i.ibb.co/rQ4f9by/image.png "notice_detail.html validation result")
+
+* :hammer: TEST: (notice_form.html)
+    * Tested the Html Markup for notice_form.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 1 warning found - reccomended H2-H6 element after page block section
+    * 0 errors found
+![notice_form.html](https://i.ibb.co/NpPsrZB/image.png "notice_form.html validation result")
+
+* :hammer: TEST: (notice_confirm_delete.html)
+    * Tested the Html Markup for notice_confirm_delete.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found.   
+![notice_confirm_delete.html](https://i.ibb.co/10K8yNp/image.png "notice_confirm_delete.html validation result")
 
 * :hammer: TEST:    
     * Can user manually enter a URL such as delete to access forbidden functionality
