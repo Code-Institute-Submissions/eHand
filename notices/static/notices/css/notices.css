@@ -1,92 +1,83 @@
 /* Over-ride base.css */
-#page-heading {
+ #page-heading {
      margin-top: 100px;
 }
-#page-content {
-    margin-top: 10px;
+ #page-content {
+     margin-top: 10px;
 }
-.toolbar-item {
-    border: 0.2px #c2fa00 solid;
-    background-color: #f8f8ff;
-    transition: 0.5s;
-    color: #00000080;
+ .toolbar-item {
+     border: 0.2px #c2fa00 solid;
+     background-color: #f8f8ff;
+     -webkit-transition: 0.5s;
+     -o-transition: 0.5s;
+     transition: 0.5s;
+     color: #00000080;
 }
-
-.toolbar-item:focus,
-.toolbar-item:hover {
-    -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
-    border: 0.2px #c2fa00 solid;
-    box-shadow: 0 1px 6px 0 #c2fa00;
-    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
-    color: black;
+ .toolbar-item:focus, .toolbar-item:hover {
+     -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
+     border: 0.2px #c2fa00 solid;
+     box-shadow: 0 1px 6px 0 #c2fa00;
+     background-image: -o-linear-gradient(330deg, #d4fc79 0%, #96e6a1 100%);
+     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+     color: black;
 }
-
 /* Comments ------------------------------------------------- */
-.comment
-{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+ .comment {
+     margin: 0;
+     padding: 0;
+     list-style: none;
 }
-.comment li
-{
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
+ .comment li {
+     width: 100%;
+     margin-top: 10px;
+     margin-bottom: 20px;
+     padding-bottom: 5px;
 }
-.comment-container
-{
-    display: flex;
-    flex-direction: column-reverse;
-    overflow-y: scroll;
-    height: 350px;
+ .comment-container {
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex;
+     -webkit-box-orient: vertical;
+     -webkit-box-direction: reverse;
+     -ms-flex-direction: column-reverse;
+     flex-direction: column-reverse;
+     overflow-y: scroll;
+     height: 350px;
 }
-.comment-container .user-comment,
-.comment-container .own-comment,
-.comment-container .author-comment
-{
-    display: inline-block;
-    max-width: 80%;
-    background-color: #c4fa009a;
-    border-radius: 12.5px;
-    padding: 15px;
+ .comment-container .user-comment, .comment-container .own-comment, .comment-container .author-comment {
+     display: inline-block;
+     max-width: 80%;
+     background-color: #c4fa009a;
+     border-radius: 12.5px;
+     padding: 15px;
 }
-.comment-container .own-comment
-{
-    color: #f8f8ff;
-    background-color: #0169DA;
+ .comment-container .own-comment {
+     color: #f8f8ff;
+     background-color: #0169DA;
 }
-.comment-container .author-comment
-{
-    color: #c2fa00;
-    background-color: #000A;
+ .comment-container .author-comment {
+     color: #c2fa00;
+     background-color: #000A;
 }
 /*Scroll bar -------------------------------------- */
-::-webkit-scrollbar-track
-{
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+ ::-webkit-scrollbar-track {
+     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     background-color: #F5F5F5;
 }
-
-::-webkit-scrollbar
-{
-    width: 12px;
-    background-color: #F5F5F5;
+ ::-webkit-scrollbar {
+     width: 12px;
+     background-color: #F5F5F5;
 }
-
-::-webkit-scrollbar-thumb
-{
-    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
+ ::-webkit-scrollbar-thumb {
+     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+     background-color: #555;
 }
-
 /* Page logo - MEDIA QUERIES */
 /* tablet, landscape iPad, lo-res laptops ands desktops */
  @media (min-width:768px) {
-    #page-heading {
-     margin-top: 250px;
+     #page-heading {
+         margin-top: 250px;
     }
 }

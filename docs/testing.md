@@ -436,6 +436,16 @@ Deployment
 
 [Back to Index](#index)
 
+### Notices Css testing
+
+* :hammer: TEST: (notices.css)
+    * Tested the CSS in notices.css using [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+* :clipboard: RESULT: 
+    * 0 errors found
+![notices.css](https://i.ibb.co/BKCpDxQ/image.png "notices.css validation result")
+
+[Back to Index](#index)
+
 ### Notices Models testing
 * :hammer: TEST:   (Notice Model)
     * Does the model store and provide the expected information
