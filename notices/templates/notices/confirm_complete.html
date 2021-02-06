@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'notices/css/notices.css' %}">
+{% endblock %}
+{% block extra_title %}
+    - Confirm Completion of Notice
+{% endblock %}
+{% block page_header %}   
+    <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-shadow">Confirm Notice is complete</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-transparent">
+                    <div class="opaque"></div>
+                    <div class="card-body text-white">
+                        <h3>Are you sure you want to complete this notice?</h3>
+                        <p>Has {{ object.commit|title }} assisted you with this notice?</p>
+                        <p>{{ object.title}}: {{ object.short_description }}</p>
+                        <p></p>
+                        <a href="{% url 'notices:complete-notice' object.id %}" class="btn btn-outline-danger">Confirm</a>
+                        <a href="{% url 'member-notices' %}" class="btn btn-outline-light">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

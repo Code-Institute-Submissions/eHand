@@ -1,8 +1,12 @@
+
+![eHandTesting](https://i.ibb.co/ry2dNYk/image.png "eHand testing Logo")
+
 # eHand Testing
+
+#### [<< Return to Readme](https://github.com/Mr-Smyth/eHand/blob/master/README.md)
 
 ## Index
 
-Deployment
 
 **<details><summary>Home</summary>**
 
@@ -32,6 +36,7 @@ Deployment
 + [Notices visual testing](#notices-visual-testing)
 + [Notices Operation testing](#notices-operation-testing)
 + [Notices Templates testing](#notices-templates-testing)
++ [Notices Css testing](#notices-css-testing)
 + [Notices Models testing](#notices-models-testing)
 + [Notices Urls testing](#notices-urls-testing)
 + [Notices Views testing](#notices-views-testing)
@@ -517,10 +522,25 @@ Used several Django Generic class views for this app, with some mixins associate
 * :clipboard: RESULT: 
     * The Discover premium button only displays when the user is subscribed to free.
 
-* :hammer: TEST:    
-    * 
+* :hammer: TEST:    (Profile) 
+    * Expect the time account section to only display for premium members.
 * :clipboard: RESULT: 
-    * 
+    * Time account balance only displays for premium members.
+
+* :hammer: TEST:   (Profile) 
+    * Expect members information to display in the Profile information window.
+* :clipboard: RESULT: 
+    * Any entered profile information is always displayed within the Profile Information window.
+
+* :hammer: TEST:    (Profile) 
+    * Expect the members current own notices to display in My Notices section of the Profile.
+* :clipboard: RESULT: 
+    * All members current notices are displayed in the My notices section of the profile.
+
+* :hammer: TEST:    (Profile) 
+    * Expect the members current commitments to display in My commitments section of the Profile.
+* :clipboard: RESULT: 
+    * All members current commitments are displayed in the My commitments section of the profile.
 
 [Back to Index](#index)
 
@@ -535,13 +555,48 @@ Used several Django Generic class views for this app, with some mixins associate
 * :clipboard: RESULT: 
     * User gets redirected to the upgrade page when user clicks on the discover Premium button.
 
+* :hammer: TEST:    (Profile)
+    * Expect user to be able to click on edit profile in the Profile Information window and be directed to the edit profile page.
+* :clipboard: RESULT: 
+    * When clicked the edit profile button takes the member to a page where they can enter/edit their profile data.
+
+* :hammer: TEST:    (My Commitments)
+    * Expect to be able to remove my commitment to a notice in my commitments page of my profile.
+* :clipboard: RESULT: 
+    * Yes the member can remove their commitment to a message from the profile - my commitments page.
+
+* :hammer: TEST:   (My Notices) 
+    * Expect to be able to remove a notice by deleting it in the My Notices page
+* :clipboard: RESULT: 
+    * Yes a member can click the delete notice button in the my Notices page of their profile.
+    * This is only possible if nobdy has committed to the notice.
+    * Any committed to notice may not be deleted until complete
+
+* :hammer: TEST:   (My Notices) 
+    * Expect to be able to update a notice by in the My Notices page
+* :clipboard: RESULT: 
+    * Yes a member can click the Update notice button in the my Notices page of their profile.
+    * This is only possible if nobdy has committed to the notice.
+    * Any committed to notice may not be updated.
+
+* :hammer: TEST:   (Update profile form) 
+    * Expected that current information would be displayed inside the edit profile form
+* :clipboard: RESULT: 
+    * Current information is displayed inside the update user profile form.
+
+* :hammer: TEST:   (Update profile form) 
+    * Expected that clicking submit on the update user profile form will take and apply values from the form
+* :clipboard: RESULT: 
+    * Current information is updated upon form submit.
+
 [Back to Index](#index)
 
 ### Profiles Templates testing
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (profile.html)
+    * Tested the Html Markup for profile.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
 * :clipboard: RESULT: 
-    * 
+    * 0 errors found.   
+![profile.html](https://i.ibb.co/2kXnFd8/image.png "profile.html validation result")
 
 * :hammer: TEST:    
     * 

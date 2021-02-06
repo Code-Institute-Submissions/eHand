@@ -1,4 +1,4 @@
-from django.shortcuts import reverse, redirect, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Notice
@@ -107,6 +107,20 @@ def time_transfer(request, notice):
             this transaction at present. Please check required amounts \
                 and your own Time Acc blance and try again later.")
         return redirect('profile')
+
+
+def confirm_complete(request, pk):
+    """
+    Handles checking if user is sure they want to complete the notice
+    """
+    notice = get_object_or_404(
+        Notice, id=pk)
+
+    context = {
+        'object': notice
+    }
+
+    return render(request, 'notices/confirm_complete.html', context)
 
 
 def complete_notice(request, pk):
@@ -286,7 +300,7 @@ class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = '/profile/member_notices'
 
     def test_func(self):
-        """ 
+        """
         test function - ran by UserPassesTestMixin to check condition
         condition check: Is user attempting to Delete a notice equal
         to the author of the notice

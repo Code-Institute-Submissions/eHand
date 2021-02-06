@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
-
 {% block extra_title %}
     - Profile - My Notices
 {% endblock %}
-
 {% block page_header %}
     <div class="btn-toolbar justify-content-center mb-5 container-fluid" role="toolbar" aria-label="Toolbar">
         <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 d-none d-sm-inline"></i>My Profile</a>
-            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Commitments</a>
-            <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Notices</a>
+            <a href="{% url 'profile' %}" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 d-none d-sm-inline"></i>My Profile</a>
+            <a href="{% url 'member-commitments' %}" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Commitments</a>
+            <a href="{% url 'member-notices' %}" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Notices</a>
         </div>
     </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
@@ -33,7 +30,7 @@
             <div class="col-sm-12">
                 <div class="card h-200 shadow-sm mb-3">
                     <div class="card-body">
-                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong> on: <small><em>  Requested by {{ object.author }}</em></small></h5>
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong>: <small><em>  Requested by {{ object.author }}</em></small></h5>
                         {% if object.commit.id != 1 %}
                             <div class="card-title border rounded text-white bg-warning p-2 shado5">
                                 <h5 class="text-center"><strong><em>{{ object.commit|title}} has committed to this Notice</em></strong></h5>
@@ -57,52 +54,26 @@
                         <div class="row justify-content-center justify-content-md-around">
                             {% if user.is_authenticated and user.username|lower == object.author|lower %}
                                 {% if object.commit|lower == 'admin' %}
-                                    <a href="{% url 'notices:notice-update' object.id %}" type="button"
-                                        class="col-10 col-md-3 btn btn-outline-secondary mt-1 mb-1 shadow"><i class="fas fa-pencil-alt pr-3"></i>Update
-                                        Notice</a>
+                                    <a href="{% url 'notices:notice-update' object.id %}"
+                                        class="col-10 col-md-3 btn btn-outline-secondary mt-1 mb-1 shadow">
+                                        <i class="fas fa-pencil-alt pr-3"></i>Update Notice
+                                    </a>
                                 {% endif %}
                                 {% if user.is_authenticated and object.commit|lower != 'admin' %}
-                                    <button type="button" class="col-10 col-md-3 btn btn-outline-success mt-1 mb-1 shadow" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="far fa-check-circle pr-3"></i>Complete Notice
-                                    </button>
+                                    <a href="{% url 'notices:confirm-complete' object.id %}"
+                                        class="col-10 col-md-3 btn btn-outline-success mt-1 mb-1 shadow">
+                                        <i class="far fa-check-circle pr-3"></i>Finalise Notice with {{ object.commit|title }}
+                                    </a>
                                 {% endif %}
                                 {% if object.commit|lower == 'admin' %}
-                                    <a href="{% url 'notices:notice-delete' object.id %}" type="button"
-                                        class="col-10 col-md-3 btn btn-outline-danger mt-1 mb-1 shadow"><i class="far fa-times-circle pr-3"></i>Delete
-                                        Notice</a>
+                                    <a href="{% url 'notices:notice-delete' object.id %}"
+                                        class="col-10 col-md-3 btn btn-outline-danger mt-1 mb-1 shadow">
+                                        <i class="far fa-times-circle pr-3"></i>Delete Notice
+                                    </a>
                                 {% endif %}
                             {% endif %}
                         </div>
                     </div>
-
-                    <!-- Confirm finalise Notice -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header  bg-warning">
-                                    <h5 class="modal-title" id="exampleModalLabel">This action will finalise your Notice.</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p><small>If {{ object.commit|title}} is a Premium member, then a time payment of {{ object.duration }}
-                                        will be automatically transferred to them, and they will be removed from your notice</small></p>
-                                    <p><small>You will then have the choice to delete the notice, or keep it to modify for a future simlar task.</small></p>
-                                    <p class="text-warning text-center">Are you sure you wish to proceed?</p>
-                                </div>
-                                <div class="container bg-light col-12">
-                                    <div class="row justify-content-around mb-4">
-                                        <a href="{% url 'notices:complete-notice' object.id %}" type="button"
-                                            class="col-8 col-md-6 btn btn-outline-success my-3 my-md-0 shadow"><i class="far fa-check-circle pr-3"></i>Finalise Notice with {{ object.commit|title }}</a>
-                                        <button type="button" class="col-8 col-md-3 btn btn-outline-danger my-3 my-md-0 shadow" data-dismiss="modal"><i class="far fa-times-circle pr-3"></i>Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
             {% endfor %}
@@ -133,7 +104,6 @@
             <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-dark">Next</a>
                 <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark">Last</a>
             {% endif %}
-
 
         {% endif %}
     </div>

@@ -60,6 +60,7 @@ eHand will be submitted as my MS4 and final project in my Full Stack Software De
     + [In Django - setup new database:](#in-django---setup-new-database-)
   * [Local Deployment](#local-deployment)
     + [Steps to Deploy](#steps-to-deploy)
+- [Testing](https://github.com/Mr-Smyth/eHand/blob/master/docs/testing.md)
 - [Tech](#tech)
 - [Credits](#credits)
   * [Content and code](#content-and-code)

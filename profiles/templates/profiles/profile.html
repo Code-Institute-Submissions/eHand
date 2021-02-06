@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
-
 {% block extra_title %}
     - Profile
 {% endblock %}
-
 {% block page_header %}  
     <div class="btn-toolbar justify-content-center container-fluid" role="toolbar" aria-label="Toolbar">
         <div class="btn-group" role="group" aria-label="Notice tools">
-            <a href="{% url 'profile' %}" type="button" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 d-none d-sm-inline"></i>My Profile</a>
-            <a href="{% url 'member-commitments' %}" type="button" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Commitments</a>
-            <a href="{% url 'member-notices' %}" type="button" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Notices</a>
+            <a href="{% url 'profile' %}" class="btn btn-light toolbar-item slide-in from-left"><i class="fas fa-user pr-3 d-none d-sm-inline"></i>My Profile</a>
+            <a href="{% url 'member-commitments' %}" class="btn btn-light toolbar-item"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Commitments</a>
+            <a href="{% url 'member-notices' %}" class="btn btn-light toolbar-item slide-in from-right"><i class="fas fa-file-contract pr-3 d-none d-sm-inline"></i>My Notices</a>
         </div>
     </div>
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
@@ -25,7 +22,6 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
     <div class="container col-sm-12 notice-container fade-in">
         <div class="row">
@@ -62,75 +58,109 @@
                         </a>
                         <div class="col-12 col-lg-10 offset-lg-1">
                             {% if profile.full_name %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Full Name:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.full_name|title }}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Full Name:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.full_name|title }}</h5></div>
+                                </div>
                             {% endif %}
                             {% if profile.phone_number %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Ph. Number:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.phone_number }}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Ph. Number:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.phone_number }}</h5></div>
+                                </div>
                             {% endif %}
                             {% if profile.street_address1 %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Address:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.street_address1|title }} {% if profile.street_address2 %}{{ profile.street_address2|title }}{% endif %}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Address:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.street_address1|title }} {% if profile.street_address2 %}{{ profile.street_address2|title }}{% endif %}</h5></div>
+                                </div>
                             {% endif %}
                             {% if profile.town_or_city %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Town/City:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.town_or_city|title }}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Town/City:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.town_or_city|title }}</h5></div>
+                                </div>
                             {% endif %}
                             {% if profile.county %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>County:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.county|title }}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>County:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.county|title }}</h5></div>
+                                </div>
                             {% endif %}
                             {% if profile.default_country.name %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Country:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.default_country.name|title }}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Country:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.default_country.name|title }}</h5></div>
+                                </div>
                             {% endif %}
                             {% if profile.postcode %}
-                            <div class="row justify-content-start profile-field mb-2">
-                                <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Post Code:</strong></h5></div>
-                                <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.postcode|title }}</h5></div>
-                            </div>
+                                <div class="row justify-content-start profile-field mb-2">
+                                    <div class="col-12 col-sm-4"><h5 class="profile-info"><strong>Post Code:</strong></h5></div>
+                                    <div class="col-12 col-sm-8"><h5 class="profile-info">{{ profile.postcode|title }}</h5></div>
+                                </div>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Subscriptiion section -->
             <div class="col-sm-12 col-md-3">
                 <div class="card mh-100 card text-white bg-dark mb-3 shadow">
                     <div class="card-header">My Subscription</div>
                     <div class="card-body">
                         <h4 class="border-bottom mb-4">Manage my subscription</h4>
-
                         <!-- Check current user package -->
                         {% if users_current_package != None %}
-                            <p>Your current membership is: <small class="text-success">{{ users_current_package.membership_type }}</small></p>
-
+                            <p>Your current membership is: <small
+                                class="text-success">{{ users_current_package.membership_type }}</small></p>
                             <!-- If user has a current subscription -->
                             {% if users_current_subscription.valid %}
                                 <p>Created on: <small class="text-success">{{ users_current_subscription.get_created_date }}</small></p>
-                                <p>Your next payment is due on: <small class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
-                                <p><a href="{% url 'cancel_sub' %}" class="btn btn-outline-danger">Cancel my subscription</a></p>
+                                <p>Your next payment is due on: <small
+                                        class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
+                                <!-- Activate cancel membership modal -->
+                                <button type="button" class="col-10 offset-1 btn btn-outline-danger mt-1 mb-1 shadow" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    <i class="far fa-check-circle pr-3"></i>Cancel my Subscription
+                                </button>
                             {% else %}
-                                <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}" class="btn btn-outline-success mt-4">Discover Premium</a></p>
+                                <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}"
+                                        class="btn btn-outline-success mt-4">Discover Premium</a></p>
                             {% endif %}
                         {% endif %}
+
+                        <!-- Confirm cancel subscription modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header  bg-warning">
+                                        <h5 class="modal-title" id="exampleModalLabel">This action will cancel your subscription to
+                                            Premium.</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-warning text-center">Are you sure you wish to proceed?</p>
+                                    </div>
+                                    <div class="container bg-light col-12">
+                                        <div class="row justify-content-around mb-4">
+                                            <a href="{% url 'cancel_sub' %}"
+                                                class="col-8 col-md-6 btn btn-outline-success my-3 my-md-0 shadow">
+                                                <i class="far fa-check-circle pr-3"></i>Yes</a>
+                                            <button type="button" class="col-8 col-md-3 btn btn-outline-danger my-3 my-md-0 shadow"
+                                                data-dismiss="modal"><i class="far fa-times-circle pr-3"></i>No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-
 {% endblock %}
