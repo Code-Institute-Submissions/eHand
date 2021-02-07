@@ -170,7 +170,9 @@ def upgradedtransactions(request, subscription_id):
         pass
 
     messages.success(request, f"You have been successfully upgraded to our \
-         {selected_package} membership")
+         {selected_package} membership. Once running costs have been removed,\
+              the full balance of your subscription payment will be donated \
+                  to charity.")
 
     return redirect('profile')
 

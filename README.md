@@ -142,8 +142,8 @@ The Goals as a business are:
 2.  As a Free member i want to be able to sign in to eHand and view Posts and offer help
 3.  As a premium member when i create my membership, i want to know my payment donates to charity
 4.  As a premium member when i create my membership, i want to be awarded the 2 free hours of time to spend on the site.
-5.  As a premium member i want to be able to create a posting/ or hand.
-6.  As a Premium member i want other members to be able to see my post/hand - and offer help.
+5.  As a premium member i want to be able to create a Notice looking for help.
+6.  As a Premium member i want other members to be able to see my Notice - and offer help.
 7.  As a premium member i want to be able to offer my help to others.
 8.  As a premium member i want to be able to transfer my time to another member who helped me.
 9.  As a premium member i want to be able to accept payment of time from a member i helped. 

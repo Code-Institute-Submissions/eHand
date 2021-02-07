@@ -60,10 +60,18 @@
 + [Comments visual testing](#comments-visual-testing)
 + [Comments Operation testing](#comments-operation-testing)
 + [Comments Templates testing](#comments-templates-testing)
++ [All Css for comments is in related notices.css](#notices-css-testing)
 + [Comments Models testing](#comments-models-testing)
-+ [Comments Urls testing](#comments-urls-testing)
-+ [Comments Views testing](#comments-views-testing)
 
+</details>
+
+**<details><summary>Base Code</summary>**
+
+- [Messages HTML testing](#messages-html-testing)
+- [Messages HTML testing](#messages-html-testing-1)
+- [Base Css testing](#base-css-testing)
+- [Allauth Css testing](#allauth-css-testing)
+    
 </details>
 
  **<details><summary>User Stories Testing</summary>**
@@ -86,6 +94,7 @@
 </details>
 
 # Apps Manual Continuous Testing
+
 
 ## Home
 
@@ -416,7 +425,7 @@
     * 0 errors found.   
 ![notice_list.html](https://i.ibb.co/vZhv3CL/image.png "notice_list.html validation result")
 
-* :hammer: TEST: (notice_detail.html)
+* :hammer: TEST: (notice_detail.html) also (Comments)
     * Tested the Html Markup for notice_detail.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
 * :clipboard: RESULT: 
     * 0 errors found.   
@@ -643,7 +652,73 @@ Used several Django Generic class views for this app, with some mixins associate
 
 [Back to Index](#index)
 
-### Profiles Urls testing
+---
+
+## Comments
+
+### Comments visual testing
+
+* :hammer: TEST:  (Comments - inside notice details)  
+    * Expected comments to display within each notice details page.
+* :clipboard: RESULT: 
+    * Yes comments displayed inside each notice details page
+
+* :hammer: TEST:  (Comments - inside notice details)  
+    * Expected comments to be specific to the particular notice
+* :clipboard: RESULT: 
+    * Comments were always specific to the notice.
+
+* :hammer: TEST:  (Comments - inside notice details)  
+    * Expected comments to appear in different colours.
+    * Lime green for another member.
+    * Blue for own comments.
+    * Black for authors comments.
+* :clipboard: RESULT: 
+    * Yes comments always displayed in the correct colour from current members perspective.
+
+* :hammer: TEST:  (Comments - inside notice details)  
+    * Expected comments to be removed when notice is deleted
+* :clipboard: RESULT: 
+    * Comments relating to a deleted notice are removed.
+
+* :hammer: TEST:  (Comments - inside notice details)  
+    * Expect most recent comment to be in view when page loads
+* :clipboard: RESULT: 
+    * Comments window always scrolls to the bottom comment on page load, 
+    thanks to the column-reverse in the comments window.
+
+[Back to Index](#index)
+
+### Comments Operation testing
+
+* :hammer: TEST:  (Comments - inside notice details)  
+    * Expect a comment to be posted when click send.
+* :clipboard: RESULT: 
+    * Yes comment submitted when send is clicked.
+
+[Back to Index](#index)
+
+### Comments Templates testing
+
+[Click here to view notices template testing](#notices-templates-testing)
+
+[Back to Index](#index)
+
+### Comments Models testing
+* :hammer: TEST:   (Comment Model)
+    * Does the model store and provide the expected information
+* :clipboard: RESULT: 
+    * The Comment model displayed all correct information when viewed in the admin or shell and 
+    also outputted the correct information in the views and templates
+
+* :hammer: TEST:    
+    * Check IDE for any linting errors
+* :clipboard: RESULT: 
+    * No errors found
+
+[Back to Index](#index)
+
+### Comments Urls testing
 * :hammer: TEST:    
     * Did urls.py provide correct paths for all urls.
 * :clipboard: RESULT: 
@@ -653,97 +728,6 @@ Used several Django Generic class views for this app, with some mixins associate
     * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
 * :clipboard: RESULT: 
     * No code errors or linting issues found
-
-[Back to Index](#index)
-
-### Profiles Views testing 
-
-Used several Django Generic class views for this app, with some mixins associated with tests and login checks
-
-* :hammer: TEST:   (profile.views) 
-    * Did Views return correct templates and data when requested
-* :clipboard: RESULT: 
-    * All views worked as expected
-
-* :hammer: TEST:    (profile.views)
-    * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
-* :clipboard: RESULT: 
-    * ENo Errors or warnings returned or highlighted
-
-[Back to Index](#index)
-
----
-
-## Comments
-
-### Comments visual testing
-
-* :hammer: TEST:  (Comments - inside notice details)  
-    * 
-* :clipboard: RESULT: 
-    * 
-
-* :hammer: TEST:  (Comments - inside notice details)  
-    * 
-* :clipboard: RESULT: 
-    * 
-
-* :hammer: TEST:  (Comments - inside notice details)  
-    * 
-* :clipboard: RESULT: 
-    * 
-
-[Back to Index](#index)
-
-### Comments Operation testing
-* :hammer: TEST: (Manage Subscriptions) 
-    * Expect The Cancel subscription button to remove the premium subscription and apply the free subscription when clicked.
-* :clipboard: RESULT: 
-    * The cancel subscription button behaves as expected and removes the premium and applies the free membership.
-
-* :hammer: TEST: (Subscriptions)   
-    * Expect the Discover Premium button to redirect user to the upgrade page.
-* :clipboard: RESULT: 
-    * User gets redirected to the upgrade page when user clicks on the discover Premium button.
-
-[Back to Index](#index)
-
-### Comments Templates testing
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
-
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
-
-[Back to Index](#index)
-
-### Comments Models testing
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
-
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
-
-[Back to Index](#index)
-
-### Comments Urls testing
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
-
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
 
 [Back to Index](#index)
 
@@ -760,73 +744,172 @@ Used several Django Generic class views for this app, with some mixins associate
 
 [Back to Index](#index)
 
+
+## Base Code
+
+### Base HTML testing
+
+The base.html file is reflected in each of the apps templates, for which the results are laid out in this document.
+ It is not possible to sensibly test the base.html file on its own.
+
+### Messages HTML testing
+* :hammer: TEST: 
+    * Tested the Html Markup for messages.htmel using [W3Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 4 errors hidden associated with django templating and not able to see modal from this code.
+![messages.html](https://i.ibb.co/dPp90j5/image.png "messages.html validation result")
+
+### Base Css testing
+
+* :hammer: TEST: (base.css)
+    * Tested the CSS in base.css using [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+* :clipboard: RESULT: 
+    * 0 errors found
+![base.css](https://i.ibb.co/vjnJbbT/image.png "base.css validation result")
+
+### Allauth Css testing
+
+* :hammer: TEST: (allauth.css)
+    * Tested the CSS in allauth.css using [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+* :clipboard: RESULT: 
+    * 0 errors found
+![allauth.css](https://i.ibb.co/wQXsK14/image.png "allauth.css validation result")
+
+[Back to Index](#index)
+
 ---
 
 ## User Stories Testing
 
 ### User story 1
 
-As a non member: I want to visit the sites homepage	and get a clear overview of what the site does and how i can sign up.
+**As a non member: I want to visit the sites homepage	and get a clear overview of what the site does and how i can sign up:**
+
++ The home page clearly outlines what the site does and why and how.
++ Clear navigation links and get started buttons guide the user to sign in or register.
+
+![User Story 1](https://i.ibb.co/xXW0679/image.png)
 
 [Back to Index](#index)
 ### User story 2
 
-As a Free member i want to be able to sign in to eHand and view Posts and offer help
+**As a Free member i want to be able to sign in to eHand and view Posts and offer help:**
+
+![User Story 2](https://i.ibb.co/f9pTVVm/image.png)
+
+and as Jimmy, i can click on this posts details, allowing Jimmy to help.
+
+![User Story 2b](https://i.ibb.co/CsbPx1X/image.png)
+
++ A Free member may sign in and view posts and offer help.
 
 [Back to Index](#index)
 ### User story 3
 
-As a premium member when i create my membership, i want to know my payment donates to charity
+**As a premium member when i create my membership, i want to know my payment donates to charity:**
+
++ The site clearly states that the profits go to various charities and community organisations.
++ A message confirming upgrade to premium also mentions the donation to charity.
+
+![User Story 3](https://i.ibb.co/ThHh3fz/image.png)
 
 [Back to Index](#index)
 ### User story 4
 
-As a premium member when i create my membership, i want to be awarded the 2 free hours of time to spend on the site.
+**As a premium member when i create my membership, i want to be awarded the 2 free hours of time to spend on the site:**
+
++ This user story has developed from awarding 2 hours, to awarding 10 currently. This may vary in future versions.
+
+I will reuse previous picture here, as it also shows in the background that Jimmy has been awarded 10t in his Time account.
+![User Story 4](https://i.ibb.co/ThHh3fz/image.png)
 
 [Back to Index](#index)
 ### User story 5
 
-As a premium member i want to be able to create a posting/ or hand.
+**As a premium member i want to be able to create a Notice looking for help:**
+
++ Yes a Premium member can create Notices looking for help from other members.
+
+![User Story 5](https://i.ibb.co/hyGHshf/image.png)
 
 [Back to Index](#index)
 ### User story 6
 
-As a Premium member i want other members to be able to see my post/hand - and offer help.
+**As a Premium member i want other members to be able to see my Notice - and offer help:**
+
++ All Members can see and offer help to any notice that has not been committed to yet.
++ Non authenticated visitors may also view the notices, but not interact in any way without sign in.
+
+![User Story 6](https://i.ibb.co/0MMxv3n/image.png)
 
 [Back to Index](#index)
 ### User story 7
 
-As a premium member i want to be able to offer my help to others.
+**As a premium member i want to be able to offer my help to others:**
+
++ Yes any member can offer to help another member by committing to help inside their notice.
+
+![User Story 6](https://i.ibb.co/pK2sQb9/image.png)
+
+![User Story 6b](https://i.ibb.co/GF88GX1/image.png)
 
 [Back to Index](#index)
 ### User story 8
 
-As a premium member i want to be able to transfer my time to another member who helped me.
+**As a premium member i want to be able to transfer my time to another member who helped me:**
+
++ When a notice has been completed the author of the notice must click - ***Finalise Notice*** in their
+My Notices section of their profile. If the author has sufficient Time Balance, this action will handle 
+the transfer of the amount of time payable laid out in the notice. If a notice is completed and the 
+member who committed is not a premium member then obviously NO payment of time will take place.
+
+![User Story 7](https://i.ibb.co/8BmnsG7/image.png)
 
 [Back to Index](#index)
 ### User story 9
 
-As a premium member i want to be able to accept payment of time from a member i helped. 
+**As a premium member i want to be able to accept payment of time from a member i helped:**
+
++ If a has helped another member with a notice, then the author will handle the transfer of the time
+by clicking on the ***Finalise Notice*** in their My Notices section of their profile.
+
+See image from user story 7 - it is the author who sends Time payments, acceptance is automatic.
 
 [Back to Index](#index)
 ### User story 10
 
-As a premium member i want to get a notification when i log in - if another member has offered help
+**As a premium member i want to get a notification when i log in - if another member has offered help:**
+
++ I have not been able to implement notifications in any practical way in this release.
+The transfers will happen and the users Time balances will be updated accordingly.
 
 [Back to Index](#index)
 ### User story 11
 
-As a member i want a way to communicate to a member who is offering help, or if i am offering it.
+**As a member i want a way to communicate to a member who is offering help, or if i am offering it:**
+
++ The comments window inside each notices details, is specific for that particular notice, and offers
+a method of communication between all members viewing the notice.
+
+![User Story 11](https://i.ibb.co/HnRNfSB/image.png)
 
 [Back to Index](#index)
 ### User story 12
 
-As a member i would like to see commitments i have made in my profile
+**As a member i would like to see commitments i have made in my profile:**
+
++ This is possible in the My Commitments section of each members profile.
+
+![User Story 12](https://i.ibb.co/92cj8hs/image.png)
 
 [Back to Index](#index)
 ### User story 13
 
-As a member i would like to see my notices in my profile.
+**As a member i would like to see my notices in my profile:**
+
++ This is possible in the My Notices section of each members profile.
+
+![User Story 13](https://i.ibb.co/HnRNfSB/image.png)
 
 [Back to Index](#index)
 
