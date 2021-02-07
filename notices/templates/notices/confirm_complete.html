@@ -22,12 +22,31 @@
                 <div class="card bg-transparent">
                     <div class="opaque"></div>
                     <div class="card-body text-white">
-                        <h3>Are you sure you want to complete this notice?</h3>
-                        <p>Has {{ object.commit|title }} assisted you with this notice?</p>
-                        <p>{{ object.title}}: {{ object.short_description }}</p>
-                        <p></p>
-                        <a href="{% url 'notices:complete-notice' object.id %}" class="btn btn-outline-danger">Confirm</a>
-                        <a href="{% url 'member-notices' %}" class="btn btn-outline-light">Cancel</a>
+                        {%  if notice_time_amt > author_time_balance %}
+                        <!-- Author has not sufficent funds for this transaction -->
+                            <h4 class="text-danger text-center p-3">You do not have enough funds in your Time Account to complete this transaction</h4>
+                            <p class="text-success text-center p-3">Earn some more Time(t) by helping others or in your community, then return to complete this notice - This notice Will remain until it is 
+                                settled, or until {{ object.commit|title }} has removed her commitment.</p>
+                            <a href="{% url 'member-notices' %}" class="btn btn-outline-light">Cancel</a>
+                        {% else %}
+                        <!-- Author has sufficient funds -->
+                            <h3>Are you sure you want to complete this notice?</h3>
+                            <p>Has {{ object.commit|title }} assisted you with this notice?</p>
+                            <p>{{ object.title}}: {{ object.short_description }}</p>
+                            {% if member_type == 'free' %}
+                                <p><small>{{ object.commit|title }} is currently a <strong>Free</strong> member. Completing this task will <strong>NOT</strong>
+                                    involve any transfer of funds to {{ object.commit|title }}, so be sure to thank them and return the 
+                                    favour when you can.
+                                </small></p>
+                            {% else %}
+                            <p><small>{{ object.commit|title }} is currently a <strong>Premium</strong> member. Completing this task <strong>Will</strong>
+                                    involve a transfer of {{ notice_time_amt }}t to {{ object.commit|title }}. also, be sure to thank them and return the 
+                                    favour when you can.
+                                </small></p>
+                            {% endif %}
+                            <a href="{% url 'notices:complete-notice' object.id %}" class="btn btn-outline-danger">Confirm</a>
+                            <a href="{% url 'member-notices' %}" class="btn btn-outline-light">Cancel</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
