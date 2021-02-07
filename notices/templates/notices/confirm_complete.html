@@ -31,7 +31,7 @@
                         {% else %}
                         <!-- Author has sufficient funds -->
                             <h3>Are you sure you want to complete this notice?</h3>
-                            <p>Has {{ object.commit|title }} assisted you with this notice?</p>
+                            <p class="card-title border rounded text-white bg-warning p-2 shado5">Has {{ object.commit|title }} assisted you with this notice?</p>
                             <p>{{ object.title}}: {{ object.short_description }}</p>
                             {% if member_type == 'free' %}
                                 <p><small>{{ object.commit|title }} is currently a <strong>Free</strong> member. Completing this task will <strong>NOT</strong>

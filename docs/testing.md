@@ -48,6 +48,7 @@
 + [Profiles visual testing](#profiles-visual-testing)
 + [Profiles Operation testing](#profiles-operation-testing)
 + [Profiles Templates testing](#profiles-templates-testing)
++ [Profiles Css testing](#profiles-css-testing)
 + [Profiles Models testing](#profiles-models-testing)
 + [Profiles Urls testing](#profiles-urls-testing)
 + [Profiles Views testing](#profiles-views-testing)
@@ -598,49 +599,76 @@ Used several Django Generic class views for this app, with some mixins associate
     * 0 errors found.   
 ![profile.html](https://i.ibb.co/2kXnFd8/image.png "profile.html validation result")
 
-* :hammer: TEST:    
-    * 
+* :hammer: TEST: (member_notices.html)
+    * Tested the Html Markup for member_notices.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
 * :clipboard: RESULT: 
-    * 
+    * 0 errors found.   
+![member_notices.html](https://i.ibb.co/hMp8P27/image.png "member_notices.html validation result")
+
+* :hammer: TEST: (member_commitments.html)
+    * Tested the Html Markup for member_commitments.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found.   
+![member_commitments.html](https://i.ibb.co/xGx2FM0/image.png "member_commitments.html validation result")
+
+* :hammer: TEST: (userprofile_form.html)
+    * Tested the Html Markup for userprofile_form.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found.   
+![userprofile_form.html](https://i.ibb.co/HTh9YwD/image.png "userprofile_form.html validation result")
 
 [Back to Index](#index)
 
-### Profiles Models testing
-* :hammer: TEST:    
-    * 
+### Profiles Css testing
+* :hammer: TEST: (profile.css)
+    * Tested the CSS in profile.css using [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 * :clipboard: RESULT: 
-    * 
+    * 0 errors found
+![profiles.css](https://i.ibb.co/0Jgpy5P/image.png "profile.css validation result")
+
+### Profiles Models testing
+* :hammer: TEST:   (UserProfile Model)
+    * Does the model store and provide the expected information
+* :clipboard: RESULT: 
+    * UserProfile models displayed all correct information when viewed in the admin or shell and 
+    also outputted the correct information in the views
 
 * :hammer: TEST:    
-    * 
+    * Check IDE for any linting errors
 * :clipboard: RESULT: 
-    * 
+    * No errors found
+    * Linter suggested not using Null = True, but i require these fields to be allowed to be empty or Null.
+    * A pylint error about objects having no objects member
+    - According to stackoverflow and several members on slack - this can be ignored.
 
 [Back to Index](#index)
 
 ### Profiles Urls testing
 * :hammer: TEST:    
-    * 
+    * Did urls.py provide correct paths for all urls.
 * :clipboard: RESULT: 
-    * 
+    * All notice urls arrived at correct views
 
 * :hammer: TEST:    
-    * 
+    * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
 * :clipboard: RESULT: 
-    * 
+    * No code errors or linting issues found
 
 [Back to Index](#index)
 
 ### Profiles Views testing 
-* :hammer: TEST:    
-    * 
-* :clipboard: RESULT: 
-    * 
 
-* :hammer: TEST:    
-    * 
+Used several Django Generic class views for this app, with some mixins associated with tests and login checks
+
+* :hammer: TEST:   (profile.views) 
+    * Did Views return correct templates and data when requested
 * :clipboard: RESULT: 
-    * 
+    * All views worked as expected
+
+* :hammer: TEST:    (profile.views)
+    * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
+* :clipboard: RESULT: 
+    * ENo Errors or warnings returned or highlighted
 
 [Back to Index](#index)
 
@@ -649,30 +677,18 @@ Used several Django Generic class views for this app, with some mixins associate
 ## Comments
 
 ### Comments visual testing
-* :hammer: TEST:    
-    * Does page load with correct common styling?
-    * Does console display any errors?
-* :clipboard: RESULT: 
-    * Page loads as expected with site common styling.
-    * No errors in console.
 
-* :hammer: TEST: (user Subscriptions)
-    * Does correct User Membership Subscription data display?
-    * Do the correct dates for the subscription display as intended?
+* :hammer: TEST:  (Comments - inside notice details)  
+    * 
 * :clipboard: RESULT: 
-    * All User Subscription data displays as intended.
+    * 
 
-* :hammer: TEST: (Cancel Subscriptions)   
-    * Expect the cancel membership button - only when currently subscribed to premium
+* :hammer: TEST:  (Comments - inside notice details)  
+    * 
 * :clipboard: RESULT: 
-    * The Cancel subscription button will only display when the user is subscribed to Premium
+    * 
 
-* :hammer: TEST: (Subscriptions) 
-    * Expect the Discover Premium button to display when user is subscribed to free
-* :clipboard: RESULT: 
-    * The Discover premium button only displays when the user is subscribed to free.
-
-* :hammer: TEST:    
+* :hammer: TEST:  (Comments - inside notice details)  
     * 
 * :clipboard: RESULT: 
     * 
