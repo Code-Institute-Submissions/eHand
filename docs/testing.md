@@ -67,8 +67,7 @@
 
 **<details><summary>Base Code</summary>**
 
-- [Messages HTML testing](#messages-html-testing)
-- [Messages HTML testing](#messages-html-testing-1)
+- [Base HTML testing](#base-html-testing)
 - [Base Css testing](#base-css-testing)
 - [Allauth Css testing](#allauth-css-testing)
     
@@ -76,7 +75,6 @@
 
  **<details><summary>User Stories Testing</summary>**
 
-- [User Stories Testing](#user-stories-testing)
   * [As a non member: I want to visit the sites homepage and get a clear overview of what the site does and how i can sign up.](#user-story-1)
   * [As a Free member i want to be able to sign in to eHand and view Posts and offer help](#user-story-2)
   * [As a premium member when i create my membership, i want to know my payment donates to charity](#user-story-3)
@@ -752,12 +750,7 @@ Used several Django Generic class views for this app, with some mixins associate
 The base.html file is reflected in each of the apps templates, for which the results are laid out in this document.
  It is not possible to sensibly test the base.html file on its own.
 
-### Messages HTML testing
-* :hammer: TEST: 
-    * Tested the Html Markup for messages.htmel using [W3Validator](https://validator.w3.org/nu/#textarea)
-* :clipboard: RESULT: 
-    * 4 errors hidden associated with django templating and not able to see modal from this code.
-![messages.html](https://i.ibb.co/dPp90j5/image.png "messages.html validation result")
+[Back to Index](#index)
 
 ### Base Css testing
 
@@ -767,6 +760,8 @@ The base.html file is reflected in each of the apps templates, for which the res
     * 0 errors found
 ![base.css](https://i.ibb.co/vjnJbbT/image.png "base.css validation result")
 
+[Back to Index](#index)
+
 ### Allauth Css testing
 
 * :hammer: TEST: (allauth.css)
@@ -774,6 +769,53 @@ The base.html file is reflected in each of the apps templates, for which the res
 * :clipboard: RESULT: 
     * 0 errors found
 ![allauth.css](https://i.ibb.co/wQXsK14/image.png "allauth.css validation result")
+
+[Back to Index](#index)
+
+
+## User Login system and templates
+
+### allauth/account/base HTML testing
+
+Used to extend the base.html to the allauth templates, but provide a common, simpler style to them all.
+The html for this page is validated via the other templates in this section which extend this.
+
+[Back to Index](#index)
+
+### allauth/account/Register HTML testing
+
+* :hammer: TEST: (allauth/account/signup.html)
+    * Tested the Html Markup for allauth/account/signup.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found. 
+    * 1 Warning to include a h element following section. Not required.  
+![allauth/account/signup.html](https://i.ibb.co/5FCMhNW/image.png "allauth/account/signup.html validation result")
+
+[Back to Index](#index)
+
+### allauth/account/Verification sent HTML testing
+* :hammer: TEST: (allauth/account/verification_sent.html)
+    * Tested the Html Markup for allauth/account/verification_sent.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found. 
+    * 1 Warning to include a h element following section. Not required.  
+![allauth/account/verification_sent.html](https://i.ibb.co/rcc4pLF/image.png "allauth/account/verification_sent.html validation result")
+
+[Back to Index](#index)
+
+### allauth/account/Confirm email HTML testing
+* :hammer: TEST: (allauth/account/email_confirm.html)
+    * Tested the Html Markup for allauth/account/email_confirm.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found. 
+    * 1 Warning to include a h element following section. Not required.  
+![allauth/account/email_confirm.html](https://i.ibb.co/DVYNwvw/image.png "allauth/account/email_confirm.html validation result")
+
+[Back to Index](#index)
+
+### allauth/account/Confirm email HTML testing
+
+
 
 [Back to Index](#index)
 
