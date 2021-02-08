@@ -73,6 +73,18 @@
     
 </details>
 
+**<details><summary>User login Testing</summary>**
+
+  * [User Login system walkthrough testing](#user-login-system-and-templates)
+  * [allauth/account/base HTML testing](#allauth-account-base-html-testing)
+  * [allauth/account/Register HTML testing](#allauth-account-register-html-testing)
+  * [allauth/account/Verification sent HTML testing](#allauth-account-verification-sent-html-testing)
+  * [allauth/account/Confirm email HTML testing](#allauth-account-confirm-email-html-testing)
+  * [allauth/account/Sign in HTML testing](#allauth-account-sign-in-html-testing)
+  * [allauth/account/Sign out HTML testing](#allauth-account-sign-out-html-testing)
+
+</details>
+
  **<details><summary>User Stories Testing</summary>**
 
   * [As a non member: I want to visit the sites homepage and get a clear overview of what the site does and how i can sign up.](#user-story-1)
@@ -775,14 +787,29 @@ The base.html file is reflected in each of the apps templates, for which the res
 
 ## User Login system and templates
 
-### allauth/account/base HTML testing
+The login and register procedure worked smoothly.   
+As a new user i was able to:   
++ Click register and fill in my details and click signup.
++ A pop up modal confimed that i was sent an email which had a link i needed to click on
++ Once the email link was clicked on, i was returned to the eHand site, where i could click to verify my account.
++ A modal then informed me that my account had been provided and i could now log in.
++ I could now successfully sign in using my username and password entered during registration.
+
+Problems:
+I noticed a lag at times with confirmation emails. When they had not arrived straight away i checked in the sent items of
+the email account linked to eHand, and the emails were there, but they at times took up to 25 mins to arrive at their destination.
+I am looking into this, to see if it is anything i can improve upon, as i feel it gives a very poor impression if an email is not delivered for so long.
+
+[Back to Index](#index)
+
+### Allauth account base HTML testing
 
 Used to extend the base.html to the allauth templates, but provide a common, simpler style to them all.
 The html for this page is validated via the other templates in this section which extend this.
 
 [Back to Index](#index)
 
-### allauth/account/Register HTML testing
+### allauth account Register HTML testing
 
 * :hammer: TEST: (allauth/account/signup.html)
     * Tested the Html Markup for allauth/account/signup.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
@@ -793,7 +820,7 @@ The html for this page is validated via the other templates in this section whic
 
 [Back to Index](#index)
 
-### allauth/account/Verification sent HTML testing
+### allauth account Verification sent HTML testing
 * :hammer: TEST: (allauth/account/verification_sent.html)
     * Tested the Html Markup for allauth/account/verification_sent.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
 * :clipboard: RESULT: 
@@ -803,7 +830,7 @@ The html for this page is validated via the other templates in this section whic
 
 [Back to Index](#index)
 
-### allauth/account/Confirm email HTML testing
+### allauth account Confirm email HTML testing
 * :hammer: TEST: (allauth/account/email_confirm.html)
     * Tested the Html Markup for allauth/account/email_confirm.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
 * :clipboard: RESULT: 
@@ -813,9 +840,23 @@ The html for this page is validated via the other templates in this section whic
 
 [Back to Index](#index)
 
-### allauth/account/Confirm email HTML testing
+### allauth account Sign in HTML testing
+* :hammer: TEST: (allauth/account/login.html)
+    * Tested the Html Markup for allauth/account/login.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found. 
+    * 1 Warning to include a h element following section. Not required.  
+![allauth/account/login.html](https://i.ibb.co/9WnwfST/image.png "allauth/account/login.html validation result")
 
+[Back to Index](#index)
 
+### allauth account Sign out HTML testing
+* :hammer: TEST: (allauth/account/logout.html)
+    * Tested the Html Markup for allauth/account/logout.html using [W3 Validator](https://validator.w3.org/nu/#textarea)
+* :clipboard: RESULT: 
+    * 0 errors found. 
+    * 1 Warning to include a h element following section. Not required.  
+![allauth/account/logout.html](https://i.ibb.co/QnnHtbg/image.png "allauth/account/logout.html validation result")
 
 [Back to Index](#index)
 

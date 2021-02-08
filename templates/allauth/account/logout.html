@@ -1,8 +1,6 @@
 {% extends "account/base.html" %}
 {% load static %}
-
 {% load i18n %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
 {% endblock %}
@@ -16,17 +14,13 @@
 {% endblock %}
 
 {% block inner_content %}
-
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button class="btn btn-warning" type="submit">{% trans 'Sign Out' %}</button>
-  <a href="{% url 'home' %}" class="btn btn-danger ml-2">{% trans 'Cancel' %}</a>
-</form>
-
-
+    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+    <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button class="btn btn-warning" type="submit">{% trans 'Sign Out' %}</button>
+    <a href="{% url 'home' %}" class="btn btn-danger ml-2">{% trans 'Cancel' %}</a>
+    </form>
 {% endblock %}
