@@ -35,6 +35,7 @@ eHand will be submitted as my MS4 and final project in my Full Stack Software De
   * [Colours](#colours)
   * [Fonts](#fonts)
   * [Styling](#styling)
+  * [Database Schema](https://github.com/Mr-Smyth/eHand/blob/master/docs/schema/schema.pdf)
   * [Wireframes](#wireframes)
 - [Features](#features)
   * [Existing Features](#existing-features)
