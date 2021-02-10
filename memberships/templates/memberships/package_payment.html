@@ -11,7 +11,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text-shadow">Selected package: {{ selected_package }}</h2>
-                <p class="text-shadow text-success">Price: <strong>€{{ selected_package.package_price }}</strong><small> / Month</small></p>
             </div>
         </div>
     </div>
@@ -25,12 +24,11 @@
                     <!-- Opaque element -->
                     <div class="opaque"></div>
                     <div class="card-body">
-                        <p class="col-12 text-center text-white">Are you sure you want to subscribe to our
+                        <p class="col-12 text-center text-white">You are about to subscribe to our
                             {{ selected_package }} package?
                         </p>
-                        <p class="col-12 text-center text-white"> This will cost you
-                            <span class="mont_r">@ €</span>
-                            {{ selected_package.package_price }}<small> /Month</small>
+                        <p class="col-12 text-center ehand-green-text"> This will cost you
+                            <span class="mont_r">€</span>{{ selected_package.package_price }}<small> /Month</small>
                         </p>
                         <form action="." method="post" id="payment-form" class="pb-4">
                             {% csrf_token %}

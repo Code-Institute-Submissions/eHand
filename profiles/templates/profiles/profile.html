@@ -113,20 +113,20 @@
                         <!-- Check current user package -->
                         {% if users_current_package != None %}
                             <p>Your current membership is: <small
-                                class="text-success">{{ users_current_package.membership_type }}</small></p>
+                                class="ehand-green-text">{{ users_current_package.membership_type }}</small></p>
                             <!-- If user has a current subscription -->
                             {% if users_current_subscription.valid %}
-                                <p>Created on: <small class="text-success">{{ users_current_subscription.get_created_date }}</small></p>
+                                <p>Created on: <small class="ehand-green-text">{{ users_current_subscription.get_created_date }}</small></p>
                                 <p>Your next payment is due on: <small
-                                        class="text-success">{{ users_current_subscription.get_next_payment_date }}</small></p>
+                                        class="ehand-green-text">{{ users_current_subscription.get_next_payment_date }}</small></p>
                                 <!-- Activate cancel membership modal -->
-                                <button type="button" class="col-10 offset-1 btn btn-outline-danger mt-1 mb-1 shadow" data-toggle="modal"
+                                <button type="button" class="col-10 offset-1 btn btn-outline-secondary mt-5 mb-1 shadow" data-toggle="modal"
                                     data-target="#exampleModal">
-                                    <i class="far fa-check-circle pr-3"></i>Cancel my Subscription
+                                    <i class="far fa-check-circle pr-3"></i><small>Cancel my Subscription</small>
                                 </button>
                             {% else %}
-                                <p>You currently are not a premium member. Find out the benefits here: <a href="{% url 'packages' %}"
-                                        class="btn btn-outline-success mt-4">Discover Premium</a></p>
+                                <p>You currently are not a premium member. Find out the benefits of a Premium membership here: <a href="{% url 'packages' %}"
+                                        class="col-10 offset-1 btn btn-success mt-5 mb-1 shadow">Discover Premium</a></p>
                             {% endif %}
                         {% endif %}
 
@@ -135,7 +135,7 @@
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header  bg-warning">
+                                    <div class="modal-header  bg-danger">
                                         <h5 class="modal-title" id="exampleModalLabel">This action will cancel your subscription to
                                             Premium.</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -143,7 +143,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p class="text-warning text-center">Are you sure you wish to proceed?</p>
+                                        <p class="text-danger text-center">Are you sure you wish to proceed?</p>
                                     </div>
                                     <div class="container bg-light col-12">
                                         <div class="row justify-content-around mb-4">

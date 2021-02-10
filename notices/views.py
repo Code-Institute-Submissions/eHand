@@ -262,19 +262,6 @@ class CreateComment(LoginRequiredMixin, FormView):
 
 
 
-    # def get_success_url(self):
-    #     return reverse(
-    #         'notices:notice-detail', kwargs={'pk': self.object.notice.pk})
-
-    # def form_valid(self, form):
-    #     """ overrides form_valid to set the user
-    #      making the comment.
-    #      Also sets the notice id before validating form"""
-
-    #     form.instance.user = self.request.user
-    #     return super().form_valid(form)
-
-
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     """
     Returns as a view the create a notice template
