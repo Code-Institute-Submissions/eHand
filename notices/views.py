@@ -1,6 +1,8 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.http import JsonResponse
+from django.core import serializers
 from .models import Notice
 from memberships.models import Memberships
 from comments.models import Comment
@@ -10,7 +12,8 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    FormView
 )
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
@@ -81,8 +84,6 @@ def confirm_complete(request, pk):
     # get authors time balance
     author = get_object_or_404(UserProfile, user=notice.author.id)
     author_time_balance = author.time_balance
-
-
 
     context = {
         'object': notice,
@@ -217,26 +218,61 @@ class NoticeDetailView(LoginRequiredMixin, DetailView):
         form = CommentForm()
         context['form'] = form
         return context
+    
+    def post(self, request, *args, **kwargs):
+        view = CreateComment.as_view()
+        return view(request, *args, **kwargs)
 
 
-class CreateComment(CreateView):
+class CreateComment(LoginRequiredMixin, FormView):
     """
     Handles creating a comment
+    Ajax used to update view
     """
     model = Comment
     form_class = CommentForm
 
-    def get_success_url(self):
-        return reverse(
-            'notices:notice-detail', kwargs={'pk': self.object.notice.pk})
+    # when form is invalid
+    def form_invalid(self, form):
+        # check if header in request includes ajax XML
+        if self.request.is_ajax():
+            # if it is an ajax request return the errors from the form
+            return JsonResponse({"error": form.errors}, status=400)
+        else:
+            return JsonResponse({"error": "Invalid form and request"},
+                                status=400)
 
+    # when form is valid - check if its ajax request
     def form_valid(self, form):
-        """ overrides form_valid to set the user
-         making the comment.
-         Also sets the notice id before validating form"""
+        if self.request.is_ajax():
+            # Get the notice and set it in the form
+            notice = Notice.objects.get(pk=self.kwargs['pk'])
+            form.instance.notice = notice
+            # get the author and set it in the form + save
+            form.instance.user = self.request.user
+            comment = form.save()
+            # serialize the comment into json format
+            serialize_comment = serializers.serialize("json", [comment, ])
+            return JsonResponse({"new_comment": serialize_comment}, status=200)
+        else:
+            # else return a nice big error and status 400 if it is not an
+            # ajax request
+            return JsonResponse({"error": "Error occured during request"},
+                                status=400)
 
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+
+
+    # def get_success_url(self):
+    #     return reverse(
+    #         'notices:notice-detail', kwargs={'pk': self.object.notice.pk})
+
+    # def form_valid(self, form):
+    #     """ overrides form_valid to set the user
+    #      making the comment.
+    #      Also sets the notice id before validating form"""
+
+    #     form.instance.user = self.request.user
+    #     return super().form_valid(form)
 
 
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):

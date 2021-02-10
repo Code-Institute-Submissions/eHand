@@ -76,7 +76,7 @@
                     <div class="card-body comment-container">
                         <ul class="comment">
                             {% if not notice.comments.all %}
-                                <li>No comments yet</li>
+                                <li id="no-comment">No comments yet</li>
                             {% else %}
                                 {% for comment in notice.comments.all %}
                                     <!-- what current user said -->
@@ -129,21 +129,105 @@
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <form method="POST" action="{% url 'notices:notice-comment' %}">
+                        <form id="comment-form" action="" method="post" novalidate>
                             {% csrf_token %}
-                            <div class="input-group">
-                                {{ form|crispy }}
-                                <!-- pass in the pk of the current notice to the comment form handler -->
-                                <input type="hidden" name="notice" value="{{ object.pk }}">
-                                <span class="input-group-btn">
-                                <button class="btn btn-success ml-3">
-                                Send</button>
-                                </span>
-                            </div>
+                            {{ form|crispy }}
+                            <p><input type="submit" value="Submit"></p>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    /** 
+     * These scripts:
+     * Get the form and listen to it
+     * Hand the submitted form off to sendComment to handle getting the data
+     * Pass the data to createComment to handle the fetch stuff
+     */
+
+    function createComment(formData) {
+        /**
+         * Here is where we create the new comment on the Db
+         * Also update the html
+         */
+
+        // i need the token so js can submit the form
+        let csrfValue = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+        fetch("{% url 'notices:notice-detail' object.pk %}", {
+            method: "Post",
+            // need additional info - token and request type
+            headers: {
+                "X-CSRFToken": csrfValue,
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: formData
+        }).then(function(response) {
+            return response.json();
+        // then just reset the form and update
+        }).then(function(data) {
+            commentFormElement.reset();
+            console.log(data);
+            // get the instance of the new comment
+            let instance = JSON.parse(data["new_comment"]);
+            let fields = instance[0]["fields"];
+            // now get the elements we are interested in updating.
+            let currentCommentsList = document.querySelector(".own-comment");
+            let commentsList = document.querySelector(".comment");
+            let noComment= document.querySelector("#no-comment");
+
+            // check if there is a no-comment element - remove it - as we dont need it anymore
+            if(noComment) {
+                commentsList.removeChild(noComment);
+            }
+            // append the comment
+            commentsList.innerHTML += `
+                <li class="d-flex justify-content-end">
+                    <div class="own-comment">
+                        <div class="header ">
+                            <strong class="primary-font">You said:</strong>
+                            <small>
+                                Just Now
+                            </small>
+                        </div>
+                        <p>
+                            ${fields['body'] || " "}
+                        </p>
+                    </div>
+                </li>
+            `;
+            /* window.location = '#my-ne-comment'; */
+            // if fetch is not successful - then catch the error
+        }).catch((error) => {
+            console.error("Error", error);
+        });
+    } 
+
+
+    function sendComment(e) {
+        /** 
+         * Called whenever the comment form is submitted
+         * Gets the data and passes it on to createComment 
+        */
+
+        e.preventDefault();
+        let content = document.querySelector("#id_body").value;
+        console.log(content);
+        if(content){
+            let formData = new FormData(commentFormElement);
+            console.log(formData)
+        createComment(formData);
+        }else {
+        // form is empty you dont need to submit
+        console.log("You cannot submit an empty form")
+        }
+    }
+
+    let commentFormElement = document.getElementById("comment-form");
+    commentFormElement/addEventListener("submit", sendComment);
+</script>
 {% endblock %}
