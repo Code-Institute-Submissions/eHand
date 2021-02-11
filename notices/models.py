@@ -28,7 +28,7 @@ class Notice(models.Model):
             TIME_OPTIONS, key=itemgetter(0)),
         verbose_name="Duration / Time Payment"
     )
-    event_date = models.DateField(
+    event_date_time = models.DateTimeField(
         default=timezone.now,
         verbose_name="Event Date"
     )
