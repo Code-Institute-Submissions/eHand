@@ -300,7 +300,7 @@ class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     model = Notice
     fields = ['title', 'short_description', 'long_description', 'duration',
-              'event_date_time', 'event_location_postcode',
+              'event_date', 'event_location_postcode',
               'event_location_postcode']
 
     # override form_valid
