@@ -20,8 +20,6 @@ TIME_OPTIONS = {
 }
 
 
-Date = models.DateField(default=date.today)
-
 class Notice(models.Model):
     title = models.CharField(max_length=100)
     short_description = models.CharField(max_length=100)
@@ -31,7 +29,7 @@ class Notice(models.Model):
             TIME_OPTIONS, key=itemgetter(0)),
         verbose_name="Duration / Time Payment"
     )
-    specify_date = models.DateField(default=timezone.now)
+    specify_date = models.DateField(default=date.today)
     event_location_postcode = models.CharField(max_length=10)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='author')
