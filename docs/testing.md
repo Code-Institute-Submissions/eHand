@@ -70,6 +70,7 @@
 - [Base HTML testing](#base-html-testing)
 - [Base Css testing](#base-css-testing)
 - [Allauth Css testing](#allauth-css-testing)
+- [LightHouse test](#lighthouse-testing)
     
 </details>
 
@@ -781,6 +782,16 @@ The base.html file is reflected in each of the apps templates, for which the res
 * :clipboard: RESULT: 
     * 0 errors found
 ![allauth.css](https://i.ibb.co/wQXsK14/image.png "allauth.css validation result")
+
+[Back to Index](#index)
+
+### Lighthouse testing
+
+* :hammer: TEST: (Lighthouse)
+    * Tested the site using Lighthouse in chrome devtools
+* :clipboard: RESULT: 
+    * Displayed results:
+![Lighthouse resultss](https://i.ibb.co/8Nf425Z/image.png "Lighthouse results")
 
 [Back to Index](#index)
 
