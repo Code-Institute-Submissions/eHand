@@ -213,12 +213,19 @@ class NoticeDetailView(LoginRequiredMixin, DetailView):
     model = Notice
 
     def get_context_data(self, **kwargs):
-        """ Getting the context of detailView and add the form to it """
+        """
+        \n* Getting the context of detailView and add the form to it
+        \n* Getting the context of detailView and add the author profile to it
+        """
         context = super(NoticeDetailView, self).get_context_data(**kwargs)
+        notice_context = get_object_or_404(Notice, id=self.object.id)
+        author_context = get_object_or_404(
+            UserProfile, id=notice_context.author.id)
         form = CommentForm()
+        context['author'] = author_context
         context['form'] = form
         return context
-    
+
     def post(self, request, *args, **kwargs):
         view = CreateComment.as_view()
         return view(request, *args, **kwargs)

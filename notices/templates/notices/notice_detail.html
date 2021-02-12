@@ -65,7 +65,7 @@
                 </div>
             </div>
             <!-- Comments -->
-            <div class="container col-sm-12 col-md-4 fade-in mt-xs-4 mt-md-0">
+            <div class="container col-sm-12 col-md-4 fade-in mt-4 mt-md-0">
                 <!-- Comments Header -->
                 <div class="card shadow">
                     <!-- <div class="card-header text-center bg-gradient-success text-white">
@@ -137,6 +137,36 @@
                     </div>
                 </div>
             </div>
+            <!-- About the author -->
+            <div class="col-sm-12 col-md-8 col-lg-6 offset-lg-1 mt-4">
+                <div class="card shadow">
+                    <div class="card-body">   
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ author|title }}'s' Details</h5> 
+                            {% if author.full_name %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Full Name: </strong>{{ author.full_name|title }}</p>
+                            {% endif %}
+                            {% if author.phone_number %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Ph. Number: </strong>{{ author.phone_number }}</p>
+                            {% endif %}
+                            {% if author.street_address1 %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Address: </strong>{{ author.street_address1|title }} {% if author.street_address2 %}{{ author.street_address2|title }}{% endif %}</p>
+                            {% endif %}
+                            {% if author.town_or_city %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Town/City: </strong>{{ author.town_or_city|title }}</p>
+                            {% endif %}
+                            {% if author.county %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>County: </strong>{{ author.county|title }}</p>
+                            {% endif %}
+                            {% if author.default_country.name %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Country: </strong>{{ author.default_country.name|title }}</p>
+                            {% endif %}
+                            {% if author.postcode %}
+                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Post Code: </strong>{{ author.postcode|title }}</p>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock %}
