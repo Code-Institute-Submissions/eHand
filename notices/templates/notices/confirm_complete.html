@@ -10,7 +10,7 @@
     <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-shadow">Confirm Notice is complete</h2>
+                <h2 class="text-shadow title">Confirm Notice is complete</h2>
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
                                     favour when you can.
                                 </small></p>
                             {% endif %}
-                            <a href="{% url 'notices:complete-notice' object.id %}" class="btn btn-outline-danger">Confirm</a>
-                            <a href="{% url 'member-notices' %}" class="btn btn-outline-light">Cancel</a>
+                            <a href="{% url 'notices:complete-notice' object.id %}" class="btn btn-success ehand-green-bg">Confirm</a>
+                            <a href="{% url 'member-notices' %}" class="btn btn-outline-secondary">Cancel</a>
                         {% endif %}
                     </div>
                 </div>

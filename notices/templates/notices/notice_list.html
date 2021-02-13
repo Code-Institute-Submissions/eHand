@@ -20,7 +20,7 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">Notices</h2>
+                <h2 class="text-shadow title">Notices</h2>
             </div>
         </div>
     </div>                                                                                                                                              
@@ -54,17 +54,17 @@
                         {% if object.commit.id != 1 %}
                             <!-- Case - where committer is current user - allow access -->
                             {% if object.commit|lower == user.username|lower  %}
-                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3 shadow">Details</a>
                             <!-- Case - where logged in user is the author - allow access -->
                             {% elif object.author|lower == user.username|lower %}
-                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3">Details</a>
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3 shadow">Details</a>
                             <!-- Case - user is not the committer - no access -->
                             {% else %}
                                 <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
                             {% endif %}
                         <!-- Case - else of main if - case where committer id == 1 which means nobody has yet committed to this notice - allow access to all logged in users -->
                         {% else %}
-                            <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3">Details</a>
+                            <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3 shadow">Details</a>
                         {% endif %}
                     </div>
                 </div>

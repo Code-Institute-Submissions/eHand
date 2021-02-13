@@ -10,7 +10,7 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h2 class="text-shadow">{{ object.title }} Details</h2>
+                <h2 class="text-shadow title">{{ object.title }} Details</h2>
             </div>
         </div>
     </div>
@@ -47,15 +47,16 @@
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.specify_date }}</p>
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}</p>
                         <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}</h6>
+                        <!-- Buttons -->
                         <div class="container col-12 mt-5 mb-2">
                             <div class="row justify-content-center justify-content-md-around">
-                                <a href="{% url 'notices:notice-list' %}" class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1">Return to Notices</a>
+                                <a href="{% url 'notices:notice-list' %}" class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1 shadow">Return to Notices</a>
                                 <!-- the commit to work button -->
                                 {% if user.is_authenticated and user != object.author %}
                                     {% if user.username|lower != object.commit|lower %}
                                         <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-5 col-lg-4 p-0">
                                             {% csrf_token %}
-                                            <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1" value="{{ object.id }}" name="notice_id">Commit to help</button>
+                                            <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1 shadow" value="{{ object.id }}" name="notice_id">Commit to help</button>
                                         </form>
                                     {% endif %}
                                 {% endif %}
@@ -132,7 +133,7 @@
                         <form id="comment-form" action="" method="post" novalidate>
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <p><input type="submit" value="Submit"></p>
+                            <p><input type="submit" class="btn btn-success ehand-green-bg" value="Submit"></p>
                         </form>
                     </div>
                 </div>

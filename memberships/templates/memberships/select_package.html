@@ -10,7 +10,7 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-shadow">Select Package - <small>Current Membership: {{ current_package }}</small></h2>
+                <h2 class="text-shadow title">Select Package - <small>Current Membership: {{ current_package }}</small></h2>
             </div>
         </div>
     </div>
@@ -48,9 +48,9 @@
                         <form method="POST" action="{% url 'packages' %}">
                             {% csrf_token %}
                             {% if package.package_type != current_package %}
-                            <button class="btn btn-warning">Select</button>
+                                <button class="btn btn-warning shadow">Select</button>
                             {% else %}
-                            <small class="text-warning">You are currently a {{ current_package }} Member</small>
+                                <small class="text-warning">You are currently a {{ current_package }} Member</small>
                             {% endif %}
                             <!-- pass in the selection - keep hidden -->
                             <input type="hidden" name="package_type" value="{{ package.package_type }}">
