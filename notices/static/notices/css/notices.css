@@ -50,7 +50,7 @@
      -ms-flex-direction: column-reverse;
      flex-direction: column-reverse;
      overflow-y: scroll;
-     height: 250px;
+     height: 500px;
 }
  .comment-container .user-comment, .comment-container .own-comment, .comment-container .author-comment {
      display: inline-block;
@@ -89,6 +89,6 @@
          margin-top: 250px;
     }
     .profile-field{
-     font-size: 1.4rem;
+     font-size: 0.8rem;
  }
 }
