@@ -31,7 +31,7 @@
             <div class="col-sm-12">
                 <div class="card h-200 shadow-sm mb-3">
                     <div class="card-body">
-                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong> on: <small><em>  Requested by {{ object.author }}</em></small></h5>
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong> on: <small><em>  Requested by {{ object.author|title }}</em></small></h5>
                         <p class="card-text"><strong>{{ object.long_description }}</strong></p>
                         <div class="card-title border rounded text-white bg-warning p-2 shado5">
                             <h5 class=" text-center"><strong><em>You have committed to this notice</em></strong></h5>
@@ -46,7 +46,7 @@
                         </div>
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.specify_date }}</p>
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}</p>
-                        <h6 class="border rounded bg-light p-2 shadow-sm">Duration/ Payment: {{ object.duration }}</h6>
+                        <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}</h6>
                     </div>
                     <div class="container col-12">
                         <div class="row justify-content-center">

@@ -7,272 +7,114 @@
     - Notice Details
 {% endblock %}
 {% block page_header %}
-    <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
+    <div class="container col-12 fade-in no-gutters">
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 ml-lg-5 ml-md-3">
                 <h2 class="text-shadow title">{{ object.title }} Details</h2>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block content %}
-<div class="container-fluid col-12 border border-danger d-md-flex flex-md-row fade-in">
-    <div class="row col-12 col-md-8 col-lg-6 offset-md-1 d-md-flex">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}} Details</h5>
-                    <p class="card-text"><strong>{{ object.long_description }}</strong></p>
-                    <p class="card-text"><em>Requested by {{ object.author|title }}</em></p>
-                    {% if object.commit.id != 1 %}
-                    {% if object.commit|lower == user.username|lower %}
-                    <div class="card-title border rounded text-white bg-warning p-2 shado5">
-                        <h5 class="text-center"><strong><em>You have committed to this notice</em></strong></h5>
-                        <h5>Please remember:</h5>
-                        <ul>
-                            <li>You can view this notice in your profile under <em>"My Commitments".</em></li>
-                            <li>Once committed to a Notice you are obliged to carry out the help you have committed
-                                to on the date and time agreed with the author
-                            </li>
-                            <li>If you wish to no longer commit to this message you can remove your commitment by going to
-                                <em>"My Commitments"</em> in your profile section
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- In the unlikly case that a user who has not committed to theis notice views this -->
-                    {% else %}
-                    <p class="card-text bg-warning"><em>Agreed to by: {{ object.commit|title }}</em></p>
-                    {% endif %}
-                    {% endif %}
-                    <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.specify_date }}</p>
-                    <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}
-                    </p>
-                    <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}
-                    </h6>
-                    <!-- Buttons -->
-                    <div class="container col-12 mt-5 mb-2">
-                        <div class="row justify-content-center justify-content-md-around">
-                            <a href="{% url 'notices:notice-list' %}"
-                                class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1 shadow">Return to Notices</a>
-                            <!-- the commit to work button -->
-                            {% if user.is_authenticated and user != object.author %}
-                            {% if user.username|lower != object.commit|lower %}
-                            <form action="{% url 'notices:accept-notice' object.id %}" method="POST"
-                                class="col-10 col-md-5 col-lg-4 p-0">
-                                {% csrf_token %}
-                                <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1 shadow"
-                                    value="{{ object.id }}" name="notice_id">Commit to help</button>
-                            </form>
-                            {% endif %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About the author -->
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ author|title }}'s' Details</h5>
-                    {% if author.full_name %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Full Name:
-                        </strong>{{ author.full_name|title }}</p>
-                    {% endif %}
-                    {% if author.phone_number %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Ph. Number:
-                        </strong>{{ author.phone_number }}</p>
-                    {% endif %}
-                    {% if author.street_address1 %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Address:
-                        </strong>{{ author.street_address1|title }}
-                        {% if author.street_address2 %}{{ author.street_address2|title }}{% endif %}</p>
-                    {% endif %}
-                    {% if author.town_or_city %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Town/City:
-                        </strong>{{ author.town_or_city|title }}</p>
-                    {% endif %}
-                    {% if author.county %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>County:
-                        </strong>{{ author.county|title }}</p>
-                    {% endif %}
-                    {% if author.default_country.name %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Country:
-                        </strong>{{ author.default_country.name|title }}</p>
-                    {% endif %}
-                    {% if author.postcode %}
-                    <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Post Code:
-                        </strong>{{ author.postcode|title }}</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Comments -->
-    <div class="row col-12 col-md-4 offset-lg-1 d-md-flex text-start">
-        <div class="col-12">
-            <!-- Comments Header -->
-            <div class="card shadow">
-                <!-- <div class="card-header text-center bg-gradient-success text-white">
-                    <span>{{ object.title }} Comments ...</span>
-                    </div> -->
-                <h5 class="card-title border rounded text-white bg-info p-2 shadow m-3">{{ object.title }} Comments ...</h5>
-                <!-- Comments Body -->
-                <div id="commentWindow" class="card-body comment-container">
-                    <ul class="comment">
-                        {% if not notice.comments.all %}
-                            <li id="no-comment">No comments yet</li>
-                        {% else %}
-                            {% for comment in notice.comments.all %}
-                                <!-- what current user said -->
-                                {% if comment.user.username|lower == user|lower %}
-                                    <li class="d-flex justify-content-end">
-                                        <div class="own-comment">
-                                            <div class="header ">
-                                                <strong class="primary-font">You said:</strong>
-                                                <small>
-                                                {{ comment.timestamp|timesince }} ago
-                                                </small>
-                                            </div>
-                                            <p>
-                                                {{ comment.body }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                <!-- What the Author said -->
-                                {% elif comment.user.username|lower == object.author|lower %}
-                                    <li>
-                                        <div class="author-comment">
-                                            <div class="header ">
-                                                <strong class="primary-font">{{ comment.user.username|title }} - (AUTHOR) said:</strong>
-                                                <small>
-                                                {{ comment.timestamp|timesince }} ago
-                                                </small>
-                                            </div>
-                                            <p>
-                                                {{ comment.body }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                {% else %}
-                                    <li>
-                                        <div class="user-comment">
-                                            <div class="header">
-                                                <strong class="primary-font">{{ comment.user.username|title }} said:</strong>
-                                                <small>
-                                                {{ comment.timestamp|timesince }} ago
-                                                </small>
-                                            </div>
-                                            <p>
-                                                {{ comment.body }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <form id="comment-form" action="" method="post" novalidate>
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <p><input type="submit" class="btn btn-success ehand-green-bg" value="Submit"></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> 
-    <div class="container col-sm-12 fade-in">
-        <div class="row col-12 col-md-8 col-lg-6 offset-lg-1 d-md-flex">
-            <div class="col-12">
+    <div class="container col-12 d-md-flex flex-md-row fade-in no-gutters justify-content-around">
+        <div class="row col-12 col-md-7 col-lg-6 d-md-flex no-gutters">
+            <div class="col-12 mb-5">
                 <div class="card shadow">
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}} Details</h5>
                         <p class="card-text"><strong>{{ object.long_description }}</strong></p>
                         <p class="card-text"><em>Requested by {{ object.author|title }}</em></p>
                         {% if object.commit.id != 1 %}
-                            {% if object.commit|lower == user.username|lower %}
-                                <div class="card-title border rounded text-white bg-warning p-2 shado5">
-                                    <h5 class="text-center"><strong><em>You have committed to this notice</em></strong></h5>
-                                    <h5>Please remember:</h5>
-                                    <ul>
-                                        <li>You can view this notice in your profile under <em>"My Commitments".</em></li>
-                                        <li>Once committed to a Notice you are obliged to carry out the help you have committed
-                                            to on the date and time agreed with the author
-                                        </li>
-                                        <li>If you wish to no longer commit to this message you can remove your commitment by going to
-                                            <em>"My Commitments"</em> in your profile section
-                                        </li>
-                                    </ul>
-                                </div>
-                            <!-- In the unlikly case that a user who has not committed to theis notice views this -->
-                            {% else %}
-                                <p class="card-text bg-warning"><em>Agreed to by: {{ object.commit|title }}</em></p>
-                            {% endif %}
+                        {% if object.commit|lower == user.username|lower %}
+                        <div class="card-title border rounded text-white bg-warning p-2 shado5">
+                            <h5 class="text-center"><strong><em>You have committed to this notice</em></strong></h5>
+                            <h5>Please remember:</h5>
+                            <ul>
+                                <li>You can view this notice in your profile under <em>"My Commitments".</em></li>
+                                <li>Once committed to a Notice you are obliged to carry out the help you have committed
+                                    to on the date and time agreed with the author
+                                </li>
+                                <li>If you wish to no longer commit to this message you can remove your commitment by going to
+                                    <em>"My Commitments"</em> in your profile section
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- In the unlikly case that a user who has not committed to theis notice views this -->
+                        {% else %}
+                        <p class="card-text bg-warning"><em>Agreed to by: {{ object.commit|title }}</em></p>
+                        {% endif %}
                         {% endif %}
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.specify_date }}</p>
-                        <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}</p>
-                        <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}</h6>
+                        <p class="border rounded bg-light p-2 shadow-sm"><strong>Where: </strong>{{ object.event_location_postcode}}
+                        </p>
+                        <h6 class="border rounded bg-light p-2 shadow-sm"><strong>Duration/ Payment: </strong>{{ object.duration }}
+                        </h6>
                         <!-- Buttons -->
                         <div class="container col-12 mt-5 mb-2">
                             <div class="row justify-content-center justify-content-md-around">
-                                <a href="{% url 'notices:notice-list' %}" class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1 shadow">Return to Notices</a>
+                                <a href="{% url 'notices:notice-list' %}"
+                                    class="col-10 col-md-5 col-lg-4 btn btn-outline-info mt-1 mb-1 shadow">Return to Notices</a>
                                 <!-- the commit to work button -->
                                 {% if user.is_authenticated and user != object.author %}
-                                    {% if user.username|lower != object.commit|lower %}
-                                        <form action="{% url 'notices:accept-notice' object.id %}" method="POST" class="col-10 col-md-5 col-lg-4 p-0">
-                                            {% csrf_token %}
-                                            <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1 shadow" value="{{ object.id }}" name="notice_id">Commit to help</button>
-                                        </form>
-                                    {% endif %}
+                                {% if user.username|lower != object.commit|lower %}
+                                <form action="{% url 'notices:accept-notice' object.id %}" method="POST"
+                                    class="col-10 col-md-5 col-lg-4 p-0">
+                                    {% csrf_token %}
+                                    <button type="submit" class="col-12 btn btn-outline-success mt-1 mb-1 shadow"
+                                        value="{{ object.id }}" name="notice_id">Commit to help</button>
+                                </form>
+                                {% endif %}
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <!-- About the author -->
-            <div class="col-sm-12 col-md-8 col-lg-6 offset-lg-1 mt-4 mt-md-0">
+            {% if object.commit.id != 1 %}
+            <div class="col-12 mb-5 fade-in">
                 <div class="card shadow">
-                    <div class="card-body">   
-                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ author|title }}'s' Details</h5> 
-                            {% if author.full_name %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Full Name: </strong>{{ author.full_name|title }}</p>
-                            {% endif %}
-                            {% if author.phone_number %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Ph. Number: </strong>{{ author.phone_number }}</p>
-                            {% endif %}
-                            {% if author.street_address1 %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Address: </strong>{{ author.street_address1|title }} {% if author.street_address2 %}{{ author.street_address2|title }}{% endif %}</p>
-                            {% endif %}
-                            {% if author.town_or_city %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Town/City: </strong>{{ author.town_or_city|title }}</p>
-                            {% endif %}
-                            {% if author.county %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>County: </strong>{{ author.county|title }}</p>
-                            {% endif %}
-                            {% if author.default_country.name %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Country: </strong>{{ author.default_country.name|title }}</p>
-                            {% endif %}
-                            {% if author.postcode %}
-                                <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Post Code: </strong>{{ author.postcode|title }}</p>
-                            {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ author|title }}'s Details</h5>
+                        {% if author.full_name %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Full Name:
+                            </strong>{{ author.full_name|title }}</p>
+                        {% endif %}
+                        {% if author.phone_number %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Ph. Number:
+                            </strong>{{ author.phone_number }}</p>
+                        {% endif %}
+                        {% if author.street_address1 %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Address:
+                            </strong>{{ author.street_address1|title }}
+                            {% if author.street_address2 %}{{ author.street_address2|title }}{% endif %}</p>
+                        {% endif %}
+                        {% if author.town_or_city %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Town/City:
+                            </strong>{{ author.town_or_city|title }}</p>
+                        {% endif %}
+                        {% if author.county %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>County:
+                            </strong>{{ author.county|title }}</p>
+                        {% endif %}
+                        {% if author.default_country.name %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Country:
+                            </strong>{{ author.default_country.name|title }}</p>
+                        {% endif %}
+                        {% if author.postcode %}
+                        <p class="border rounded bg-light p-2 shadow-sm profile-field"><strong>Post Code:
+                            </strong>{{ author.postcode|title }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
-
         <!-- Comments -->
-        <div class="row col-12 col-md-4 offset-lg-1 d-md-flex flex-md-column text-start">
-            <div class="col-12">
+        <div class="row col-12 col-md-4 d-md-flex text-start no-gutters">
+            <div class="col-12 fade-in">
                 <!-- Comments Header -->
                 <div class="card shadow">
-                    <!-- <div class="card-header text-center bg-gradient-success text-white">
-                        <span>{{ object.title }} Comments ...</span>
-                        </div> -->
                     <h5 class="card-title border rounded text-white bg-info p-2 shadow m-3">{{ object.title }} Comments ...</h5>
                     <!-- Comments Body -->
                     <div id="commentWindow" class="card-body comment-container">
@@ -340,7 +182,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 {% endblock %}
 
 {% block postloadjs %}
@@ -414,7 +256,6 @@
         });
     } 
 
-
     function sendComment(e) {
         /** 
          * Called whenever the comment form is submitted
@@ -435,6 +276,6 @@
     }
 
     let commentFormElement = document.getElementById("comment-form");
-    commentFormElement/addEventListener("submit", sendComment);
+    commentFormElement.addEventListener("submit", sendComment);
 </script>
 {% endblock %}
