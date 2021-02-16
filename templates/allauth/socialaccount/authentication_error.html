@@ -2,9 +2,15 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Social Network Login Failure" %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
+{% endblock %}
 
-{% block content %}
+{% block inner_header %}   
+    <h2 class="text-shadow title">{% trans "Social network failure" %}</h2>
+{% endblock %}
+
+{% block inner-content %}
 <h1>{% trans "Social Network Login Failure" %}</h1>
 
 <p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
