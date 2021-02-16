@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block inner_header %}   
-    <h2 class="text-shadow title">{% trans "Register with {{ provider_name }}" %}</h2>
+    <h2 class="text-shadow title">{% trans "Register with %}{{ provider_name }}</h2>
 {% endblock %}
 
 {% block inner_content %}
@@ -24,8 +24,8 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button class="btn btn btn-success ehand-green-bg" type="submit">{% trans "Register" %} &raquo;</button>
-  <a href="{% url 'home' %}" class="btn btn-outline-light ml-2">{% trans 'Cancel' %}</a>
+  <button class="btn btn btn-success ehand-green-bg mt-4" type="submit">{% trans "Register" %} &raquo;</button>
+  <a href="{% url 'home' %}" class="btn btn-outline-light mt-4 ml-2">{% trans 'Cancel' %}</a>
 </form>
 
 {% endblock %}

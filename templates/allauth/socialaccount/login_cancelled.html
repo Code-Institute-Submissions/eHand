@@ -2,11 +2,20 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Login Cancelled" %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
+{% endblock %}
 
-{% block content %}
+{% block extra_title %}
+    - {% trans "Login cancelled" %}
+{% endblock %}
 
-<h1>{% trans "Login Cancelled" %}</h1>
+{% block inner_header %}   
+    <h2 class="text-shadow title">{% trans "Login cancelled" %}</h2>
+{% endblock %}
+
+{% block inner_content %}
+
 
 {% url 'account_login' as login_url %}
 

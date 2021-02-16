@@ -120,9 +120,9 @@
                                 <p>Your next payment is due on: <small
                                         class="ehand-green-text">{{ users_current_subscription.get_next_payment_date }}</small></p>
                                 <!-- Activate cancel membership modal -->
-                                <button type="button" class="col-10 offset-1 btn btn-outline-secondary mt-5 mb-1 shadow" data-toggle="modal"
+                                <button type="button" class="col-10 offset-1 btn btn-outline-light mt-5 mb-1 shadow" data-toggle="modal"
                                     data-target="#exampleModal">
-                                    <i class="far fa-check-circle pr-3"></i><small>Cancel my Subscription</small>
+                                    <i class="far fa-check-circle pr-3"></i>Cancel my Subscription
                                 </button>
                             {% else %}
                                 <p>You currently are not a premium member. Find out the benefits of a Premium membership here: <a href="{% url 'packages' %}"

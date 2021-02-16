@@ -61,7 +61,7 @@ eHand will be submitted as my MS4 and final project in my Full Stack Software De
     + [In Django - setup new database:](#in-django---setup-new-database-)
   * [Local Deployment](#local-deployment)
     + [Steps to Deploy](#steps-to-deploy)
-- [Testing](https://github.com/Mr-Smyth/eHand/blob/master/docs/testing.md)
+- [Testing](#testing)
 - [Tech](#tech)
 - [Credits](#credits)
   * [Content and code](#content-and-code)
@@ -356,12 +356,38 @@ subscribe to the monthly payment and become a premium member. After payment the 
 
 ## Features for future consideration
 
-*   Social media involvement - signing in using social media links. 
+*   Social media involvement - For this project i only included Google sign in, i would like to extend this to Twitter and Facebook. 
 *   Introduce a more global chat option where all members can chat.
 *   Implement more incentives to gain Time - Introduce a notice board for charity events. Organisers of these events get a Time bodus.
 *   Make the time payments into half and quarter hour denominations.
 
 [<< ***Back to contents***](#table-of-contents)
+
+---
+
+# Tech
+
+*   [Django](https://www.djangoproject.com/) - Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+*   [Python3](https://www.python.org/) - Python is an interpreted, high-level and general-purpose programming language. Python 3 was used as the core language in this project.
+*   [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - JavaScript is a scripting or programming language that allows you to implement complex features on web pages.
+*   [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - CSS describes how HTML elements are to be displayed on screen.
+*   [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - HTML5 is the latest version of Hypertext Markup Language, the code that describes web pages.
+*   [Bootstrap4](https://getbootstrap.com/) - Bootstrap is the most popular CSS Framework for developing responsive and mobile-first websites.
+*   [Google Fonts](https://fonts.google.com/) - Google Fonts is a library of free licensed font families.
+*   [Favicon.io](https://favicon.io/) - A Favicon generator
+*   [Allauth](https://django-allauth.readthedocs.io/en/latest/) - Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+*   [Stripe payments](https://stripe.com/docs) - Stripe offers payment processing software and application programming interfaces for e-commerce websites and mobile applications.
+*   [Heroku](https://www.heroku.com/) - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+*   [Heroku PostGres](https://www.heroku.com/postgres) - Heroku Postgres is a managed SQL database service provided directly by Heroku.
+*   [GitHub](https://github.com/) - GitHub is a provider of Internet hosting for software development and version control using Git.
+*   [Font Awesome](https://fontawesome.com/) - Font Awesome is a font and icon toolkit based on CSS and Less.
+*   [Imgbb](https://mr-smyth.imgbb.com/) - Imgbb is a free image hosting that will solve many of your file storage problems and will work really well as a photo organizer.
+*   [W3 Markup Validator](https://validator.w3.org/) - The Markup Validation Service is a validator by the World Wide Web Consortium (W3C) that allows Internet users to check HTML and XHTML documents for well-formed markup.
+*   [W3C Css Validation](https://jigsaw.w3.org/css-validator/) - W3C CSS Validation Service is a free software created by the W3C to help Web designers and Web developers check Cascading Style Sheets (CSS).
+
+[<< ***Back to contents***](#table-of-contents)
+
+---
 
 # Deployment
 
@@ -549,21 +575,17 @@ You should now have a local copy of eHand.
 
 [<< ***Back to contents***](#table-of-contents)
 
----    
-# Tech
+---  
+# Testing
 
-*   Django
-*   Python3
-*   Javascript
-*   CSS
-*   HTML5
-*   Bootstrap
-*   Google Fonts
-*   Favicons
+**A full and thorough continuous testing was performed on this project, the results of which can be found here:**
+
+[Click here to view testing procedures and results](https://github.com/Mr-Smyth/eHand/blob/master/docs/testing.md)
 
 [<< ***Back to contents***](#table-of-contents)
 
----
+---  
+
 # Credits
 
 ## Content and code

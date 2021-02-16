@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
 {% endblock %}
 
+{% block extra_title %}
+    - {% trans "auth error" %}
+{% endblock %}
+
 {% block inner_header %}   
     <h2 class="text-shadow title">{% trans "Social network failure" %}</h2>
 {% endblock %}
 
 {% block inner-content %}
-<h1>{% trans "Social Network Login Failure" %}</h1>
 
 <p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
 {% endblock %}
