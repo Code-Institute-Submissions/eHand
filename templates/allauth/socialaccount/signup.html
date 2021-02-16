@@ -1,11 +1,16 @@
 {% extends "socialaccount/base.html" %}
-
+{% load static %}
 {% load i18n %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
+{% endblock %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block extra_title %}
+    - {% trans "Register" %}
+{% endblock %}
 
-{% block content %}
-    <h1>{% trans "Sign Up" %}</h1>
+{% block inner_content %}
+    <h1>{% trans "Register" %}</h1>
 
 <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
 {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
@@ -16,7 +21,8 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <button class="btn btn btn-success ehand-green-bg" type="submit">{% trans "Register" %} &raquo;</button>
+  <a href="{% url 'home' %}" class="btn btn-outline-secondary ml-2">{% trans 'Cancel' %}</a>
 </form>
 
 {% endblock %}

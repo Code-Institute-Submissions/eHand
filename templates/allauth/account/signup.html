@@ -1,5 +1,6 @@
 {% extends "account/base.html" %}
 {% load static %}
+{% load account socialaccount %}
 {% load i18n %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/allauth.css' %}">
@@ -11,7 +12,19 @@
     <h2 class="text-shadow">{% trans "Register" %}</h2>
 {% endblock %}
 {% block inner_content %}
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}" class="ehand-green-text">Sign in</a>.{% endblocktrans %}</p>
+    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}" class="ehand-green-text">Log in</a>.{% endblocktrans %}</p>
+
+    {% get_providers as socialaccount_providers %}
+    {% if socialaccount_providers %}
+        <!-- if there is a social media account - Google -->
+        <hr class="bg-light">
+        <div class="socialaccount_ballot mb-4">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        </div>
+        {% include "socialaccount/snippets/login_extra.html" %}
+        <p class="ehand-green-text">Or complete the form below:</p>
+        <hr class="bg-light">
+    {% endif %}
 
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
     {% csrf_token %}
@@ -19,8 +32,8 @@
     {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
-    <button class="btn btn btn-success ehand-green-bg" type="submit">{% trans "Sign Up" %} &raquo;</button>
-    <a href="{% url 'home' %}" class="btn btn-outline-secondary ml-2">{% trans 'Cancel' %}</a>
+    <button class="btn btn btn-success ehand-green-bg" type="submit">{% trans "Register" %} &raquo;</button>
+    <a href="{% url 'home' %}" class="btn btn-outline-light ml-2">{% trans 'Cancel' %}</a>
     </form>
 
 {% endblock %}

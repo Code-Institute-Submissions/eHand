@@ -105,7 +105,6 @@ Future planned incentives to be included are rewarding Time payments to members 
 [<< ***Back to contents***](#table-of-contents)
 
 
-
 ## Goals
 
 ### Visitor Goals
@@ -184,7 +183,7 @@ Other bootstrap standard colours are used in places where the lime green would h
 
 [<< ***Back to contents***](#table-of-contents)
 
-## fonts
+## Fonts
 
 The font chosen for this site is Nunito. I liked the clear simple rounded style, which fitted with the simple clean feel of the planned site.
 
@@ -295,7 +294,8 @@ This page is reachable by clicking on the Details button on a notice. There are 
 
 Once in the Details of a Notice, you will see 2 containers. The first container holds all the details entered for the notice, along with some 
 relevant action buttons.   
-The 2nd container contains a comments section enabling communication of querys between author and members interested in helping.
+The 2nd container contains a comments section enabling communication of querys between author and members interested in 
+helping. This uses a fetch in JS to update the page with the chat without reloading.
 
 ![Details](https://i.ibb.co/nBS0gww/image.png "Notice Details example")  
 
@@ -357,7 +357,6 @@ subscribe to the monthly payment and become a premium member. After payment the 
 ## Features for future consideration
 
 *   Social media involvement - signing in using social media links. 
-*   Implement ajax in the notice chat - this will make it a nice experience.
 *   Introduce a more global chat option where all members can chat.
 *   Implement more incentives to gain Time - Introduce a notice board for charity events. Organisers of these events get a Time bodus.
 *   Make the time payments into half and quarter hour denominations.
@@ -379,9 +378,9 @@ subscribe to the monthly payment and become a premium member. After payment the 
 ### In GitPod or IDE:
 7. To use postgres open project in GitPod and install:
 ```
-*	Pip3 install dj_database_url
-*	Pip3 install psycopg2-binary
-* 	Update requirements: Pip3 freeze > requirements.txt
+*	pip3 install dj_database_url
+*	pip3 install psycopg2-binary
+* 	Update requirements: pip3 freeze > requirements.txt
 ```
 
 ### In Django - setup new database:
