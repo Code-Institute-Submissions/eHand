@@ -10,12 +10,13 @@
 {% endblock %}
 
 {% block inner_header %}   
-    <h2 class="text-shadow title">{% trans "Log Out" %}</h2>
+    <h2 class="text-shadow title mt-5">{% trans "Log Out" %}</h2>
 {% endblock %}
 
 {% block inner_content %}
+    <p class="ehand-green-text">{% trans 'Notices are updated continuously, please remember to check your own, and other members notices regularly.' %}</p>
     <p>{% trans 'Are you sure you want to log out?' %}</p>
-    <form method="post" action="{% url 'account_logout' %}">
+    <form class="mt-5" method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
     {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>

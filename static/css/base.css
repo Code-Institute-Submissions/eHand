@@ -291,5 +291,7 @@ h2.title {
  #copyright{
      font-size: 1rem;
      color: #c2fa00;
-     text-shadow: 0px 0px 10px rgb(46, 46, 46);
+     text-shadow: 3px 0px 7px #1e2504e3, 
+	             -3px 0px 7px #1e2504e3,
+	              0px 6px 7px #1e2504e3
 }

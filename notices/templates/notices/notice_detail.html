@@ -23,11 +23,15 @@
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}} Details</h5>
                         <p class="card-text"><strong>{{ object.long_description }}</strong></p>
-                        <p class="card-text"><em>Requested by {{ object.author|title }}</em></p>
+                        {% if object.author|lower == user.username|lower %}
+                            <p class="card-text">Requested by You</p>
+                        {% else %}
+                            <p class="card-text">Requested by {{ object.author|title }}</p>
+                        {% endif %}
                         {% if object.commit.id != 1 %}
                         {% if object.commit|lower == user.username|lower %}
                         <div class="card-title border rounded text-white bg-warning p-2 shado5">
-                            <h5 class="text-center"><strong><em>You have committed to this notice</em></strong></h5>
+                            <h5 class="text-center"><strong>You have committed to this notice</strong></h5>
                             <h5>Please remember:</h5>
                             <ul>
                                 <li>You can view this notice in your profile under <em>"My Commitments".</em></li>
@@ -41,7 +45,7 @@
                         </div>
                         <!-- In the unlikly case that a user who has not committed to theis notice views this -->
                         {% else %}
-                        <p class="card-text bg-warning"><em>Agreed to by: {{ object.commit|title }}</em></p>
+                        <p class="card-text bg-warning border rounded p-2 shadow text-white">Committed to by: {{ object.commit|title }}</p>
                         {% endif %}
                         {% endif %}
                         <p class="border rounded bg-light p-2 shadow-sm"><strong>When: </strong>{{ object.specify_date }}</p>

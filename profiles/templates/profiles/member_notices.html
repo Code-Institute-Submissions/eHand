@@ -30,7 +30,7 @@
             <div class="col-sm-12">
                 <div class="card h-200 shadow-sm mb-3">
                     <div class="card-body">
-                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong>: <small><em>  Requested by {{ object.author|title }}</em></small></h5>
+                        <h5 class="card-title border rounded text-white bg-info p-2 shadow"><strong>{{ object.title}}</strong></h5>
                         {% if object.commit.id != 1 %}
                             <div class="card-title border rounded text-white bg-warning p-2 shado5">
                                 <h5 class="text-center"><strong><em>{{ object.commit|title}} has committed to this Notice</em></strong></h5>

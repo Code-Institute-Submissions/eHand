@@ -34,18 +34,22 @@
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}}</h5>
                         <p class="card-text"><strong>{{ object.short_description }}</strong></p>
-                        <p class="card-text">Requested by {{ object.author|title }}</p>
+                        {% if object.author|lower == user.username|lower %}
+                            <p class="card-text">Requested by You</p>
+                        {% else %}
+                            <p class="card-text">Requested by {{ object.author|title }}</p>
+                        {% endif %}
                         {% if object.commit.id != 1 %}
                             <!-- if current user has committed to this notice - highlight that -->
                             {% if object.commit|lower == user.username|lower %}
-                                <p class="card-text bg-warning border rounded p-2 shadow text-white"><em><strong></strong>You have committed to this notice</em></p>
+                                <p class="card-text bg-warning border rounded p-2 shadow text-white"><strong></strong>You have committed to this notice</p>
                             {% elif object.author|lower == user.username|lower %}
-                                <p class="card-text bg-warning border rounded p-2 shadow text-white"><em><strong></strong>{{ object.commit|title }} committed to your notice</em></p>
+                                <p class="card-text bg-warning border rounded p-2 shadow text-white"><strong></strong>{{ object.commit|title }} has committed to your notice</p>
                             {% else %}
-                                <p class="card-text bg-info border rounded p-2 shadow text-white"><em>Already agreed to by: {{ object.commit|title }}</em></p>
+                                <p class="card-text bg-warning border rounded p-2 shadow text-white">Already agreed to by: {{ object.commit|title }}</p>
                             {% endif %}
                         {% else %}
-                            <p class="card-text bg-success border rounded p-2 shadow text-white"><em>Nobody has offered help yet - Be the first Click Details below!</em></p>
+                            <p class="card-text bg-success border rounded p-2 shadow text-white">Nobody has offered help yet - Be the first Click Details below!</p>
                         {% endif %}
                         <h6 class="border rounded bg-light p-2 shadow-sm">Duration : {{ object.duration }}</h6>
                         <h6 class="border rounded bg-light p-2 shadow-sm">When : {{ object.specify_date }}</h6>
@@ -54,10 +58,10 @@
                         {% if object.commit.id != 1 %}
                             <!-- Case - where committer is current user - allow access -->
                             {% if object.commit|lower == user.username|lower  %}
-                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3 shadow">Details</a>
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3 shadow">Details</a>
                             <!-- Case - where logged in user is the author - allow access -->
                             {% elif object.author|lower == user.username|lower %}
-                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-warning mt-3 shadow">Details</a>
+                                <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-success mt-3 shadow">Details</a>
                             <!-- Case - user is not the committer - no access -->
                             {% else %}
                                 <a href="{% url 'notices:notice-detail' object.id %}" class="btn btn-danger mt-3 disabled" role="button" aria-disabled="true"><s>Details</s></a>
@@ -75,24 +79,24 @@
         {% if is_paginated %}
             <!-- Deal with previous pages -->
             {% if page_obj.has_previous %}
-                <a href="?page=1" class="btn btn-outline-dark">First</a>
-                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-dark">Previous</a>
+                <a href="?page=1" class="btn btn-dark">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-dark">Previous</a>
             {% endif %}
             <!-- Deal with arranging some quick link buttons for nearby pages -->
             {% for index in page_obj.paginator.page_range %}
                 <!-- check if we are on current page - display current page as a link highlighted -->
                 {% if page_obj.number == index %}
-                    <a href="?page={{ index }}" class="btn btn-dark">{{ index }}</a>
+                    <a href="?page={{ index }}" class="btn btn-light ehand-green-bg">{{ index }}</a>
                 <!-- Now we want to display a couple of the nearby pages as direct links -->
                 <!-- So if the index in the loop is within 2 pages then include a link to that page -->
                 {% elif index < page_obj.number|add:'2' and index > page_obj.number|add:'-2' %}
-                    <a href="?page={{ index }}" class="btn btn-outline-dark">{{ index }}</a>
+                    <a href="?page={{ index }}" class="btn btn-dark">{{ index }}</a>
                 {% endif %}
             {% endfor %}
             <!-- Deal with pnext pages -->
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-dark">Next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark">Last</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-dark">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-dark">Last</a>
             {% endif %}
         {% endif %}
     </div>
