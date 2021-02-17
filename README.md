@@ -578,9 +578,20 @@ You should now have a local copy of eHand.
 ---  
 # Testing
 
+
+## Testing results:
+
 **A full and thorough continuous testing was performed on this project, the results of which can be found here:**
 
 [Click here to view testing procedures and results](https://github.com/Mr-Smyth/eHand/blob/master/docs/testing.md)
+
+## Testing Existing bugs.
+
+During development, i had a serious issue where my link to the Google API, allowing me to sign in using an active google account was 
+very inconsistant in its reliability on local development.
+It works fine on the deployed site, and often works on the local development, i have not been able to get to the bottom of this 
+problem and was considering not including it at all. But it appears to work as expected on the Deployed version, so i decided to include it.
+
 
 [<< ***Back to contents***](#table-of-contents)
 
