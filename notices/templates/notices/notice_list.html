@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <h5 class="card-title border rounded text-white bg-info p-2 shadow">{{ object.title}}</h5>
                         <p class="card-text"><strong>{{ object.short_description }}</strong></p>
-                        <p class="card-text"><em>Requested by {{ object.author|title }}</em></p>
+                        <p class="card-text">Requested by {{ object.author|title }}</p>
                         {% if object.commit.id != 1 %}
                             <!-- if current user has committed to this notice - highlight that -->
                             {% if object.commit|lower == user.username|lower %}
