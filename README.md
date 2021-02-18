@@ -358,6 +358,7 @@ Selecting Premium from the Upgrade page brings the user to the payment screen wh
 *   Introduce a more global chat option where all members can chat, also include posting pictures to better describe a situation.
 *   Implement more incentives to gain Time - Introduce a notice board for charity events. Organisers of these events get a Time bonus.
 *   Make the time payments into half and quarter-hour denominations.
+*   Add a contact page, for member queries.
 
 [<< ***Back to contents***](#table-of-contents)
 
