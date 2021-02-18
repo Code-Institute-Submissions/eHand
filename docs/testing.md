@@ -1,4 +1,3 @@
-
 ![eHandTesting](https://i.ibb.co/ry2dNYk/image.png "eHand testing Logo")
 
 # eHand Testing
@@ -88,19 +87,19 @@
 
  **<details><summary>User Stories Testing</summary>**
 
-  * [As a non member: I want to visit the sites homepage and get a clear overview of what the site does and how i can sign up.](#user-story-1)
-  * [As a Free member i want to be able to sign in to eHand and view Posts and offer help](#user-story-2)
-  * [As a premium member when i create my membership, i want to know my payment donates to charity](#user-story-3)
-  * [As a premium member when i create my membership, i want to be awarded the 2 free hours of time to spend on the site.](#user-story-4)
-  * [As a premium member i want to be able to create a posting/ or hand.](#user-story-5)
-  * [As a Premium member i want other members to be able to see my post/hand - and offer help.](#user-story-6)
-  * [As a premium member i want to be able to offer my help to others.](#user-story-7)
-  * [As a premium member i want to be able to transfer my time to another member who helped me.](#user-story-8)
-  * [As a premium member i want to be able to accept payment of time from a member i helped.](#user-story-9)
-  * [As a premium member i want to get a notification when i log in - if another member has offered help](#user-story-10)
-  * [As a member i want a way to communicate to a member who is offering help, or if i am offering it.](#user-story-11)
-  * [As a member i would like to see commitments i have made in my profile](#user-story-12)
-  * [As a member i would like to see my notices in my profile.](#user-story-13)
+  * [As a non-member: I want to visit the homepage of the site and get a clear overview of what the site does and how I can sign up.](#user-story-1)
+  * [As a Free member I want to be able to sign in to eHand and view Posts and offer help](#user-story-2)
+  * [As a premium member when I create my membership, I want to know my payment donates to charity](#user-story-3)
+  * [As a premium member when I create my membership, I want to be awarded the 2 free hours of time to spend on the site.](#user-story-4)
+  * [As a premium member I want to be able to create a posting/ or hand.](#user-story-5)
+  * [As a Premium member I want other members to be able to see my post/hand - and offer help.](#user-story-6)
+  * [As a premium member I want to be able to offer my help to others.](#user-story-7)
+  * [As a premium member I want to be able to transfer my time to another member who helped me.](#user-story-8)
+  * [As a premium member I want to be able to accept payment of time from a member I helped.](#user-story-9)
+  * [As a premium member I want to get a notification when I log in - if another member has offered help](#user-story-10)
+  * [As a member I want a way to communicate to a member who is offering help, or if I am offering it.](#user-story-11)
+  * [As a member I would like to see commitments I have made in my profile](#user-story-12)
+  * [As a member I would like to see my notices in my profile.](#user-story-13)
 
 </details>
 
@@ -112,10 +111,10 @@
 
 ### Home visual testing
 * :hammer: TEST:  
-    * Expected tailored Javascript to force Page logo to disappear when scroll down the page, and the navbar to roll up to a fixed position at the top of the page.
+    * Expected tailored Javascript to force Page logo to disappear when scrolling down the page and the navbar to roll up to a fixed position at the top of the page.
 * :clipboard: RESULT: 
     * Page displayed as expected
-    * No errors in console.
+    * No errors in the console.
 
 * :hammer: TEST: (Responsiveness)   
     * Expected tailored Javascript to force navbar to become fixed to the top when screen size was reduced below 768px in width.
@@ -126,7 +125,7 @@
 * :hammer: TEST: (Messages)  
     * Expected to see a modal display a message after an upgrade attempt of a membership.
 * :clipboard: RESULT: 
-    * Modal displayed as expected with ghost white body and lime green border.
+    * Modal displayed as expected with a ghost-white body and lime green border.
 
 * :hammer: TEST: (Username)  
     * Expected to see a logged in user message at top of screen
@@ -148,14 +147,14 @@
     * All navbar links work as expected
 
 * :hammer: TEST: (Info Readmore links) 
-    * Expected Read more links in page introduction to bring user to correct section on page to read more about that article.
+    * Expected Read more links in page introduction to bring the user to the correct section on the page to read more about that article.
 * :clipboard: RESULT: 
-    * Read more links took user to correct part of page
+    * Read more links took the user to correct part of the page
 
 * :hammer: TEST: (Get Started links) 
-    * Expected Get Started links in information containers to bring user to the upgrade page.
+    * Expected Get Started links in information containers to bring the user to the upgrade page.
 * :clipboard: RESULT: 
-    * For a non authenticated member - they are taken to the sign in page / with option to register.
+    * For a non authenticated member - they are taken to the sign-in page / with an option to register.
     * Once signed in, the user arrives at the upgrade page.
     * An authenticated user arrives straight to the upgrade page.
 
@@ -234,12 +233,12 @@
 * :hammer: TEST:    
     * Expected a link to discover the premium membership in the profile view
 * :clipboard: RESULT: 
-    * A discover premium button is displayed only when current user is on a free membership plan.
+    * A discover premium button is displayed only when the current user is on a free membership plan.
 
 * :hammer: TEST:    
     * Expected to be able to cancel my premium membership from the profile
 * :clipboard: RESULT: 
-    * A Cancel my Subscription button is available in the profile page when the user has a current valid premium subscription.
+    * A Cancel my Subscription button is available on the profile page when the user has a current valid premium subscription.
 
 [Back to Index](#index)
 
@@ -252,7 +251,7 @@
     memberships.models.
 
 * :hammer: TEST:    
-    * I expect that when i am a free member, the upgrade page gives me the option to upgrade.
+    * I expect that when I am a free member, the upgrade page gives me the option to upgrade.
 * :clipboard: RESULT: 
     * Option to select premium is always available to a free member.
 
@@ -261,10 +260,10 @@
     packages payment page and purchase a premium subscription.
     I expect some visual confirmation of a successful transaction.
 * :clipboard: RESULT: 
-    * Upon all cases of testing i was able to enter the stripe test card data and successfully subscribe to a premium membership.
+    * Upon all cases of testing, I was able to enter the stripe test card data and successfully subscribe to a premium membership.
 
 * :hammer: TEST:    
-    * I expect that i can cancel my premium subscription at any stage.
+    * I expect that I can cancel my premium subscription at any stage.
 * :clipboard: RESULT: 
     * User can cancel their subscription from the profile page at any stage.
 
@@ -345,13 +344,11 @@
     * All views worked as expected
 
 * :hammer: TEST:    
-    * Checked code using gitpod built in python validator and [pep8online](http://pep8online.com/)
+    * Checked code using the GitPod built-in python validator and [pep8online](http://pep8online.com/)
 * :clipboard: RESULT: 
     * Errors returned:
-        *   Class 'Subscriptions' has no 'objects' member - ***After research online and on slack, I discovered it was pylint not understanding the django model 
-     reference. I am still checking for answers to this.***
-        *   Class 'Packages' has no 'objects' member - ***After research online and on slack, I discovered it was pylint not understanding the django model 
-     reference. I am still checking for answers to this.***
+        *   Class 'Subscriptions' has no 'objects' member - ***After research online and on slack, I discovered it was pylint not understanding the Django model reference. I am still checking for answers to this.***
+        *   Class 'Packages' has no 'objects' member - ***After research online and on slack, I discovered it was pylint not understanding the Django model reference. I am still checking for answers to this.***
         *   Unused variable 'created' - ***this is because pylint does not know about using it as a search of stripe.***
 
 [Back to Index](#index)
@@ -362,7 +359,7 @@
 
 ### Notices visual testing
 * :hammer: TEST:    (Notices)
-    * Expected notices page to display each notice in a paginated view, stacked on mobile device and side by side on descktop
+    * Expected notices page to display each notice in a paginated view, stacked on mobile device and side by side on desktop
 * :clipboard: RESULT: 
     * Notice page rendered as expected on all screen sizes.
 
@@ -379,6 +376,7 @@
     * The correct details were displayed for each notice details, depending on the circumstances.
 
 * :hammer: TEST:    (Notice Details - comments)  
+    * Expect comment to post using fetch to prevent page reload.
     * Expect comments to display "no comments yet" on a new notice.
     * Expect Comments to display current users comments in blue.
     * Expect Comments to display authors comments in black.
@@ -386,7 +384,7 @@
     * Expected comments to appear stacked on either side of the comment window.
 * :clipboard: RESULT: 
     * Comments all displayed as expected.   
-    * ***Possible upgrade for next version - include ajax to improve UX and stop page reload.***
+    
 
 [Back to Index](#index)
 
@@ -398,17 +396,17 @@
     * Clicking details always took me to the correct notice details
 
 * :hammer: TEST: (Notices)  
-    * Expected each notice to not allow un-authenticated users to click on the details
+    * Expected each notice to not allow unauthenticated users to click on the details
 * :clipboard: RESULT: 
-    * Un-authenticated users are unable to click details of a notice, instead they are diverted to the sign in page.
+    * Un-authenticated users are unable to click details of a notice, instead, they are diverted to the sign-in page.
 
 * :hammer: TEST:   (Notice Details)   
-    * Expected notice details to allow me to commit to a notice if i am not the author
+    * Expected notice details to allow me to commit to a notice if I am not the author
 * :clipboard: RESULT: 
-    * The commit button allowed me to commit to any notice that i was not the author of.
-    * If the notice has been already committed to, and current user is neither the member who committed of the author,
+    * The commit button allowed me to commit to any notice that I was not the author of.
+    * If the notice has been already committed to, and the current user is neither the member who committed of the author,
     Then it is not possible to view the details.
-    * If i am the member who committed, the option to commit is no longer there, and some extra information regarding how to manage the commitment is displayed
+    * If I am the member who committed, the option to commit is no longer there, and some extra information regarding how to manage the commitment is displayed
 
 * :hammer: TEST:   (Notice Details)   
     * Expected notice details to allow me to enter a comment to be read by anyone viewing the details
@@ -419,13 +417,13 @@
     * Expected to click create notice and be taken to the create notice form
 * :clipboard: RESULT: 
     * Create notice will take any premium member to the create notice form, 
-    * A check is made for users membership and the button is removed and the view restricted if current user is on a free membership
+    * A check is made for users membership and the button is removed and the view restricted if the current user is on a free membership
 
 * :hammer: TEST:  (Notices - create/update notice)     
-    * Expected to be able to enter all relevent details of my notice into the form and click submit.
+    * Expected to be able to enter all relevant details of my notice into the form and click submit.
     * Expect to be redirected to the notice details after clicking submit
 * :clipboard: RESULT: 
-    * Notice create/update worked as expected - redirecting to the same notice deta after clicking submit.
+    * Notice create/update worked as expected - redirecting to the same notice data after clicking submit.
 
 [Back to Index](#index)
 
@@ -462,7 +460,7 @@
 
 [Back to Index](#index)
 
-### Notices Css testing
+### Notices CSS testing
 
 * :hammer: TEST: (notices.css)
     * Tested the CSS in notices.css using [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
@@ -539,7 +537,7 @@ Used several Django Generic class views for this app, with some mixins associate
     * The Cancel subscription button will only display when the user is subscribed to Premium
 
 * :hammer: TEST: (Subscriptions) 
-    * Expect the Discover Premium button to display when user is subscribed to free
+    * Expect the Discover Premium button to display when the user is subscribed to free
 * :clipboard: RESULT: 
     * The Discover premium button only displays when the user is subscribed to free.
 
@@ -554,12 +552,12 @@ Used several Django Generic class views for this app, with some mixins associate
     * Any entered profile information is always displayed within the Profile Information window.
 
 * :hammer: TEST:    (Profile) 
-    * Expect the members current own notices to display in My Notices section of the Profile.
+    * Expect the member's current own notices to display in My Notices section of the Profile.
 * :clipboard: RESULT: 
     * All members current notices are displayed in the My notices section of the profile.
 
 * :hammer: TEST:    (Profile) 
-    * Expect the members current commitments to display in My commitments section of the Profile.
+    * Expect the member's current commitments to display in My commitments section of the Profile.
 * :clipboard: RESULT: 
     * All members current commitments are displayed in the My commitments section of the profile.
 
@@ -572,9 +570,9 @@ Used several Django Generic class views for this app, with some mixins associate
     * The cancel subscription button behaves as expected and removes the premium and applies the free membership.
 
 * :hammer: TEST: (Subscriptions)   
-    * Expect the Discover Premium button to redirect user to the upgrade page.
+    * Expect the Discover Premium button to redirect the user to the upgrade page.
 * :clipboard: RESULT: 
-    * User gets redirected to the upgrade page when user clicks on the discover Premium button.
+    * User gets redirected to the upgrade page when the user clicks on the discover Premium button.
 
 * :hammer: TEST:    (Profile)
     * Expect user to be able to click on edit profile in the Profile Information window and be directed to the edit profile page.
@@ -582,23 +580,23 @@ Used several Django Generic class views for this app, with some mixins associate
     * When clicked the edit profile button takes the member to a page where they can enter/edit their profile data.
 
 * :hammer: TEST:    (My Commitments)
-    * Expect to be able to remove my commitment to a notice in my commitments page of my profile.
+    * Expect to be able to remove my commitment to a notice on my commitments page of my profile.
 * :clipboard: RESULT: 
     * Yes the member can remove their commitment to a message from the profile - my commitments page.
 
 * :hammer: TEST:   (My Notices) 
     * Expect to be able to remove a notice by deleting it in the My Notices page
 * :clipboard: RESULT: 
-    * Yes a member can click the delete notice button in the my Notices page of their profile.
-    * This is only possible if nobdy has committed to the notice.
-    * Any committed to notice may not be deleted until complete
+    * Yes a member can click the delete notice button on my Notices page of their profile.
+    * This is only possible if nobody has yet committed to the notice.
+    * Any Notice that has been committed to, may not be deleted until complete
 
 * :hammer: TEST:   (My Notices) 
     * Expect to be able to update a notice by in the My Notices page
 * :clipboard: RESULT: 
-    * Yes a member can click the Update notice button in the my Notices page of their profile.
-    * This is only possible if nobdy has committed to the notice.
-    * Any committed to notice may not be updated.
+    * Yes a member can click the Update notice button on my Notices page of their profile.
+    * This is only possible if nobody has committed to the notice.
+    * Any Notice that has been committed to, may not be updated.
 
 * :hammer: TEST:   (Update profile form) 
     * Expected that current information would be displayed inside the edit profile form
@@ -657,9 +655,9 @@ Used several Django Generic class views for this app, with some mixins associate
     * Check IDE for any linting errors
 * :clipboard: RESULT: 
     * No errors found
-    * Linter suggested not using Null = True, but i require these fields to be allowed to be empty or Null.
+    * Linter suggested not using Null = True, but I require these fields to be allowed to be empty or Null.
     * A pylint error about objects having no objects member
-    - According to stackoverflow and several members on slack - this can be ignored.
+    - According to StackOverflow and several members on slack - this can be ignored.
 
 [Back to Index](#index)
 
@@ -685,7 +683,7 @@ Used several Django Generic class views for this app, with some mixins associate
     * Blue for own comments.
     * Black for authors comments.
 * :clipboard: RESULT: 
-    * Yes comments always displayed in the correct colour from current members perspective.
+    * Yes comments always displayed in the correct colour from the current members perspective.
 
 * :hammer: TEST:  (Comments - inside notice details)  
     * Expected comments to be removed when notice is deleted
@@ -775,7 +773,7 @@ The base.html file is reflected in each of the apps templates, for which the res
 
 [Back to Index](#index)
 
-### Allauth Css testing
+### Allauth CSS testing
 
 * :hammer: TEST: (allauth.css)
     * Tested the CSS in allauth.css using [W3 CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
@@ -799,24 +797,24 @@ The base.html file is reflected in each of the apps templates, for which the res
 ## User Login system and templates
 
 The login and register procedure worked smoothly.   
-As a new user i was able to:   
+As a new user I was able to:   
 + Click register and fill in my details and click signup.
-+ A pop up modal confimed that i was sent an email which had a link i needed to click on
-+ Once the email link was clicked on, i was returned to the eHand site, where i could click to verify my account.
-+ A modal then informed me that my account had been provided and i could now log in.
++ A pop-up modal confirmed that I was sent an email which had a link I needed to click on
++ Once the email link was clicked on, I was returned to the eHand site, where I could click to verify my account.
++ A modal then informed me that my account had been provided and I could now log in.
 + I could now successfully sign in using my username and password entered during registration.
 
 Problems:
-I noticed a lag at times with confirmation emails. When they had not arrived straight away i checked in the sent items of
+I noticed a lag at times with confirmation emails. When they had not arrived straight away I checked in the sent items of
 the email account linked to eHand, and the emails were there, but they at times took up to 25 mins to arrive at their destination.
-I am looking into this, to see if it is anything i can improve upon, as i feel it gives a very poor impression if an email is not delivered for so long.
+I am looking into this, to see if it is anything I can improve upon, as I feel it gives a very poor impression if an email is not delivered for so long.
 
 [Back to Index](#index)
 
 ### Allauth account base HTML testing
 
 Used to extend the base.html to the allauth templates, but provide a common, simpler style to them all.
-The html for this page is validated via the other templates in this section which extend this.
+The HTML for this page is validated via the other templates in this section which extend this.
 
 [Back to Index](#index)
 
@@ -877,7 +875,7 @@ The html for this page is validated via the other templates in this section whic
 
 ### User story 1
 
-**As a non member: I want to visit the sites homepage	and get a clear overview of what the site does and how i can sign up:**
+**As a non-member: I want to visit the homepage of the site and get a clear overview of what the site does and how I can sign up:**
 
 + The home page clearly outlines what the site does and why and how.
 + Clear navigation links and get started buttons guide the user to sign in or register.
@@ -887,11 +885,11 @@ The html for this page is validated via the other templates in this section whic
 [Back to Index](#index)
 ### User story 2
 
-**As a Free member i want to be able to sign in to eHand and view Posts and offer help:**
+**As a Free member I want to be able to sign in to eHand and view Posts and offer help:**
 
 ![User Story 2](https://i.ibb.co/f9pTVVm/image.png)
 
-and as Jimmy, i can click on this posts details, allowing Jimmy to help.
+and as Jimmy, I can click on the details of this post, allowing Jimmy to help.
 
 ![User Story 2b](https://i.ibb.co/CsbPx1X/image.png)
 
@@ -900,7 +898,7 @@ and as Jimmy, i can click on this posts details, allowing Jimmy to help.
 [Back to Index](#index)
 ### User story 3
 
-**As a premium member when i create my membership, i want to know my payment donates to charity:**
+**As a premium member when I create my membership, I want to know my payment donates to a charity:**
 
 + The site clearly states that the profits go to various charities and community organisations.
 + A message confirming upgrade to premium also mentions the donation to charity.
@@ -910,17 +908,17 @@ and as Jimmy, i can click on this posts details, allowing Jimmy to help.
 [Back to Index](#index)
 ### User story 4
 
-**As a premium member when i create my membership, i want to be awarded the 2 free hours of time to spend on the site:**
+**As a premium member when I create my membership, I want to be awarded the 2 free hours of time to spend on the site:**
 
 + This user story has developed from awarding 2 hours, to awarding 10 currently. This may vary in future versions.
 
-I will reuse previous picture here, as it also shows in the background that Jimmy has been awarded 10t in his Time account.
+I will reuse a previous picture here, as it also shows in the background that Jimmy has been awarded 10t in his Time account.
 ![User Story 4](https://i.ibb.co/ThHh3fz/image.png)
 
 [Back to Index](#index)
 ### User story 5
 
-**As a premium member i want to be able to create a Notice looking for help:**
+**As a premium member I want to be able to create a Notice looking for help:**
 
 + Yes a Premium member can create Notices looking for help from other members.
 
@@ -929,7 +927,7 @@ I will reuse previous picture here, as it also shows in the background that Jimm
 [Back to Index](#index)
 ### User story 6
 
-**As a Premium member i want other members to be able to see my Notice - and offer help:**
+**As a Premium member I want other members to be able to see my Notice - and offer help:**
 
 + All Members can see and offer help to any notice that has not been committed to yet.
 + Non authenticated visitors may also view the notices, but not interact in any way without sign in.
@@ -939,7 +937,7 @@ I will reuse previous picture here, as it also shows in the background that Jimm
 [Back to Index](#index)
 ### User story 7
 
-**As a premium member i want to be able to offer my help to others:**
+**As a premium member I want to be able to offer my help to others:**
 
 + Yes any member can offer to help another member by committing to help inside their notice.
 
@@ -950,19 +948,17 @@ I will reuse previous picture here, as it also shows in the background that Jimm
 [Back to Index](#index)
 ### User story 8
 
-**As a premium member i want to be able to transfer my time to another member who helped me:**
+**As a premium member I want to be able to transfer my time to another member who helped me:**
 
 + When a notice has been completed the author of the notice must click - ***Finalise Notice*** in their
-My Notices section of their profile. If the author has sufficient Time Balance, this action will handle 
-the transfer of the amount of time payable laid out in the notice. If a notice is completed and the 
-member who committed is not a premium member then obviously NO payment of time will take place.
+My Notices section of their profile. If the author has sufficient Time Balance, this action will handle the transfer of the amount of time payable laid out in the notice. If a notice is completed and the member who committed is not a premium member then obviously NO payment of time will take place.
 
 ![User Story 7](https://i.ibb.co/8BmnsG7/image.png)
 
 [Back to Index](#index)
 ### User story 9
 
-**As a premium member i want to be able to accept payment of time from a member i helped:**
+**As a premium member I want to be able to accept payment of time from a member I helped:**
 
 + If a has helped another member with a notice, then the author will handle the transfer of the time
 by clicking on the ***Finalise Notice*** in their My Notices section of their profile.
@@ -972,7 +968,7 @@ See image from user story 7 - it is the author who sends Time payments, acceptan
 [Back to Index](#index)
 ### User story 10
 
-**As a premium member i want to get a notification when i log in - if another member has offered help:**
+**As a premium member I want to get a notification when I log in - if another member has offered help:**
 
 + I have not been able to implement notifications in any practical way in this release.
 The transfers will happen and the users Time balances will be updated accordingly.
@@ -980,7 +976,7 @@ The transfers will happen and the users Time balances will be updated accordingl
 [Back to Index](#index)
 ### User story 11
 
-**As a member i want a way to communicate to a member who is offering help, or if i am offering it:**
+**As a member I want a way to communicate to a member who is offering help, or if I am offering it:**
 
 + The comments window inside each notices details, is specific for that particular notice, and offers
 a method of communication between all members viewing the notice.
@@ -990,7 +986,7 @@ a method of communication between all members viewing the notice.
 [Back to Index](#index)
 ### User story 12
 
-**As a member i would like to see commitments i have made in my profile:**
+**As a member I would like to see commitments I have made in my profile:**
 
 + This is possible in the My Commitments section of each members profile.
 
@@ -999,7 +995,7 @@ a method of communication between all members viewing the notice.
 [Back to Index](#index)
 ### User story 13
 
-**As a member i would like to see my notices in my profile:**
+**As a member I would like to see my notices in my profile:**
 
 + This is possible in the My Notices section of each members profile.
 
