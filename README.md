@@ -356,8 +356,9 @@ subscribe to the monthly payment and become a premium member. After payment the 
 
 ## Features for future consideration
 
-*   Social media involvement - For this project i only included Google sign in, i would like to extend this to Twitter and Facebook. 
-*   Introduce a more global chat option where all members can chat.
+*   Social media involvement - I had hoped to include social media sign in, in this project. Unfortunately i had some trouble with the Google API,
+     which i feel will need further testing, within this project, for me to be confident that it is stable.
+*   Introduce a more global chat option where all members can chat, also include posting of pictures to better describe a situation.
 *   Implement more incentives to gain Time - Introduce a notice board for charity events. Organisers of these events get a Time bodus.
 *   Make the time payments into half and quarter hour denominations.
 
@@ -366,6 +367,8 @@ subscribe to the monthly payment and become a premium member. After payment the 
 ---
 
 # Tech
+
+The following list of technologies were used in the development of eHand.
 
 *   [Django](https://www.djangoproject.com/) - Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 *   [Python3](https://www.python.org/) - Python is an interpreted, high-level and general-purpose programming language. Python 3 was used as the core language in this project.
@@ -377,6 +380,7 @@ subscribe to the monthly payment and become a premium member. After payment the 
 *   [Favicon.io](https://favicon.io/) - A Favicon generator
 *   [Allauth](https://django-allauth.readthedocs.io/en/latest/) - Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
 *   [Stripe payments](https://stripe.com/docs) - Stripe offers payment processing software and application programming interfaces for e-commerce websites and mobile applications.
+*   [AWS](https://aws.amazon.com/) - Amazon Web Services is a subsidiary of Amazon providing on-demand cloud computing platforms and APIs
 *   [Heroku](https://www.heroku.com/) - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
 *   [Heroku PostGres](https://www.heroku.com/postgres) - Heroku Postgres is a managed SQL database service provided directly by Heroku.
 *   [GitHub](https://github.com/) - GitHub is a provider of Internet hosting for software development and version control using Git.
@@ -590,7 +594,7 @@ You should now have a local copy of eHand.
 During development, i had a serious issue where my link to the Google API, allowing me to sign in using an active google account was 
 very inconsistant in its reliability on local development.
 It works fine on the deployed site, and often works on the local development, i have not been able to get to the bottom of this 
-problem and was considering not including it at all. But it appears to work as expected on the Deployed version, so i decided to include it.
+problem and have decided not to include it in this version.
 
 
 [<< ***Back to contents***](#table-of-contents)
