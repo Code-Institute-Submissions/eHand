@@ -33,7 +33,7 @@
                         <!-- Time Account Details -->
                         {% if user.is_authenticated and users_current_package.membership_type|lower == 'premium' %}
                         <h5><strong>Time Acc</strong></h5>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered shadow">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Time Acc#</th>
@@ -49,7 +49,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <hr>
                         {% endif %}
 
                         <!-- Layout the current profile information -->

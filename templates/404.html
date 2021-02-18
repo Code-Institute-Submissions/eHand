@@ -8,11 +8,14 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-shadow title">Error 404 : Sorry but this page does not exist</h2>
+                <h2 class="text-shadow title">Error 404 : Whoops!</h2>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block content %}
-   
+   <p class="ehand-green-text">The page you are looking for does not exist anymore - just like my sanity! 
+       - please use the button below to return the Homepage. Or use one of the links above.
+   </p>
+    <a href="{% url 'home' %}" class="btn btn-light ml-2">Return to Home Page</a>
 {% endblock %}

@@ -8,11 +8,18 @@
     <div class="container col-sm-12 col-md-10 offset-md-1 fade-in">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-shadow title">Error 500 : Sorry something has gone wrong on the web site's server</h2>
+                <h2 class="text-shadow title">Error 500 : Whoops</h2>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block content %}
-   
+   <p class="ehand-green-text">Sorry about this, but something has gone wrong on the web site's server. 
+       Please use the button below to return to the Homepage, or use the links above. Then try again.
+   </p>
+   <p>If the problem persists, please try again later, rest asured that our developers will 
+       be working on any problems to repair them and return normal service as soon as possible.
+    </p>
+    <p>Thank you for your patience..</p>
+    <a href="{% url 'home' %}" class="btn btn-light ml-2">Return to Home Page</a>
 {% endblock %}
