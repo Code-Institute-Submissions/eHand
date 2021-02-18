@@ -17,9 +17,21 @@
         </div>
     </div>
 {% endblock %}
-{% block inner_content %}
-   <p class="ehand-green-text">The page you are looking for does not exist anymore - just like my sanity! 
-       - please use the button below to return the Homepage. Or use one of the links above.
-   </p>
-    <a href="{% url 'home' %}" class="btn btn-light ml-2">Return to Home Page</a>
+{% block content %}
+    <div class="container col-sm-12 col-md-6 offset-md-3 fade-in">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-transparent">
+                    <div class="opaque"></div>
+                    <div class="card-body text-white">
+                        <p class="ehand-green-text">The page you are looking for does not exist anymore - just like my
+                            sanity!
+                            - please use the button below to return the Homepage. Or use one of the links above.
+                        </p>
+                        <a href="{% url 'home' %}" class="btn btn-light ml-2">Return to Home Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
