@@ -188,7 +188,9 @@ h2.title {
      background: rgb(192,192,192);
      background: linear-gradient(180deg, rgba(192,192,192,0) 0%, rgba(192,192,192,0.01) 1%, rgba(192,192,192,0.03) 3%, rgba(192,192,192,0.05) 5%, rgba(192,192,192,0.1) 10%, rgba(192,192,192,0.5) 30%, rgba(192,192,192,0.8) 60%, rgba(192,192,192,0.95) 80%, rgba(192,192,192,1) 100%);
      color: #c2fa00;
-     text-shadow: 2px 0px 6px rgba(6, 7, 6, 0.76);
+     text-shadow: 3px 0px 7px #1e2504e3, 
+	             -3px 0px 7px #1e2504e3,
+	              0px 6px 7px #1e2504e3
 }
  .information-container{
      background: rgb(192,192,192);
