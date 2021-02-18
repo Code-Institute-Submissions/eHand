@@ -2,6 +2,9 @@
  * {
      box-sizing: border-box;
 }
+html {
+    height: 100%;
+}
 
  body {
      font-family: "Nunito", sans-serif;
@@ -10,9 +13,10 @@
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
-     position: relative;
      min-height: 100%;
      scroll-behavior: smooth;
+     display: flex;
+     flex-direction: column;
 }
  .box-shadow {
      -webkit-box-shadow: 0 1px 6px 0 #c2fa00;
@@ -264,9 +268,14 @@ h2.title {
 }
 /* Footer */
  #footer-container{
-     margin-top: 140px;
-     height: 100px;
+     margin-top: auto;
+     min-height: 300px;
+     display: flex;
+     flex-direction: column;
 }
+ #social-links{
+     margin-top: auto;
+ }
  #social-links i{
      color: #c2fa00;
      text-shadow: 0px 0px 10px rgb(46, 46, 46);

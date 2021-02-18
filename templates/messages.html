@@ -9,16 +9,16 @@
                     {% with message.level as level %}
                     <!-- Error -->
                     {% if level == 40 %}
-                        <i class="fas fa-times text-danger"></i><p class="text-danger">{{ message }}</p>
+                        <i class="fas fa-times text-danger"></i><p class="text-danger">{{ message|capfirst }}</p>
                     <!-- Warning -->
                     {% elif level == 30 %}
-                        <i class="fas fa-exclamation-triangle text-warning"></i><p class="text-warning">{{ message }}</p>
+                        <i class="fas fa-exclamation-triangle text-warning"></i><p class="text-warning">{{ message|capfirst }}</p>
                     <!-- Success -->
                     {% elif level == 25 %}
-                        <i class="far fa-check-circle text-success"></i><p class="text-success">{{ message|title }}</p>
+                        <i class="far fa-check-circle text-success"></i><p class="text-success">{{ message|capfirst }}</p>
                     <!-- Info -->
                     {% elif level == 20 %}
-                        <i class="fas fa-info-circle text-info"><br></i><p class="text-info">{{ message }}</p>
+                        <i class="fas fa-info-circle text-info"><br></i><p class="text-info">{{ message|capfirst }}</p>
                     {% else %}
                         <p>{{ message }}</p>
                     {% endif %}

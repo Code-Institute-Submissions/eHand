@@ -36,7 +36,7 @@
                                 <legend class="fieldset-label text-center text-white px-2">Please enter your Credit Card
                                     Details below
                                 </legend>
-                                <i class="fab fa-cc-stripe fa-3x text-primary"></i>
+                                <img src="https://img.icons8.com/color/96/000000/stripe.png"/>
                                 <!-- A Stripe card element will go here -->
                                 <div class="mb-3 w-auto mx-auto" id="card-element"></div>
                                 <!-- Used to display form errors -->
@@ -44,14 +44,16 @@
                                 <input type="hidden" id="nonce" name="payment_method_nonce" />
                                 <div class="row justify-content-center">
                                     <button type="submit"
-                                        class="btn btn-success btn-outline-light hover-shadow">
+                                        class="btn btn-success ehand-green-bg">
                                     Pay by Card 
                                     <span class="icon"><i class="fas fa-lock"></i></span>
                                     </button>
                                 </div>
                             </fieldset>
                         </form>
-                        <div id="stripe-token-handler" class="is-hidden">Success <span class="token"></span></div>
+                        <div id="stripe-token-handler" class="is-hidden">
+                            <p><i class="far fa-check-circle mr-4"></i>Your payment has been successfull, please wait while we redirect you ...</p>
+                            <p class="token text-muted"><small></small></p></div>
                     </div>
                 </div>
             </div>
