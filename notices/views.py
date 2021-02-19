@@ -26,13 +26,21 @@ from comments.forms import CommentForm
 
 def accept_notice(request, pk):
     """
-    View to handle a user clicking to commit to a Notice:
+    View to handle a user clicking to commit to a Notice
+
     \n * Sets the commit field to be equal to logged in user.
-    \n * We then return to the users commitments in their profile.
+    \n * We then return to the users commitments in their profile with
+    \n   an appropriate message.
+
+    \nArgs:
+    \n * Arg1: The request object.
+    \n * Arg2: The pk of the notice selected.
+
+    \nReturns:
+    \n * Redirects to the profile/member_commitments page
     """
 
-    notice = get_object_or_404(
-        Notice, id=request.POST.get('notice_id'))
+    notice = get_object_or_404(Notice, id=pk)
     notice.commit = request.user
     notice.save()
     # variables for benefit of message
@@ -46,12 +54,20 @@ def accept_notice(request, pk):
 
 def cancel_notice(request, pk):
     """
-    * Handles cancelling of a commitment to a Notice.
+    Handles cancelling of a commitment to a Notice.
+
+    \n * sets the commit of the notice back to the default of Admin
+
+    \nArgs:
+    \n * Arg1: The request object.
+    \n * Arg2: The pk of the notice selected.
+
+    \nReturns:
     \n * Returns user commitments template
     """
 
     notice = get_object_or_404(
-        Notice, id=request.POST.get('notice_id'))
+        Notice, id=pk)
     acceptee = str(notice.commit).capitalize()
     admin = User.objects.get(username='admin')
     notice.commit = admin
@@ -67,6 +83,16 @@ def cancel_notice(request, pk):
 def confirm_complete(request, pk):
     """
     Handles checking if user is sure they want to complete the notice
+
+    \n * Gets the details of the notice
+
+    \nArgs:
+    \n * Arg1: The request object.
+    \n * Arg2: The pk of the notice selected.
+
+    \nReturns:
+    \n * Returns user confirm_complete template
+    \n * Returns context to inform user of Notice details
     """
     notice = get_object_or_404(
         Notice, id=pk)
@@ -97,11 +123,21 @@ def confirm_complete(request, pk):
 
 def complete_notice(request, pk):
     """
-    Handles the completion of a Notice:
-    \n* Checks if user is notice author
-    \n* Handles time_transfer payment
-    \n* Remove Acceptee the acceptee in notice.commit
-    \n* Pass to give option to delete Notice
+    Handles the completion of a Notice.
+
+    \n * Checks if user is notice author
+    \n * Handles time_transfer payment
+    \n * Remove Acceptee the acceptee in notice.commit
+    \n * Pass to give option to delete Notice
+
+    \nArgs:
+    \n * Arg1: The request object.
+    \n * Arg2: The pk of the notice selected.
+
+    \nReturns:
+    \n * Returns delete notice template if completion is performed successfully
+    \n * Returns Profile template with appropriate error message if not
+    \n   successfull
     """
 
     # check if user is author
@@ -183,7 +219,13 @@ def complete_notice(request, pk):
 
 class NoticeListView(ListView):
     """
-    Returns as a view the notice template
+    Handles listing all the active Notices.
+
+    \nArgs:
+    \n * Arg1: Inherits the Generic ListView class.
+
+    \nReturns:
+    \n * Returns the notice template populated with notices
     """
     model = Notice
     ordering = ['-date_posted']
@@ -194,6 +236,15 @@ class NoticeListView(ListView):
         Include the current Membership of the user in the context
 
         * Must account for users who are not logged in
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+
+        \nKwrgs:
+        \n * Kwrg1: **kwargs - The dictionary for use in altering the context
+
+        \nReturns:
+        \n * Dictionary - The context for the view
 
         """
         context = super(NoticeListView, self).get_context_data(**kwargs)
@@ -208,14 +259,32 @@ class NoticeListView(ListView):
 class NoticeDetailView(LoginRequiredMixin, DetailView):
     """
     Returns as a view the notice details template
+
+    \nArgs:
+    \n * Arg1: The LoginRequiredMixin
+    \n * Arg2: Inherits the Generic DetailView class.
+
+    \nReturns:
+    \n * Returns the Detail view of a selected Notice.
     """
 
     model = Notice
 
     def get_context_data(self, **kwargs):
         """
-        \n* Getting the context of detailView and add the form to it
-        \n* Getting the context of detailView and add the author profile to it
+        Adds the comment form and author profile to context
+
+        \n * Get the context of detailView and add the comment form to it
+        \n * Get the context of detailView and add the author profile to it
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+
+        \nKwrgs:
+        \n * Kwrg1: variable keyword argument
+
+        \nReturns:
+        \n * Dictionary - The context for the view
         """
         context = super(NoticeDetailView, self).get_context_data(**kwargs)
         notice_context = get_object_or_404(Notice, id=self.object.id)
@@ -227,6 +296,19 @@ class NoticeDetailView(LoginRequiredMixin, DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
+        """ In case of Post direct to CreateComment class
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+        \n * Arg2: request - the request object
+        \n * Arg3: Variable argument
+
+        \nKwrgs:
+        \n * Kwrg1: variable Keyword argument
+
+        \nReturns:
+        \n * Passes request, args and kwargs into the CreateComment view
+        """
         view = CreateComment.as_view()
         return view(request, *args, **kwargs)
 
@@ -234,13 +316,26 @@ class NoticeDetailView(LoginRequiredMixin, DetailView):
 class CreateComment(LoginRequiredMixin, FormView):
     """
     Handles creating a comment
-    Ajax used to update view
+
+    \nArgs:
+    \n * Arg1: The LoginRequiredMixin
+    \n * Arg2: Inherits the Generic FormView class.
     """
     model = Comment
     form_class = CommentForm
 
     # when form is invalid
     def form_invalid(self, form):
+        """
+        Handles comment form invalid
+
+        nArgs:
+        \n * Arg1: Self - the current instance of the class
+        \n * Arg2: the comment form
+
+        \nReturns:
+        \n * Json response of the error
+        """
         # check if header in request includes ajax XML
         if self.request.is_ajax():
             # if it is an ajax request return the errors from the form
@@ -251,6 +346,19 @@ class CreateComment(LoginRequiredMixin, FormView):
 
     # when form is valid - check if its ajax request
     def form_valid(self, form):
+        """
+        Handles comment form valid
+
+        \n * Sets the comment link with current notice
+        \n * if request is Ajax - then get and save comment
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+        \n * Arg2: the comment form
+
+        \nReturns:
+        \n * status 200 if successful else a 400 response
+        """
         if self.request.is_ajax():
             # Get the notice and set it in the form
             notice = Notice.objects.get(pk=self.kwargs['pk'])
@@ -268,26 +376,45 @@ class CreateComment(LoginRequiredMixin, FormView):
                                 status=400)
 
 
-
 class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     """
     Returns as a view the create a notice template
+
+    \nArgs:
+    \n * Arg1: The LoginRequiredMixin
+    \n * Arg2: The UserPassesTestMixin
+    \n * Arg3: Inherits the Generic CreateView class.
+
+    \nReturns:
+    \n * Returns the create a notice template.
     """
     model = Notice
     form_class = CreateNoticeForm
 
     def form_valid(self, form):
         """
-        overrides form_valid to set the author before validating form
+        Set the author of the Notice before validating form
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+        \n * Arg2: Notice form
+
+        \nReturns:
+        \n * Validates the form
         """
 
         form.instance.author = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
-        """ test function - ran by UserPassesTestMixin to check condition
-            condition check:
-            \n Does the user have a Premium membership
+        """
+        Check if user has a premium membership
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+
+        \nReturns:
+        \n * True if user is validated, else False
         """
         users_membership = get_object_or_404(
             Memberships, user=self.request.user)
@@ -302,24 +429,44 @@ class NoticeCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
-    Returns as a view the create a notice template
+    Returns as a view the update a notice template
+
+    \nArgs:
+    \n * Arg1: The LoginRequiredMixin
+    \n * Arg2: The UserPassesTestMixin
+    \n * Arg3: Inherits the Generic UpdateView class.
+
+    \nReturns:
+    \n * Returns the update a notice template.
     """
 
     model = Notice
-    fields = ['title', 'short_description', 'long_description', 'duration',
-              'specify_date', 'event_location_postcode']
+    form_class = CreateNoticeForm
 
-    # override form_valid
     def form_valid(self, form):
-        # set the author
+        """
+        Set the author as the current user
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+        \n * Arg2: Notice form
+
+        \nReturns:
+        \n * Validates the form
+        """
         form.instance.author = self.request.user
-        # then validate form
         return super().form_valid(form)
 
     def test_func(self):
-        """ test function - ran by UserPassesTestMixin to check condition
-            condition check: Is user attempting to update notice equal
-            to the author of the notice
+        """
+        Check user attempting to update notice is equal
+        to the author of the notice.
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+
+        \nReturns:
+        \n * True if user is author, else False
         """
         notice = self.get_object()
         if self.request.user == notice.author:
@@ -331,15 +478,29 @@ class NoticeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class NoticeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Handles deletion of a Notice
+
+    \nArgs:
+    \n * Arg1: The LoginRequiredMixin
+    \n * Arg2: The UserPassesTestMixin
+    \n * Arg3: Inherits the Generic DeleteView class.
+
+    \nReturns:
+    \n * Returns the notice_confirm_delete template.
+    \n * On Success: Returns URL /profile/member_notices.
     """
     model = Notice
     success_url = '/profile/member_notices'
 
     def test_func(self):
         """
-        test function - ran by UserPassesTestMixin to check condition
-        condition check: Is user attempting to Delete a notice equal
-        to the author of the notice
+        Check user attempting to Delete a notice is equal
+        to the author of the notice.
+
+        \nArgs:
+        \n * Arg1: Self - the current instance of the class
+
+        \nReturns:
+        \n * True if user is author, else False
         """
         notice = self.get_object()
         if self.request.user == notice.author:

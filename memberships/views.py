@@ -46,8 +46,10 @@ def get_user_subscription(request):
 
 
 def get_selected_package(request):
-    """ A helper funtion that gets the selected package from session storage
-    and returns the corresponding package object.
+    """ A helper function which gets the current package object
+
+    \n * Get the selected package from session storage
+    \n * Get the corresponding package object.
 
     \nArgs:
     \n * Arg1: The request object.
@@ -68,13 +70,13 @@ def get_selected_package(request):
 @login_required
 def select_package(request):
     """ A view that returns the membership selection page.
-    \n
-    * Gets the selection from the user
-    * Passes selection to local storage
-    * Handles incase current package = selected.
-    * Returns the template.
-    
-    \n Args:
+
+    \n * Gets the selection from the user
+    \n * Passes selection to local storage
+    \n * Handles incase current package = selected.
+    \n * Returns the template.
+
+    \nArgs:
     \n * Arg1: The request object.
 
     \nReturns:
@@ -121,16 +123,19 @@ def select_package(request):
 
 
 def package_payment(request):
-    """
-    Get the stripe payment form for the user
+    """Get the stripe payment form for the user
         Also handle the payment
-    
-    Args:
-    \n* The request object
 
+    \n * Get the stripe payment form
+    \n * Handle the payment with stripe
+    \n * Handles any error with stripe payment
+    \n * Passes subscription id to upgraded transactions
 
-    * Stripe subscription source code:
-    https://stripe.com/docs/api/subscriptions/create?lang=python
+    \nArgs:
+    \n * Arg1: The request object.
+
+    \nReturns:
+    \n * The Package payment template page - memberships/package_payment.html
     """
     # get some required variables
     current_package = get_current_package(request)
@@ -149,6 +154,7 @@ def package_payment(request):
 
             # Create the subscription using customer & token source
             # subscription = the intent
+            # Credit Strip Docs
             subscription = stripe.Subscription.create(
                 customer=current_package.stripe_user_id,
                 items=[
@@ -176,9 +182,16 @@ def upgradedtransactions(request, subscription_id):
     Handles upgrading of membership models and
     returning success message
 
-    \n Args:
-    \n * The request oject
-    \n * The id of the subscription
+    \n * Sets the chosen/paid for  package as current package
+    \n * Update subscription model
+    \n * Clear out session storage
+    
+    \nArgs:
+    \n * Arg1: The request object.
+    \n * Arg2: The id of the subscription from package_payment().
+
+    \nReturns:
+    \n * The Profile template page - profile.html.html
     """
 
     # get some required variables
@@ -198,11 +211,10 @@ def upgradedtransactions(request, subscription_id):
     subscription.save()
 
     # Set the users Time Balance back to 10 free hours - one off
+    # then clear session storage
     profile = get_object_or_404(UserProfile, user=request.user)
     profile.time_balance = 10
     profile.save()
-
-    # remove session storage
     try:
         del request.session['selected_package_type']
     except request.session['selected_package_type'].DoesNotExist:
@@ -218,7 +230,18 @@ def upgradedtransactions(request, subscription_id):
 
 @login_required
 def cancel_user_subscription(request):
-    """ View to handle the cancelling of a users subscription """
+    """Handle the cancelling of a users subscription:
+
+    \n * Cancells the subscription on stripe
+    \n * Sets the subscription to Free on the model
+    \n * Sets users Time balance back to -1. (inactive state)
+
+    \nArgs:
+    \n * Arg1: The request object.
+
+    \nReturns:
+    \n * The Profile template page - profile.html.html
+    """
     current_user_subscription = get_user_subscription(request)
 
     # If the user does not have a subscription then return with a message
@@ -236,7 +259,7 @@ def cancel_user_subscription(request):
     current_user_subscription.save()
 
     # Get free membership and get current package user is on
-    # Then set curren package for user as free.
+    # Then set current package for user as free.
     free = Packages.objects.get(package_type='Free')
     user_package = get_current_package(request)
     user_package.membership_type = free
