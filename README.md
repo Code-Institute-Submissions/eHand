@@ -19,7 +19,9 @@ Premium members can also use the sites unique currency - TIME as payment for any
 This website is not restricted to individuals, it can be easily extended to include community groups, offer incentives to those who help out in their communities
 and provide a means to those without.
 
-eHand will be submitted as my MS4 and final project in my Full Stack Software Development diploma.
+eHand will be submitted as my MS4 and final project in my Full Stack Software Development diploma.   
+
+***For your convenience, 4 users have been setup and have linked or committed notices for demo purposes: john, paul, george and ringo - all sharing the same password: ehandpassword.***
 
 # Table of contents
 
