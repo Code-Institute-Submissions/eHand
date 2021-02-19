@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */ 
 document.addEventListener("DOMContentLoaded", function() { 
-    /** First Handle the navbar - scroll it out of the way on scroll or page resize */
+    /** Handle the navbar 
+     * scroll it out of the way on scroll or page resize */
+
     let firstScrollTop = 20;
     let navbar = document.querySelector(".navbar");
     let pageLogo = document.querySelector('.page-logo-container');
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 navbar.classList.add('fixed-navbar');
             }
         }
-        /* if the screen width moves above 768 */
+        /* If the screen width moves above 768 width */
         else {
             /* first check is screen at the top */
             if (scrollTop < firstScrollTop){
@@ -46,7 +48,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    /* handle change in scroll */
+
+    /* Handle change in vertical scroll */
     window.addEventListener("scroll", function () {
         let scrollTop = window.pageYoffset || document.documentElement.scrollTop;
         let width = window.innerWidth;
@@ -73,13 +76,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    /* fade in out effects for elements */
+    /* Fade in out effects for elements */
     const showOptions = {
     threshold: 0.2,
     rootMargin: "0px 0px -30px 0px"
     };
 
-    /** Handle fadin in elements */
+    /** Handle fade in elements */
     const fadeElements = document.querySelectorAll('.fade-in');
     showWhenScroll = new IntersectionObserver(function (entries, showWhenScroll){
         entries.forEach(entry => {
@@ -96,14 +99,13 @@ document.addEventListener("DOMContentLoaded", function() {
         showWhenScroll.observe(fader);
     });
 
-    /** Handle automatic message modal after small delay*/
+    /** Automatic open notification message modal*/
     setTimeout(function() {
         $("#messageModal").modal('show');
     });
     
 
-    /** Smooth scroll */
-
+    /** Smooth scroll  to Information sections from Readmore buttons on home page*/
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -113,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function() {
             //* get distance to target element in px
             let elementPosition = target.offsetTop;
             let targetPosition = elementPosition + offset;
-
 
             window.scrollTo({
                 top: targetPosition,
