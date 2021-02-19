@@ -9,12 +9,16 @@ from .models import Packages, Memberships, Subscriptions
 
 import stripe
 
-# Create your views here.
-
 
 def get_current_package(request):
     """ A helper funtion that retrieves the membership package that the user
     is currently subscribed to.
+
+    \nArgs:
+    \n * Arg1: The request object.
+
+    \nReturns:
+    \n * object: The current users membership package
     """
 
     current = get_object_or_404(Memberships, user=request.user)
@@ -25,6 +29,12 @@ def get_current_package(request):
 
 def get_user_subscription(request):
     """ A helper funtion that retrieves the users current subscription
+
+    \nArgs:
+    \n * Arg1: The request object.
+
+    \nReturns:
+    \n * Object: The current users subscription details
     """
 
     # look in subscriptions for the current user
@@ -37,6 +47,13 @@ def get_user_subscription(request):
 
 def get_selected_package(request):
     """ A helper funtion that gets the selected package from session storage
+    and returns the corresponding package object.
+
+    \nArgs:
+    \n * Arg1: The request object.
+
+    \nReturns:
+    \n * Object: The selected package object.
     """
     package_type = request.session['selected_package_type']
     # convert it to an object
@@ -50,7 +67,19 @@ def get_selected_package(request):
 
 @login_required
 def select_package(request):
-    """ A view that returns the membership selection page """
+    """ A view that returns the membership selection page.
+    \n
+    * Gets the selection from the user
+    * Passes selection to local storage
+    * Handles incase current package = selected.
+    * Returns the template.
+    
+    \n Args:
+    \n * Arg1: The request object.
+
+    \nReturns:
+    \n * The Select Packages template page - memberships/select_package.html
+    """
 
     packages = Packages.objects.all()
     # Get the users current package - we want to compare this in the template
@@ -92,10 +121,15 @@ def select_package(request):
 
 
 def package_payment(request):
-    """ Get the stripe payment form for the user
+    """
+    Get the stripe payment form for the user
         Also handle the payment
+    
+    Args:
+    \n* The request object
 
-    * Stripe subscription source:
+
+    * Stripe subscription source code:
     https://stripe.com/docs/api/subscriptions/create?lang=python
     """
     # get some required variables
@@ -113,8 +147,7 @@ def package_payment(request):
             customer.source = token
             customer.save()
 
-            # Now we can create the subscription using only the customer,
-            # we don't need to pass their credit card source(token)
+            # Create the subscription using customer & token source
             # subscription = the intent
             subscription = stripe.Subscription.create(
                 customer=current_package.stripe_user_id,
@@ -139,8 +172,14 @@ def package_payment(request):
 
 
 def upgradedtransactions(request, subscription_id):
-    """ Handles upgrading of membership models and
-    returning success message """
+    """
+    Handles upgrading of membership models and
+    returning success message
+
+    \n Args:
+    \n * The request oject
+    \n * The id of the subscription
+    """
 
     # get some required variables
     current_package = get_current_package(request)
