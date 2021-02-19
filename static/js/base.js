@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             let address = this.getAttribute('href');
             let target = document.querySelector(address);
-            let offset = 200; 
+            let offset = -70; 
             //* get distance to target element in px
             let elementPosition = target.offsetTop;
             let targetPosition = elementPosition + offset;
