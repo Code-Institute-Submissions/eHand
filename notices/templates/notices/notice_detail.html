@@ -268,14 +268,9 @@
 
         e.preventDefault();
         let content = document.querySelector("#id_body").value;
-        console.log(content);
         if(content){
             let formData = new FormData(commentFormElement);
-            console.log(formData)
         createComment(formData);
-        }else {
-        // form is empty you dont need to submit
-        console.log("You cannot submit an empty form")
         }
     }
 

@@ -9,7 +9,7 @@ from django_countries.fields import CountryField
 class UserProfile(models.Model):
     """
     A user profile model for maintaining default
-    personal information including Time Balance
+    personal information
     """
     # only one profile for each user
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -185,7 +185,7 @@ def upgradedtransactions(request, subscription_id):
     \n * Sets the chosen/paid for  package as current package
     \n * Update subscription model
     \n * Clear out session storage
-    
+
     \nArgs:
     \n * Arg1: The request object.
     \n * Arg2: The id of the subscription from package_payment().
